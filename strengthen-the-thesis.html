@@ -1,1 +1,349 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strengthen the Thesis | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students turn topics and observations into stronger interpretive thesis statements.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:920px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1rem}
+    .rung{border:1px solid var(--border);border-radius:.65rem;padding:.9rem;background:#fff}
+    .rung strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.15rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:820px){.ladder{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.ladder{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Strengthen the Thesis</div>
+    <p class="lede">
+      A literary-analysis thesis should do more than name a topic or repeat an observation.
+      It should make a <strong>specific, arguable interpretation</strong> that gives your essay something meaningful to develop.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>Think of thesis development as a ladder. Each step adds more interpretation.</p>
+
+        <div class="ladder">
+          <div class="rung"><strong>TOPIC</strong>Names the subject.</div>
+          <div class="rung"><strong>OBSERVATION</strong>Notices a pattern or detail.</div>
+          <div class="rung"><strong>BASIC CLAIM</strong>Makes an interpretation, but may still be broad or obvious.</div>
+          <div class="rung"><strong>STRONGER THESIS</strong>Makes a specific, arguable claim that explains why the pattern matters.</div>
+        </div>
+
+        <div class="tip">
+          <strong>A thesis is the result of thinking, not a sentence formula.</strong>
+          Phrases like “the author uses symbolism to show…” can be useful scaffolds, but they do not automatically create an interesting argument.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Climb the Ladder</div>
+
+          <p class="label" id="contextLabel">STARTING IDEA</p>
+          <div class="box" id="context"></div>
+
+          <p class="prompt" id="prompt"></p>
+          <div id="choices" class="choices" aria-label="Choose the strongest thesis move"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced strengthening a thesis.</p>
+          <p>Before you settle on a thesis, ask:</p>
+          <ul>
+            <li>Does this do more than name my topic?</li>
+            <li>Does it explain what a pattern or detail may suggest?</li>
+            <li>Is the claim specific enough to develop with evidence?</li>
+            <li>Is it arguable rather than obvious?</li>
+            <li>Does it avoid claiming more than the text can support?</li>
+          </ul>
+          <p>
+            A strong thesis gives your essay direction because it tells the reader not only <em>what</em> you noticed,
+            but <em>what you think that pattern means</em>.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1,
+        roundLabel:"Round 1: Climb the Ladder",
+        context:"Topic: appearance in Cinderella",
+        prompt:"Which sentence is the strongest next step toward a thesis?",
+        choices:[
+          {text:"Appearance is important in Cinderella.",correct:false,feedback:"This stays at the topic level. It names an idea but does not yet explain what the story suggests about appearance."},
+          {text:"Cinderella’s appearance changes at important moments in the story.",correct:false,feedback:"This is a useful observation. The next step is to explain what that pattern may suggest."},
+          {text:"Because other characters treat Cinderella differently after her appearance changes, the story connects outward appearance with social status and recognition.",correct:true,feedback:"Yes. This turns the pattern into a specific interpretive claim that could guide an essay."}
+        ]
+      },
+      {
+        round:1,
+        roundLabel:"Round 1: Climb the Ladder",
+        context:"Observation: Adults repeatedly dismiss the youngest character’s questions.",
+        prompt:"Which version turns the observation into a stronger thesis?",
+        choices:[
+          {text:"The youngest character asks many questions.",correct:false,feedback:"This repeats the observation without interpreting its significance."},
+          {text:"The story shows that adults do not listen to children.",correct:false,feedback:"This is moving toward interpretation, but it is still broad and absolute."},
+          {text:"By repeatedly dismissing the youngest character’s questions, the story challenges the assumption that age automatically determines whose understanding deserves authority.",correct:true,feedback:"Yes. This is specific, arguable, and connected to the observed pattern."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Strengthen a Weak Thesis",
+        context:"Weak thesis: The author uses the garden as a symbol of freedom.",
+        prompt:"Which revision makes the claim more specific and interpretive?",
+        choices:[
+          {text:"The garden symbolizes freedom because gardens can symbolize freedom.",correct:false,feedback:"This is circular and generic. It does not explain how this particular garden creates meaning."},
+          {text:"By describing the garden as 'wild and tangled' during the children’s happiest moments, the story connects freedom with spaces that escape adult control.",correct:true,feedback:"Yes. This thesis identifies the textual pattern and explains what the pattern may suggest."},
+          {text:"The author uses symbolism, imagery, and setting to show freedom.",correct:false,feedback:"This sounds thesis-like, but listing devices is not the same as making a meaningful interpretive claim."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Strengthen a Weak Thesis",
+        context:"Weak thesis: The wolf is dangerous.",
+        prompt:"Which revision creates a more useful literary argument?",
+        choices:[
+          {text:"The wolf is dangerous because he is a villain.",correct:false,feedback:"This is obvious and relies on a character label rather than textual analysis."},
+          {text:"The wolf uses dialogue in the story.",correct:false,feedback:"This identifies a technique but does not explain its significance."},
+          {text:"By making the wolf sound courteous before he becomes threatening, the story presents danger as difficult to recognize when it first appears familiar or trustworthy.",correct:true,feedback:"Yes. This claim moves from a specific textual choice to a larger interpretive idea."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Strengthen a Weak Thesis",
+        context:"Weak thesis: The hallway represents fear.",
+        prompt:"Which revision is strongest?",
+        choices:[
+          {text:"The hallway represents fear because it is scary.",correct:false,feedback:"This repeats the same idea without analyzing what makes the setting frightening."},
+          {text:"The narrator personifies the hallway.",correct:false,feedback:"This identifies a literary device but does not yet explain what the device contributes."},
+          {text:"When the hallway 'swallowed every sound,' the setting becomes active and consuming, suggesting that the character experiences the house as a place that erases her presence.",correct:true,feedback:"Yes. This thesis grows from specific language and explains its interpretive significance."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Choose the Best Thesis for the Evidence",
+        context:"Evidence pattern: A character repeatedly repairs a broken toy, saves every loose piece, and finally places the unrepaired toy carefully on a shelf.",
+        prompt:"Which thesis best explains the full pattern?",
+        choices:[
+          {text:"The character has a broken toy.",correct:false,feedback:"This is factual but not interpretive."},
+          {text:"The story may present care as persistence rather than successful repair, since the character continues valuing the toy even when it cannot be restored.",correct:true,feedback:"Yes. This thesis explains the repeated actions and gives the pattern a larger significance."},
+          {text:"The broken toy proves that everything in life eventually fails.",correct:false,feedback:"This moves far beyond what the evidence can support."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Choose the Best Thesis for the Evidence",
+        context:"Evidence pattern: Family conversations end unfinished, conflict is expressed through gestures, and the house is repeatedly described as quiet.",
+        prompt:"Which thesis would give an essay the strongest direction?",
+        choices:[
+          {text:"The family is quiet.",correct:false,feedback:"This is too descriptive. It does not explain what the pattern of silence may mean."},
+          {text:"The repeated silence in both the setting and family interactions suggests that avoidance has become part of how the family manages conflict.",correct:true,feedback:"Yes. This connects multiple kinds of evidence and gives the essay a clear interpretive focus."},
+          {text:"The family secretly hates each other.",correct:false,feedback:"This is too specific and emotional for the evidence provided."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Choose the Best Thesis for the Evidence",
+        context:"Evidence pattern: The youngest figure in a set of portraits is the only one looking outside the frame, and the text never tells us exactly what she sees.",
+        prompt:"Which thesis handles the ambiguity most effectively?",
+        choices:[
+          {text:"The girl is planning to escape.",correct:false,feedback:"That is one imagined possibility, but the evidence does not support such a specific plot claim."},
+          {text:"The girl looks away from the camera.",correct:false,feedback:"This restates the image but does not interpret it."},
+          {text:"By making the youngest figure the only one looking beyond the frame, the image associates her with curiosity or possibility while leaving the exact meaning open to interpretation.",correct:true,feedback:"Yes. This makes an arguable claim while respecting the ambiguity of the evidence."}
+        ]
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      context:document.getElementById("context"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0, solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.context.textContent=item.context;
+      els.prompt.textContent=item.prompt;
+
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const choice=items[index].choices[i];
+
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — this is the stronger thesis.</div><div>${choice.feedback}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Ask what the sentence adds beyond the topic or observation.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
