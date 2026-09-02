@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Kind of Thinking Is This? | Literary Analysis Lab</title>
+  <meta name="description" content="A short, accessible literary analysis practice activity that helps students distinguish summary, observation, and analysis.">
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #52606d;
+      --border: #cbd5e1;
+      --accent: #275dad;
+      --accent-dark: #173f7a;
+      --soft: #eef4fb;
+      --success-bg: #edf8f0;
+      --success-border: #287a3e;
+      --try-bg: #fff7e8;
+      --try-border: #9a6400;
+      --focus: #111827;
+      --max: 840px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0.75rem;
+      top: -5rem;
+      z-index: 1000;
+      background: #fff;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--focus);
+      border-radius: 0.4rem;
+    }
+
+    .skip-link:focus { top: 0.75rem; }
+
+    header, main, footer {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    header {
+      padding-top: 2rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.35rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .lede {
+      max-width: 65ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      line-height: 1.25;
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      line-height: 1.3;
+      font-size: 1.15rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: clamp(1rem, 3vw, 1.5rem);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      margin: 1rem 0;
+    }
+
+    .three-kinds {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .kind {
+      border: 1px solid var(--border);
+      border-radius: 0.65rem;
+      padding: 0.9rem;
+      background: #fff;
+    }
+
+    .kind strong { display: block; margin-bottom: 0.25rem; }
+    .kind span { color: var(--muted); font-size: 0.96rem; }
+
+    .lab {
+      margin-top: 1.25rem;
+    }
+
+    .progress-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    progress {
+      width: 100%;
+      height: 0.9rem;
+      accent-color: var(--accent);
+    }
+
+    .round-label {
+      font-weight: 800;
+      color: var(--accent-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .prompt {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 1rem 1.15rem;
+      border-left: 5px solid var(--accent);
+      background: var(--soft);
+      border-radius: 0.35rem;
+      font-size: 1.08rem;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .choice,
+    .primary,
+    .secondary {
+      min-height: 48px;
+      border-radius: 0.55rem;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      border: 2px solid var(--accent);
+      background: #fff;
+      color: var(--accent-dark);
+      font-weight: 750;
+      text-align: left;
+    }
+
+    .choice:hover,
+    .primary:hover {
+      background: var(--soft);
+    }
+
+    .choice:focus-visible,
+    .primary:focus-visible,
+    .secondary:focus-visible,
+    a:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .choice[disabled] {
+      cursor: default;
+      opacity: 0.78;
+    }
+
+    .choice.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+      color: #174d27;
+    }
+
+    .choice.incorrect {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+      color: #604000;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.6rem;
+      border: 2px solid var(--border);
+      background: #fff;
+    }
+
+    .feedback.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+    }
+
+    .feedback.try {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+    }
+
+    .feedback-title {
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+    }
+
+    .primary:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .secondary {
+      border: 2px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .secondary:hover {
+      border-color: var(--text);
+    }
+
+    .tip {
+      background: #f3f6f8;
+      border-left: 4px solid #52606d;
+      padding: 0.85rem 1rem;
+      margin-top: 1rem;
+      border-radius: 0.35rem;
+    }
+
+    .hidden { display: none !important; }
+
+    .completion {
+      text-align: left;
+    }
+
+    .completion .big {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 680px) {
+      .three-kinds {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .primary, .secondary { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --border: #4b5563;
+        --muted: #374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">What Kind of Thinking Is This?</div>
+    <p class="lede">
+      Literary analysis gets easier when you can tell the difference between
+      <strong>telling what happened</strong>, <strong>noticing something in the text</strong>,
+      and <strong>exploring what that detail might mean</strong>.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>
+          You will practice three different kinds of thinking that often appear in writing about literature.
+          None of them is “bad.” The key is knowing which one you are using.
+        </p>
+
+        <div class="three-kinds">
+          <div class="kind">
+            <strong>Tells What Happened</strong>
+            <span><em>Summary</em>: reports events, actions, or information from the text.</span>
+          </div>
+          <div class="kind">
+            <strong>Notices Something</strong>
+            <span><em>Observation</em>: points out a pattern, choice, contrast, repetition, or other detail.</span>
+          </div>
+          <div class="kind">
+            <strong>Explores What It Might Mean</strong>
+            <span><em>Analysis</em>: explains what a detail or pattern may suggest and why it matters.</span>
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>No score.</strong> This is practice. You can try every question again, and the feedback will explain the thinking behind each answer.
+        </div>
+      </div>
+    </section>
+
+    <section class="lab" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 9</span>
+          </div>
+          <progress id="progress" value="1" max="9">1 of 9</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: See the Difference</div>
+          <p class="prompt" id="prompt">What kind of thinking is this?</p>
+          <blockquote id="statement"></blockquote>
+
+          <div id="choices" class="choices" aria-label="Choose the kind of thinking"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced the first move of literary analysis.</p>
+          <p>
+            <strong>Summary</strong> tells what happened.
+            <strong>Observation</strong> notices something.
+            <strong>Analysis</strong> explores what that detail might mean.
+          </p>
+          <p>
+            When you feel stuck, you do not have to jump straight to a thesis. Start smaller:
+            <strong>What do I notice?</strong> Then ask:
+            <strong>Why might that matter?</strong>
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This practice activity is designed for low-stakes, self-paced learning. It does not record or submit student responses.
+  </footer>
+
+  <script>
+    (() => {
+      const TYPES = {
+        summary: {
+          label: "Tells What Happened",
+          term: "Summary"
+        },
+        observation: {
+          label: "Notices Something",
+          term: "Observation"
+        },
+        analysis: {
+          label: "Explores What It Might Mean",
+          term: "Analysis"
+        }
+      };
+
+      const items = [
+        {
+          round: 1,
+          roundLabel: "Round 1: See the Difference",
+          text: "Cinderella goes to the ball after her fairy godmother changes her clothes.",
+          answer: "summary",
+          feedback: {
+            correct: "This reports an event from the story. It gives useful context, but it does not yet point out a pattern or explain why anything might matter.",
+            observation: "This sentence does not identify a pattern or textual choice yet. It mainly reports what Cinderella does and what happens to her.",
+            analysis: "This sentence does not yet interpret the event. It tells us what happened rather than exploring what the event might suggest."
+          }
+        },
+        {
+          round: 1,
+          roundLabel: "Round 1: See the Difference",
+          text: "Cinderella’s clothing changes at several important turning points in the story.",
+          answer: "observation",
+          feedback: {
+            correct: "This notices a pattern: clothing changes more than once at important moments. It has moved beyond plot summary, but it has not yet explained what that pattern might suggest.",
+            summary: "This is more than a report of events. It steps back from the plot and notices a repeated pattern across the story.",
+            analysis: "You are close. The sentence notices something meaningful, but it stops before explaining what the pattern might mean."
+          }
+        },
+        {
+          round: 1,
+          roundLabel: "Round 1: See the Difference",
+          text: "Because other characters treat Cinderella differently after her appearance changes, the story connects outward appearance with social status.",
+          answer: "analysis",
+          feedback: {
+            correct: "This interprets a pattern and explains its significance. It does more than notice that Cinderella’s appearance changes; it proposes what those changes may suggest about social status.",
+            summary: "This sentence is not mainly reporting plot. It uses plot details to make a larger interpretive point.",
+            observation: "The sentence includes an observation, but it goes one step further by explaining what that pattern may suggest. That makes it analysis."
+          }
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Spot the Difference",
+          text: "The wolf asks Little Red Riding Hood where she is going.",
+          answer: "summary",
+          feedback: {
+            correct: "This tells us an action from the story. To move toward analysis, we would need to notice something about the interaction or explore why it matters.",
+            observation: "Nothing in this sentence steps back to identify a pattern, contrast, or textual choice. It simply reports an event.",
+            analysis: "The sentence does not interpret the wolf’s question yet. It only tells us that the question happens."
+          }
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Spot the Difference",
+          text: "Adults repeatedly warn Little Red Riding Hood about where she should go and how she should behave.",
+          answer: "observation",
+          feedback: {
+            correct: "This notices repetition in the story: adults repeatedly give the child instructions. The next analytical move would be to ask why the story keeps emphasizing that pattern.",
+            summary: "The sentence is not just recounting one event. It combines several moments to identify a repeated pattern.",
+            analysis: "This identifies a meaningful pattern, but it does not yet explain what the repeated warnings might suggest about childhood, obedience, danger, or adult authority."
+          }
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Spot the Difference",
+          text: "The repeated warnings make obedience part of the story’s idea of childhood, linking safety to a child’s willingness to follow adult rules.",
+          answer: "analysis",
+          feedback: {
+            correct: "This takes the repeated warnings and proposes a larger meaning for them. The interpretation could still be tested or complicated with more evidence, but it is doing analytical work.",
+            summary: "This is not mainly retelling events. It uses the repeated warnings to make a claim about how the story represents childhood and safety.",
+            observation: "The repeated warnings are the observation. The explanation of what they suggest about childhood and safety moves the sentence into analysis."
+          }
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          intro: "Read this short original passage:",
+          passage: "Mara stood at the classroom door long after everyone else had gone inside. She rubbed the worn edge of her library card with her thumb. When the bell rang, she slipped the card into her pocket and entered.",
+          text: "Mara waits outside the classroom before going inside.",
+          answer: "summary",
+          feedback: {
+            correct: "This accurately reports what Mara does. It is useful for understanding the scene, but it does not yet identify a meaningful textual detail or interpret one.",
+            observation: "This is an event from the passage rather than a pattern or textual feature the reader has noticed.",
+            analysis: "The sentence does not yet explore what Mara’s waiting might mean. It simply tells us that she waits."
+          }
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          intro: "Use the same passage:",
+          passage: "Mara stood at the classroom door long after everyone else had gone inside. She rubbed the worn edge of her library card with her thumb. When the bell rang, she slipped the card into her pocket and entered.",
+          text: "The passage draws attention to Mara touching and then hiding her worn library card.",
+          answer: "observation",
+          feedback: {
+            correct: "This notices a specific detail and a small sequence of actions involving the library card. It has not yet decided what the card means.",
+            summary: "The sentence does mention actions, but its purpose is to draw attention to a particular repeated object and sequence, not simply retell the scene.",
+            analysis: "This is careful noticing, but it stops short of explaining why the library card might matter."
+          }
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          intro: "Use the same passage:",
+          passage: "Mara stood at the classroom door long after everyone else had gone inside. She rubbed the worn edge of her library card with her thumb. When the bell rang, she slipped the card into her pocket and entered.",
+          text: "Mara’s attention to the worn library card may suggest that reading is a source of comfort or identity that she keeps private when she enters the classroom.",
+          answer: "analysis",
+          feedback: {
+            correct: "This interpretation grows from specific evidence: the worn card, Mara touching it, and then hiding it. Notice the cautious word “may.” Literary analysis proposes a defensible reading rather than claiming there is only one possible meaning.",
+            summary: "This sentence is not merely reporting Mara’s actions. It interprets what those actions and the library card might suggest.",
+            observation: "The card and Mara’s actions are the observations. The idea that reading may be a private source of comfort or identity is the interpretation."
+          }
+        }
+      ];
+
+      const elements = {
+        roundText: document.getElementById("roundText"),
+        itemText: document.getElementById("itemText"),
+        progress: document.getElementById("progress"),
+        roundLabel: document.getElementById("roundLabel"),
+        prompt: document.getElementById("prompt"),
+        statement: document.getElementById("statement"),
+        choices: document.getElementById("choices"),
+        feedback: document.getElementById("feedback"),
+        actions: document.getElementById("actions"),
+        tryAgain: document.getElementById("tryAgain"),
+        next: document.getElementById("next"),
+        questionArea: document.getElementById("questionArea"),
+        completion: document.getElementById("completion"),
+        restart: document.getElementById("restart")
+      };
+
+      let index = 0;
+      let hasAnsweredCorrectly = false;
+
+      function renderItem() {
+        const item = items[index];
+        hasAnsweredCorrectly = false;
+
+        elements.roundText.textContent = `Round ${item.round} of 3`;
+        elements.itemText.textContent = `Example ${index + 1} of ${items.length}`;
+        elements.progress.value = index + 1;
+        elements.progress.max = items.length;
+        elements.progress.textContent = `${index + 1} of ${items.length}`;
+        elements.roundLabel.textContent = item.roundLabel;
+
+        if (item.passage) {
+          elements.prompt.innerHTML = "";
+          const intro = document.createElement("span");
+          intro.textContent = item.intro || "Read this short passage:";
+          elements.prompt.appendChild(intro);
+
+          const passage = document.createElement("blockquote");
+          passage.style.marginTop = "0.8rem";
+          passage.textContent = item.passage;
+
+          const question = document.createElement("p");
+          question.style.fontWeight = "700";
+          question.style.marginTop = "1rem";
+          question.textContent = "Now classify this statement:";
+
+          elements.prompt.appendChild(passage);
+          elements.prompt.appendChild(question);
+        } else {
+          elements.prompt.textContent = "What kind of thinking is this?";
+        }
+
+        elements.statement.textContent = item.text;
+
+        elements.choices.innerHTML = "";
+        Object.entries(TYPES).forEach(([key, value]) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "choice";
+          button.dataset.type = key;
+          button.innerHTML = `<span>${value.label}</span><br><small>${value.term}</small>`;
+          button.addEventListener("click", () => checkAnswer(key, button));
+          elements.choices.appendChild(button);
+        });
+
+        elements.feedback.className = "feedback hidden";
+        elements.feedback.innerHTML = "";
+        elements.actions.classList.add("hidden");
+        elements.tryAgain.classList.add("hidden");
+        elements.next.classList.add("hidden");
+      }
+
+      function checkAnswer(choice, button) {
+        const item = items[index];
+        const buttons = [...elements.choices.querySelectorAll("button")];
+
+        buttons.forEach(btn => {
+          btn.classList.remove("correct", "incorrect");
+          btn.disabled = true;
+        });
+
+        if (choice === item.answer) {
+          hasAnsweredCorrectly = true;
+          button.classList.add("correct");
+          elements.feedback.className = "feedback correct";
+          elements.feedback.innerHTML =
+            `<div class="feedback-title">Yes — ${TYPES[item.answer].term}.</div>
+             <div>${item.feedback.correct}</div>`;
+          elements.tryAgain.classList.add("hidden");
+          elements.next.classList.remove("hidden");
+        } else {
+          button.classList.add("incorrect");
+          elements.feedback.className = "feedback try";
+          elements.feedback.innerHTML =
+            `<div class="feedback-title">Almost. Look at the thinking move.</div>
+             <div>${item.feedback[choice]}</div>`;
+          elements.tryAgain.classList.remove("hidden");
+          elements.next.classList.add("hidden");
+        }
+
+        elements.actions.classList.remove("hidden");
+        elements.feedback.scrollIntoView({ block: "nearest" });
+      }
+
+      elements.tryAgain.addEventListener("click", () => {
+        renderItem();
+        const first = elements.choices.querySelector("button");
+        if (first) first.focus();
+      });
+
+      elements.next.addEventListener("click", () => {
+        if (!hasAnsweredCorrectly) return;
+
+        index += 1;
+        if (index >= items.length) {
+          elements.questionArea.classList.add("hidden");
+          elements.completion.classList.remove("hidden");
+          elements.progress.value = items.length;
+          elements.itemText.textContent = `Complete`;
+          elements.completion.focus();
+        } else {
+          renderItem();
+          elements.roundLabel.focus?.();
+          window.scrollTo({ top: elements.labCard?.offsetTop || 0, behavior: "smooth" });
+        }
+      });
+
+      elements.restart.addEventListener("click", () => {
+        index = 0;
+        elements.completion.classList.add("hidden");
+        elements.questionArea.classList.remove("hidden");
+        renderItem();
+        window.scrollTo({ top: document.getElementById("practice-heading").offsetTop - 10, behavior: "smooth" });
+      });
+
+      renderItem();
+    })();
+  </script>
+</body>
+</html>
