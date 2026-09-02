@@ -1,1 +1,355 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complicate It | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students revise interpretations when new evidence adds tension, contradiction, or complexity.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:920px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .step{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .step strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    .new-evidence{border-left:5px solid var(--accent);background:var(--soft)}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.15rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Complicate It</div>
+    <p class="lede">
+      Strong literary analysis does not force every detail to fit a simple claim.
+      When new evidence creates tension, contradiction, or uncertainty, the better move is often to
+      <strong>revise the interpretation so it can hold more of the text</strong>.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>Sometimes your first interpretation is reasonable but incomplete. New evidence can help you make it more precise.</p>
+        <div class="steps">
+          <div class="step"><strong>1. Make a Reading</strong>Start with a claim that fits the evidence you have.</div>
+          <div class="step"><strong>2. Notice the Tension</strong>Look for evidence that does not fit perfectly.</div>
+          <div class="step"><strong>3. Revise</strong>Qualify, complicate, or expand the interpretation.</div>
+        </div>
+        <div class="tip">
+          <strong>Contradictory evidence is not a failure.</strong>
+          It can be the moment when an argument gets more interesting.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Don't Ignore the New Evidence</div>
+
+          <p class="label">FIRST INTERPRETATION</p>
+          <div class="box" id="firstClaim"></div>
+
+          <p class="label">NEW EVIDENCE</p>
+          <div class="box new-evidence" id="newEvidence"></div>
+
+          <p class="prompt" id="prompt">What should the writer do next?</p>
+          <div id="choices" class="choices" aria-label="Choose the strongest revision move"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced making an interpretation more complex.</p>
+          <p>When new evidence does not fit perfectly, try asking:</p>
+          <ul>
+            <li>Does my claim need a word like <em>although</em>, <em>while</em>, or <em>yet</em>?</li>
+            <li>Am I treating a complicated character as one-dimensional?</li>
+            <li>Can both ideas be true at the same time?</li>
+            <li>Does the tension reveal something more interesting than my first claim?</li>
+          </ul>
+          <p>
+            Strong arguments often become stronger when they make room for contradiction instead of smoothing it away.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1,
+        roundLabel:"Round 1: Don't Ignore the New Evidence",
+        firstClaim:"The grandmother is powerless because she cannot physically stop the threat.",
+        newEvidence:"She is the first character to recognize that something is wrong and warns the others before they understand the danger.",
+        choices:[
+          {text:"Ignore the new evidence because it weakens the argument.",correct:false,feedback:"Ignoring relevant evidence makes the argument less convincing. The better move is to revise the claim so it accounts for both forms of power."},
+          {text:"Revise the claim: Although the grandmother lacks physical power, her ability to recognize danger gives her a form of knowledge the other characters lack.",correct:true,feedback:"Yes. This keeps the original insight but makes room for the new evidence, creating a more nuanced interpretation."},
+          {text:"Abandon the entire idea and say the grandmother is powerful in every way.",correct:false,feedback:"That swings too far in the other direction. The strongest revision holds both limitations and strengths at once."}
+        ]
+      },
+      {
+        round:1,
+        roundLabel:"Round 1: Don't Ignore the New Evidence",
+        firstClaim:"The garden represents freedom because the children are happiest there.",
+        newEvidence:"The children also become frightened when the garden grows so wild that they can no longer find the path home.",
+        choices:[
+          {text:"Revise the interpretation so the garden represents freedom without limits or consequences.",correct:false,feedback:"The new evidence shows that the garden's freedom is not entirely simple or safe."},
+          {text:"Revise the claim: The garden represents freedom from adult control, but the story also suggests that complete freedom can become disorienting.",correct:true,feedback:"Yes. This allows the garden to hold two meanings at once rather than forcing it into a single positive symbol."},
+          {text:"Delete the earlier evidence about happiness because it no longer matters.",correct:false,feedback:"Both pieces of evidence matter. The tension between them is what makes the interpretation richer."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Hold Two Ideas at Once",
+        firstClaim:"The youngest character is more perceptive than the adults because she notices contradictions they ignore.",
+        newEvidence:"Later, she misreads an adult's silence and assumes anger when the adult is actually afraid.",
+        prompt:"Which revision best handles both pieces of evidence?",
+        choices:[
+          {text:"The child is always more perceptive than the adults.",correct:false,feedback:"The new evidence makes 'always' impossible to defend."},
+          {text:"Although the child notices contradictions the adults overlook, the story also shows that her perspective has limits, making her perceptive without making her infallible.",correct:true,feedback:"Yes. This keeps the original insight while acknowledging that the child can also misread situations."},
+          {text:"The child is not perceptive at all.",correct:false,feedback:"One mistake does not erase the earlier evidence. The stronger interpretation holds both abilities and limitations together."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Hold Two Ideas at Once",
+        firstClaim:"The wolf's polite language makes him seem trustworthy.",
+        newEvidence:"The child notices that some of his questions feel intrusive and hesitates before answering.",
+        prompt:"Which interpretation becomes stronger?",
+        choices:[
+          {text:"The story presents trust as automatic whenever someone is polite.",correct:false,feedback:"The child's hesitation complicates that idea."},
+          {text:"The wolf's politeness makes danger harder to recognize, yet the child's hesitation suggests that social cues can create both trust and suspicion at the same time.",correct:true,feedback:"Yes. This uses the tension rather than flattening the scene into a single response."},
+          {text:"The wolf is not dangerous because the child hesitates.",correct:false,feedback:"The hesitation does not erase the threat. It adds complexity to how the child perceives it."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Hold Two Ideas at Once",
+        firstClaim:"The family avoids conflict because conversations repeatedly end in silence.",
+        newEvidence:"In one important scene, the usually quiet father suddenly names the conflict directly.",
+        prompt:"What is the strongest revision?",
+        choices:[
+          {text:"The family never avoids conflict.",correct:false,feedback:"One direct confrontation does not erase the larger pattern."},
+          {text:"The family's usual silence makes the father's direct confrontation especially significant because it breaks an established pattern of avoidance.",correct:true,feedback:"Exactly. The exception becomes meaningful because of the pattern it interrupts."},
+          {text:"The direct scene should be ignored because it is unusual.",correct:false,feedback:"Unusual moments can be especially important in literary analysis because they reveal changes or tensions in a pattern."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Revise the Claim",
+        firstClaim:"Mina represents hope because she notices the line of light beneath the locked window.",
+        newEvidence:"Later, Mina admits that she notices the light partly because she is afraid to look directly at the locked window.",
+        prompt:"Which revised claim is most defensible?",
+        choices:[
+          {text:"Mina is purely hopeful and never afraid.",correct:false,feedback:"The new evidence directly contradicts this simplified reading."},
+          {text:"Mina's attention to the light can still represent possibility, but the story complicates hope by showing that it may coexist with fear rather than replace it.",correct:true,feedback:"Yes. This preserves the original interpretation while allowing two emotions to exist together."},
+          {text:"The line of light no longer matters at all.",correct:false,feedback:"The symbol can still matter. The new evidence changes how we understand it rather than canceling it."
+          }
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Revise the Claim",
+        firstClaim:"The worn ticket stub represents home for Nico.",
+        newEvidence:"Nico later says that the place printed on the ticket is somewhere he never wants to return to.",
+        prompt:"Which revision best responds to the new evidence?",
+        choices:[
+          {text:"The ticket must symbolize a happy memory of home.",correct:false,feedback:"The new evidence makes a purely positive interpretation hard to defend."},
+          {text:"The ticket may represent a complicated relationship to home, carrying both connection and distance rather than simple nostalgia.",correct:true,feedback:"Yes. The object can hold mixed feelings, which often makes a symbol more interesting."},
+          {text:"The ticket cannot symbolize anything because Nico dislikes the place.",correct:false,feedback:"Dislike does not make the object meaningless. It may actually make its emotional significance more complex."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Revise the Claim",
+        firstClaim:"The youngest girl in the portrait represents independence because she alone looks outside the frame.",
+        newEvidence:"A later description reveals that someone outside the frame is calling her name.",
+        prompt:"Which interpretation uses both details most effectively?",
+        choices:[
+          {text:"The girl is definitely independent because she looks away.",correct:false,feedback:"The later detail suggests that her gaze may also be a response to another person, so the first claim needs qualification."},
+          {text:"Her turned gaze may suggest independence, but it also places her in relation to a world beyond the frame, making the image about connection as well as difference.",correct:true,feedback:"Yes. This keeps the original contrast while incorporating the new relational detail."},
+          {text:"The first interpretation was completely wrong and should be deleted.",correct:false,feedback:"The first reading may still contain value. New evidence often revises an interpretation rather than destroying it."
+          }
+        ]
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      firstClaim:document.getElementById("firstClaim"),
+      newEvidence:document.getElementById("newEvidence"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0,solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.firstClaim.textContent=item.firstClaim;
+      els.newEvidence.textContent=item.newEvidence;
+      els.prompt.textContent=item.prompt || "What should the writer do next?";
+
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const choice=items[index].choices[i];
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — this revision makes the interpretation more precise.</div><div>${choice.feedback}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Don't erase either side of the evidence.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
