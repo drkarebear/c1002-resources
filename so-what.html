@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>So What? | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students move from a useful question to a defensible interpretation.">
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #52606d;
+      --border: #cbd5e1;
+      --accent: #275dad;
+      --accent-dark: #173f7a;
+      --soft: #eef4fb;
+      --success-bg: #edf8f0;
+      --success-border: #287a3e;
+      --try-bg: #fff7e8;
+      --try-border: #9a6400;
+      --focus: #111827;
+      --max: 860px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0.75rem;
+      top: -5rem;
+      z-index: 1000;
+      background: #fff;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--focus);
+      border-radius: 0.4rem;
+    }
+
+    .skip-link:focus { top: 0.75rem; }
+
+    header, main, footer {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    header { padding-top: 2rem; }
+
+    .eyebrow {
+      margin: 0 0 0.35rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .lede {
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      line-height: 1.25;
+      font-size: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: clamp(1rem, 3vw, 1.5rem);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      margin: 1rem 0;
+    }
+
+    .move-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .move-box {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 0.65rem;
+      padding: 0.9rem;
+      min-height: 120px;
+    }
+
+    .move-box strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .arrow {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    .tip {
+      background: #f3f6f8;
+      border-left: 4px solid #52606d;
+      padding: 0.85rem 1rem;
+      margin-top: 1rem;
+      border-radius: 0.35rem;
+    }
+
+    .progress-wrap { margin-bottom: 1rem; }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    progress {
+      width: 100%;
+      height: 0.9rem;
+      accent-color: var(--accent);
+    }
+
+    .round-label {
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    .step-label {
+      font-weight: 800;
+      color: var(--accent-dark);
+      margin: 1rem 0 0.35rem;
+    }
+
+    .step-box {
+      border: 2px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 0.9rem 1rem;
+      background: #fff;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 1rem 1.15rem;
+      border-left: 5px solid var(--accent);
+      background: var(--soft);
+      border-radius: 0.35rem;
+      font-size: 1.06rem;
+    }
+
+    .prompt {
+      font-size: 1.16rem;
+      font-weight: 750;
+      margin-top: 1.2rem;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button { font: inherit; }
+
+    .choice,
+    .primary,
+    .secondary {
+      min-height: 48px;
+      border-radius: 0.55rem;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      border: 2px solid var(--accent);
+      background: #fff;
+      color: var(--accent-dark);
+      font-weight: 750;
+      text-align: left;
+    }
+
+    .choice:hover,
+    .primary:hover {
+      background: var(--soft);
+    }
+
+    .choice:focus-visible,
+    .primary:focus-visible,
+    .secondary:focus-visible,
+    a:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .choice[disabled] {
+      cursor: default;
+      opacity: 0.82;
+    }
+
+    .choice.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+      color: #174d27;
+    }
+
+    .choice.incorrect {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+      color: #604000;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.6rem;
+      border: 2px solid var(--border);
+      background: #fff;
+    }
+
+    .feedback.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+    }
+
+    .feedback.try {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+    }
+
+    .feedback-title {
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+    }
+
+    .primary:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .secondary {
+      border: 2px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .secondary:hover { border-color: var(--text); }
+
+    .hidden { display: none !important; }
+
+    .completion .big {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .move-grid {
+        grid-template-columns: 1fr;
+      }
+      .arrow {
+        transform: rotate(90deg);
+        justify-self: center;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .primary, .secondary { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --border: #4b5563;
+        --muted: #374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">So What?</div>
+    <p class="lede">
+      A useful analytical question opens the door. The next step is to consider a
+      <strong>possible interpretation</strong>: an explanation of what the detail may suggest and why it matters.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>
+          You will practice moving from something you notice, to something you wonder, to an interpretation
+          that stays close to the evidence.
+        </p>
+
+        <div class="move-grid" aria-label="Notice, wonder, interpret process">
+          <div class="move-box">
+            <strong>NOTICE</strong>
+            What pattern, contrast, word, action, or detail stands out?
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="move-box">
+            <strong>WONDER</strong>
+            Why might that detail matter?
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="move-box">
+            <strong>INTERPRET</strong>
+            What could the detail suggest?
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>A good interpretation is not just “deep sounding.”</strong>
+          It should grow from the evidence and remain possible to defend with the text.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Follow the Thinking</div>
+
+          <div id="passageWrap" class="hidden">
+            <p class="step-label">TEXT</p>
+            <blockquote id="passage"></blockquote>
+          </div>
+
+          <p class="step-label">NOTICE</p>
+          <div class="step-box" id="notice"></div>
+
+          <p class="step-label">WONDER</p>
+          <div class="step-box" id="wonder"></div>
+
+          <p class="prompt">Which interpretation best grows from this evidence and question?</p>
+          <div id="choices" class="choices" aria-label="Choose the strongest interpretation"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced moving from wonder to interpretation.</p>
+          <p>
+            A useful interpretation usually does three things:
+          </p>
+          <ul>
+            <li>grows from something specific in the text,</li>
+            <li>answers a meaningful question about that detail, and</li>
+            <li>stays close enough to the evidence that you could defend it.</li>
+          </ul>
+          <p>
+            You do not need to prove that your interpretation is the only possible reading.
+            You need to show why it is a <strong>reasonable reading of the text</strong>.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This low-stakes practice activity does not record or submit student responses.
+  </footer>
+
+  <script>
+    (() => {
+      const items = [
+        {
+          round: 1,
+          roundLabel: "Round 1: Follow the Thinking",
+          notice: "Cinderella’s appearance changes before other characters begin treating her differently.",
+          wonder: "Why does the story connect changes in appearance with changes in social treatment?",
+          choices: [
+            {
+              text: "The story may suggest that social status is shaped partly by how others judge outward appearance.",
+              correct: true,
+              feedback: "This interpretation grows directly from the pattern. It does not claim more than the evidence can support, and it opens a larger idea about appearance and status."
+            },
+            {
+              text: "Cinderella is the most beautiful person in the kingdom.",
+              correct: false,
+              feedback: "This turns the passage into a factual ranking that the pattern does not establish. The stronger interpretation asks what the changing treatment may suggest."
+            },
+            {
+              text: "The author proves that everyone in society is shallow.",
+              correct: false,
+              feedback: "This overreaches. The evidence may support an idea about social judgment, but it does not prove a universal claim about everyone."
+            }
+          ]
+        },
+        {
+          round: 1,
+          roundLabel: "Round 1: Follow the Thinking",
+          notice: "Little Red Riding Hood receives repeated instructions from adults.",
+          wonder: "Why might the story emphasize a child’s need to follow adult rules?",
+          choices: [
+            {
+              text: "The story may connect childhood safety with obedience to adult authority.",
+              correct: true,
+              feedback: "This interpretation answers the analytical question and stays close to the repeated pattern of warnings and rules."
+            },
+            {
+              text: "Children should always obey adults.",
+              correct: false,
+              feedback: "This turns the story into a direct rule for real life. Literary analysis asks what the story may be representing, not what students themselves are required to believe."
+            },
+            {
+              text: "The adults are definitely correct about everything.",
+              correct: false,
+              feedback: "The repeated warnings show adult authority, but they do not automatically prove that every adult judgment in the story is correct."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Stay Close to the Evidence",
+          notice: "The story describes the garden as 'wild' during the children’s happiest moments.",
+          wonder: "Why might the story connect a word like 'wild' with happiness?",
+          choices: [
+            {
+              text: "The story may complicate the idea that order is always desirable by connecting freedom and disorder with the children’s joy.",
+              correct: true,
+              feedback: "This interpretation uses the tension in the word 'wild' and connects it to a larger idea without claiming that the story rejects all order."
+            },
+            {
+              text: "The garden proves that rules are always harmful.",
+              correct: false,
+              feedback: "This is too absolute. The evidence may complicate ideas about order and freedom, but it does not prove that every rule is harmful."
+            },
+            {
+              text: "The children probably hate every indoor space.",
+              correct: false,
+              feedback: "The passage does not give enough evidence for this claim. Stay with the contrast the text actually provides."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Stay Close to the Evidence",
+          notice: "The wolf speaks politely before he becomes openly threatening.",
+          wonder: "Why might danger first appear polite or ordinary?",
+          choices: [
+            {
+              text: "The story may suggest that danger is harder to recognize when it first appears familiar or trustworthy.",
+              correct: true,
+              feedback: "This interpretation grows from the contrast between politeness and threat. It explains why that contrast may matter."
+            },
+            {
+              text: "Polite people are secretly dangerous.",
+              correct: false,
+              feedback: "This takes one literary pattern and turns it into a sweeping claim about real people. The stronger interpretation stays focused on how the story represents danger."
+            },
+            {
+              text: "The wolf is only pretending because all villains lie.",
+              correct: false,
+              feedback: "This relies on a broad stereotype about villains rather than the specific pattern in this story."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Stay Close to the Evidence",
+          notice: "A child is described as physically small whenever adults make important decisions.",
+          wonder: "Why emphasize the child’s smallness during moments of adult power?",
+          choices: [
+            {
+              text: "The repeated contrast may make the child’s limited power feel visible through physical scale.",
+              correct: true,
+              feedback: "This links the physical description to the power dynamic that appears at the same moments. It is specific and defensible."
+            },
+            {
+              text: "The child will definitely grow up to defeat the adults.",
+              correct: false,
+              feedback: "That predicts a future event not supported by the observation. Interpretation should grow from what the text gives us now."
+            },
+            {
+              text: "The author thinks children are weak.",
+              correct: false,
+              feedback: "This jumps from the text to a claim about the author’s personal belief. The safer and stronger move is to interpret how the story represents power."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "Nico kept the ticket stub folded inside his notebook. Each time the teacher asked the class to write about home, he touched the folded paper but never took it out.",
+          notice: "The hidden ticket stub becomes noticeable whenever Nico is asked to think about home.",
+          wonder: "Why might this private object become important when Nico is asked to write about home?",
+          choices: [
+            {
+              text: "The ticket stub may represent a private memory or connection that Nico associates with home but is not ready to share.",
+              correct: true,
+              feedback: "This interpretation is grounded in the object’s repeated connection to home and in Nico’s choice to touch it without revealing it."
+            },
+            {
+              text: "Nico definitely moved from another country.",
+              correct: false,
+              feedback: "That is possible, but the passage does not give enough evidence to make it a defensible interpretation."
+            },
+            {
+              text: "The teacher is insensitive and should stop assigning personal writing.",
+              correct: false,
+              feedback: "The passage does not give enough evidence to judge the teacher this strongly. The richest evidence is Nico’s relationship to the hidden object."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "The apartment was never called quiet. At night, pipes knocked in the walls, buses sighed at the curb, and someone upstairs always seemed to be moving a chair. On the first night after her sister left, Amaya noticed every sound.",
+          notice: "Ordinary apartment noises become especially noticeable after Amaya’s sister leaves.",
+          wonder: "Why might familiar sounds suddenly stand out after the sister is gone?",
+          choices: [
+            {
+              text: "Amaya’s changed attention to ordinary sounds may make her sister’s absence feel larger and more present.",
+              correct: true,
+              feedback: "This interpretation connects a shift in perception to the emotional change in the scene. It remains grounded in the passage."
+            },
+            {
+              text: "Amaya has developed unusually sensitive hearing.",
+              correct: false,
+              feedback: "The passage frames the change around the sister’s departure, not around a physical change in Amaya’s hearing."
+            },
+            {
+              text: "The apartment is haunted.",
+              correct: false,
+              feedback: "Nothing in the passage supports a supernatural explanation. This is an example of an interpretation that moves too far beyond the evidence."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
+          notice: "The youngest girl is the only figure looking outside the frame.",
+          wonder: "Why might the youngest figure be the only one looking somewhere else?",
+          choices: [
+            {
+              text: "The contrast may associate the youngest figure with curiosity, independence, or attention to possibilities beyond what the others accept.",
+              correct: true,
+              feedback: "This is appropriately cautious and grows from the contrast. Notice that it offers possibilities rather than pretending the detail has only one fixed meaning."
+            },
+            {
+              text: "The girl is planning to run away that night.",
+              correct: false,
+              feedback: "That may be imaginable, but the passage gives no evidence for this specific plot prediction."
+            },
+            {
+              text: "Young people are always more imaginative than adults.",
+              correct: false,
+              feedback: "This turns one image into a universal claim. Literary analysis works better when the interpretation stays attached to the particular text."
+            }
+          ]
+        }
+      ];
+
+      const els = {
+        roundText: document.getElementById("roundText"),
+        itemText: document.getElementById("itemText"),
+        progress: document.getElementById("progress"),
+        roundLabel: document.getElementById("roundLabel"),
+        passageWrap: document.getElementById("passageWrap"),
+        passage: document.getElementById("passage"),
+        notice: document.getElementById("notice"),
+        wonder: document.getElementById("wonder"),
+        choices: document.getElementById("choices"),
+        feedback: document.getElementById("feedback"),
+        actions: document.getElementById("actions"),
+        tryAgain: document.getElementById("tryAgain"),
+        next: document.getElementById("next"),
+        questionArea: document.getElementById("questionArea"),
+        completion: document.getElementById("completion"),
+        restart: document.getElementById("restart")
+      };
+
+      let index = 0;
+      let solved = false;
+
+      function renderItem() {
+        const item = items[index];
+        solved = false;
+
+        els.roundText.textContent = `Round ${item.round} of 3`;
+        els.itemText.textContent = `Example ${index + 1} of ${items.length}`;
+        els.progress.value = index + 1;
+        els.progress.max = items.length;
+        els.progress.textContent = `${index + 1} of ${items.length}`;
+        els.roundLabel.textContent = item.roundLabel;
+        els.notice.textContent = item.notice;
+        els.wonder.textContent = item.wonder;
+
+        if (item.passage) {
+          els.passage.textContent = item.passage;
+          els.passageWrap.classList.remove("hidden");
+        } else {
+          els.passage.textContent = "";
+          els.passageWrap.classList.add("hidden");
+        }
+
+        els.choices.innerHTML = "";
+        item.choices.forEach((choice, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "choice";
+          btn.textContent = choice.text;
+          btn.addEventListener("click", () => checkAnswer(i, btn));
+          els.choices.appendChild(btn);
+        });
+
+        els.feedback.className = "feedback hidden";
+        els.feedback.innerHTML = "";
+        els.actions.classList.add("hidden");
+        els.tryAgain.classList.add("hidden");
+        els.next.classList.add("hidden");
+      }
+
+      function checkAnswer(choiceIndex, button) {
+        const item = items[index];
+        const choice = item.choices[choiceIndex];
+        const buttons = [...els.choices.querySelectorAll("button")];
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          btn.classList.remove("correct", "incorrect");
+        });
+
+        if (choice.correct) {
+          solved = true;
+          button.classList.add("correct");
+          els.feedback.className = "feedback correct";
+          els.feedback.innerHTML =
+            `<div class="feedback-title">Yes — this interpretation stays close to the evidence.</div>
+             <div>${choice.feedback}</div>`;
+          els.next.classList.remove("hidden");
+          els.tryAgain.classList.add("hidden");
+        } else {
+          button.classList.add("incorrect");
+          els.feedback.className = "feedback try";
+          els.feedback.innerHTML =
+            `<div class="feedback-title">Not quite. Check how far the claim travels from the text.</div>
+             <div>${choice.feedback}</div>`;
+          els.tryAgain.classList.remove("hidden");
+          els.next.classList.add("hidden");
+        }
+
+        els.actions.classList.remove("hidden");
+        els.feedback.scrollIntoView({ block: "nearest" });
+      }
+
+      els.tryAgain.addEventListener("click", () => {
+        renderItem();
+        const first = els.choices.querySelector("button");
+        if (first) first.focus();
+      });
+
+      els.next.addEventListener("click", () => {
+        if (!solved) return;
+        index += 1;
+
+        if (index >= items.length) {
+          els.questionArea.classList.add("hidden");
+          els.completion.classList.remove("hidden");
+          els.itemText.textContent = "Complete";
+          els.progress.value = items.length;
+          els.completion.focus();
+        } else {
+          renderItem();
+          window.scrollTo({ top: document.getElementById("practice-heading").offsetTop - 10, behavior: "smooth" });
+        }
+      });
+
+      els.restart.addEventListener("click", () => {
+        index = 0;
+        els.completion.classList.add("hidden");
+        els.questionArea.classList.remove("hidden");
+        renderItem();
+        window.scrollTo({ top: document.getElementById("practice-heading").offsetTop - 10, behavior: "smooth" });
+      });
+
+      renderItem();
+    })();
+  </script>
+</body>
+</html>
