@@ -1,1 +1,750 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notice → Wonder | Literary Analysis Lab</title>
+  <meta name="description" content="A short, accessible literary analysis activity that helps students turn observations into useful analytical questions.">
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #52606d;
+      --border: #cbd5e1;
+      --accent: #275dad;
+      --accent-dark: #173f7a;
+      --soft: #eef4fb;
+      --success-bg: #edf8f0;
+      --success-border: #287a3e;
+      --try-bg: #fff7e8;
+      --try-border: #9a6400;
+      --focus: #111827;
+      --max: 840px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0.75rem;
+      top: -5rem;
+      z-index: 1000;
+      background: #fff;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--focus);
+      border-radius: 0.4rem;
+    }
+
+    .skip-link:focus { top: 0.75rem; }
+
+    header, main, footer {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    header { padding-top: 2rem; }
+
+    .eyebrow {
+      margin: 0 0 0.35rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .lede {
+      max-width: 67ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      line-height: 1.25;
+      font-size: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: clamp(1rem, 3vw, 1.5rem);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      margin: 1rem 0;
+    }
+
+    .move-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .move-box {
+      border: 1px solid var(--border);
+      border-radius: 0.65rem;
+      padding: 1rem;
+      background: #fff;
+      min-height: 110px;
+    }
+
+    .move-box strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .arrow {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    .tip {
+      background: #f3f6f8;
+      border-left: 4px solid #52606d;
+      padding: 0.85rem 1rem;
+      margin-top: 1rem;
+      border-radius: 0.35rem;
+    }
+
+    .lab { margin-top: 1.25rem; }
+
+    .progress-wrap { margin-bottom: 1rem; }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    progress {
+      width: 100%;
+      height: 0.9rem;
+      accent-color: var(--accent);
+    }
+
+    .round-label {
+      font-weight: 800;
+      color: var(--accent-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .prompt {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 0.6rem;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 1rem 1.15rem;
+      border-left: 5px solid var(--accent);
+      background: var(--soft);
+      border-radius: 0.35rem;
+      font-size: 1.06rem;
+    }
+
+    .notice-label {
+      font-weight: 800;
+      margin-top: 1rem;
+      color: var(--accent-dark);
+    }
+
+    .notice {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 0.9rem 1rem;
+      margin-top: 0.4rem;
+      font-weight: 650;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button { font: inherit; }
+
+    .choice,
+    .primary,
+    .secondary {
+      min-height: 48px;
+      border-radius: 0.55rem;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      border: 2px solid var(--accent);
+      background: #fff;
+      color: var(--accent-dark);
+      font-weight: 750;
+      text-align: left;
+    }
+
+    .choice:hover,
+    .primary:hover {
+      background: var(--soft);
+    }
+
+    .choice:focus-visible,
+    .primary:focus-visible,
+    .secondary:focus-visible,
+    a:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .choice[disabled] {
+      cursor: default;
+      opacity: 0.82;
+    }
+
+    .choice.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+      color: #174d27;
+    }
+
+    .choice.incorrect {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+      color: #604000;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.6rem;
+      border: 2px solid var(--border);
+      background: #fff;
+    }
+
+    .feedback.correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+    }
+
+    .feedback.try {
+      border-color: var(--try-border);
+      background: var(--try-bg);
+    }
+
+    .feedback-title {
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+    }
+
+    .primary:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .secondary {
+      border: 2px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .secondary:hover { border-color: var(--text); }
+
+    .hidden { display: none !important; }
+
+    .completion .big {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 680px) {
+      .move-grid {
+        grid-template-columns: 1fr;
+      }
+      .arrow {
+        transform: rotate(90deg);
+        justify-self: center;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .primary, .secondary { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --border: #4b5563;
+        --muted: #374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Notice → Wonder</div>
+    <p class="lede">
+      You do not have to know what a literary detail means the moment you notice it.
+      A strong reader often pauses between <strong>seeing a pattern</strong> and <strong>making an interpretation</strong>.
+      That pause is where useful questions begin.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>
+          This activity helps you turn a textual observation into a question that can lead toward analysis.
+        </p>
+
+        <div class="move-grid" aria-label="Notice to wonder process">
+          <div class="move-box">
+            <strong>NOTICE</strong>
+            Identify something worth paying attention to: a repetition, contrast, image, word choice, action, or pattern.
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="move-box">
+            <strong>WONDER</strong>
+            Ask why that detail might matter, what it might suggest, or what larger idea it could connect to.
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>You are not trying to find the “right answer” yet.</strong>
+          Your job is to ask a question that opens up interpretation instead of just requesting more plot information.
+        </div>
+      </div>
+    </section>
+
+    <section class="lab" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: See the Move</div>
+
+          <div id="passageWrap" class="hidden">
+            <p class="prompt" id="passagePrompt">Read this short passage:</p>
+            <blockquote id="passage"></blockquote>
+          </div>
+
+          <p class="notice-label">NOTICE</p>
+          <div class="notice" id="notice"></div>
+
+          <p class="prompt" id="prompt">Which question best turns this observation into a useful wonder?</p>
+
+          <div id="choices" class="choices" aria-label="Choose the strongest analytical question"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced the move from noticing to wondering.</p>
+          <p>
+            When you notice a detail, you do not need to rush to a thesis.
+            Try asking:
+          </p>
+          <ul>
+            <li>Why might the writer keep drawing attention to this?</li>
+            <li>What changes because of this detail?</li>
+            <li>What larger idea could this pattern connect to?</li>
+            <li>What tension or contradiction does this create?</li>
+          </ul>
+          <p>
+            Those questions create a bridge from <strong>observation</strong> to <strong>interpretation</strong>.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This low-stakes practice activity does not record or submit student responses.
+  </footer>
+
+  <script>
+    (() => {
+      const items = [
+        {
+          round: 1,
+          roundLabel: "Round 1: See the Move",
+          notice: "Cinderella’s clothing changes at several major turning points in the story.",
+          choices: [
+            {
+              text: "Why does the story repeatedly connect changes in Cinderella’s appearance with changes in how other people treat her?",
+              correct: true,
+              feedback: "This question builds directly from the pattern and asks why it may matter. It opens a path toward ideas about appearance, status, identity, or social judgment."
+            },
+            {
+              text: "What color is Cinderella’s dress at the ball?",
+              correct: false,
+              feedback: "This asks for another factual detail. That may be useful sometimes, but it does not yet ask why the repeated clothing changes matter."
+            },
+            {
+              text: "Who gives Cinderella her new clothing?",
+              correct: false,
+              feedback: "This asks for plot information. A stronger analytical question would focus on why the pattern of changing appearance matters across the story."
+            }
+          ]
+        },
+        {
+          round: 1,
+          roundLabel: "Round 1: See the Move",
+          notice: "Adults repeatedly tell Little Red Riding Hood where she should go and how she should behave.",
+          choices: [
+            {
+              text: "Why might the story place so much emphasis on a child following adult instructions?",
+              correct: true,
+              feedback: "This question uses the repeated warnings to open a larger issue: how the story imagines childhood, obedience, authority, or safety."
+            },
+            {
+              text: "How many adults give Little Red Riding Hood instructions?",
+              correct: false,
+              feedback: "Counting may help confirm a pattern, but the question does not yet explore why the pattern matters."
+            },
+            {
+              text: "What happens after Little Red Riding Hood leaves home?",
+              correct: false,
+              feedback: "This asks what happens next. That is a plot question, not yet an analytical question."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Choose the Stronger Wonder",
+          notice: "The wolf speaks politely before he becomes openly threatening.",
+          choices: [
+            {
+              text: "Why might the story make danger seem polite or ordinary at first?",
+              correct: true,
+              feedback: "This question focuses on the contrast between politeness and danger and asks what effect that contrast may have."
+            },
+            {
+              text: "Is the wolf actually polite?",
+              correct: false,
+              feedback: "This reduces the question to a yes-or-no judgment about the character. A stronger wonder asks why the story presents danger this way."
+            },
+            {
+              text: "What exact words does the wolf say?",
+              correct: false,
+              feedback: "Looking at the exact language could become useful evidence, but by itself this question does not yet ask what the contrast might mean."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Choose the Stronger Wonder",
+          notice: "A child character is described as physically small whenever adults make important decisions.",
+          choices: [
+            {
+              text: "Why does the story emphasize the child’s smallness during moments when adults have power?",
+              correct: true,
+              feedback: "This connects a repeated physical description to a repeated situation and asks about their relationship. That could lead toward an interpretation of power or childhood."
+            },
+            {
+              text: "How old is the child?",
+              correct: false,
+              feedback: "Age could be relevant context, but this observation is specifically about repeated descriptions of physical smallness during power-heavy moments."
+            },
+            {
+              text: "Does the author like children?",
+              correct: false,
+              feedback: "This jumps too quickly to a claim about the author’s personal feelings. Stay closer to the textual pattern first."
+            }
+          ]
+        },
+        {
+          round: 2,
+          roundLabel: "Round 2: Choose the Stronger Wonder",
+          notice: "The story describes the garden as 'wild' when the children are happiest there.",
+          choices: [
+            {
+              text: "Why might a word that can sound negative—'wild'—be connected with the children’s happiness?",
+              correct: true,
+              feedback: "This notices a tension in the word choice and asks why it matters. That tension could lead toward ideas about freedom, order, play, or adult expectations."
+            },
+            {
+              text: "What plants are growing in the garden?",
+              correct: false,
+              feedback: "That may add descriptive information, but it does not explore the tension between 'wild' and the children’s happiness."
+            },
+            {
+              text: "Is the garden good or bad?",
+              correct: false,
+              feedback: "This turns a complex detail into a simple judgment. Literary analysis often gets more interesting when a detail can hold more than one meaning at once."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "Nico kept the ticket stub folded inside his notebook. Each time the teacher asked the class to write about home, he touched the folded paper but never took it out.",
+          notice: "The passage repeatedly connects the hidden ticket stub with moments when Nico is asked to think about home.",
+          choices: [
+            {
+              text: "Why might the ticket stub become important specifically when Nico is asked to write about home?",
+              correct: true,
+              feedback: "This question stays close to the repeated connection and asks what the object might reveal about memory, identity, belonging, or something Nico keeps private."
+            },
+            {
+              text: "Where did Nico get the ticket?",
+              correct: false,
+              feedback: "That is a reasonable factual question, but it asks for missing backstory rather than exploring the pattern already present in the passage."
+            },
+            {
+              text: "What kind of notebook does Nico use?",
+              correct: false,
+              feedback: "That detail is not part of the pattern you noticed. A useful wonder should grow directly from the observation."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "The apartment was never called quiet. At night, pipes knocked in the walls, buses sighed at the curb, and someone upstairs always seemed to be moving a chair. On the first night after her sister left, Amaya noticed every sound.",
+          notice: "The passage lists ordinary noises, but Amaya becomes especially aware of them after her sister leaves.",
+          choices: [
+            {
+              text: "Why might familiar background sounds become noticeable only after Amaya’s sister is gone?",
+              correct: true,
+              feedback: "This question connects the shift in Amaya’s attention to the change in her relationship and environment. That could lead toward an interpretation of absence, loneliness, or changed perception."
+            },
+            {
+              text: "Which sound is the loudest?",
+              correct: false,
+              feedback: "The passage does not give enough information to answer that, and the question does not explore why Amaya suddenly notices the sounds."
+            },
+            {
+              text: "What time do the buses stop running?",
+              correct: false,
+              feedback: "That asks for outside factual information. The analytical opportunity is inside the passage: why Amaya’s perception changes after her sister leaves."
+            }
+          ]
+        },
+        {
+          round: 3,
+          roundLabel: "Round 3: Try It Somewhere New",
+          passage: "Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
+          notice: "The youngest girl is the only person in the portraits who is not facing forward.",
+          choices: [
+            {
+              text: "Why might the story make the youngest figure the only one looking outside the frame?",
+              correct: true,
+              feedback: "This asks why the contrast matters and keeps the interpretation open. It could lead toward ideas about independence, curiosity, resistance, attention, or possibility."
+            },
+            {
+              text: "Who painted the portraits?",
+              correct: false,
+              feedback: "That could be useful context if the text provides it, but it does not investigate the contrast you noticed."
+            },
+            {
+              text: "What is she looking at?",
+              correct: false,
+              feedback: "That question may not be answerable from the text. A stronger analytical question asks what the act of looking outside the frame might suggest."
+            }
+          ]
+        }
+      ];
+
+      const els = {
+        roundText: document.getElementById("roundText"),
+        itemText: document.getElementById("itemText"),
+        progress: document.getElementById("progress"),
+        roundLabel: document.getElementById("roundLabel"),
+        passageWrap: document.getElementById("passageWrap"),
+        passage: document.getElementById("passage"),
+        notice: document.getElementById("notice"),
+        prompt: document.getElementById("prompt"),
+        choices: document.getElementById("choices"),
+        feedback: document.getElementById("feedback"),
+        actions: document.getElementById("actions"),
+        tryAgain: document.getElementById("tryAgain"),
+        next: document.getElementById("next"),
+        questionArea: document.getElementById("questionArea"),
+        completion: document.getElementById("completion"),
+        restart: document.getElementById("restart")
+      };
+
+      let index = 0;
+      let solved = false;
+
+      function renderItem() {
+        const item = items[index];
+        solved = false;
+
+        els.roundText.textContent = `Round ${item.round} of 3`;
+        els.itemText.textContent = `Example ${index + 1} of ${items.length}`;
+        els.progress.value = index + 1;
+        els.progress.max = items.length;
+        els.progress.textContent = `${index + 1} of ${items.length}`;
+        els.roundLabel.textContent = item.roundLabel;
+        els.notice.textContent = item.notice;
+
+        if (item.passage) {
+          els.passage.textContent = item.passage;
+          els.passageWrap.classList.remove("hidden");
+        } else {
+          els.passageWrap.classList.add("hidden");
+          els.passage.textContent = "";
+        }
+
+        els.choices.innerHTML = "";
+        item.choices.forEach((choice, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "choice";
+          btn.textContent = choice.text;
+          btn.addEventListener("click", () => checkAnswer(i, btn));
+          els.choices.appendChild(btn);
+        });
+
+        els.feedback.className = "feedback hidden";
+        els.feedback.innerHTML = "";
+        els.actions.classList.add("hidden");
+        els.tryAgain.classList.add("hidden");
+        els.next.classList.add("hidden");
+      }
+
+      function checkAnswer(choiceIndex, button) {
+        const item = items[index];
+        const choice = item.choices[choiceIndex];
+        const buttons = [...els.choices.querySelectorAll("button")];
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          btn.classList.remove("correct", "incorrect");
+        });
+
+        if (choice.correct) {
+          solved = true;
+          button.classList.add("correct");
+          els.feedback.className = "feedback correct";
+          els.feedback.innerHTML =
+            `<div class="feedback-title">Yes — this wonder opens a path toward interpretation.</div>
+             <div>${choice.feedback}</div>`;
+          els.next.classList.remove("hidden");
+          els.tryAgain.classList.add("hidden");
+        } else {
+          button.classList.add("incorrect");
+          els.feedback.className = "feedback try";
+          els.feedback.innerHTML =
+            `<div class="feedback-title">Not quite. Ask what kind of question this is.</div>
+             <div>${choice.feedback}</div>`;
+          els.tryAgain.classList.remove("hidden");
+          els.next.classList.add("hidden");
+        }
+
+        els.actions.classList.remove("hidden");
+        els.feedback.scrollIntoView({ block: "nearest" });
+      }
+
+      els.tryAgain.addEventListener("click", () => {
+        renderItem();
+        const first = els.choices.querySelector("button");
+        if (first) first.focus();
+      });
+
+      els.next.addEventListener("click", () => {
+        if (!solved) return;
+        index += 1;
+
+        if (index >= items.length) {
+          els.questionArea.classList.add("hidden");
+          els.completion.classList.remove("hidden");
+          els.itemText.textContent = "Complete";
+          els.progress.value = items.length;
+          els.completion.focus();
+        } else {
+          renderItem();
+          window.scrollTo({ top: document.getElementById("practice-heading").offsetTop - 10, behavior: "smooth" });
+        }
+      });
+
+      els.restart.addEventListener("click", () => {
+        index = 0;
+        els.completion.classList.add("hidden");
+        els.questionArea.classList.remove("hidden");
+        renderItem();
+        window.scrollTo({ top: document.getElementById("practice-heading").offsetTop - 10, behavior: "smooth" });
+      });
+
+      renderItem();
+    })();
+  </script>
+</body>
+</html>
