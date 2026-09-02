@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theme or Topic? | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students distinguish topics from thematic ideas and defensible interpretations.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:920px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .level{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .level strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    .evidence-list{display:grid;gap:.65rem;margin-top:.5rem}
+    .evidence-item{border:2px solid var(--border);border-radius:.6rem;padding:.85rem 1rem;background:#fff}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.15rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:760px){.levels{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Theme or Topic?</div>
+    <p class="lede">
+      Words like <strong>family</strong>, <strong>freedom</strong>, <strong>identity</strong>, and <strong>power</strong>
+      are important subjects, but they are not themes by themselves. A theme is an idea the text develops
+      <strong>about</strong> one of those subjects.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>This lab helps you move from a broad subject to a more specific thematic interpretation.</p>
+
+        <div class="levels">
+          <div class="level">
+            <strong>TOPIC</strong>
+            A broad subject such as family, freedom, childhood, fear, or identity.
+          </div>
+          <div class="level">
+            <strong>THEMATIC IDEA</strong>
+            A statement about what the text may suggest about that subject.
+          </div>
+          <div class="level">
+            <strong>THEMATIC INTERPRETATION</strong>
+            A specific, defensible claim connected to patterns and evidence in the text.
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>Theme is not a one-word answer.</strong>
+          Ask: “What does this text seem to suggest about this topic?”
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Topic or Theme?</div>
+
+          <div id="contextWrap" class="hidden">
+            <p class="label">EVIDENCE PATTERN</p>
+            <div id="evidenceList" class="evidence-list"></div>
+          </div>
+
+          <p class="label">STATEMENT</p>
+          <div class="box" id="statement"></div>
+
+          <p class="prompt" id="prompt"></p>
+          <div id="choices" class="choices" aria-label="Choose the strongest classification or thematic interpretation"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced moving from topic to theme.</p>
+          <p>When you think you have found a theme, test it:</p>
+          <ul>
+            <li>Is it more than one word?</li>
+            <li>Does it say something about the topic?</li>
+            <li>Can I connect it to a pattern in the text?</li>
+            <li>Is it specific enough to argue but cautious enough to defend?</li>
+          </ul>
+          <p>
+            “Family” is a topic. “Belonging in a family can depend on unspoken expectations” is a thematic idea.
+            The difference is the thinking.
+          </p>
+
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1,
+        roundLabel:"Round 1: Topic or Theme?",
+        statement:"Freedom",
+        prompt:"What is this?",
+        choices:[
+          {text:"A topic",correct:true,feedback:"Yes. 'Freedom' names a broad subject, but it does not yet say what the text suggests about freedom."},
+          {text:"A theme",correct:false,feedback:"A theme needs to make a statement about the topic, not just name it."},
+          {text:"A thesis",correct:false,feedback:"A thesis would make a specific interpretive claim that an essay could develop."}
+        ]
+      },
+      {
+        round:1,
+        roundLabel:"Round 1: Topic or Theme?",
+        statement:"The story suggests that freedom can feel exciting and frightening at the same time.",
+        prompt:"What is this?",
+        choices:[
+          {text:"A topic",correct:false,feedback:"The topic is freedom. This sentence goes further by saying something about it."},
+          {text:"A thematic idea",correct:true,feedback:"Exactly. This sentence makes a broader interpretive statement about freedom."},
+          {text:"A plot summary",correct:false,feedback:"This does not retell events. It interprets a larger idea."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Make the Theme More Specific",
+        statement:"The story is about family.",
+        prompt:"Which revision moves from topic toward a thematic idea?",
+        choices:[
+          {text:"Family is important.",correct:false,feedback:"This is still very broad and could apply to almost any text about family."},
+          {text:"The story suggests that family belonging can depend on rules that are never spoken aloud.",correct:true,feedback:"Yes. This says something specific and arguable about the topic of family."},
+          {text:"There are several family members in the story.",correct:false,feedback:"This is an observation about content, not a thematic idea."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Make the Theme More Specific",
+        statement:"The story is about childhood.",
+        prompt:"Which statement develops a stronger thematic idea?",
+        choices:[
+          {text:"Childhood happens before adulthood.",correct:false,feedback:"This is factual but not interpretive."},
+          {text:"The story presents childhood as a position shaped by limited power but also by forms of perception adults may overlook.",correct:true,feedback:"Yes. This develops a nuanced idea about childhood that could be supported with textual evidence."},
+          {text:"The child is young.",correct:false,feedback:"That is an observation, not a thematic interpretation."}
+        ]
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Make the Theme More Specific",
+        statement:"The story is about fear.",
+        prompt:"Which version is strongest?",
+        choices:[
+          {text:"Fear is scary.",correct:false,feedback:"This is circular and too obvious to guide analysis."},
+          {text:"The story suggests that fear can come from uncertainty rather than from visible danger alone.",correct:true,feedback:"Yes. This is specific enough to explore through patterns of perception, suspense, or limited knowledge."},
+          {text:"The character is afraid in several scenes.",correct:false,feedback:"This is a useful observation, but it does not yet explain what the text suggests about fear."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Build Theme From Evidence",
+        evidence:[
+          "The children are happiest in the garden when adults are absent.",
+          "The garden is described as 'wild and tangled.'",
+          "When adults return, the garden becomes more controlled."
+        ],
+        statement:"Freedom",
+        prompt:"Which thematic interpretation best grows from this evidence pattern?",
+        choices:[
+          {text:"The story suggests that freedom can be connected to spaces that escape adult control, even when those spaces appear disorderly.",correct:true,feedback:"Yes. This theme grows directly from the relationship among the garden, the children’s happiness, and adult control."},
+          {text:"Freedom is good.",correct:false,feedback:"This is too broad and does not reflect the specific evidence pattern."},
+          {text:"Gardens symbolize freedom in all literature.",correct:false,feedback:"Themes and symbols should be interpreted in the context of the specific text, not treated as universal rules."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Build Theme From Evidence",
+        evidence:[
+          "Family conversations repeatedly end unfinished.",
+          "Conflict is communicated through gestures.",
+          "The house is repeatedly described as quiet."
+        ],
+        statement:"Communication",
+        prompt:"Which thematic interpretation best fits the pattern?",
+        choices:[
+          {text:"The text suggests that avoiding direct communication can become a way families preserve peace while also allowing conflict to remain unresolved.",correct:true,feedback:"Yes. This interpretation accounts for both the silence and its possible function, making the theme more complex."},
+          {text:"Communication is important.",correct:false,feedback:"This is too general and does not explain what the text suggests about communication."},
+          {text:"The family never communicates.",correct:false,feedback:"The characters do communicate, but often indirectly. The stronger theme captures that tension."}
+        ]
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Build Theme From Evidence",
+        evidence:[
+          "The youngest character notices contradictions adults ignore.",
+          "Adults repeatedly tell her she is 'too young to understand.'",
+          "She is sometimes perceptive but also misreads situations."
+        ],
+        statement:"Knowledge and age",
+        prompt:"Which thematic interpretation handles the evidence most responsibly?",
+        choices:[
+          {text:"The story questions the idea that age automatically determines understanding, while also showing that no perspective is complete.",correct:true,feedback:"Exactly. This theme accounts for both the child’s insight and her limits."},
+          {text:"Children always know more than adults.",correct:false,feedback:"That is too absolute and ignores the evidence that the child also misreads situations."},
+          {text:"Adults are wrong.",correct:false,feedback:"This is too broad and one-sided. The pattern is more about who gets authority over knowledge."}
+        ]
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      contextWrap:document.getElementById("contextWrap"),
+      evidenceList:document.getElementById("evidenceList"),
+      statement:document.getElementById("statement"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0,solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.statement.textContent=item.statement;
+      els.prompt.textContent=item.prompt;
+
+      if(item.evidence){
+        els.contextWrap.classList.remove("hidden");
+        els.evidenceList.innerHTML="";
+        item.evidence.forEach((text,i)=>{
+          const div=document.createElement("div");
+          div.className="evidence-item";
+          div.textContent=`${i+1}. ${text}`;
+          els.evidenceList.appendChild(div);
+        });
+      }else{
+        els.contextWrap.classList.add("hidden");
+        els.evidenceList.innerHTML="";
+      }
+
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const choice=items[index].choices[i];
+
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — that makes the stronger thematic move.</div><div>${choice.feedback}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Ask whether the statement says something about the topic.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
