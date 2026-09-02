@@ -1,1 +1,383 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Too Obvious, Too Wild, or Just Right? | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible literary analysis activity that helps students distinguish obvious observations, unsupported overreach, and defensible interpretations.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:900px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .types{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .type{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .type strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    blockquote{margin:1rem 0;padding:1rem 1.15rem;border-left:5px solid var(--accent);background:var(--soft);border-radius:.35rem;font-size:1.06rem}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.1rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.types{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Too Obvious, Too Wild, or Just Right?</div>
+    <p class="lede">
+      Literary analysis asks you to go beyond what the text obviously says without traveling so far that
+      the evidence can no longer support you. This lab helps you find that middle ground.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>As you read, interpretations often fall into one of three zones:</p>
+        <div class="types">
+          <div class="type"><strong>TOO OBVIOUS</strong>Mostly restates the text or names a detail without explaining its significance.</div>
+          <div class="type"><strong>TOO WILD</strong>Makes a claim that goes far beyond what the evidence can reasonably support.</div>
+          <div class="type"><strong>JUST RIGHT</strong>Makes an interpretive claim that grows from the evidence and can be defended.</div>
+        </div>
+        <div class="tip">
+          <strong>“Just right” does not mean “the one correct answer.”</strong>
+          More than one interpretation can be defensible if the reader can show how the text supports it.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 9</span>
+          </div>
+          <progress id="progress" value="1" max="9">1 of 9</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Find the Middle Ground</div>
+
+          <div id="passageWrap" class="hidden">
+            <p class="label">TEXT</p>
+            <blockquote id="passage"></blockquote>
+          </div>
+
+          <p class="label">EVIDENCE</p>
+          <div class="box" id="evidence"></div>
+
+          <p class="prompt">How would you classify this interpretation?</p>
+          <div class="box" id="interpretation"></div>
+
+          <div id="choices" class="choices" aria-label="Classify the interpretation">
+            <button class="choice" type="button" data-choice="obvious">Too Obvious</button>
+            <button class="choice" type="button" data-choice="wild">Too Wild</button>
+            <button class="choice" type="button" data-choice="right">Just Right</button>
+          </div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced calibrating an interpretation.</p>
+          <p>When you are unsure about a claim, ask:</p>
+          <ul>
+            <li>Am I just repeating what the text already says?</li>
+            <li>What specific evidence gives me a reason to make this claim?</li>
+            <li>Am I adding assumptions the text never gives me?</li>
+            <li>Could I explain the connection between the evidence and my interpretation?</li>
+          </ul>
+          <p>
+            A strong interpretation reaches beyond the obvious, but it keeps one hand on the text.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1, roundLabel:"Round 1: Find the Middle Ground",
+        evidence:"Cinderella is treated differently after her clothing changes.",
+        interpretation:"Cinderella’s clothing changes.",
+        answer:"obvious",
+        feedback:{
+          obvious:"Exactly. This mostly repeats the evidence. It notices the change but does not yet explain what the pattern may suggest.",
+          wild:"This claim is not too far from the evidence; it is actually too close to it. It simply restates what happened.",
+          right:"The sentence is accurate, but it is not yet interpretive. A stronger claim would explain why the clothing change matters."
+        }
+      },
+      {
+        round:1, roundLabel:"Round 1: Find the Middle Ground",
+        evidence:"Cinderella is treated differently after her clothing changes.",
+        interpretation:"The story may suggest that social status is influenced by how others judge outward appearance.",
+        answer:"right",
+        feedback:{
+          obvious:"This goes beyond the surface detail by explaining what the changing treatment may suggest about social judgment.",
+          wild:"The claim is broader than the evidence, but it remains connected to the specific pattern and can be defended.",
+          right:"Yes. This interpretation grows from the evidence and reaches toward a larger idea without claiming more than the pattern can support."
+        }
+      },
+      {
+        round:1, roundLabel:"Round 1: Find the Middle Ground",
+        evidence:"Cinderella is treated differently after her clothing changes.",
+        interpretation:"The story proves that every person in society only cares about appearance.",
+        answer:"wild",
+        feedback:{
+          obvious:"This is not merely descriptive. It is making a large claim, but the claim travels much farther than the evidence allows.",
+          wild:"Exactly. One story pattern cannot prove a universal claim about every person in society.",
+          right:"The evidence may support an interpretation about social judgment, but 'every person' and 'only cares' make the claim too absolute."
+        }
+      },
+      {
+        round:2, roundLabel:"Round 2: Watch for Overreach",
+        passage:"The hallway swallowed every sound she made.",
+        evidence:"The hallway is described as if it can 'swallow' sound.",
+        interpretation:"The hallway is quiet.",
+        answer:"obvious",
+        feedback:{
+          obvious:"Yes. This paraphrases the basic effect of the sentence but does not yet interpret why 'swallowed' is such a forceful choice.",
+          wild:"This claim is not overreaching; it is under-interpreting.",
+          right:"The claim is accurate but too literal. A stronger interpretation would explain how the image makes the setting feel active, consuming, or oppressive."
+        }
+      },
+      {
+        round:2, roundLabel:"Round 2: Watch for Overreach",
+        passage:"The hallway swallowed every sound she made.",
+        evidence:"The hallway is described as if it can 'swallow' sound.",
+        interpretation:"The image makes the setting feel active and consuming, as though the character’s presence is being erased.",
+        answer:"right",
+        feedback:{
+          obvious:"This goes beyond paraphrase by explaining the effect of the image.",
+          wild:"The claim is interpretive, but it still stays attached to the specific language of 'swallowed' and the disappearance of sound.",
+          right:"Yes. The interpretation explains what the word does and remains defensible from the language in the passage."
+        }
+      },
+      {
+        round:2, roundLabel:"Round 2: Watch for Overreach",
+        passage:"The hallway swallowed every sound she made.",
+        evidence:"The hallway is described as if it can 'swallow' sound.",
+        interpretation:"The house is literally alive and plans to attack the character.",
+        answer:"wild",
+        feedback:{
+          obvious:"This is definitely not too obvious; it adds a major plot claim that the line does not establish.",
+          wild:"Exactly. Figurative language can make a setting feel alive without proving that the house is literally a living creature.",
+          right:"The interpretation goes beyond the figurative effect and turns it into an unsupported literal plot claim."
+        }
+      },
+      {
+        round:3, roundLabel:"Round 3: Try It Somewhere New",
+        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
+        evidence:"The youngest girl is the only figure looking outside the frame.",
+        interpretation:"The youngest girl is looking in a different direction.",
+        answer:"obvious",
+        feedback:{
+          obvious:"Yes. This restates the visual difference but does not yet explain why the contrast might matter.",
+          wild:"This is not overreach. It stays entirely on the surface.",
+          right:"It is accurate, but analysis needs one more move: what might this difference suggest?"
+        }
+      },
+      {
+        round:3, roundLabel:"Round 3: Try It Somewhere New",
+        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
+        evidence:"The youngest girl is the only figure looking outside the frame.",
+        interpretation:"The contrast may associate the youngest figure with curiosity or attention to possibilities beyond what the others see.",
+        answer:"right",
+        feedback:{
+          obvious:"This is more than description. It explains what the contrast may suggest.",
+          wild:"The interpretation is cautious and grounded in the visual difference. It offers a possibility rather than pretending to know exactly what the girl sees.",
+          right:"Yes. This reaches beyond the surface while staying close enough to the evidence to defend."
+        }
+      },
+      {
+        round:3, roundLabel:"Round 3: Try It Somewhere New",
+        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
+        evidence:"The youngest girl is the only figure looking outside the frame.",
+        interpretation:"The youngest girl is secretly planning to escape her family that night.",
+        answer:"wild",
+        feedback:{
+          obvious:"This is not simply restating the evidence; it adds a specific story that the passage never gives us.",
+          wild:"Exactly. The image may suggest independence or curiosity, but the text does not support this specific plan or future event.",
+          right:"The claim is imaginable, but defensible analysis needs evidence, not just possibility."
+        }
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      passageWrap:document.getElementById("passageWrap"),
+      passage:document.getElementById("passage"),
+      evidence:document.getElementById("evidence"),
+      interpretation:document.getElementById("interpretation"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0, solved=false;
+
+    function bindChoices(){
+      els.choices.querySelectorAll(".choice").forEach(btn=>{
+        btn.onclick=()=>check(btn.dataset.choice,btn);
+      });
+    }
+
+    function render(){
+      const item=items[index];
+      solved=false;
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.evidence.textContent=item.evidence;
+      els.interpretation.textContent=item.interpretation;
+
+      if(item.passage){
+        els.passage.textContent=item.passage;
+        els.passageWrap.classList.remove("hidden");
+      }else{
+        els.passage.textContent="";
+        els.passageWrap.classList.add("hidden");
+      }
+
+      els.choices.querySelectorAll(".choice").forEach(btn=>{
+        btn.disabled=false;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(choice,button){
+      const item=items[index];
+
+      els.choices.querySelectorAll(".choice").forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice===item.answer){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        const label = item.answer==="obvious" ? "Too Obvious" : item.answer==="wild" ? "Too Wild" : "Just Right";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — ${label}.</div><div>${item.feedback[choice]}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Compare the claim with the evidence.</div><div>${item.feedback[choice]}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    bindChoices();
+    render();
+  })();
+  </script>
+</body>
+</html>
