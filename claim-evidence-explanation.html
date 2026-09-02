@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claim, Evidence, or Explanation? | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students distinguish claims, evidence, and explanation in analytical paragraphs.">
+  <style>
+    :root {
+      --bg:#f7f7fb; --surface:#ffffff; --text:#1f2933; --muted:#52606d;
+      --border:#cbd5e1; --accent:#275dad; --accent-dark:#173f7a; --soft:#eef4fb;
+      --success-bg:#edf8f0; --success-border:#287a3e; --try-bg:#fff7e8;
+      --try-border:#9a6400; --focus:#111827; --max:880px;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+    }
+
+    .skip-link {
+      position:absolute;
+      left:.75rem;
+      top:-5rem;
+      z-index:1000;
+      background:#fff;
+      color:var(--text);
+      padding:.75rem 1rem;
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
+    .skip-link:focus { top:.75rem; }
+
+    header, main, footer {
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header { padding-top:2rem; }
+
+    .eyebrow {
+      margin:0 0 .35rem;
+      font-weight:800;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      font-size:.88rem;
+    }
+
+    .page-title {
+      margin:0;
+      font-size:clamp(2rem,6vw,3.2rem);
+      line-height:1.08;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+
+    .lede {
+      max-width:70ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin-bottom:1.4rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      font-size:1.5rem;
+      line-height:1.25;
+    }
+
+    .card {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:clamp(1rem,3vw,1.5rem);
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+      margin:1rem 0;
+    }
+
+    .parts {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .part {
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      padding:1rem;
+      background:#fff;
+    }
+
+    .part strong {
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .tip {
+      background:#f3f6f8;
+      border-left:4px solid #52606d;
+      padding:.85rem 1rem;
+      margin-top:1rem;
+      border-radius:.35rem;
+    }
+
+    .progress-wrap { margin-bottom:1rem; }
+
+    .progress-label {
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:.95rem;
+      color:var(--muted);
+      margin-bottom:.35rem;
+    }
+
+    progress {
+      width:100%;
+      height:.9rem;
+      accent-color:var(--accent);
+    }
+
+    .round-label {
+      font-weight:800;
+      color:var(--accent-dark);
+    }
+
+    .prompt {
+      font-size:1.16rem;
+      font-weight:750;
+      margin-top:1.1rem;
+    }
+
+    blockquote {
+      margin:1rem 0;
+      padding:1rem 1.15rem;
+      border-left:5px solid var(--accent);
+      background:var(--soft);
+      border-radius:.35rem;
+      font-size:1.06rem;
+    }
+
+    .sentence-box {
+      border:2px solid var(--border);
+      border-radius:.6rem;
+      padding:1rem;
+      background:#fff;
+      font-size:1.08rem;
+      margin-top:.75rem;
+    }
+
+    .choices {
+      display:grid;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    button { font:inherit; }
+
+    .choice, .primary, .secondary {
+      min-height:48px;
+      border-radius:.55rem;
+      padding:.8rem 1rem;
+      cursor:pointer;
+      border:2px solid var(--accent);
+      background:#fff;
+      color:var(--accent-dark);
+      font-weight:750;
+      text-align:left;
+    }
+
+    .choice:hover, .primary:hover { background:var(--soft); }
+
+    .choice:focus-visible, .primary:focus-visible, .secondary:focus-visible {
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+    }
+
+    .choice[disabled] {
+      cursor:default;
+      opacity:.82;
+    }
+
+    .choice.correct {
+      border-color:var(--success-border);
+      background:var(--success-bg);
+      color:#174d27;
+    }
+
+    .choice.incorrect {
+      border-color:var(--try-border);
+      background:var(--try-bg);
+      color:#604000;
+    }
+
+    .feedback {
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:.6rem;
+      border:2px solid var(--border);
+      background:#fff;
+    }
+
+    .feedback.correct {
+      border-color:var(--success-border);
+      background:var(--success-bg);
+    }
+
+    .feedback.try {
+      border-color:var(--try-border);
+      background:var(--try-bg);
+    }
+
+    .feedback-title {
+      font-weight:800;
+      margin-bottom:.2rem;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    .primary {
+      background:var(--accent);
+      color:#fff;
+      text-align:center;
+    }
+
+    .primary:hover {
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .secondary {
+      border:2px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      text-align:center;
+    }
+
+    .secondary:hover { border-color:var(--text); }
+
+    .build-list {
+      display:grid;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    .build-item {
+      border:2px solid var(--border);
+      border-radius:.6rem;
+      padding:.9rem 1rem;
+      background:#fff;
+    }
+
+    .build-item strong {
+      color:var(--accent-dark);
+    }
+
+    .hidden { display:none !important; }
+
+    .completion .big {
+      font-size:1.4rem;
+      font-weight:800;
+      margin-bottom:.3rem;
+    }
+
+    footer {
+      padding:2rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media (max-width:720px) {
+      .parts { grid-template-columns:1fr; }
+      .actions { flex-direction:column; }
+      .primary,.secondary { width:100%; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after {
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast:more) {
+      :root { --border:#4b5563; --muted:#374151; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Claim, Evidence, or Explanation?</div>
+    <p class="lede">
+      Strong literary-analysis paragraphs usually do more than make a point and add a quotation.
+      They help the reader see <strong>what you are arguing</strong>, <strong>what in the text supports it</strong>,
+      and <strong>how the evidence connects to the idea</strong>.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+
+      <div class="card">
+        <p>
+          You will practice identifying the three jobs that sentences often perform in literary analysis.
+        </p>
+
+        <div class="parts">
+          <div class="part">
+            <strong>CLAIM</strong>
+            Makes an interpretive point that the paragraph will develop.
+          </div>
+          <div class="part">
+            <strong>EVIDENCE</strong>
+            Gives a specific detail, quotation, or example from the text.
+          </div>
+          <div class="part">
+            <strong>EXPLANATION</strong>
+            Shows how the evidence supports the claim and why the detail matters.
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>A quotation is not the explanation.</strong>
+          Evidence gives your reader something to examine. Your explanation does the interpretive work.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 9</span>
+          </div>
+          <progress id="progress" value="1" max="9">1 of 9</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Identify the Job</div>
+
+          <div id="passageWrap" class="hidden">
+            <p class="prompt">Short passage:</p>
+            <blockquote id="passage"></blockquote>
+          </div>
+
+          <p class="prompt" id="prompt">What job is this sentence doing?</p>
+          <div class="sentence-box" id="sentence"></div>
+
+          <div id="choices" class="choices" aria-label="Choose the sentence's job"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced the architecture of an analytical paragraph.</p>
+          <p>A useful pattern to remember is:</p>
+
+          <div class="build-list">
+            <div class="build-item"><strong>CLAIM:</strong> What am I arguing?</div>
+            <div class="build-item"><strong>EVIDENCE:</strong> What in the text gives me a reason to argue this?</div>
+            <div class="build-item"><strong>EXPLANATION:</strong> How does that evidence support my interpretation?</div>
+          </div>
+
+          <p>
+            Real paragraphs can be more complex than this, and explanation may take several sentences.
+            But if a paragraph has a quotation and no explanation, that is usually where the analytical gap is.
+          </p>
+
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This low-stakes practice activity does not record or submit student responses.
+  </footer>
+
+  <script>
+    (() => {
+      const labels = {
+        claim: "Claim",
+        evidence: "Evidence",
+        explanation: "Explanation"
+      };
+
+      const items = [
+        {
+          round:1,
+          roundLabel:"Round 1: Identify the Job",
+          sentence:"The story presents the child’s small size as a visual reminder of her limited power in the adult world.",
+          answer:"claim",
+          feedback:{
+            correct:"This is an interpretive point the writer could support and develop. It tells the reader what the paragraph is arguing.",
+            evidence:"This sentence does not quote or point to a specific textual detail yet. It makes a larger interpretive statement.",
+            explanation:"This could eventually be supported by explanation, but by itself it functions as the main point the paragraph will develop."
+          }
+        },
+        {
+          round:1,
+          roundLabel:"Round 1: Identify the Job",
+          sentence:"The narrator describes the doorway as 'enormous' as the child approaches it.",
+          answer:"evidence",
+          feedback:{
+            correct:"This gives a specific detail from the text. The next step would be to explain why the word 'enormous' matters.",
+            claim:"This does not yet make a larger interpretive point. It identifies a specific textual detail.",
+            explanation:"This tells us what the text says, but it does not yet explain how that detail supports an interpretation."
+          }
+        },
+        {
+          round:1,
+          roundLabel:"Round 1: Identify the Job",
+          sentence:"The word 'enormous' exaggerates the doorway’s scale from the child’s perspective, making the adult-controlled space feel overwhelming.",
+          answer:"explanation",
+          feedback:{
+            correct:"This sentence analyzes the language and connects the evidence back to a larger idea about power and perspective.",
+            claim:"This sentence contains an interpretive idea, but its main job is to explain how a specific word in the evidence creates meaning.",
+            evidence:"The sentence refers to evidence, but it does more than present it. It explains what the word does."
+          }
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Follow the Paragraph",
+          passage:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+          sentence:"Mina’s attention to the light suggests that she sees possibility where the others see only restriction.",
+          answer:"claim",
+          feedback:{
+            correct:"This is the paragraph’s interpretive point. It makes a claim about what Mina’s different attention may suggest.",
+            evidence:"The sentence refers to the passage, but it does not simply present a quotation or textual detail. It interprets that detail.",
+            explanation:"This could serve as a claim that later explanation develops. Its main job is to state the interpretation."
+          }
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Follow the Paragraph",
+          passage:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+          sentence:"The passage contrasts the 'locked window' with the 'thin line of light.'",
+          answer:"evidence",
+          feedback:{
+            correct:"This identifies the textual contrast the writer will analyze. It gives the paragraph something specific to work with.",
+            claim:"This notices textual evidence rather than making the paragraph’s larger interpretive point.",
+            explanation:"The sentence identifies the contrast, but it does not yet explain what that contrast suggests."
+          }
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Follow the Paragraph",
+          passage:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+          sentence:"While the locked window emphasizes the barrier, the line of light directs attention beyond it, showing how Mina’s perspective differs from the group’s.",
+          answer:"explanation",
+          feedback:{
+            correct:"This sentence explains how the contrast works and connects it directly to the interpretation of Mina’s perspective.",
+            claim:"The sentence supports a larger claim rather than introducing the paragraph’s main point.",
+            evidence:"It uses textual details, but its main purpose is to explain what those details do."
+          }
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Repair the Missing Move",
+          passage:"When the teacher called her name, twenty faces lifted at once.",
+          sentence:"The character feels exposed. 'Twenty faces lifted at once.'",
+          prompt:"What is this paragraph fragment missing most?",
+          customChoices:[
+            {
+              key:"explanation",
+              text:"Explanation: a sentence showing how 'twenty faces lifted at once' creates the feeling of exposure.",
+              correct:true,
+              feedback:"Exactly. The fragment has a claim and evidence, but it leaves the reader to make the connection."
+            },
+            {
+              key:"moreEvidence",
+              text:"More evidence: add two more quotations before explaining anything.",
+              correct:false,
+              feedback:"More evidence will not fix the core problem. The writer already has useful evidence but has not analyzed it."
+            },
+            {
+              key:"summary",
+              text:"Summary: explain what happened earlier in the scene.",
+              correct:false,
+              feedback:"Additional plot summary may add context, but the analytical gap is between the existing evidence and the claim."
+            }
+          ]
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Repair the Missing Move",
+          passage:"The hallway swallowed every sound she made.",
+          sentence:"The hallway is oppressive. The narrator says that it 'swallowed every sound she made.' This shows that the hallway swallowed her sounds.",
+          prompt:"Which revision would most improve the explanation?",
+          customChoices:[
+            {
+              key:"analysis",
+              text:"Explain how 'swallowed' makes the hallway seem active and consuming, as though the setting erases the character’s presence.",
+              correct:true,
+              feedback:"Yes. This moves beyond repeating the quotation and explains how the word supports the claim."
+            },
+            {
+              key:"repeat",
+              text:"Add: 'In other words, the hallway swallowed the noises that she made.'",
+              correct:false,
+              feedback:"This is another paraphrase. It changes the wording but still does not explain why 'swallowed' matters."
+            },
+            {
+              key:"device",
+              text:"Add only: 'This is personification.'",
+              correct:false,
+              feedback:"Naming the device is useful, but the paragraph still needs to explain what the personification does and how it supports the interpretation."
+            }
+          ]
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Repair the Missing Move",
+          passage:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
+          sentence:"The sweater is connected to memory.",
+          prompt:"What should come next to build a stronger analytical paragraph?",
+          customChoices:[
+            {
+              key:"evidenceThenExplain",
+              text:"Give the specific actions involving the sweater, then explain how holding it close and putting it away create a tension between comfort and distance.",
+              correct:true,
+              feedback:"Exactly. This develops the claim with evidence and then interpretation rather than jumping straight to another claim."
+            },
+            {
+              key:"newClaim",
+              text:"Move immediately to a different claim about the character’s family.",
+              correct:false,
+              feedback:"That would leave this claim undeveloped. A paragraph needs to stay with an idea long enough to support and explain it."
+            },
+            {
+              key:"plot",
+              text:"Summarize everything that happened before the sweater appeared.",
+              correct:false,
+              feedback:"Some context may be useful, but the next analytical move is to support and explain the claim with the relevant evidence."
+            }
+          ]
+        }
+      ];
+
+      const els = {
+        roundText:document.getElementById("roundText"),
+        itemText:document.getElementById("itemText"),
+        progress:document.getElementById("progress"),
+        roundLabel:document.getElementById("roundLabel"),
+        passageWrap:document.getElementById("passageWrap"),
+        passage:document.getElementById("passage"),
+        prompt:document.getElementById("prompt"),
+        sentence:document.getElementById("sentence"),
+        choices:document.getElementById("choices"),
+        feedback:document.getElementById("feedback"),
+        actions:document.getElementById("actions"),
+        tryAgain:document.getElementById("tryAgain"),
+        next:document.getElementById("next"),
+        questionArea:document.getElementById("questionArea"),
+        completion:document.getElementById("completion"),
+        restart:document.getElementById("restart")
+      };
+
+      let index=0;
+      let solved=false;
+
+      function renderItem() {
+        const item=items[index];
+        solved=false;
+
+        els.roundText.textContent=`Round ${item.round} of 3`;
+        els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+        els.progress.value=index+1;
+        els.progress.max=items.length;
+        els.progress.textContent=`${index+1} of ${items.length}`;
+        els.roundLabel.textContent=item.roundLabel;
+        els.prompt.textContent=item.prompt || "What job is this sentence doing?";
+        els.sentence.textContent=item.sentence;
+
+        if(item.passage) {
+          els.passage.textContent=item.passage;
+          els.passageWrap.classList.remove("hidden");
+        } else {
+          els.passage.textContent="";
+          els.passageWrap.classList.add("hidden");
+        }
+
+        els.choices.innerHTML="";
+
+        if(item.customChoices) {
+          item.customChoices.forEach((choice,i)=>{
+            const btn=document.createElement("button");
+            btn.type="button";
+            btn.className="choice";
+            btn.textContent=choice.text;
+            btn.addEventListener("click",()=>checkCustom(i,btn));
+            els.choices.appendChild(btn);
+          });
+        } else {
+          ["claim","evidence","explanation"].forEach(key=>{
+            const btn=document.createElement("button");
+            btn.type="button";
+            btn.className="choice";
+            btn.textContent=labels[key];
+            btn.addEventListener("click",()=>checkStandard(key,btn));
+            els.choices.appendChild(btn);
+          });
+        }
+
+        els.feedback.className="feedback hidden";
+        els.feedback.innerHTML="";
+        els.actions.classList.add("hidden");
+        els.tryAgain.classList.add("hidden");
+        els.next.classList.add("hidden");
+      }
+
+      function disableButtons() {
+        [...els.choices.querySelectorAll("button")].forEach(btn=>{
+          btn.disabled=true;
+          btn.classList.remove("correct","incorrect");
+        });
+      }
+
+      function showFeedback(isCorrect,button,title,feedback) {
+        disableButtons();
+        button.classList.add(isCorrect ? "correct" : "incorrect");
+
+        if(isCorrect) {
+          solved=true;
+          els.feedback.className="feedback correct";
+          els.next.classList.remove("hidden");
+          els.tryAgain.classList.add("hidden");
+        } else {
+          els.feedback.className="feedback try";
+          els.tryAgain.classList.remove("hidden");
+          els.next.classList.add("hidden");
+        }
+
+        els.feedback.innerHTML=
+          `<div class="feedback-title">${title}</div><div>${feedback}</div>`;
+        els.actions.classList.remove("hidden");
+        els.feedback.scrollIntoView({block:"nearest"});
+      }
+
+      function checkStandard(choice,button) {
+        const item=items[index];
+        if(choice===item.answer) {
+          showFeedback(true,button,`Yes — ${labels[item.answer]}.`,item.feedback.correct);
+        } else {
+          showFeedback(false,button,"Not quite. Ask what job the sentence is doing.",item.feedback[choice]);
+        }
+      }
+
+      function checkCustom(choiceIndex,button) {
+        const choice=items[index].customChoices[choiceIndex];
+        showFeedback(
+          choice.correct,
+          button,
+          choice.correct ? "Yes — that repairs the analytical gap." : "Not quite. Look for the missing thinking move.",
+          choice.feedback
+        );
+      }
+
+      els.tryAgain.addEventListener("click",()=>{
+        renderItem();
+        const first=els.choices.querySelector("button");
+        if(first) first.focus();
+      });
+
+      els.next.addEventListener("click",()=>{
+        if(!solved) return;
+        index+=1;
+
+        if(index>=items.length) {
+          els.questionArea.classList.add("hidden");
+          els.completion.classList.remove("hidden");
+          els.itemText.textContent="Complete";
+          els.progress.value=items.length;
+          els.completion.focus();
+        } else {
+          renderItem();
+          window.scrollTo({
+            top:document.getElementById("practice-heading").offsetTop-10,
+            behavior:"smooth"
+          });
+        }
+      });
+
+      els.restart.addEventListener("click",()=>{
+        index=0;
+        els.completion.classList.add("hidden");
+        els.questionArea.classList.remove("hidden");
+        renderItem();
+        window.scrollTo({
+          top:document.getElementById("practice-heading").offsetTop-10,
+          behavior:"smooth"
+        });
+      });
+
+      renderItem();
+    })();
+  </script>
+</body>
+</html>
