@@ -1,1 +1,363 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Analysis Repair Shop | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students diagnose and repair common problems in literary analysis paragraphs.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:940px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:74ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .repairs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .repair{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .repair strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .paragraph{border:2px solid var(--border);border-radius:.6rem;padding:1rem;background:#fff}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.15rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .after{margin-top:1rem;padding:1rem;border:2px solid var(--success-border);background:var(--success-bg);border-radius:.6rem}
+    .after strong{display:block;margin-bottom:.35rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:760px){.repairs{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">The Analysis Repair Shop</div>
+    <p class="lede">
+      Weak literary analysis is usually not “bad writing” in some mysterious way.
+      It often has a specific, repairable problem: too much summary, a dropped quotation,
+      an unsupported claim, or evidence that never gets explained.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>This lab helps you diagnose what is missing or misfiring in a literary-analysis paragraph and choose the most useful repair.</p>
+
+        <div class="repairs">
+          <div class="repair"><strong>DIAGNOSE</strong>Identify the exact problem instead of deciding that the whole paragraph “doesn't work.”</div>
+          <div class="repair"><strong>REPAIR</strong>Choose the revision that fixes the analytical gap.</div>
+          <div class="repair"><strong>COMPARE</strong>See how the repaired paragraph becomes clearer and more analytical.</div>
+        </div>
+
+        <div class="tip">
+          <strong>You do not have to fix everything at once.</strong>
+          Strong revision often means identifying the most important problem and repairing that first.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Diagnose the Problem</div>
+
+          <p class="label">PARAGRAPH UNDER REPAIR</p>
+          <div class="paragraph" id="paragraph"></div>
+
+          <p class="prompt" id="prompt"></p>
+          <div id="choices" class="choices" aria-label="Choose the strongest diagnosis or repair"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+          <div id="after" class="after hidden"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced repairing literary analysis.</p>
+          <p>When a paragraph feels weak, try diagnosing it with one question at a time:</p>
+          <ul>
+            <li>Am I summarizing instead of interpreting?</li>
+            <li>Is my claim specific and supportable?</li>
+            <li>Did I give evidence?</li>
+            <li>Did I explain the evidence instead of repeating it?</li>
+            <li>Did I name a literary device without explaining what it does?</li>
+            <li>Did I make a claim that goes farther than the evidence?</li>
+          </ul>
+          <p>
+            Revision gets easier when you can name the problem. A paragraph is not broken all at once; it usually needs one repair at a time.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1,
+        roundLabel:"Round 1: Diagnose the Problem",
+        paragraph:"Cinderella goes to the ball, dances with the prince, leaves before midnight, loses her slipper, and later tries on the slipper when the prince arrives.",
+        prompt:"What is the biggest problem if this paragraph is supposed to be literary analysis?",
+        choices:[
+          {text:"It contains too much plot summary and no interpretive claim.",correct:true,feedback:"Exactly. The paragraph tells what happens but does not explain why any pattern, detail, or choice matters."},
+          {text:"It needs a longer quotation.",correct:false,feedback:"A quotation would not solve the main problem. The paragraph first needs an interpretive idea."},
+          {text:"It needs more transition words.",correct:false,feedback:"Transitions may improve flow, but they cannot turn summary into analysis by themselves."}
+        ],
+        after:"Possible repair: Start with an interpretive claim, such as: “Because Cinderella’s social treatment changes when her appearance changes, the story connects outward appearance with social status.” Then use only the plot details needed to support that idea."
+      },
+      {
+        round:1,
+        roundLabel:"Round 1: Diagnose the Problem",
+        paragraph:"The hallway is oppressive. “The hallway swallowed every sound she made.” This shows that the hallway swallowed her sounds.",
+        prompt:"What is the central analytical problem?",
+        choices:[
+          {text:"The explanation simply repeats the quotation instead of analyzing it.",correct:true,feedback:"Yes. The paragraph has a claim and evidence, but the explanation paraphrases instead of interpreting the word 'swallowed.'"},
+          {text:"The paragraph should remove the quotation.",correct:false,feedback:"The quotation is useful evidence. The issue is what the writer does after it."},
+          {text:"The claim is too long.",correct:false,feedback:"The claim is actually very short. The missing work is explanation."}
+        ],
+        after:"Possible repair: “The word ‘swallowed’ makes the hallway seem active and consuming, as though the setting erases the character’s presence.”"
+      },
+      {
+        round:1,
+        roundLabel:"Round 1: Diagnose the Problem",
+        paragraph:"The author uses symbolism. The garden is wild and tangled. This symbolism is important.",
+        prompt:"What is missing most?",
+        choices:[
+          {text:"An explanation of what the garden may represent and how the description creates that meaning.",correct:true,feedback:"Exactly. Naming symbolism is only the beginning. The paragraph still needs to explain the effect and significance."},
+          {text:"A definition of symbolism from a dictionary.",correct:false,feedback:"A definition would not analyze this specific garden."},
+          {text:"Three more literary devices.",correct:false,feedback:"Listing more devices would add labels, not interpretation."}
+        ],
+        after:"Possible repair: “Describing the garden as ‘wild and tangled’ during the children’s happiest moments connects freedom with spaces that escape adult control.”"
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Choose the Best Repair",
+        paragraph:"The wolf says, “Good evening, little one.” The wolf is dangerous.",
+        prompt:"Which revision best repairs the gap between evidence and claim?",
+        choices:[
+          {text:"Add: “The courteous greeting sounds reassuring rather than threatening, helping disguise the danger behind familiar social behavior.”",correct:true,feedback:"Yes. This explains how the tone of the dialogue supports the claim."},
+          {text:"Add: “This is dialogue.”",correct:false,feedback:"That identifies the form but not its effect."},
+          {text:"Add: “The wolf is dangerous because wolves are dangerous.”",correct:false,feedback:"That relies on a general stereotype instead of analyzing the evidence in this story."}
+        ],
+        after:"Repaired version: “The wolf’s courteous greeting, ‘Good evening, little one,’ sounds reassuring rather than threatening, helping disguise the danger behind familiar social behavior.”"
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Choose the Best Repair",
+        paragraph:"The youngest girl looks outside the frame. This proves that she plans to run away from her family.",
+        prompt:"Which revision best fixes the overreach?",
+        choices:[
+          {text:"Qualify the claim: “Her different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.”",correct:true,feedback:"Yes. This stays interpretive while removing a specific plot claim the evidence cannot support."},
+          {text:"Make the claim stronger: “She definitely escapes the family later.”",correct:false,feedback:"That adds even more unsupported information."},
+          {text:"Remove all interpretation and say only: “She looks outside the frame.”",correct:false,feedback:"That avoids overreach but also removes analysis. The better move is a more cautious interpretation."}
+        ],
+        after:"Repaired version: “Because the youngest girl alone looks outside the frame, her different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.”"
+      },
+      {
+        round:2,
+        roundLabel:"Round 2: Choose the Best Repair",
+        paragraph:"The garden is important. It is described as “wild and tangled.” Then the children play there. Then the adults arrive. Then the garden changes.",
+        prompt:"Which repair would make this paragraph more analytical?",
+        choices:[
+          {text:"Replace some plot sequence with a claim connecting the garden’s wildness, the children’s happiness, and adult control.",correct:true,feedback:"Exactly. The details are potentially useful, but they need to be organized around an interpretation rather than a timeline."},
+          {text:"Add more events in the order they happen.",correct:false,feedback:"That would increase summary rather than analysis."},
+          {text:"Add a sentence saying, “The author uses imagery.”",correct:false,feedback:"That label does not explain the relationship among the details."}
+        ],
+        after:"Possible repair: “The garden’s ‘wild and tangled’ condition coincides with the children’s happiest moments, suggesting that the story associates freedom with spaces less controlled by adults.”"
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Repair the Whole Paragraph",
+        paragraph:"Mina is hopeful. “The others studied the locked window. Mina studied the thin line of light beneath it.” This shows Mina is hopeful. The locked window symbolizes obstacles. Light symbolizes hope.",
+        prompt:"Which revision strategy would improve this paragraph the most?",
+        choices:[
+          {text:"Focus on the contrast between what the group notices and what Mina notices, then explain how that difference supports the interpretation.",correct:true,feedback:"Yes. This replaces repeated claims and generic symbol labels with close reading of the actual contrast."},
+          {text:"Add two more quotations about windows.",correct:false,feedback:"More evidence is not the main need. The existing evidence has not yet been fully analyzed."},
+          {text:"Replace 'hopeful' with a more complicated vocabulary word.",correct:false,feedback:"Stronger vocabulary will not fix the reasoning. The paragraph needs closer explanation of the evidence."}
+        ],
+        after:"Repaired version: “Mina’s perspective differs from the group’s because she notices possibility where they see only a barrier. While the others study the ‘locked window,’ Mina focuses on the ‘thin line of light beneath it.’ The contrast shifts attention from what blocks them to what exists beyond the barrier, suggesting that hope in the passage depends on where a character chooses to look.”"
+      },
+      {
+        round:3,
+        roundLabel:"Round 3: Repair the Whole Paragraph",
+        paragraph:"The child is powerless because adults make all the decisions. However, she is also the first person to recognize the danger. This contradicts my thesis, so I would probably leave that part out.",
+        prompt:"What is the strongest repair?",
+        choices:[
+          {text:"Revise the thesis so it distinguishes physical or social power from perceptiveness or knowledge.",correct:true,feedback:"Exactly. The new evidence does not ruin the argument; it makes the idea of power more complex."},
+          {text:"Delete the contradictory evidence.",correct:false,feedback:"Ignoring relevant evidence weakens the argument."},
+          {text:"Change the thesis to say the child is powerful in every way.",correct:false,feedback:"That overcorrects. The stronger interpretation can hold different kinds of power at once."}
+        ],
+        after:"Possible repair: “Although adults control the decisions around her, the child’s ability to recognize danger gives her a form of knowledge that complicates her apparent powerlessness.”"
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      paragraph:document.getElementById("paragraph"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      after:document.getElementById("after"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0,solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.paragraph.textContent=item.paragraph;
+      els.prompt.textContent=item.prompt;
+
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.after.className="after hidden";
+      els.after.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const item=items[index];
+      const choice=item.choices[i];
+
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — that diagnoses the main problem.</div><div>${choice.feedback}</div>`;
+        els.after.className="after";
+        els.after.innerHTML=`<strong>After the repair:</strong>${item.after}`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Look for the biggest analytical gap.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
