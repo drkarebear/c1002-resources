@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zoom In | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible literary analysis activity that helps students focus on meaningful words, images, contrasts, and details in textual evidence.">
+  <style>
+    :root {
+      --bg:#f7f7fb; --surface:#ffffff; --text:#1f2933; --muted:#52606d;
+      --border:#cbd5e1; --accent:#275dad; --accent-dark:#173f7a; --soft:#eef4fb;
+      --success-bg:#edf8f0; --success-border:#287a3e; --try-bg:#fff7e8;
+      --try-border:#9a6400; --focus:#111827; --max:860px;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+    }
+
+    .skip-link {
+      position:absolute;
+      left:.75rem;
+      top:-5rem;
+      z-index:1000;
+      background:#fff;
+      color:var(--text);
+      padding:.75rem 1rem;
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
+    .skip-link:focus { top:.75rem; }
+
+    header, main, footer {
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header { padding-top:2rem; }
+
+    .eyebrow {
+      margin:0 0 .35rem;
+      font-weight:800;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      font-size:.88rem;
+    }
+
+    .page-title {
+      margin:0;
+      font-size:clamp(2rem,6vw,3.2rem);
+      line-height:1.08;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+
+    .lede {
+      max-width:68ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin-bottom:1.4rem;
+    }
+
+    h2 {
+      margin-top:2rem;
+      font-size:1.5rem;
+      line-height:1.25;
+    }
+
+    .card {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:clamp(1rem,3vw,1.5rem);
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+      margin:1rem 0;
+    }
+
+    .strategy {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .strategy-box {
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      padding:1rem;
+      background:#fff;
+    }
+
+    .strategy-box strong {
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .tip {
+      background:#f3f6f8;
+      border-left:4px solid #52606d;
+      padding:.85rem 1rem;
+      margin-top:1rem;
+      border-radius:.35rem;
+    }
+
+    .progress-wrap { margin-bottom:1rem; }
+
+    .progress-label {
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:.95rem;
+      color:var(--muted);
+      margin-bottom:.35rem;
+    }
+
+    progress {
+      width:100%;
+      height:.9rem;
+      accent-color:var(--accent);
+    }
+
+    .round-label {
+      font-weight:800;
+      color:var(--accent-dark);
+    }
+
+    .step-label {
+      font-weight:800;
+      color:var(--accent-dark);
+      margin:1rem 0 .35rem;
+    }
+
+    .step-box {
+      border:2px solid var(--border);
+      border-radius:.6rem;
+      padding:.9rem 1rem;
+      background:#fff;
+    }
+
+    blockquote {
+      margin:1rem 0;
+      padding:1rem 1.15rem;
+      border-left:5px solid var(--accent);
+      background:var(--soft);
+      border-radius:.35rem;
+      font-size:1.08rem;
+    }
+
+    .prompt {
+      font-size:1.16rem;
+      font-weight:750;
+      margin-top:1.2rem;
+    }
+
+    .choices {
+      display:grid;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    button { font:inherit; }
+
+    .choice, .primary, .secondary {
+      min-height:48px;
+      border-radius:.55rem;
+      padding:.8rem 1rem;
+      cursor:pointer;
+      border:2px solid var(--accent);
+      background:#fff;
+      color:var(--accent-dark);
+      font-weight:750;
+      text-align:left;
+    }
+
+    .choice:hover, .primary:hover { background:var(--soft); }
+
+    .choice:focus-visible, .primary:focus-visible, .secondary:focus-visible, a:focus-visible {
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+    }
+
+    .choice[disabled] {
+      cursor:default;
+      opacity:.82;
+    }
+
+    .choice.correct {
+      border-color:var(--success-border);
+      background:var(--success-bg);
+      color:#174d27;
+    }
+
+    .choice.incorrect {
+      border-color:var(--try-border);
+      background:var(--try-bg);
+      color:#604000;
+    }
+
+    .feedback {
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:.6rem;
+      border:2px solid var(--border);
+      background:#fff;
+    }
+
+    .feedback.correct {
+      border-color:var(--success-border);
+      background:var(--success-bg);
+    }
+
+    .feedback.try {
+      border-color:var(--try-border);
+      background:var(--try-bg);
+    }
+
+    .feedback-title {
+      font-weight:800;
+      margin-bottom:.2rem;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    .primary {
+      background:var(--accent);
+      color:#fff;
+      text-align:center;
+    }
+
+    .primary:hover {
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .secondary {
+      border:2px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      text-align:center;
+    }
+
+    .secondary:hover { border-color:var(--text); }
+
+    .hidden { display:none !important; }
+
+    .completion .big {
+      font-size:1.4rem;
+      font-weight:800;
+      margin-bottom:.3rem;
+    }
+
+    footer {
+      padding:2rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media (max-width:720px) {
+      .strategy { grid-template-columns:1fr; }
+      .actions { flex-direction:column; }
+      .primary,.secondary { width:100%; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after {
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+    }
+
+    @media (prefers-contrast:more) {
+      :root { --border:#4b5563; --muted:#374151; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Zoom In</div>
+    <p class="lede">
+      Strong analysis often comes from looking closely at a small part of the evidence.
+      Instead of explaining an entire quotation, you can focus on the
+      <strong>word, image, contrast, or detail</strong> that does the most interpretive work.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>
+          This lab helps you identify which part of a quotation is worth analyzing and explain
+          why that detail matters to an interpretation.
+        </p>
+
+        <div class="strategy">
+          <div class="strategy-box">
+            <strong>1. Find the Detail</strong>
+            Which word, image, contrast, or choice stands out?
+          </div>
+          <div class="strategy-box">
+            <strong>2. Ask What It Does</strong>
+            What feeling, idea, tension, or relationship does it create?
+          </div>
+          <div class="strategy-box">
+            <strong>3. Connect It Back</strong>
+            How does that detail support the larger interpretation?
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>You do not have to analyze every word in a quotation.</strong>
+          Sometimes one carefully chosen word can give you more to say than an entire sentence.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Find the Detail</div>
+
+          <div id="claimWrap">
+            <p class="step-label">INTERPRETATION</p>
+            <div class="step-box" id="claim"></div>
+          </div>
+
+          <p class="step-label">EVIDENCE</p>
+          <blockquote id="quote"></blockquote>
+
+          <p class="prompt" id="prompt"></p>
+          <div id="choices" class="choices" aria-label="Choose the strongest close-reading move"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced zooming in on evidence.</p>
+          <p>
+            When you use a quotation, try not to stop at:
+            <em>“This shows…”</em> followed by a paraphrase.
+          </p>
+          <p>Instead, ask:</p>
+          <ul>
+            <li>Which word or image carries the most meaning?</li>
+            <li>What does that choice suggest?</li>
+            <li>What tension or contrast does it create?</li>
+            <li>How does it support my interpretation?</li>
+          </ul>
+          <p>
+            Close reading means making a larger idea from careful attention to a smaller detail.
+          </p>
+
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This low-stakes practice activity does not record or submit student responses.
+  </footer>
+
+  <script>
+    (() => {
+      const items = [
+        {
+          round:1,
+          roundLabel:"Round 1: Find the Detail",
+          claim:"The passage presents the child as intimidated by the adult-controlled space.",
+          quote:"She crept quietly toward the enormous door.",
+          prompt:"Which part of the quotation gives you the strongest material for close analysis?",
+          choices:[
+            {
+              text:"“crept” and “enormous”",
+              correct:true,
+              feedback:"These words create a relationship between cautious movement and overwhelming scale. Together, they help make the child seem small and intimidated."
+            },
+            {
+              text:"“the” and “toward”",
+              correct:false,
+              feedback:"These words help the sentence function, but they do not carry much interpretive weight here. Look for language that shapes movement, scale, feeling, or power."
+            },
+            {
+              text:"The entire sentence equally",
+              correct:false,
+              feedback:"You can discuss the whole sentence, but close reading usually gets sharper when you identify the specific words doing the most work."
+            }
+          ]
+        },
+        {
+          round:1,
+          roundLabel:"Round 1: Find the Detail",
+          claim:"The passage associates the garden with freedom from adult control.",
+          quote:"Beyond the gate, the garden sprawled wild and tangled beneath the open sky.",
+          prompt:"Which detail would be most useful to zoom in on?",
+          choices:[
+            {
+              text:"“wild and tangled”",
+              correct:true,
+              feedback:"These words describe disorder, but the larger interpretation connects that disorder with freedom. That tension gives you something meaningful to analyze."
+            },
+            {
+              text:"“the gate” only because every gate is symbolic",
+              correct:false,
+              feedback:"A gate could become meaningful, but it is not automatically symbolic. Analysis should come from how a detail functions in this specific passage."
+            },
+            {
+              text:"“beneath”",
+              correct:false,
+              feedback:"This preposition helps locate the garden, but it carries less interpretive weight than the description of the garden as 'wild and tangled.'"
+            }
+          ]
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Explain What the Detail Does",
+          claim:"The narrator presents the house as emotionally oppressive.",
+          quote:"The hallway swallowed every sound she made.",
+          prompt:"Which explanation best analyzes the word “swallowed”?",
+          choices:[
+            {
+              text:"“Swallowed” makes the hallway seem active and consuming, turning the setting into something that overwhelms the character’s presence.",
+              correct:true,
+              feedback:"This explanation focuses on what the word does, not just what it literally means. It connects the image to the interpretation of the house as oppressive."
+            },
+            {
+              text:"“Swallowed” means that the hallway was quiet.",
+              correct:false,
+              feedback:"This paraphrases the basic idea but stops before analyzing the image. Ask what is different about saying sound is 'swallowed' instead of simply saying the hallway is quiet."
+            },
+            {
+              text:"The author uses personification.",
+              correct:false,
+              feedback:"Naming the device is a useful start, but analysis still needs to explain the effect of that personification and why it matters."
+            }
+          ]
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Explain What the Detail Does",
+          claim:"The passage suggests that the character’s sense of belonging is uncertain.",
+          quote:"He hovered at the edge of the family photograph.",
+          prompt:"Which explanation best analyzes “hovered at the edge”?",
+          choices:[
+            {
+              text:"The phrase places him physically near the family while also making him seem only partly included, turning position into a sign of uncertain belonging.",
+              correct:true,
+              feedback:"This explanation connects physical placement to the larger interpretation without merely repeating the quotation."
+            },
+            {
+              text:"He is standing at the edge of the photograph.",
+              correct:false,
+              feedback:"This restates the evidence. Close analysis needs to explain what being at the edge may suggest."
+            },
+            {
+              text:"The phrase is imagery.",
+              correct:false,
+              feedback:"That label is not wrong, but it does not yet explain how the image contributes to the idea of uncertain belonging."
+            }
+          ]
+        },
+        {
+          round:2,
+          roundLabel:"Round 2: Explain What the Detail Does",
+          claim:"The narrator sees adulthood as restrictive rather than freeing.",
+          quote:"At eighteen, the road ahead narrowed into a single shining lane.",
+          prompt:"Which explanation best analyzes the contrast in this sentence?",
+          choices:[
+            {
+              text:"The road is described as 'shining,' which sounds hopeful, but 'narrowed' and 'single' reduce the character’s choices, creating tension between promise and restriction.",
+              correct:true,
+              feedback:"This close reading notices that the sentence contains two competing signals. Strong analysis often grows from exactly this kind of tension."
+            },
+            {
+              text:"The road is shiny, so adulthood is good.",
+              correct:false,
+              feedback:"This focuses on one positive word while ignoring the restrictive language around it."
+            },
+            {
+              text:"Roads symbolize life.",
+              correct:false,
+              feedback:"That is too general. The stronger analysis asks how this particular road is described and what the combination of words suggests."
+            }
+          ]
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Try It Somewhere New",
+          claim:"The passage suggests that the character experiences memory as something both comforting and painful.",
+          quote:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
+          prompt:"Which close-reading explanation best supports the interpretation?",
+          choices:[
+            {
+              text:"The act of pressing the sweater close suggests comfort, while folding it away again introduces distance, making the memory feel both desired and difficult to hold onto.",
+              correct:true,
+              feedback:"This explanation uses two small actions and their contrast to support the interpretation."
+            },
+            {
+              text:"The sweater smells like cedar.",
+              correct:false,
+              feedback:"That is an observation, but it does not yet explain how the detail contributes to the character’s mixed emotional experience."
+            },
+            {
+              text:"Sweaters symbolize memories.",
+              correct:false,
+              feedback:"The object may carry memory here, but saying what sweaters symbolize in general skips the specific actions and context that make this one meaningful."
+            }
+          ]
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Try It Somewhere New",
+          claim:"The passage presents the classroom as a place where the student feels exposed.",
+          quote:"When the teacher called her name, twenty faces lifted at once.",
+          prompt:"Which detail gives the strongest support for the interpretation?",
+          choices:[
+            {
+              text:"“twenty faces lifted at once”",
+              correct:true,
+              feedback:"The number and simultaneous movement create a sudden sense of collective attention, which supports the feeling of exposure."
+            },
+            {
+              text:"“teacher”",
+              correct:false,
+              feedback:"The teacher matters to the scene, but the strongest evidence for feeling exposed is the sudden attention of many people at once."
+            },
+            {
+              text:"“name”",
+              correct:false,
+              feedback:"Being named may matter, but the more powerful detail is the immediate reaction of 'twenty faces,' which makes the character the center of attention."
+            }
+          ]
+        },
+        {
+          round:3,
+          roundLabel:"Round 3: Try It Somewhere New",
+          claim:"The passage suggests that the youngest character sees possibility where the others see limits.",
+          quote:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+          prompt:"Which explanation best zooms in on the contrast?",
+          choices:[
+            {
+              text:"The others focus on the 'locked window,' but Mina notices the 'line of light,' shifting attention from the barrier itself to evidence that something exists beyond it.",
+              correct:true,
+              feedback:"This explanation compares the two details and shows how the contrast supports the larger interpretation."
+            },
+            {
+              text:"The window is locked.",
+              correct:false,
+              feedback:"That is true, but it only restates part of the evidence. The interpretive power comes from the contrast between what the group notices and what Mina notices."
+            },
+            {
+              text:"Light always means hope in literature.",
+              correct:false,
+              feedback:"Light can carry many meanings. Strong close reading explains what it does in this specific passage rather than assigning a universal symbol."
+            }
+          ]
+        }
+      ];
+
+      const els = {
+        roundText:document.getElementById("roundText"),
+        itemText:document.getElementById("itemText"),
+        progress:document.getElementById("progress"),
+        roundLabel:document.getElementById("roundLabel"),
+        claim:document.getElementById("claim"),
+        quote:document.getElementById("quote"),
+        prompt:document.getElementById("prompt"),
+        choices:document.getElementById("choices"),
+        feedback:document.getElementById("feedback"),
+        actions:document.getElementById("actions"),
+        tryAgain:document.getElementById("tryAgain"),
+        next:document.getElementById("next"),
+        questionArea:document.getElementById("questionArea"),
+        completion:document.getElementById("completion"),
+        restart:document.getElementById("restart")
+      };
+
+      let index=0;
+      let solved=false;
+
+      function renderItem() {
+        const item=items[index];
+        solved=false;
+
+        els.roundText.textContent=`Round ${item.round} of 3`;
+        els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+        els.progress.value=index+1;
+        els.progress.max=items.length;
+        els.progress.textContent=`${index+1} of ${items.length}`;
+        els.roundLabel.textContent=item.roundLabel;
+        els.claim.textContent=item.claim;
+        els.quote.textContent=item.quote;
+        els.prompt.textContent=item.prompt;
+
+        els.choices.innerHTML="";
+        item.choices.forEach((choice,i)=>{
+          const btn=document.createElement("button");
+          btn.type="button";
+          btn.className="choice";
+          btn.textContent=choice.text;
+          btn.addEventListener("click",()=>checkAnswer(i,btn));
+          els.choices.appendChild(btn);
+        });
+
+        els.feedback.className="feedback hidden";
+        els.feedback.innerHTML="";
+        els.actions.classList.add("hidden");
+        els.tryAgain.classList.add("hidden");
+        els.next.classList.add("hidden");
+      }
+
+      function checkAnswer(choiceIndex,button) {
+        const item=items[index];
+        const choice=item.choices[choiceIndex];
+        const buttons=[...els.choices.querySelectorAll("button")];
+
+        buttons.forEach(btn=>{
+          btn.disabled=true;
+          btn.classList.remove("correct","incorrect");
+        });
+
+        if(choice.correct) {
+          solved=true;
+          button.classList.add("correct");
+          els.feedback.className="feedback correct";
+          els.feedback.innerHTML=
+            `<div class="feedback-title">Yes — this is close reading.</div>
+             <div>${choice.feedback}</div>`;
+          els.next.classList.remove("hidden");
+          els.tryAgain.classList.add("hidden");
+        } else {
+          button.classList.add("incorrect");
+          els.feedback.className="feedback try";
+          els.feedback.innerHTML=
+            `<div class="feedback-title">Not quite. Zoom in more carefully.</div>
+             <div>${choice.feedback}</div>`;
+          els.tryAgain.classList.remove("hidden");
+          els.next.classList.add("hidden");
+        }
+
+        els.actions.classList.remove("hidden");
+        els.feedback.scrollIntoView({block:"nearest"});
+      }
+
+      els.tryAgain.addEventListener("click",()=>{
+        renderItem();
+        const first=els.choices.querySelector("button");
+        if(first) first.focus();
+      });
+
+      els.next.addEventListener("click",()=>{
+        if(!solved) return;
+        index+=1;
+
+        if(index>=items.length) {
+          els.questionArea.classList.add("hidden");
+          els.completion.classList.remove("hidden");
+          els.itemText.textContent="Complete";
+          els.progress.value=items.length;
+          els.completion.focus();
+        } else {
+          renderItem();
+          window.scrollTo({
+            top:document.getElementById("practice-heading").offsetTop-10,
+            behavior:"smooth"
+          });
+        }
+      });
+
+      els.restart.addEventListener("click",()=>{
+        index=0;
+        els.completion.classList.add("hidden");
+        els.questionArea.classList.remove("hidden");
+        renderItem();
+        window.scrollTo({
+          top:document.getElementById("practice-heading").offsetTop-10,
+          behavior:"smooth"
+        });
+      });
+
+      renderItem();
+    })();
+  </script>
+</body>
+</html>
