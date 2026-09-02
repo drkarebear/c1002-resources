@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Don't Drop the Quote | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students introduce, integrate, and analyze textual evidence.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:880px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:70ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .step{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .step strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.1rem}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    blockquote{margin:1rem 0;padding:1rem 1.15rem;border-left:5px solid var(--accent);background:var(--soft);border-radius:.35rem;font-size:1.06rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Don't Drop the Quote</div>
+    <p class="lede">
+      Textual evidence works best when your reader understands <strong>where it comes from</strong>,
+      <strong>why you chose it</strong>, and <strong>what you want them to notice about it</strong>.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>This lab helps you use quotations as part of your own reasoning instead of dropping them into a paragraph and moving on.</p>
+        <div class="steps">
+          <div class="step"><strong>1. Give Context</strong>Help the reader understand the moment without retelling the whole story.</div>
+          <div class="step"><strong>2. Integrate the Evidence</strong>Make the quotation fit naturally into your sentence.</div>
+          <div class="step"><strong>3. Analyze It</strong>Return to your own voice and explain what the evidence does.</div>
+        </div>
+        <div class="tip"><strong>Think bridge, not dump.</strong> Your sentence should carry the reader into the quotation and then back into your analysis.</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 9</span>
+          </div>
+          <progress id="progress" value="1" max="9">1 of 9</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Give Enough Context</div>
+
+          <div id="claimWrap">
+            <p class="label">PARAGRAPH IDEA</p>
+            <div class="box" id="claim"></div>
+          </div>
+
+          <div id="quoteWrap">
+            <p class="label">EVIDENCE TO USE</p>
+            <blockquote id="quote"></blockquote>
+          </div>
+
+          <p class="prompt" id="prompt"></p>
+          <div id="choices" class="choices" aria-label="Choose the strongest revision"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced using quotations as part of your own thinking.</p>
+          <p>Before you add a quotation, ask:</p>
+          <ul>
+            <li>Does my reader need a little context?</li>
+            <li>Can I integrate the evidence into my own sentence?</li>
+            <li>Have I returned to my own voice afterward?</li>
+            <li>Am I explaining the important language instead of repeating it?</li>
+          </ul>
+          <p>A quotation gives you evidence. Your analysis tells the reader why that evidence matters.</p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1, roundLabel:"Round 1: Give Enough Context",
+        claim:"The story presents the child as intimidated by the adult-controlled space.",
+        quote:"She crept quietly toward the enormous door.",
+        prompt:"Which setup gives the reader useful context without burying the quotation in plot summary?",
+        choices:[
+          {text:"As the child approaches the room where the adults are waiting, the narrator says that she “crept quietly toward the enormous door.”",correct:true,feedback:"This gives just enough context to locate the moment and then gets quickly to the evidence."},
+          {text:"Earlier in the story, the child wakes up, gets dressed, walks downstairs, eats breakfast, talks to her brother, goes outside, comes back in, and eventually approaches the room where the adults are waiting. She “crept quietly toward the enormous door.”",correct:false,feedback:"This is too much context for the evidence. Most of the plot summary does not help the reader understand the quotation."},
+          {text:"“She crept quietly toward the enormous door.”",correct:false,feedback:"The quotation is clear, but it appears without any signal about when or why this moment matters. A small amount of context helps the reader enter the evidence."}
+        ]
+      },
+      {
+        round:1, roundLabel:"Round 1: Give Enough Context",
+        claim:"The passage suggests that Mina sees possibility where the others see restriction.",
+        quote:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+        prompt:"Which introduction gives the most useful context?",
+        choices:[
+          {text:"When the group reaches the blocked window, the narrator contrasts what the others notice with Mina’s attention: “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:true,feedback:"This identifies the situation and prepares the reader to notice the contrast without overexplaining it first."},
+          {text:"There are many characters in this story and they have been traveling for a long time. Eventually they reach a window. The window is important. “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:false,feedback:"This adds vague background but does not sharpen the reader’s understanding of the specific analytical moment."},
+          {text:"Here is a quote that shows Mina is hopeful: “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:false,feedback:"This announces the quotation mechanically and tells the reader what it 'shows' before analyzing how the language supports that idea."}
+        ]
+      },
+      {
+        round:1, roundLabel:"Round 1: Give Enough Context",
+        claim:"The narrator presents memory as both comforting and painful.",
+        quote:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
+        prompt:"Which setup is strongest?",
+        choices:[
+          {text:"When she finds an object connected to the person she misses, she “pressed the old sweater to her face” before “folding it away again.”",correct:true,feedback:"This gives the emotional situation and preserves the two actions that will matter most for the analysis."},
+          {text:"The sweater appears in the middle of the story. It is old. It smells like cedar. She used to see it in the closet. Then one day she finds it again.",correct:false,feedback:"This summarizes surrounding details but delays the evidence the paragraph actually needs."},
+          {text:"According to the story, “She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.”",correct:false,feedback:"“According to the story” does not give meaningful context. The reader needs the situation, not a generic signal phrase."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Make the Quote Fit",
+        claim:"The hallway is presented as oppressive.",
+        quote:"The hallway swallowed every sound she made.",
+        prompt:"Which sentence integrates the quotation most naturally?",
+        choices:[
+          {text:"The setting seems to erase the character’s presence as the hallway “swallowed every sound she made.”",correct:true,feedback:"The writer’s own sentence leads directly into the quoted language, so the evidence feels grammatically and conceptually connected."},
+          {text:"The hallway is oppressive. “The hallway swallowed every sound she made.”",correct:false,feedback:"This is a dropped quotation. The reader can understand it, but the evidence is disconnected from the writer’s sentence."},
+          {text:"The author says, quote, “The hallway swallowed every sound she made,” end quote.",correct:false,feedback:"This is not how written literary analysis normally integrates evidence. The quotation should become part of the writer’s own sentence."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Make the Quote Fit",
+        claim:"The child’s perspective makes the adult space seem overwhelming.",
+        quote:"the enormous door",
+        prompt:"Which sentence uses the short quotation most efficiently?",
+        choices:[
+          {text:"By describing the doorway from the child’s perspective as “the enormous door,” the narration makes ordinary architecture feel intimidating.",correct:true,feedback:"This embeds a short phrase directly inside the analysis, which is often more effective than quoting a whole sentence."},
+          {text:"The narrator says, “the enormous door.” This quote is important.",correct:false,feedback:"The quotation is technically present, but the sentence does not yet integrate or analyze it."},
+          {text:"The entire sentence should always be quoted instead of using only the words “the enormous door.”",correct:false,feedback:"You do not need to quote more than you plan to use. Short embedded quotations can make close reading more precise."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Make the Quote Fit",
+        claim:"The story connects the garden with freedom from adult order.",
+        quote:"wild and tangled",
+        prompt:"Which version integrates the evidence most effectively?",
+        choices:[
+          {text:"The description of the garden as “wild and tangled” turns disorder into part of what makes the space feel free.",correct:true,feedback:"The short quoted phrase is woven into the writer’s analytical sentence."},
+          {text:"The garden is free. “Wild and tangled.”",correct:false,feedback:"The fragment is dropped into the paragraph without a grammatical bridge."},
+          {text:"The quote “wild and tangled” is a quote that shows the garden is wild and tangled.",correct:false,feedback:"This repeats the quotation instead of using it as evidence for an interpretation."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: Return to Analysis",
+        claim:"The classroom moment makes the student feel exposed.",
+        quote:"twenty faces lifted at once",
+        prompt:"What should come immediately after the quotation?",
+        choices:[
+          {text:"The number and simultaneous movement create a sudden wall of attention, making the student feel like the focus of the entire room.",correct:true,feedback:"This returns to the writer’s own voice and analyzes how the language creates the feeling of exposure."},
+          {text:"This means that twenty people looked up.",correct:false,feedback:"This paraphrases the quotation but does not explain its effect."},
+          {text:"Then the teacher continued talking and the lesson moved on.",correct:false,feedback:"This returns to plot summary instead of staying with the evidence long enough to analyze it."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: Return to Analysis",
+        claim:"The wolf’s politeness makes the danger harder to recognize.",
+        quote:"Good evening, little one.",
+        prompt:"Which follow-up does the strongest analytical work?",
+        choices:[
+          {text:"The courteous greeting sounds reassuring rather than threatening, which helps disguise the danger behind familiar social behavior.",correct:true,feedback:"This explains how the tone of the evidence supports the interpretation."},
+          {text:"The wolf says good evening to the girl.",correct:false,feedback:"This simply restates what the quotation already tells us."},
+          {text:"This is dialogue.",correct:false,feedback:"Naming the form is not enough. The analytical question is what this particular dialogue does in the scene."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: Return to Analysis",
+        claim:"Mina notices possibility where the others see only a barrier.",
+        quote:"The others studied the locked window. Mina studied the thin line of light beneath it.",
+        prompt:"Which complete sequence works best?",
+        choices:[
+          {text:"When the group reaches the blocked window, the narrator contrasts their attention: “The others studied the locked window. Mina studied the thin line of light beneath it.” The contrast shifts focus from the barrier itself to what exists beyond it, showing how Mina’s perspective opens toward possibility.",correct:true,feedback:"This sequence gives context, integrates the evidence, and then explains the contrast. The quotation is part of the reasoning rather than an interruption."},
+          {text:"The group finds a window. “The others studied the locked window. Mina studied the thin line of light beneath it.” Then they keep going.",correct:false,feedback:"This provides plot before and after the quotation, but the interpretation never arrives."},
+          {text:"Mina is hopeful. “The others studied the locked window. Mina studied the thin line of light beneath it.” This shows Mina is hopeful.",correct:false,feedback:"The claim and quotation are present, but the final sentence only repeats the claim. It does not explain how the contrast supports it."}
+        ]
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      claim:document.getElementById("claim"),
+      quote:document.getElementById("quote"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0,solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.claim.textContent=item.claim;
+      els.quote.textContent=item.quote;
+      els.prompt.textContent=item.prompt;
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const choice=items[index].choices[i];
+      [...els.choices.querySelectorAll("button")].forEach(btn=>{
+        btn.disabled=true;btn.classList.remove("correct","incorrect");
+      });
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — the quotation is doing real work here.</div><div>${choice.feedback}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Look at how the quotation connects to the writer’s own thinking.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector("button");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
