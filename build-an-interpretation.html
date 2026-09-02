@@ -1,1 +1,375 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build an Interpretation | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students connect multiple pieces of evidence into a defensible interpretation.">
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:920px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:2rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
+    .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+    .step{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
+    .step strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:800;color:var(--accent-dark)}
+    .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
+    .evidence-list{display:grid;gap:.7rem;margin-top:.5rem}
+    .evidence-item{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
+    .evidence-item::before{content:"Evidence ";font-weight:800;color:var(--accent-dark)}
+    .evidence-item[data-num="1"]::before{content:"Evidence 1: "}
+    .evidence-item[data-num="2"]::before{content:"Evidence 2: "}
+    .evidence-item[data-num="3"]::before{content:"Evidence 3: "}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.2rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+    .choice[disabled]{cursor:default;opacity:.82}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:800;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border:2px solid var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">Literary Analysis Lab</p>
+    <div class="page-title">Build an Interpretation</div>
+    <p class="lede">
+      Literary analysis often becomes stronger when you stop looking at one detail by itself and start asking
+      what several details <strong>have in common</strong>. This lab helps you turn a group of observations into one
+      defensible interpretation.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">What This Helps You Do</h2>
+      <div class="card">
+        <p>When several pieces of evidence point in a similar direction, you can begin building a larger reading of the text.</p>
+        <div class="steps">
+          <div class="step"><strong>1. Gather</strong>Look at more than one detail.</div>
+          <div class="step"><strong>2. Connect</strong>Ask what pattern or tension the details share.</div>
+          <div class="step"><strong>3. Interpret</strong>Make a claim that explains the pattern without overreaching.</div>
+        </div>
+        <div class="tip">
+          <strong>The best interpretation should fit the whole evidence set.</strong>
+          A claim that explains only one detail may be too narrow. A claim that adds ideas the text never gives you may be too wild.
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Try It</h2>
+      <div id="labCard" class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="roundText">Round 1 of 3</span>
+            <span id="itemText">Example 1 of 8</span>
+          </div>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
+        </div>
+
+        <div id="questionArea">
+          <div class="round-label" id="roundLabel">Round 1: Connect the Pattern</div>
+
+          <p class="label">EVIDENCE</p>
+          <div id="evidenceList" class="evidence-list"></div>
+
+          <p class="prompt" id="prompt">Which interpretation best connects all of these details?</p>
+          <div id="choices" class="choices" aria-label="Choose the strongest interpretation"></div>
+
+          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
+            <button id="next" class="primary" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <p class="big">You practiced building an interpretation from a pattern.</p>
+          <p>When you have several pieces of evidence, ask:</p>
+          <ul>
+            <li>What do these details have in common?</li>
+            <li>What tension or contrast appears across them?</li>
+            <li>Which interpretation explains more than one detail?</li>
+            <li>What claim could I defend using the full evidence set?</li>
+          </ul>
+          <p>
+            Strong literary analysis does not just collect quotations. It shows the reader what the quotations begin to mean
+            when they are considered together.
+          </p>
+          <div class="actions">
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
+
+  <script>
+  (() => {
+    const items = [
+      {
+        round:1, roundLabel:"Round 1: Connect the Pattern",
+        evidence:[
+          "Adults repeatedly tell the child where she may go.",
+          "Adults make important decisions without asking for her opinion.",
+          "The narrator describes the child as physically small during these moments."
+        ],
+        choices:[
+          {text:"The story may connect childhood with limited power inside an adult-controlled world.",correct:true,feedback:"This interpretation explains all three details: rules, decision-making, and the repeated emphasis on smallness."},
+          {text:"The child is short.",correct:false,feedback:"This fits only one detail and stays on the surface. It does not explain the repeated pattern of adult authority."},
+          {text:"All adults are cruel to children.",correct:false,feedback:"This is too broad. The evidence supports a pattern of limited child power, but it does not prove that every adult is cruel."}
+        ]
+      },
+      {
+        round:1, roundLabel:"Round 1: Connect the Pattern",
+        evidence:[
+          "The garden is described as 'wild and tangled.'",
+          "The children are happiest when adults are absent from the garden.",
+          "The garden becomes more controlled when adults return."
+        ],
+        choices:[
+          {text:"The story may associate freedom and play with spaces that are less controlled by adults.",correct:true,feedback:"This interpretation connects the language of wildness, the children’s happiness, and the change that occurs when adult control returns."},
+          {text:"The garden has plants in it.",correct:false,feedback:"That is true, but it does not connect the full pattern or explain why the garden matters."},
+          {text:"The story proves that rules should never exist.",correct:false,feedback:"That claim goes far beyond the evidence. The text may complicate adult control without rejecting every possible rule."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Test the Whole Claim",
+        evidence:[
+          "A character keeps repairing a broken toy even when the repair fails.",
+          "She saves every loose piece rather than throwing it away.",
+          "After the final failed attempt, she places the toy carefully on a shelf."
+        ],
+        choices:[
+          {text:"The character may connect caring with persistence, even when something cannot be fully restored.",correct:true,feedback:"This interpretation explains the repeated repair attempts, the saved pieces, and the final act of care."},
+          {text:"The character likes toys.",correct:false,feedback:"This is possible but too narrow. It does not explain the repeated effort or the careful treatment after failure."},
+          {text:"The toy represents the inevitable collapse of civilization.",correct:false,feedback:"Nothing in the evidence supports such a sweeping symbolic claim. The interpretation should stay closer to the character’s actions."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Test the Whole Claim",
+        evidence:[
+          "The narrator repeatedly describes the house as quiet.",
+          "Family members leave conversations unfinished.",
+          "Important conflicts are handled through gestures rather than direct speech."
+        ],
+        choices:[
+          {text:"The repeated silence may reflect a family pattern of avoiding direct communication.",correct:true,feedback:"This interpretation connects setting, dialogue, and behavior into one coherent pattern."},
+          {text:"The family lives in a quiet neighborhood.",correct:false,feedback:"That may explain one detail, but it does not account for unfinished conversations and nonverbal conflict."},
+          {text:"The family members secretly hate one another.",correct:false,feedback:"The text may support conflict or avoidance, but 'secretly hate' adds a specific emotional claim the evidence does not establish."}
+        ]
+      },
+      {
+        round:2, roundLabel:"Round 2: Test the Whole Claim",
+        evidence:[
+          "The youngest character asks questions the adults refuse to answer.",
+          "She notices contradictions in the family’s stories.",
+          "She is repeatedly told that she is 'too young to understand.'"
+        ],
+        choices:[
+          {text:"The story may question the assumption that age automatically determines who understands the truth.",correct:true,feedback:"This interpretation connects the child’s questions, her observations, and the adults’ repeated dismissal of her understanding."},
+          {text:"The child asks a lot of questions.",correct:false,feedback:"This describes one pattern but does not explain why her questioning matters in relation to adult authority."},
+          {text:"Children are always wiser than adults.",correct:false,feedback:"That is too absolute. The evidence supports a challenge to adult assumptions, not a universal claim about all children and adults."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
+        evidence:[
+          "Nico touches a hidden ticket stub whenever he is asked to write about home.",
+          "He never takes the ticket stub out in front of the class.",
+          "The ticket is described as worn from being handled."
+        ],
+        prompt:"Two interpretations could be defensible. Which answer recognizes that possibility?",
+        choices:[
+          {text:"The ticket could represent a private connection to home, or it could represent a memory Nico is not ready to share. Both readings fit the evidence and would need further support.",correct:true,feedback:"Exactly. Literary evidence can support more than one plausible interpretation. The next step would be to test each reading against more of the text."},
+          {text:"The ticket definitely proves Nico is homesick.",correct:false,feedback:"Homesickness is possible, but 'definitely proves' closes down other readings the evidence could also support."},
+          {text:"Because the text does not tell us exactly what the ticket means, we cannot interpret it at all.",correct:false,feedback:"Literary analysis often works precisely with this kind of uncertainty. We can make a cautious reading as long as we support it."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
+        evidence:[
+          "Every portrait faces forward except the youngest girl.",
+          "The girl looks toward something outside the frame.",
+          "The narrator never tells us what she sees."
+        ],
+        prompt:"Which interpretation handles the evidence most responsibly?",
+        choices:[
+          {text:"Her different gaze could suggest curiosity, independence, or attention to possibilities beyond what the others see; the ambiguity is part of what makes the image open to interpretation.",correct:true,feedback:"This acknowledges several plausible readings while staying grounded in the contrast the text actually gives us."},
+          {text:"She is definitely planning to run away.",correct:false,feedback:"That is one imaginable story, but the text does not provide enough evidence for such a specific plot claim."},
+          {text:"The detail has no meaning because we are not told what she is looking at.",correct:false,feedback:"Ambiguity does not prevent interpretation. It means the reader must be careful about what the evidence can and cannot support."}
+        ]
+      },
+      {
+        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
+        evidence:[
+          "The wolf speaks politely before becoming threatening.",
+          "The child responds because the wolf sounds familiar and courteous.",
+          "The danger becomes obvious only after trust has already been established."
+        ],
+        prompt:"Which interpretation best connects the pattern without turning it into a universal rule?",
+        choices:[
+          {text:"The story may suggest that danger can be difficult to recognize when it first appears through familiar or trustworthy social behavior.",correct:true,feedback:"This connects all three details and keeps the claim focused on how the story represents danger."},
+          {text:"Polite people cannot be trusted.",correct:false,feedback:"That turns one literary pattern into a sweeping rule about real people."},
+          {text:"The wolf is polite before he becomes threatening.",correct:false,feedback:"This restates the sequence but does not yet explain what the pattern might mean."}
+        ]
+      }
+    ];
+
+    const els={
+      roundText:document.getElementById("roundText"),
+      itemText:document.getElementById("itemText"),
+      progress:document.getElementById("progress"),
+      roundLabel:document.getElementById("roundLabel"),
+      evidenceList:document.getElementById("evidenceList"),
+      prompt:document.getElementById("prompt"),
+      choices:document.getElementById("choices"),
+      feedback:document.getElementById("feedback"),
+      actions:document.getElementById("actions"),
+      tryAgain:document.getElementById("tryAgain"),
+      next:document.getElementById("next"),
+      questionArea:document.getElementById("questionArea"),
+      completion:document.getElementById("completion"),
+      restart:document.getElementById("restart")
+    };
+
+    let index=0, solved=false;
+
+    function render(){
+      const item=items[index];
+      solved=false;
+      els.roundText.textContent=`Round ${item.round} of 3`;
+      els.itemText.textContent=`Example ${index+1} of ${items.length}`;
+      els.progress.value=index+1;
+      els.progress.max=items.length;
+      els.progress.textContent=`${index+1} of ${items.length}`;
+      els.roundLabel.textContent=item.roundLabel;
+      els.prompt.textContent=item.prompt || "Which interpretation best connects all of these details?";
+
+      els.evidenceList.innerHTML="";
+      item.evidence.forEach((text,i)=>{
+        const div=document.createElement("div");
+        div.className="evidence-item";
+        div.dataset.num=String(i+1);
+        div.textContent=text;
+        els.evidenceList.appendChild(div);
+      });
+
+      els.choices.innerHTML="";
+      item.choices.forEach((choice,i)=>{
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="choice";
+        btn.textContent=choice.text;
+        btn.addEventListener("click",()=>check(i,btn));
+        els.choices.appendChild(btn);
+      });
+
+      els.feedback.className="feedback hidden";
+      els.feedback.innerHTML="";
+      els.actions.classList.add("hidden");
+      els.tryAgain.classList.add("hidden");
+      els.next.classList.add("hidden");
+    }
+
+    function check(i,button){
+      const choice=items[index].choices[i];
+
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
+      });
+
+      if(choice.correct){
+        solved=true;
+        button.classList.add("correct");
+        els.feedback.className="feedback correct";
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — this interpretation connects the evidence as a pattern.</div><div>${choice.feedback}</div>`;
+        els.next.classList.remove("hidden");
+      }else{
+        button.classList.add("incorrect");
+        els.feedback.className="feedback try";
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Test the claim against all of the evidence.</div><div>${choice.feedback}</div>`;
+        els.tryAgain.classList.remove("hidden");
+      }
+
+      els.actions.classList.remove("hidden");
+      els.feedback.scrollIntoView({block:"nearest"});
+    }
+
+    els.tryAgain.addEventListener("click",()=>{
+      render();
+      const first=els.choices.querySelector(".choice");
+      if(first) first.focus();
+    });
+
+    els.next.addEventListener("click",()=>{
+      if(!solved)return;
+      index++;
+      if(index>=items.length){
+        els.questionArea.classList.add("hidden");
+        els.completion.classList.remove("hidden");
+        els.itemText.textContent="Complete";
+        els.progress.value=items.length;
+        els.completion.focus();
+      }else{
+        render();
+        window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+      }
+    });
+
+    els.restart.addEventListener("click",()=>{
+      index=0;
+      els.completion.classList.add("hidden");
+      els.questionArea.classList.remove("hidden");
+      render();
+      window.scrollTo({top:document.getElementById("practice-heading").offsetTop-10,behavior:"smooth"});
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
