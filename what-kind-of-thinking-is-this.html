@@ -418,8 +418,11 @@
     .completion-actions{
       display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.8rem
     }
-    .completion-actions button{
+    .completion-actions button,.completion-actions a{
       flex:1 1 180px;min-height:48px
+    }
+    .completion-actions a.review-instructions-btn{
+      display:inline-flex;align-items:center;justify-content:center;text-decoration:none
     }
 
     @media(max-width:600px){
@@ -918,7 +921,7 @@
         </div>
         <div class="completion-actions">
           <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <button type="button" class="review-instructions-btn" id="upgradedReview">Review Instructions</button>
+          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=what-kind-of-thinking-is-this">Reflect</a>
         </div>
       `;
 
@@ -927,7 +930,6 @@
         // has its own internal state and original restart handler.
         window.location.reload();
       });
-      completion.querySelector("#upgradedReview")?.addEventListener("click", leaveActivityMode);
 
       requestAnimationFrame(() => completion.scrollIntoView({behavior:"auto",block:"start"}));
     }
