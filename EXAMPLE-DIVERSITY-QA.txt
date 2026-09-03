@@ -1,0 +1,29 @@
+C1002 EXAMPLE DIVERSITY QA — FINAL
+
+Distinctive scenario spread across the 15 core labs:
+- wild and tangled: 0 lab(s) -> none
+- Little Red Riding Hood: 1 lab(s) -> what-kind-of-thinking-is-this.html
+- the wolf: 1 lab(s) -> what-kind-of-thinking-is-this.html
+- swallowed every sound: 0 lab(s) -> none
+- locked window: 0 lab(s) -> none
+- thin line of light: 0 lab(s) -> none
+- The Emperor’s New Clothes: 2 lab(s) -> notice-to-wonder.html, too-obvious-too-wild-just-right.html
+- Rumpelstiltskin: 4 lab(s) -> notice-to-wonder.html, zoom-in.html, too-obvious-too-wild-just-right.html, strengthen-the-thesis.html
+- The Goose-Girl: 3 lab(s) -> so-what.html, claim-evidence-explanation.html, analysis-repair-shop.html
+- The Snow Queen: 3 lab(s) -> notice-to-wonder.html, dont-drop-the-quote.html, complicate-it.html
+- The Fir Tree: 2 lab(s) -> so-what.html, theme-or-topic.html
+- The Six Swans: 2 lab(s) -> build-an-interpretation.html, pattern-finder.html
+- The Talkative Tortoise: 2 lab(s) -> build-an-interpretation.html, analysis-repair-shop.html
+- The Tiger, the Brahman, and the Jackal: 2 lab(s) -> so-what.html, dont-drop-the-quote.html
+- The Red Shoes: 1 lab(s) -> complicate-it.html
+- The Frog Prince: 1 lab(s) -> complicate-it.html
+- The Little Match Girl: 1 lab(s) -> analysis-repair-shop.html
+- Snow White: 2 lab(s) -> what-kind-of-thinking-is-this.html, strengthen-the-thesis.html
+- The Nightingale: 1 lab(s) -> analysis-repair-shop.html
+- Hansel and Gretel: 1 lab(s) -> pattern-finder.html
+- Rapunzel: 1 lab(s) -> dont-drop-the-quote.html
+- Mother Holle: 1 lab(s) -> strengthen-the-thesis.html
+
+Broken local links: []
+Orphaned HTML pages: []
+Too Obvious / Too Wild / Just Right fixed-sequence safeguard: True

@@ -491,7 +491,7 @@
 
   <script>
   (() => {
-    const items = [
+    const sourceItems = [
       {
         round:1, roundLabel:"Round 1: Find the Middle Ground",
         evidence:"Cinderella is treated differently after her clothing changes.",
@@ -527,77 +527,134 @@
       },
       {
         round:2, roundLabel:"Round 2: Watch for Overreach",
-        passage:"The hallway swallowed every sound she made.",
-        evidence:"The hallway is described as if it can 'swallow' sound.",
-        interpretation:"The hallway is quiet.",
+        passage:"In Rumpelstiltskin, knowing the little man’s name changes the balance of the final bargain.",
+        evidence:"The character’s secret name becomes the crucial piece of knowledge in the conflict.",
+        interpretation:"His name is important.",
         answer:"obvious",
         feedback:{
-          obvious:"Yes. This paraphrases the basic effect of the sentence but does not yet interpret why “swallowed” is such a forceful choice.",
+          obvious:"Yes. This paraphrases the basic effect of the sentence but does not yet interpret why the secret name changes the balance of the bargain.",
           wild:"This claim is not overreaching; it is under-interpreting.",
-          right:"The claim is accurate but too literal. A stronger interpretation would explain how the image makes the setting feel active, consuming, or oppressive."
+          right:"The claim is accurate but too literal. A stronger interpretation would explain how knowledge of the name changes the power relationship."
         }
       },
       {
         round:2, roundLabel:"Round 2: Watch for Overreach",
-        passage:"The hallway swallowed every sound she made.",
-        evidence:"The hallway is described as if it can 'swallow' sound.",
-        interpretation:"The image makes the setting feel active and consuming, as though the character’s presence is being erased.",
+        passage:"In Rumpelstiltskin, knowing the little man’s name changes the balance of the final bargain.",
+        evidence:"The character’s secret name becomes the crucial piece of knowledge in the conflict.",
+        interpretation:"The tale may treat hidden knowledge as a form of power because learning the name allows the young woman to challenge terms she could not previously control.",
         answer:"right",
         feedback:{
-          obvious:"This goes beyond paraphrase by explaining the effect of the image.",
-          wild:"The claim is interpretive, but it still stays attached to the specific language of “swallowed” and the disappearance of sound.",
-          right:"Yes. The interpretation explains what the word does and remains defensible from the language in the passage."
+          obvious:"This goes beyond paraphrase by explaining how knowledge changes the bargain.",
+          wild:"The claim is interpretive, but it still stays attached to the specific role of hidden knowledge in the bargain.",
+          right:"Yes. The interpretation explains what the secret knowledge does and remains defensible from the language in the passage."
         }
       },
       {
         round:2, roundLabel:"Round 2: Watch for Overreach",
-        passage:"The hallway swallowed every sound she made.",
-        evidence:"The hallway is described as if it can 'swallow' sound.",
-        interpretation:"The house is literally alive and plans to attack the character.",
+        passage:"In Rumpelstiltskin, knowing the little man’s name changes the balance of the final bargain.",
+        evidence:"The character’s secret name becomes the crucial piece of knowledge in the conflict.",
+        interpretation:"The tale proves that learning someone’s name always gives you complete control over that person.",
         answer:"wild",
         feedback:{
-          obvious:"This is definitely not too obvious; it adds a major plot claim that the line does not establish.",
-          wild:"Exactly. Figurative language can make a setting feel alive without proving that the house is literally a living creature.",
-          right:"The interpretation goes beyond the figurative effect and turns it into an unsupported literal plot claim."
+          obvious:"This is definitely not too obvious; it turns one tale’s magical bargain into a universal rule.",
+          wild:"Exactly. The story can connect a secret name with power without proving that names always create complete control.",
+          right:"The interpretation goes beyond this specific bargain and turns it into an unsupported universal rule."
         }
       },
       {
         round:3, roundLabel:"Round 3: Try It Somewhere New",
-        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
-        evidence:"The youngest girl is the only figure looking outside the frame.",
-        interpretation:"The youngest girl is looking in a different direction.",
+        passage:"In The Emperor’s New Clothes, the crowd publicly praises the clothes even though no one can see them. A child finally says that the emperor is wearing nothing.",
+        evidence:"The crowd repeats the approved story until one person breaks the silence.",
+        interpretation:"The child says something different from the adults.",
         answer:"obvious",
         feedback:{
-          obvious:"Yes. This restates the visual difference but does not yet explain why the contrast might matter.",
+          obvious:"Yes. This identifies the difference but does not explain what it reveals about the crowd but does not yet explain why the difference between silence and speech might matter.",
           wild:"This is not overreach. It stays entirely on the surface.",
-          right:"It is accurate, but analysis needs one more move: what might this difference suggest?"
+          right:"It is accurate, but analysis needs one more move: what might this break from group agreement suggest?"
         }
       },
       {
         round:3, roundLabel:"Round 3: Try It Somewhere New",
-        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
-        evidence:"The youngest girl is the only figure looking outside the frame.",
-        interpretation:"The contrast may associate the youngest figure with curiosity or attention to possibilities beyond what the others see.",
+        passage:"In The Emperor’s New Clothes, the crowd publicly praises the clothes even though no one can see them. A child finally says that the emperor is wearing nothing.",
+        evidence:"The crowd repeats the approved story until one person breaks the silence.",
+        interpretation:"The tale may suggest that social pressure can make people repeat a claim they privately doubt, while one act of plain speech can expose the group’s performance.",
         answer:"right",
         feedback:{
-          obvious:"This is more than description. It explains what the contrast may suggest.",
-          wild:"The interpretation is cautious and grounded in the visual difference. It offers a possibility rather than pretending to know exactly what the girl sees.",
+          obvious:"This is more than description. It explains what the group pattern may suggest.",
+          wild:"The interpretation is cautious and grounded in the repeated public agreement and the child’s interruption. It offers a possibility rather than pretending to know exactly why the group remains silent.",
           right:"Yes. This reaches beyond the surface while staying close enough to the evidence to defend."
         }
       },
       {
         round:3, roundLabel:"Round 3: Try It Somewhere New",
-        passage:"Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
-        evidence:"The youngest girl is the only figure looking outside the frame.",
-        interpretation:"The youngest girl is secretly planning to escape her family that night.",
+        passage:"In The Emperor’s New Clothes, the crowd publicly praises the clothes even though no one can see them. A child finally says that the emperor is wearing nothing.",
+        evidence:"The crowd repeats the approved story until one person breaks the silence.",
+        interpretation:"The tale proves that children always know the truth and adults always lie.",
         answer:"wild",
         feedback:{
-          obvious:"This is not simply restating the evidence; it adds a specific story that the passage never gives us.",
-          wild:"Exactly. The image may suggest independence or curiosity, but the text does not support this specific plan or future event.",
-          right:"The claim is imaginable, but defensible analysis needs evidence, not just possibility."
+          obvious:"This is not simply restating the evidence; it makes a sweeping universal claim about children and adults.",
+          wild:"Exactly. The scene may support an interpretation about conformity and honesty, but it does not support a rule about all children and adults.",
+          right:"The claim is possible as a stereotype, but defensible analysis must stay with what this scene actually supports."
         }
       }
     ];
+
+
+    function buildShuffledItems(source){
+      const byRound = new Map();
+      source.forEach(item=>{
+        if(!byRound.has(item.round)) byRound.set(item.round,[]);
+        byRound.get(item.round).push(item);
+      });
+
+      let previousSequence="";
+      let previousLast="";
+      const result=[];
+
+      [...byRound.keys()].sort((a,b)=>a-b).forEach(round=>{
+        const group=byRound.get(round);
+        const permutations=[];
+
+        function permute(arr,start=0){
+          if(start===arr.length-1){
+            permutations.push([...arr]);
+            return;
+          }
+          for(let i=start;i<arr.length;i++){
+            [arr[start],arr[i]]=[arr[i],arr[start]];
+            permute(arr,start+1);
+            [arr[start],arr[i]]=[arr[i],arr[start]];
+          }
+        }
+
+        permute([...group]);
+
+        let valid=permutations.filter(order=>{
+          const seq=order.map(item=>item.answer).join("|");
+          return seq!=="obvious|right|wild" &&
+                 seq!==previousSequence &&
+                 (!previousLast || order[0].answer!==previousLast);
+        });
+
+        if(!valid.length){
+          valid=permutations.filter(order=>{
+            const seq=order.map(item=>item.answer).join("|");
+            return seq!=="obvious|right|wild" && seq!==previousSequence;
+          });
+        }
+
+        if(!valid.length) valid=permutations;
+
+        const chosen=valid[Math.floor(Math.random()*valid.length)];
+        previousSequence=chosen.map(item=>item.answer).join("|");
+        previousLast=chosen[chosen.length-1].answer;
+        result.push(...chosen);
+      });
+
+      return result;
+    }
+
+    const items=buildShuffledItems(sourceItems);
 
     const els={
       roundText:document.getElementById("roundText"),
