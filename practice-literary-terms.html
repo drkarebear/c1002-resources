@@ -1,1 +1,1053 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Practice Literary Terms | Literary Analysis Labs</title>
+  <meta name="description" content="Low-stakes literary term flashcards that help students recognize terms, understand them in plain language, and connect them to literary analysis.">
+
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --surface:#fff;
+      --text:#1f2933;
+      --muted:#5d6978;
+      --border:#d4dbe5;
+      --accent:#1f5da8;
+      --accent-dark:#163f74;
+      --soft:#eef4fb;
+      --green:#2f7a43;
+      --green-soft:#f0f7f2;
+      --gold-soft:#fff8e8;
+      --gold:#8a5b00;
+      --focus:#111827;
+      --max:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+
+    a{
+      color:var(--accent-dark);
+      text-underline-offset:.18em;
+    }
+
+    a:hover{color:var(--accent)}
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible{
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+      border-radius:.3rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      top:-5rem;
+      left:.75rem;
+      z-index:1000;
+      padding:.75rem 1rem;
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
+    .skip-link:focus{top:.75rem}
+
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header{padding:1.5rem 0 .7rem}
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+
+    .brand span{font-weight:850}
+
+    .eyebrow{
+      margin:1.35rem 0 .25rem;
+      color:var(--accent-dark);
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.82rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.45rem,7vw,4.2rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    h2{
+      margin:1.9rem 0 .5rem;
+      font-size:1.5rem;
+      line-height:1.2;
+    }
+
+    h3{
+      margin:.1rem 0 .35rem;
+      font-size:1.25rem;
+      line-height:1.25;
+    }
+
+    .lede{
+      max-width:74ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:.8rem 0 0;
+    }
+
+    .note{
+      margin-top:1.1rem;
+      padding:1rem 1.1rem;
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+      border-radius:.45rem;
+    }
+
+    .setup{
+      margin-top:1.2rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      padding:1rem;
+    }
+
+    .setup-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:.8rem;
+      align-items:end;
+    }
+
+    label{
+      display:block;
+      font-weight:850;
+      color:var(--accent-dark);
+      margin-bottom:.35rem;
+    }
+
+    select{
+      width:100%;
+      min-height:48px;
+      border:2px solid var(--border);
+      border-radius:.58rem;
+      padding:.7rem .8rem;
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+    }
+
+    button{
+      font:inherit;
+    }
+
+    .btn{
+      min-height:48px;
+      border-radius:.58rem;
+      padding:.75rem 1rem;
+      font-weight:800;
+      border:2px solid var(--accent);
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      color:var(--accent-dark);
+    }
+
+    .btn:hover{
+      background:var(--soft);
+    }
+
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn.primary:hover{
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .btn.green{
+      border-color:var(--green);
+      color:#1f5b31;
+      background:var(--green-soft);
+    }
+
+    .btn.review{
+      border-color:#c69a36;
+      color:#694600;
+      background:var(--gold-soft);
+    }
+
+    .practice{
+      margin-top:1rem;
+    }
+
+    .progress-row{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      color:var(--muted);
+      font-size:.92rem;
+      margin-bottom:.45rem;
+    }
+
+    progress{
+      width:100%;
+      height:.85rem;
+      accent-color:var(--accent);
+    }
+
+    .card{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:1rem;
+      box-shadow:0 2px 5px rgba(0,0,0,.05);
+      overflow:hidden;
+    }
+
+    .front,
+    .back{
+      padding:clamp(1.1rem,4vw,1.6rem);
+    }
+
+    .front{
+      min-height:300px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .category{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-weight:850;
+      color:var(--accent-dark);
+      margin-bottom:.4rem;
+    }
+
+    .term{
+      font-size:clamp(2.2rem,8vw,3.6rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      font-weight:900;
+      margin:.2rem 0 .8rem;
+    }
+
+    .prompt{
+      color:var(--muted);
+      max-width:48ch;
+      margin:0 auto 1rem;
+    }
+
+    .reveal{
+      align-self:center;
+      margin-top:.3rem;
+    }
+
+    .back{
+      border-top:1px solid var(--border);
+      background:#fff;
+    }
+
+    .back[hidden]{display:none}
+
+    .plain{
+      font-size:1.1rem;
+      margin:.3rem 0 1rem;
+    }
+
+    .analysis-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .mini{
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.9rem;
+      background:#fff;
+    }
+
+    .mini strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .mini p{
+      margin:.15rem 0;
+    }
+
+    .example{
+      margin-top:.85rem;
+      padding:.9rem;
+      background:var(--soft);
+      border-radius:.7rem;
+    }
+
+    .example strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .decision{
+      margin-top:1rem;
+      padding-top:1rem;
+      border-top:1px solid var(--border);
+    }
+
+    .decision p{
+      margin:.1rem 0 .7rem;
+      font-weight:800;
+    }
+
+    .decision-buttons{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.7rem;
+    }
+
+    .summary{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.9rem;
+      padding:1.15rem;
+    }
+
+    .summary[hidden]{display:none}
+
+    .summary-boxes{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .summary-box{
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+
+    .summary-box strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .review-list{
+      margin:.45rem 0 0;
+      padding-left:1.2rem;
+    }
+
+    .review-list li{margin:.25rem 0}
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1rem;
+    }
+
+    .hidden{display:none!important}
+
+    footer{
+      padding:2.3rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media(max-width:700px){
+      header,main,footer{
+        width:min(calc(100% - 1.25rem),var(--max));
+      }
+
+      .setup-grid,
+      .analysis-box,
+      .decision-buttons,
+      .summary-boxes{
+        grid-template-columns:1fr;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .actions .btn{
+        width:100%;
+      }
+
+      .front{
+        min-height:250px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+      }
+    }
+
+    @media(prefers-contrast:more){
+      :root{
+        --border:#4b5563;
+        --muted:#374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to literary term practice</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
+
+    <p class="eyebrow">Optional Practice</p>
+    <h1>Practice Literary Terms</h1>
+
+    <p class="lede">
+      These flashcards are here if practicing terms helps you.
+      They are not a test, and you do not need to memorize every definition before you can analyze literature.
+    </p>
+
+    <div class="note">
+      <strong>Try to learn the term as a tool.</strong>
+      Before revealing the answer, say what the term means in your own words.
+      Then pay attention to the <strong>What to look for</strong> and <strong>What to ask</strong> sections.
+      Those are what help turn vocabulary into literary analysis.
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="setup" aria-labelledby="setup-heading">
+      <h2 id="setup-heading" style="margin-top:0">Choose What to Practice</h2>
+
+      <div class="setup-grid">
+        <div>
+          <label for="categorySelect">Term group</label>
+          <select id="categorySelect">
+            <option value="all">Mix all terms</option>
+            <option value="story">Stories and Narrators</option>
+            <option value="language">Language and Images</option>
+            <option value="patterns">Patterns and Meaning</option>
+            <option value="poetry">Poetry</option>
+            <option value="drama">Drama</option>
+            <option value="writing">Analysis Writing</option>
+          </select>
+        </div>
+
+        <button id="startBtn" class="btn primary" type="button">Start Practice</button>
+      </div>
+    </section>
+
+    <section id="practice" class="practice hidden" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Flashcards</h2>
+
+      <div class="progress-row">
+        <span id="progressText">Card 1 of 1</span>
+        <span id="reviewCount">0 marked for review</span>
+      </div>
+
+      <progress id="progressBar" max="1" value="1">1 of 1</progress>
+
+      <article class="card">
+        <div class="front">
+          <div id="cardCategory" class="category"></div>
+          <div id="cardTerm" class="term"></div>
+          <p class="prompt">
+            Before you reveal the card, try to explain this term in your own words.
+            If you can, also think of something you might look for in a text.
+          </p>
+          <button id="revealBtn" class="btn primary reveal" type="button">Show Meaning</button>
+        </div>
+
+        <div id="cardBack" class="back" hidden>
+          <div class="category">Plain meaning</div>
+          <p id="plainMeaning" class="plain"></p>
+
+          <div class="analysis-box">
+            <div class="mini">
+              <strong>What to look for</strong>
+              <p id="lookFor"></p>
+            </div>
+
+            <div class="mini">
+              <strong>What to ask</strong>
+              <p id="ask"></p>
+            </div>
+          </div>
+
+          <div id="exampleBox" class="example">
+            <strong>Quick example</strong>
+            <p id="exampleText"></p>
+          </div>
+
+          <div class="decision">
+            <p>How does this one feel now?</p>
+            <div class="decision-buttons">
+              <button id="gotItBtn" class="btn green" type="button">Got it</button>
+              <button id="reviewBtn" class="btn review" type="button">Review again</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="summary" class="summary" hidden tabindex="-1">
+      <div class="category">Practice complete</div>
+      <h2>You finished this set.</h2>
+      <p>
+        There is no score. The useful question is whether you know what the terms help you
+        <strong>notice and ask</strong> when you read.
+      </p>
+
+      <div class="summary-boxes">
+        <div class="summary-box">
+          <strong id="completeCount">0 cards practiced</strong>
+          <span>You worked through the full set.</span>
+        </div>
+
+        <div class="summary-box">
+          <strong id="reviewSummaryTitle">Nothing marked for review</strong>
+          <ul id="reviewList" class="review-list"></ul>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="practiceReviewBtn" class="btn primary" type="button">Practice Review Cards</button>
+        <button id="newSetBtn" class="btn" type="button">Choose Another Set</button>
+        <a class="btn" href="literary-terms.html">Literary Terms Made Simple</a>
+        <a class="btn" href="all-labs.html">All Labs</a>
+        <a class="btn" href="index.html">Student Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Literary terms are useful when they help you see and explain something in a text.
+    Knowing the label is only the beginning.
+  </footer>
+
+<script>
+(() => {
+  const cards = [
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Narrator",
+      plain:"The voice that tells a story.",
+      look:"What the narrator notices, knows, misunderstands, hides, or leaves out.",
+      ask:"How does this narrator shape what I believe or notice?",
+      example:"A narrator says, “I was not afraid,” but keeps describing every sound in the hallway."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Point of View",
+      plain:"The position from which we experience a story.",
+      look:"Whose thoughts we know, what information is available, and whose experience is missing.",
+      ask:"What does this perspective allow me to know, and what does it keep uncertain?",
+      example:"A first-person narrator can tell us what she thinks, but not what another character is secretly planning."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Characterization",
+      plain:"The way a writer builds our understanding of a character.",
+      look:"What a character says, does, avoids, notices, remembers, or how others respond to them.",
+      ask:"What do these choices suggest about the character that the text does not state directly?",
+      example:"A character says she does not care about the letter but keeps checking whether it is still in her pocket."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Setting",
+      plain:"Where and when a text takes place.",
+      look:"Places or times that feel safe, threatening, open, closed, public, private, familiar, or strange.",
+      ask:"How does this setting shape what the characters can do or how the scene feels?",
+      example:"A conversation that seems ordinary in a kitchen may feel very different if the characters are trapped there during a storm."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Conflict",
+      plain:"A struggle, pressure, or tension in a text.",
+      look:"What a character wants, what gets in the way, and what competing desires or values appear.",
+      ask:"What larger idea becomes visible through this struggle?",
+      example:"A character wants to leave home but also fears losing the people who depend on her."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Structure",
+      plain:"The way a text is arranged.",
+      look:"What comes first, what is delayed, what repeats, where the text shifts, and how it ends.",
+      ask:"Why might the writer have arranged the text this way?",
+      example:"A story may reveal the result of an argument before finally showing what caused it."
+    },
+    {
+      category:"story",
+      categoryName:"Stories and Narrators",
+      term:"Flashback",
+      plain:"A moment when a text moves back to an earlier event.",
+      look:"A memory, earlier scene, or shift away from the present timeline.",
+      ask:"Why does the text reveal this earlier event here?",
+      example:"A character sees an old bicycle and the story suddenly returns to a childhood summer."
+    },
+
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Diction",
+      plain:"The particular words a writer chooses.",
+      look:"Words that feel unusually strong, formal, casual, harsh, gentle, repeated, or surprising.",
+      ask:"Why this word instead of a simpler or more expected one?",
+      example:"“The hallway swallowed his footsteps.” The word “swallowed” makes the space feel active."
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Imagery",
+      plain:"Language that helps you imagine a sensory experience.",
+      look:"Details that make you see, hear, feel, smell, taste, or otherwise experience the scene.",
+      ask:"What does this image make especially vivid, and why might that matter?",
+      example:"“Cold rain slid down the back of her collar.”"
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Figurative Language",
+      plain:"Language that is not meant only in a literal way.",
+      look:"Comparisons, exaggeration, personification, or images that ask you to imagine one thing through another.",
+      ask:"What becomes stronger, stranger, or more emotional because of this nonliteral language?",
+      example:"“The silence sat between them.” Silence cannot literally sit, but the image gives it weight and presence."
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Metaphor",
+      plain:"A comparison that treats one thing as if it were another.",
+      look:"A description that gives one thing the qualities of something else.",
+      ask:"What qualities from the comparison get transferred, and what do they add?",
+      example:"“Her memory was a locked room.”"
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Simile",
+      plain:"A comparison that usually uses “like” or “as.”",
+      look:"Two unlike things being compared directly.",
+      ask:"What does the comparison help me see differently?",
+      example:"“The unanswered phone glowed like a warning.”"
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Personification",
+      plain:"Giving human actions or qualities to something nonhuman.",
+      look:"Objects, weather, places, or ideas that seem to act, feel, want, watch, or speak.",
+      ask:"How does making this thing seem human change the mood or meaning?",
+      example:"“The old house watched them leave.”"
+    },
+    {
+      category:"language",
+      categoryName:"Language and Images",
+      term:"Symbol",
+      plain:"A concrete thing that takes on a larger meaning in a particular text.",
+      look:"An object, place, color, image, or action that repeats or becomes unusually important.",
+      ask:"What larger idea might this connect to, and what evidence makes that reading plausible?",
+      example:"A locked window might become connected to restriction if the text repeatedly links it with a character's desire to leave."
+    },
+
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Repetition",
+      plain:"A word, image, phrase, sound, action, or idea that appears more than once.",
+      look:"Something that keeps returning.",
+      ask:"What changes when this appears again? What pattern is being built?",
+      example:"A character checks the same locked door three times in different scenes."
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Contrast",
+      plain:"A noticeable difference between two things placed near each other.",
+      look:"Opposites or tensions such as light/dark, silence/noise, words/actions, or inside/outside.",
+      ask:"What becomes clearer because these two things are different?",
+      example:"A noisy family dinner is followed by a scene in which one character eats alone in silence."
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Motif",
+      plain:"A recurring image, idea, object, phrase, or situation that helps build meaning.",
+      look:"A repeated detail that seems connected to a larger idea.",
+      ask:"What larger pattern does this repeated detail help create?",
+      example:"Mirrors appear repeatedly whenever a character questions who she is becoming."
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Theme",
+      plain:"An idea the text develops about a larger topic.",
+      look:"Patterns involving topics such as family, power, freedom, identity, fear, or belonging.",
+      ask:"What does this particular text seem to suggest about that topic?",
+      example:"“Family” is a topic. “Family loyalty can become pressure when belonging depends on silence” is a thematic idea."
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Tone",
+      plain:"The attitude or emotional quality created by the speaker's or narrator's language.",
+      look:"Word choice, rhythm, exaggeration, understatement, repetition, or changes in description.",
+      ask:"How does the language make the speaker or narrator seem to feel about the subject?",
+      example:"Calling a celebration “another cheerful obligation” creates a different tone than calling it “a joyful tradition.”"
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Irony",
+      plain:"A meaningful gap between what is expected, said, known, or intended and what is actually true or happens.",
+      look:"Differences between words and meaning, expectation and outcome, or what different people know.",
+      ask:"What does this gap make the reader notice or understand?",
+      example:"A character praises how honest everyone is while the audience already knows the room is full of secrets."
+    },
+    {
+      category:"patterns",
+      categoryName:"Patterns and Meaning",
+      term:"Foreshadowing",
+      plain:"A detail that hints at something that may become important later.",
+      look:"An early image, warning, object, line, or event that gains new meaning later.",
+      ask:"How does the earlier detail change once I know what happens later?",
+      example:"A cracked stair is mentioned casually early in a story and becomes important during the final scene."
+    },
+
+    {
+      category:"poetry",
+      categoryName:"Poetry",
+      term:"Speaker",
+      plain:"The voice speaking in a poem.",
+      look:"Who seems to be speaking, to whom, and what the voice reveals or hides.",
+      ask:"How does this speaker's position shape the poem?",
+      example:"The speaker of a poem may be a child, a fictional character, or an invented voice—not automatically the poet."
+    },
+    {
+      category:"poetry",
+      categoryName:"Poetry",
+      term:"Stanza",
+      plain:"A group of lines in a poem, somewhat like a paragraph.",
+      look:"Where one stanza ends and another begins, especially if the poem shifts there.",
+      ask:"Why might the poem divide its ideas at this point?",
+      example:"A poem may move from describing a room in one stanza to remembering a person in the next."
+    },
+    {
+      category:"poetry",
+      categoryName:"Poetry",
+      term:"Line Break",
+      plain:"The place where one line of a poem ends and the next begins.",
+      look:"Breaks that create pauses, surprise, emphasis, double meaning, or unusual connections.",
+      ask:"What changes because the line ends here?",
+      example:"“I thought I knew / nothing” briefly lets “I thought I knew” stand alone before changing its meaning."
+    },
+    {
+      category:"poetry",
+      categoryName:"Poetry",
+      term:"Rhyme",
+      plain:"Repeated or similar sounds, often at the ends of words.",
+      look:"Words that echo each other and places where a rhyme pattern changes or breaks.",
+      ask:"What ideas or words get connected because they sound alike?",
+      example:"If “home” repeatedly rhymes with “alone,” the sound connection may reinforce an idea."
+    },
+    {
+      category:"poetry",
+      categoryName:"Poetry",
+      term:"Rhythm",
+      plain:"The pattern and pace of stressed and unstressed sounds in language.",
+      look:"Language that speeds up, slows down, becomes regular, or suddenly breaks its pattern.",
+      ask:"How does the pace or beat affect the feeling of the poem?",
+      example:"Short, clipped lines can make a moment feel tense or breathless."
+    },
+
+    {
+      category:"drama",
+      categoryName:"Drama",
+      term:"Dialogue",
+      plain:"The words characters speak to one another.",
+      look:"What characters say, avoid saying, repeat, interrupt, misunderstand, or imply.",
+      ask:"What does this conversation reveal beyond the literal words?",
+      example:"A character says “I'm fine” while repeatedly refusing to look at the other person."
+    },
+    {
+      category:"drama",
+      categoryName:"Drama",
+      term:"Stage Direction",
+      plain:"Written instructions in a play that describe action, movement, setting, sound, or how something happens.",
+      look:"Actions that do not match dialogue, meaningful pauses, entrances, exits, or objects being handled.",
+      ask:"What does the action show that the dialogue does not say?",
+      example:"(Mara folds the unopened note twice and hides it before Eli enters.)"
+    },
+    {
+      category:"drama",
+      categoryName:"Drama",
+      term:"Scene",
+      plain:"A section of a play, often organized around a particular place, time, or group of characters.",
+      look:"Who enters, who leaves, what changes, and what the scene accomplishes before it ends.",
+      ask:"What changes because this scene happened?",
+      example:"A scene begins with two characters alone and ends immediately after a third character arrives."
+    },
+    {
+      category:"drama",
+      categoryName:"Drama",
+      term:"Dramatic Irony",
+      plain:"When the audience knows something important that a character does not.",
+      look:"A character making choices without information the audience already has.",
+      ask:"How does knowing more than the character change the tension or meaning?",
+      example:"The audience knows the letter is fake, but the character makes a major decision because she believes it."
+    },
+
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Analysis",
+      plain:"Explaining how or why something in the text matters.",
+      look:"A specific textual detail followed by reasoning about its effect or significance.",
+      ask:"What can I explain that the text itself does not already state?",
+      example:"Not just “the room is dark,” but why the repeated darkness matters to the larger interpretation."
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Interpretation",
+      plain:"A possible explanation of what a text or pattern might mean.",
+      look:"A claim that grows from evidence but is not simply stated directly in the text.",
+      ask:"What reading becomes possible when I put these details together?",
+      example:"Repeated locked doors may suggest that safety and confinement are connected in the story."
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Claim",
+      plain:"An idea you are asking your reader to consider or believe.",
+      look:"A sentence that makes a point rather than only reporting a fact.",
+      ask:"What am I actually saying about this text?",
+      example:"“The story presents belonging as something the characters gain through secrecy.”"
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Textual Evidence",
+      plain:"Words, actions, images, patterns, stage directions, or other details from the text that help support an idea.",
+      look:"The most revealing detail for the claim you are making.",
+      ask:"What specific part of the text gives my reader a reason to believe this interpretation?",
+      example:"A single repeated word can be evidence; evidence does not have to be a long quotation."
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Close Reading",
+      plain:"Slowing down and looking carefully at a small part of the text.",
+      look:"Specific words, images, repetitions, contrasts, shifts, sounds, actions, or structural choices.",
+      ask:"What becomes visible when I look at this small detail more carefully?",
+      example:"Instead of summarizing a whole scene, focus on why the narrator suddenly changes from “I” to “we.”"
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Thesis",
+      plain:"The main interpretive claim an essay develops.",
+      look:"An arguable idea that gives the essay a direction, not just a list of topics or devices.",
+      ask:"What larger interpretation are my paragraphs working together to develop?",
+      example:"A thesis can change as you read and write; revising it is part of analysis."
+    },
+    {
+      category:"writing",
+      categoryName:"Analysis Writing",
+      term:"Complicate",
+      plain:"Make an idea more accurate by including tension, exceptions, or evidence that does not fit perfectly.",
+      look:"A detail that challenges or qualifies your first interpretation.",
+      ask:"How can my claim make room for this evidence instead of ignoring it?",
+      example:"“The character wants freedom, yet repeatedly chooses the safety of familiar restrictions.”"
+    }
+  ];
+
+  const categorySelect = document.getElementById("categorySelect");
+  const startBtn = document.getElementById("startBtn");
+  const practice = document.getElementById("practice");
+  const summary = document.getElementById("summary");
+  const cardCategory = document.getElementById("cardCategory");
+  const cardTerm = document.getElementById("cardTerm");
+  const cardBack = document.getElementById("cardBack");
+  const plainMeaning = document.getElementById("plainMeaning");
+  const lookFor = document.getElementById("lookFor");
+  const ask = document.getElementById("ask");
+  const exampleBox = document.getElementById("exampleBox");
+  const exampleText = document.getElementById("exampleText");
+  const progressText = document.getElementById("progressText");
+  const reviewCount = document.getElementById("reviewCount");
+  const progressBar = document.getElementById("progressBar");
+  const reviewSummaryTitle = document.getElementById("reviewSummaryTitle");
+  const reviewList = document.getElementById("reviewList");
+  const practiceReviewBtn = document.getElementById("practiceReviewBtn");
+  const completeCount = document.getElementById("completeCount");
+
+  let deck = [];
+  let index = 0;
+  let reviewCards = [];
+
+  function makeDeck(category){
+    return cards.filter(card => category === "all" || card.category === category);
+  }
+
+  function render(){
+    const card = deck[index];
+
+    progressText.textContent = `Card ${index + 1} of ${deck.length}`;
+    progressBar.max = deck.length;
+    progressBar.value = index + 1;
+    reviewCount.textContent = `${reviewCards.length} marked for review`;
+
+    cardCategory.textContent = card.categoryName;
+    cardTerm.textContent = card.term;
+    plainMeaning.textContent = card.plain;
+    lookFor.textContent = card.look;
+    ask.textContent = card.ask;
+
+    if(card.example){
+      exampleText.textContent = card.example;
+      exampleBox.classList.remove("hidden");
+    }else{
+      exampleText.textContent = "";
+      exampleBox.classList.add("hidden");
+    }
+
+    cardBack.hidden = true;
+    document.getElementById("revealBtn").classList.remove("hidden");
+  }
+
+  function begin(newDeck){
+    deck = [...newDeck];
+    index = 0;
+    reviewCards = [];
+    summary.hidden = true;
+    practice.classList.remove("hidden");
+    render();
+    practice.scrollIntoView({behavior:"auto", block:"start"});
+  }
+
+  function nextCard(markForReview){
+    const current = deck[index];
+
+    if(markForReview && !reviewCards.some(c => c.term === current.term && c.category === current.category)){
+      reviewCards.push(current);
+    }
+
+    if(index < deck.length - 1){
+      index++;
+      render();
+      document.querySelector(".card").scrollIntoView({behavior:"auto", block:"start"});
+    }else{
+      finish();
+    }
+  }
+
+  function finish(){
+    practice.classList.add("hidden");
+    summary.hidden = false;
+    completeCount.textContent = `${deck.length} card${deck.length === 1 ? "" : "s"} practiced`;
+
+    reviewList.innerHTML = "";
+
+    if(reviewCards.length){
+      reviewSummaryTitle.textContent = `${reviewCards.length} to review again`;
+      reviewCards.forEach(card => {
+        const li = document.createElement("li");
+        li.textContent = card.term;
+        reviewList.appendChild(li);
+      });
+      practiceReviewBtn.classList.remove("hidden");
+    }else{
+      reviewSummaryTitle.textContent = "Nothing marked for review";
+      practiceReviewBtn.classList.add("hidden");
+    }
+
+    summary.focus();
+    summary.scrollIntoView({behavior:"auto", block:"start"});
+  }
+
+  startBtn.addEventListener("click", () => {
+    const selected = categorySelect.value;
+    begin(makeDeck(selected));
+  });
+
+  document.getElementById("revealBtn").addEventListener("click", () => {
+    cardBack.hidden = false;
+    document.getElementById("revealBtn").classList.add("hidden");
+    cardBack.scrollIntoView({behavior:"auto", block:"nearest"});
+  });
+
+  document.getElementById("gotItBtn").addEventListener("click", () => nextCard(false));
+  document.getElementById("reviewBtn").addEventListener("click", () => nextCard(true));
+
+  practiceReviewBtn.addEventListener("click", () => {
+    begin(reviewCards);
+  });
+
+  document.getElementById("newSetBtn").addEventListener("click", () => {
+    summary.hidden = true;
+    practice.classList.add("hidden");
+    document.querySelector(".setup").scrollIntoView({behavior:"auto", block:"start"});
+    categorySelect.focus({preventScroll:true});
+  });
+})();
+</script>
+</body>
+</html>
