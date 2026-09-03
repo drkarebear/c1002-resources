@@ -1,0 +1,13 @@
+C1002 SUPPORT GRAPHICS QA
+
+Graphic usage: {'read-your-text-themes.png': ['big-ideas.html'], 'from-topic-to-theme.png': ['big-ideas.html'], 'zoom-in-then-zoom-out.png': ['close-reading.html'], 'follow-the-clues-organizer.png': ['close-reading.html'], 'build-your-analysis.png': ['how-to-read-literature.html'], 'summary-vs-analysis.png': ['what-is-literary-analysis.html'], 'literary-analysis-path.png': ['what-is-literary-analysis.html']}
+Broken/local accessibility issues: []
+Orphaned HTML pages: []
+JavaScript syntax errors: []
+
+Expected placements:
+- what-is-literary-analysis.html: summary-vs-analysis.png, literary-analysis-path.png
+- close-reading.html: zoom-in-then-zoom-out.png, follow-the-clues-organizer.png
+- how-to-read-literature.html: build-your-analysis.png
+- big-ideas.html: read-your-text-themes.png, from-topic-to-theme.png
+- No new graphics added to quiz/activity pages.

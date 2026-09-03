@@ -1,12 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Theme or Topic? | Literary Analysis Lab</title>
-  <link rel="icon" type="image/png" href="favicon4.png">
-  <meta name="description" content="An accessible interactive literary analysis activity that helps students distinguish topics from thematic ideas and defensible interpretations.">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Theme or Topic? | Literary Analysis Lab</title>
+<link href="favicon4.png" rel="icon" type="image/png"/>
+<meta content="An accessible interactive literary analysis activity that helps students distinguish topics from thematic ideas and defensible interpretations." name="description"/>
+<style>
     :root{
       --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
       --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
@@ -355,9 +356,48 @@
       }
     }
 
-</style>
 
-  <style id="mobile-activity-upgrade">
+    /* Accessible support graphic */
+    .support-graphic{
+      margin:1.5rem 0;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:.9rem;
+      padding:1rem;
+    }
+    .support-graphic img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:.55rem;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .support-graphic figcaption{
+      margin-top:.65rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .graphic-description{
+      margin-top:.75rem;
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      background:var(--soft);
+      padding:.1rem .85rem .75rem;
+    }
+    .graphic-description summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0 .15rem;
+      color:var(--accent-dark);
+    }
+    .graphic-description p,
+    .graphic-description li{
+      margin:.35rem 0;
+    }
+
+</style>
+<style id="mobile-activity-upgrade">
     /* Mobile activity mode: once practice begins, the page behaves more like a
        sequence of screens than a long document. */
     .start-activity-wrap{
@@ -492,112 +532,96 @@
       .completion-actions{margin-top:.6rem}
     }
   </style>
-
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to activity</a>
-
-  <header>
-    <nav class="student-nav" aria-label="Student navigation">
-      <a href="index.html">Student Home</a>
-      <a href="all-labs.html">All Labs</a>
-    </nav>
-    <p class="eyebrow">Literary Analysis Lab</p>
-    <h1 class="page-title">Theme or Topic?</h1>
-    <p class="lede">
+<a class="skip-link" href="#main">Skip to activity</a>
+<header>
+<nav aria-label="Student navigation" class="student-nav">
+<a href="index.html">Student Home</a>
+<a href="all-labs.html">All Labs</a>
+</nav>
+<p class="eyebrow">Literary Analysis Lab</p>
+<h1 class="page-title">Theme or Topic?</h1>
+<p class="lede">
       Words like <strong>family</strong>, <strong>freedom</strong>, <strong>identity</strong>, and <strong>power</strong>
       are important subjects, but they are not themes by themselves. A theme is an idea the text develops
       <strong>about</strong> one of those subjects.
     </p>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>This lab helps you move from a broad subject to a more specific thematic interpretation.</p>
-
-        <div class="levels">
-          <div class="level">
-            <strong>TOPIC</strong>
+</header>
+<main id="main" tabindex="-1">
+<section aria-labelledby="helps-heading">
+<h2 id="helps-heading">What This Helps You Do</h2>
+<div class="card">
+<p>This lab helps you move from a broad subject to a more specific thematic interpretation.</p>
+<div class="levels">
+<div class="level">
+<strong>TOPIC</strong>
             A broad subject such as family, freedom, childhood, fear, or identity.
           </div>
-          <div class="level">
-            <strong>THEMATIC IDEA</strong>
+<div class="level">
+<strong>THEMATIC IDEA</strong>
             A statement about what the text may suggest about that subject.
           </div>
-          <div class="level">
-            <strong>THEMATIC INTERPRETATION</strong>
+<div class="level">
+<strong>THEMATIC INTERPRETATION</strong>
             A specific, defensible claim connected to patterns and evidence in the text.
           </div>
-        </div>
-
-        <div class="tip">
-          <strong>Theme is not a one-word answer.</strong>
+</div>
+<div class="tip">
+<strong>Theme is not a one-word answer.</strong>
           Ask: “What does this text seem to suggest about this topic?”
         </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
-
-      <div id="labCard" class="card">
-        <div class="progress-wrap">
-          <div class="progress-label">
-            <span id="roundText">Round 1 of 3</span>
-            <span id="itemText">Example 1 of 8</span>
-          </div>
-          <progress id="progress" value="1" max="8">1 of 8</progress>
-        </div>
-
-        <div id="questionArea">
-          <div class="round-label" id="roundLabel">Round 1: Topic or Theme?</div>
-
-          <div id="contextWrap" class="hidden">
-            <p class="label">EVIDENCE PATTERN</p>
-            <div id="evidenceList" class="evidence-list"></div>
-          </div>
-
-          <p class="label">STATEMENT</p>
-          <div class="box" id="statement"></div>
-
-          <p class="prompt" id="prompt"></p>
-          <div id="choices" class="choices" aria-label="Choose the strongest classification or thematic interpretation"></div>
-
-          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-
-          <div id="actions" class="actions hidden">
-            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
-            <button id="next" class="primary" type="button">Continue</button>
-          </div>
-        </div>
-
-        <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced moving from topic to theme.</p>
-          <p>When you think you have found a theme, test it:</p>
-          <ul>
-            <li>Is it more than one word?</li>
-            <li>Does it say something about the topic?</li>
-            <li>Can I connect it to a pattern in the text?</li>
-            <li>Is it specific enough to argue but cautious enough to defend?</li>
-          </ul>
-          <p>
+</div>
+</section>
+<section aria-labelledby="practice-heading">
+<h2 id="practice-heading">Try It</h2>
+<div class="card" id="labCard">
+<div class="progress-wrap">
+<div class="progress-label">
+<span id="roundText">Round 1 of 3</span>
+<span id="itemText">Example 1 of 8</span>
+</div>
+<progress id="progress" max="8" value="1">1 of 8</progress>
+</div>
+<div id="questionArea">
+<div class="round-label" id="roundLabel">Round 1: Topic or Theme?</div>
+<div class="hidden" id="contextWrap">
+<p class="label">EVIDENCE PATTERN</p>
+<div class="evidence-list" id="evidenceList"></div>
+</div>
+<p class="label">STATEMENT</p>
+<div class="box" id="statement"></div>
+<p class="prompt" id="prompt"></p>
+<div aria-label="Choose the strongest classification or thematic interpretation" class="choices" id="choices"></div>
+<div aria-atomic="true" aria-live="polite" class="feedback hidden" id="feedback" role="status"></div>
+<div class="actions hidden" id="actions">
+<button class="secondary" id="tryAgain" type="button">Try This One Again</button>
+<button class="primary" id="next" type="button">Continue</button>
+</div>
+</div>
+<div class="completion hidden" id="completion" tabindex="-1">
+<p class="big">You practiced moving from topic to theme.</p>
+<p>When you think you have found a theme, test it:</p>
+<ul>
+<li>Is it more than one word?</li>
+<li>Does it say something about the topic?</li>
+<li>Can I connect it to a pattern in the text?</li>
+<li>Is it specific enough to argue but cautious enough to defend?</li>
+</ul>
+<p>
             “Family” is a topic. “Belonging in a family can depend on unspoken expectations” is a thematic idea.
             The difference is the thinking.
           </p>
+<div class="actions">
+<button class="secondary" id="restart" type="button">Practice Again</button>
+</div>
+</div>
+</div>
+</section>
 
-          <div class="actions">
-            <button id="restart" class="secondary" type="button">Practice Again</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
-
-  <script>
+</main>
+<footer>This low-stakes practice activity does not record or submit student responses.</footer>
+<script>
   (() => {
     const items = [
       {
@@ -862,8 +886,7 @@
     render();
   })();
   </script>
-
-  <script id="mobile-activity-upgrade-js">
+<script id="mobile-activity-upgrade-js">
   (() => {
     function localDateParts(){
       const now = new Date();
@@ -1005,12 +1028,9 @@
     });
   })();
   </script>
-
-
 <footer class="site-credit-footer">
-  <p>Created by Karen Crozer for ENGL C1002 classes.</p>
-  <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+<p>Created by Karen Crozer for ENGL C1002 classes.</p>
+<p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
 </footer>
-
 </body>
 </html>

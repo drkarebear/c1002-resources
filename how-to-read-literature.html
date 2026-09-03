@@ -497,6 +497,46 @@
       }
     }
 
+
+    /* Accessible support graphic */
+    .support-graphic{
+      margin:1.5rem 0;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:.9rem;
+      padding:1rem;
+    }
+    .support-graphic img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:.55rem;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .support-graphic figcaption{
+      margin-top:.65rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .graphic-description{
+      margin-top:.75rem;
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      background:var(--soft);
+      padding:.1rem .85rem .75rem;
+    }
+    .graphic-description summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0 .15rem;
+      color:var(--accent-dark);
+    }
+    .graphic-description p,
+    .graphic-description li{
+      margin:.35rem 0;
+    }
+
 </style>
 </head>
 
@@ -514,6 +554,25 @@
     </nav>
 
     <p class="eyebrow">Quick Help</p>
+    <figure class="support-graphic">
+      <img src="build-your-analysis.png" alt="Build Your Analysis infographic showing five steps that move from noticing a detail to explaining why an interpretation matters." loading="lazy">
+      <figcaption>A five-step scaffold for turning reading notes into an interpretation.</figcaption>
+      <details class="graphic-description">
+        <summary>Text Version of This Graphic</summary>
+        
+        <h3>Build Your Analysis</h3>
+        <p>Move from observation to insight.</p>
+        <ol>
+          <li><strong>I Notice:</strong> What details stand out in the text?</li>
+          <li><strong>I Wonder:</strong> What questions do these details raise?</li>
+          <li><strong>I Think:</strong> What might these details suggest or mean?</li>
+          <li><strong>My Evidence:</strong> What moments, words, or images from the text support my thinking?</li>
+          <li><strong>This Matters Because...</strong> How does my analysis connect to a larger idea or the bigger meaning of the text?</li>
+        </ol>
+        
+      </details>
+    </figure>
+
     <h1>How to Read Literature</h1>
 
     <p class="lede">
