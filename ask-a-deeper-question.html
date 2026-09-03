@@ -41,26 +41,106 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 :root{--bg:#10151b;--surface:#18212a;--text:#f3f6f9;--muted:#bdc7d2;--border:#3b4856;--accent:#8dbbff;--accent-dark:#bdd7ff;--soft:#202c38;--green:#72d287;--green-soft:#182a1d;--gold-soft:#302817;--focus:#fff}
 .actions .primary{background:#315f99}a{color:var(--accent-dark)}
 }
+
+.learn{margin:1.25rem 0 1.5rem}
+.learn-intro{max-width:72ch;color:var(--muted)}
+.lesson-card{background:var(--surface);border:1px solid var(--border);border-radius:.85rem;padding:1rem;margin:1rem 0}
+.lesson-card h2,.lesson-card h3{margin:.05rem 0 .45rem}
+.question-path{display:grid;grid-template-columns:1fr;gap:.5rem;margin:.8rem 0}
+.question-step{border:1px solid var(--border);border-radius:.7rem;padding:.8rem;background:var(--soft)}
+.question-step strong{display:block;color:var(--accent-dark)}
+.question-step.final{background:var(--green-soft);border-left:5px solid var(--green)}
+.arrow-step{text-align:center;font-weight:900;color:var(--muted)}
+.lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:.8rem 0}
+.lens{background:var(--soft);border:1px solid var(--border);border-radius:.7rem;padding:.8rem}
+.lens strong{display:block;color:var(--accent-dark);margin-bottom:.15rem}
+.compare-q{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.8rem 0}
+.compare-q>div{background:var(--soft);border:1px solid var(--border);border-radius:.7rem;padding:.8rem}
+.compare-q .better{background:var(--green-soft);border-left:5px solid var(--green)}
+.now-practice{margin:1.8rem 0 1rem;border:3px solid var(--accent);border-radius:.9rem;background:var(--soft);padding:1.05rem;text-align:center}
+.now-practice .practice-kicker{display:block;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-dark)}
+.now-practice h2{font-size:clamp(1.9rem,6vw,2.7rem);margin:.15rem 0 .25rem}
+.now-practice p{max-width:62ch;margin:.25rem auto}
+@media(max-width:620px){.lens-grid,.compare-q{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <header>
-<a class="brand" href="index.html"><img src="favicon4.png" alt=""><span>ENGL C1002 Learning Lab</span></a>
-<nav class="student-nav" aria-label="Student navigation"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
+<a class="brand" href="index.html"><img alt="" src="favicon4.png"><span>ENGL C1002 Learning Lab</span></a>
+<nav aria-label="Student navigation" class="student-nav"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
 <p class="eyebrow">4. Develop</p>
 <h1>Ask a Deeper Question</h1>
-<p class="lede">Noticing that a text is “about power” or “about identity” is a useful start. Development happens when you ask a question that makes the idea more specific, complicated, and arguable.</p>
-<div class="big-note"><strong>Move from topic to problem.</strong> Instead of asking only “Where is power?” ask how power works, who benefits, who resists it, what it costs, and what the text seems to suggest about that dynamic.</div>
-
-<div class="example-ladder">
-  <p><strong>Broad observation:</strong> There is a power dynamic in this relationship.</p>
-  <p><strong>Better question:</strong> Who has power, and how do we know?</p>
-  <p><strong>Deeper question:</strong> How is that power maintained or challenged, and what does the text suggest about why the relationship continues?</p>
-</div>
+<p class="lede">A deeper question does not have to sound more academic or make a bigger claim. It helps you turn a broad idea into a more specific interpretive problem that the text can actually help you explore.</p>
 </header>
 
 <main>
-<section id="activity">
+
+<section class="learn" aria-labelledby="learn-heading">
+<h2 id="learn-heading">Before You Practice: Make the Question More Useful, Not Just Bigger</h2>
+<p class="learn-intro">Broad ideas such as power, identity, freedom, belonging, or family can help you notice what a text is exploring. The next step is to ask a question that gives you something more precise to investigate.</p>
+
+<article class="lesson-card">
+<h3>1. Move From Topic to Interpretive Problem</h3>
+<div class="question-path">
+<div class="question-step"><strong>BROAD IDEA</strong>There is a power dynamic in this relationship.</div>
+<div class="arrow-step" aria-hidden="true">↓</div>
+<div class="question-step"><strong>BETTER QUESTION</strong>Who has power, and how do we know?</div>
+<div class="arrow-step" aria-hidden="true">↓</div>
+<div class="question-step final"><strong>DEEPER QUESTION</strong>How is that power maintained or challenged, and what does the text suggest about why the relationship continues?</div>
+</div>
+<p>The deeper question is not “better” because it is longer. It is better because it asks about <strong>how the pattern works and why it matters</strong>.</p>
+</article>
+
+<article class="lesson-card">
+<h3>2. Useful Questions Often Ask About Relationships, Tensions, or Consequences</h3>
+<div class="lens-grid">
+<div class="lens"><strong>HOW?</strong>How is this pattern created, maintained, changed, or resisted?</div>
+<div class="lens"><strong>WHO?</strong>Who benefits, who is limited, who gets believed, or who pays the cost?</div>
+<div class="lens"><strong>WHAT TENSION?</strong>What two needs, values, identities, or possibilities seem to conflict?</div>
+<div class="lens"><strong>WHAT CHANGES?</strong>When does the pattern shift, and what causes that change?</div>
+<div class="lens"><strong>WHAT DOES IT COST?</strong>What does a character gain, lose, hide, or give up?</div>
+<div class="lens"><strong>WHAT MIGHT IT SUGGEST?</strong>What larger interpretation begins to emerge from the pattern?</div>
+</div>
+</article>
+
+<article class="lesson-card">
+<h3>3. “Deeper” Does Not Mean More Sweeping</h3>
+<div class="compare-q">
+<div>
+<strong>Too broad</strong>
+<p>What does this story say about human nature?</p>
+</div>
+<div class="better">
+<strong>More useful</strong>
+<p>Why does the character keep seeking the group's approval even after recognizing that belonging requires her to hide part of herself?</p>
+</div>
+</div>
+<p>The second question stays closer to the text. It creates room for interpretation without requiring the essay to explain all people or all of society.</p>
+</article>
+
+<article class="lesson-card">
+<h3>4. The Best Question Is One the Text Gives You Evidence to Explore</h3>
+<p>Before using a question to develop your thesis, check:</p>
+<ul>
+<li>Does it grow from something I actually noticed in the text?</li>
+<li>Could more than one reasonable answer be possible?</li>
+<li>Can I point to several moments or details that would help me investigate it?</li>
+<li>Does it move beyond labeling something “good,” “bad,” “fair,” or “unfair”?</li>
+<li>Would answering it make my interpretation more specific, complicated, or arguable?</li>
+</ul>
+<div class="big-note"><strong>You do not need the answer before you ask the question.</strong> A useful analytical question helps you reread with a purpose. Your answer can develop as you examine more evidence.</div>
+</article>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Choose the question that moves beyond identifying a broad topic and creates a more specific interpretive problem the text can help you explore.</p>
+</section>
+
+<section id="activity" aria-labelledby="activity-heading">
+<h2 id="activity-heading" class="hidden">Ask a Deeper Question Practice</h2>
 <div class="progress-label"><span id="progressText"></span><span>Choose the deeper question</span></div>
 <progress id="progress" value="1" max="12"></progress>
 <div id="questionCard" class="card">
@@ -87,7 +167,7 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 
 <section class="transfer">
 <h2>Try It With Your Text</h2>
-<p>Choose one broad idea you have already noticed. Write one question that asks about <strong>how it works</strong>, <strong>who it affects</strong>, <strong>what tension it creates</strong>, or <strong>what the text may be suggesting about it</strong>.</p>
+<p>Choose one broad idea you have already noticed. Then write a question that asks about <strong>how it works</strong>, <strong>who it affects</strong>, <strong>what tension it creates</strong>, <strong>what it costs</strong>, or <strong>what the text may be suggesting about it</strong>. Make sure the question grows from evidence you can actually return to.</p>
 <p>Try this sentence frame: <strong>“I noticed ________. A deeper question I could ask is ________.”</strong></p>
 <div class="actions"><a href="big-ideas.html">Big Ideas & Questions</a><a href="complicate-it.html">Complicate It</a><a href="strengthen-the-thesis.html">Strengthen the Thesis</a></div>
 </section>

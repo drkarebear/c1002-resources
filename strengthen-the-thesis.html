@@ -57,6 +57,100 @@
     footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
     @media(max-width:820px){.ladder{grid-template-columns:1fr 1fr}}
     @media(max-width:560px){.ladder{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    
+    /* Thesis instruction upgrade */
+    .instruction-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.75rem;
+      margin:.9rem 0;
+    }
+    .instruction-box{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.85rem;
+    }
+    .instruction-box strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.2rem;
+    }
+    .thesis-path{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.48rem;
+      margin:.85rem 0;
+    }
+    .thesis-step{
+      border:1px solid var(--border);
+      border-radius:.68rem;
+      padding:.78rem;
+      background:var(--soft);
+    }
+    .thesis-step strong{
+      display:block;
+      color:var(--accent-dark);
+    }
+    .thesis-step.final{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .thesis-arrow{
+      text-align:center;
+      font-weight:900;
+      color:var(--muted);
+      font-size:1.15rem;
+    }
+    .example-pair{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.7rem;
+      margin:.8rem 0;
+    }
+    .example-pair > div{
+      border:1px solid var(--border);
+      border-radius:.68rem;
+      padding:.8rem;
+      background:var(--soft);
+    }
+    .example-pair .better{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .thesis-check{
+      margin:.55rem 0;
+      padding-left:1.25rem;
+    }
+    .thesis-check li{margin:.3rem 0}
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent);
+      border-radius:.9rem;
+      background:var(--soft);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:62ch;
+      margin:.25rem auto;
+    }
+    @media(max-width:650px){
+      .instruction-grid,.example-pair{grid-template-columns:1fr}
+    }
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   
@@ -525,26 +619,82 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>Think of thesis development as a ladder. Each step adds more interpretation.</p>
+<h2 id="helps-heading">Before You Practice: Build an Argument, Not Just a Thesis-Shaped Sentence</h2>
 
-        <div class="ladder">
-          <div class="rung"><strong>TOPIC</strong>Names the subject.</div>
-          <div class="rung"><strong>OBSERVATION</strong>Notices a pattern or detail.</div>
-          <div class="rung"><strong>BASIC CLAIM</strong>Makes an interpretation, but may still be broad or obvious.</div>
-          <div class="rung"><strong>STRONGER THESIS</strong>Makes a specific, arguable claim that explains why the pattern matters.</div>
-        </div>
+<div class="card">
+<p>A literary-analysis thesis should tell the reader <strong>what you think the text is doing or suggesting</strong>. It grows out of close reading, patterns, and interpretation rather than appearing before you have looked carefully at the evidence.</p>
 
-        <div class="tip">
-          <strong>A thesis is the result of thinking, not a sentence formula.</strong>
-          Phrases like “the author uses symbolism to show…” can be useful scaffolds, but they do not automatically create an interesting argument.
-        </div>
-      </div>
-    </section>
+<div class="instruction-grid">
+  <div class="instruction-box">
+    <strong>THESIS = WHOLE ESSAY</strong>
+    Your thesis gives the essay its larger interpretive argument.
+  </div>
+  <div class="instruction-box">
+    <strong>TOPIC SENTENCE = ONE BODY PARAGRAPH</strong>
+    Each topic sentence develops one smaller part of that larger argument.
+  </div>
+</div>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<h3>Move From Topic to Interpretation</h3>
+<div class="thesis-path" aria-label="Topic to stronger thesis progression">
+  <div class="thesis-step"><strong>TOPIC</strong>Names the subject: identity, power, belonging, jealousy, memory.</div>
+  <div class="thesis-arrow" aria-hidden="true">↓</div>
+  <div class="thesis-step"><strong>OBSERVATION</strong>Notices a pattern or detail in the text.</div>
+  <div class="thesis-arrow" aria-hidden="true">↓</div>
+  <div class="thesis-step"><strong>INTERPRETATION</strong>Explains what that pattern may suggest.</div>
+  <div class="thesis-arrow" aria-hidden="true">↓</div>
+  <div class="thesis-step final"><strong>WORKING THESIS</strong>Makes a specific, arguable, supportable claim that gives the whole essay something meaningful to develop.</div>
+</div>
+
+<div class="tip">
+<strong>A thesis is the result of thinking, not a sentence formula.</strong>
+Phrases such as “the author uses symbolism to show...” may help you begin a sentence, but the formula itself is not the argument. The important part is the interpretation you are making.
+</div>
+</div>
+
+<div class="card">
+<h3>What Makes a Thesis Stronger?</h3>
+<div class="example-pair">
+  <div>
+    <strong>Too broad</strong>
+    <p>Snow White is about jealousy.</p>
+  </div>
+  <div class="better">
+    <strong>More analytical</strong>
+    <p>By making the mirror repeatedly rank beauty, <em>Snow White</em> turns comparison into a force that intensifies the queen's insecurity and hostility.</p>
+  </div>
+</div>
+
+<p>The stronger version does not become better simply because it is longer. It becomes better because it tells us <strong>what pattern matters and what the writer thinks that pattern means</strong>.</p>
+</div>
+
+<div class="card">
+<h3>Test the Thesis Against the Text</h3>
+<p>A working thesis should give you direction, but it also has to survive contact with the evidence. Before you commit to it, ask:</p>
+<ul class="thesis-check">
+  <li><strong>Arguable:</strong> Could a reasonable reader interpret the text differently?</li>
+  <li><strong>Specific:</strong> Does the claim say more than “this text is about...”?</li>
+  <li><strong>Supportable:</strong> Can you point to several textual details, patterns, or moments that help support it?</li>
+  <li><strong>Interpretive:</strong> Does it explain what those details suggest rather than merely naming them?</li>
+  <li><strong>Proportionate:</strong> Does it avoid claiming more than the evidence can reasonably support?</li>
+  <li><strong>Meaningful:</strong> Does the claim give the essay something worth explaining?</li>
+</ul>
+
+<div class="tip">
+<strong>Your thesis can change.</strong>
+If rereading reveals a detail that does not fit your first idea, revise the thesis. Changing a working thesis is not starting over; it is evidence that your interpretation is developing.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Move from topics and observations toward specific, arguable theses, then choose the thesis that best fits the evidence without claiming more than the text can support.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Strengthen the Thesis Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -587,7 +737,7 @@
           </p>
           <div class="transfer-box">
             <h3>Try It With Your Draft</h3>
-            <p>Look at your current thesis or main idea. Revise it so it says not only <strong>what</strong> pattern you noticed, but <strong>what you think that pattern may suggest</strong>. Keep both versions so you can see what changed.</p>
+            <p>Look at your current thesis or main idea. Underline the textual pattern or evidence it grows from. Then revise the thesis so it explains not only <strong>what</strong> you noticed, but <strong>what you think that pattern suggests</strong> and why that interpretation is worth developing. Keep both versions so you can see what changed.</p>
           </div>
 <div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
@@ -604,7 +754,7 @@
     const items = [
       {
         round:1,
-        roundLabel:"Round 1: Climb the Ladder",
+        roundLabel:"Round 1: Move Toward a Thesis",
         context:"Topic: appearance in Cinderella",
         prompt:"Which sentence is the strongest next step toward a thesis?",
         choices:[
@@ -615,7 +765,7 @@
       },
       {
         round:1,
-        roundLabel:"Round 1: Climb the Ladder",
+        roundLabel:"Round 1: Move Toward a Thesis",
         context:"Observation: Adults repeatedly dismiss the youngest character’s questions.",
         prompt:"Which version turns the observation into a stronger thesis?",
         choices:[
