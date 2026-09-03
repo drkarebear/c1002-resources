@@ -1,0 +1,16 @@
+C1002 CATEGORY + DEEPER QUESTIONS QA
+
+HTML pages: 36
+Writer's Block linked from Notice: True
+Writer's Block removed from Develop helper: True
+Using Textual Evidence linked from Support: True
+Ask a Deeper Question exists: True
+Ask a Deeper Question linked from Develop: True
+Ask a Deeper Question linked from All Labs: True
+Ask a Deeper Question linked from Homepage: True
+Reflection integrated: True
+Teachers updated to 19 labs: True
+Broken local links: []
+Orphaned HTML pages: []
+Pages missing dark mode: []
+JavaScript syntax errors: []
