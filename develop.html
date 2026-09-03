@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -58,6 +57,20 @@
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  
+    .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
+    .student-nav a{font-weight:750}
+    
+  
+    .student-problem{
+      margin:.2rem 0 .7rem!important;
+      padding:.7rem .8rem;
+      background:var(--soft);
+      border-radius:.6rem;
+      color:var(--text)!important;
+      font-weight:750;
+    }
+    
   </style>
 
 </head>
@@ -70,10 +83,11 @@
         <img src="favicon4.png" alt="">
         <span>Literary Analysis Labs</span>
       </a>
-      <nav class="toplinks" aria-label="Site navigation">
-        <a href="index.html">Student Home</a>
-        <a href="teachers.html">For Instructors</a>
-      </nav>
+      
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
     </div>
 
     <p class="eyebrow">Move 4 of 4</p>
@@ -94,7 +108,7 @@
           <span class="lab-number">Develop activity 1</span>
           <h3>Strengthen the Thesis</h3>
           <p>Move from topic and observation toward a specific, arguable interpretive thesis.</p>
-          <p class="best"><strong>Try this if:</strong> your thesis sounds broad, formulaic, or mostly descriptive.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“My thesis sounds broad, obvious, or like a formula.”</p>
           <a class="btn btn-primary" href="strengthen-the-thesis.html">Open “Strengthen the Thesis”</a>
         </article>
 
@@ -102,7 +116,7 @@
           <span class="lab-number">Develop activity 2</span>
           <h3>Complicate It</h3>
           <p>Revise an interpretation when new evidence adds tension or contradiction.</p>
-          <p class="best"><strong>Try this if:</strong> part of the text does not fit your original claim.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“Some of the evidence doesn’t fit my claim.”</p>
           <a class="btn btn-primary" href="complicate-it.html">Open “Complicate It”</a>
         </article>
 
@@ -110,7 +124,7 @@
           <span class="lab-number">Develop activity 3</span>
           <h3>The Analysis Repair Shop</h3>
           <p>Diagnose and repair common problems in complete literary-analysis paragraphs.</p>
-          <p class="best"><strong>Try this if:</strong> you want to practice revising several analytical skills together.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“My paragraph isn’t working, but I don’t know what is wrong.”</p>
           <a class="btn btn-primary" href="analysis-repair-shop.html">Open “The Analysis Repair Shop”</a>
         </article>
       </div>
@@ -126,10 +140,21 @@
         <a class="pill" href="develop.html">4. Develop</a>
       </div>
     </section>
+
+    <section class="navbox" aria-labelledby="develop-help-heading">
+      <h2 id="develop-help-heading" style="margin-top:0">Revising a Whole Paper?</h2>
+      <p>If you have a complete draft and everything feels like it needs work, Literary Analysis Triage can help you decide what to revise first.</p>
+      <a class="pill" href="literary-analysis-triage.html">Open Literary Analysis Triage</a>
+    </section>
+
   </main>
 
   <footer>
-    <a href="index.html">← Back to all Literary Analysis Labs</a>
+    <div class="footer-links">
+      <a href="all-labs.html">← All Labs</a>
+      <a href="index.html">Student Home</a>
+      <a href="teachers.html">For Instructors</a>
+    </div>
   </footer>
 </body>
 </html>

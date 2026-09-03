@@ -58,6 +58,10 @@
     @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  
+    .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
+    .student-nav a{font-weight:750}
+    
   </style>
 
   <style id="mobile-activity-upgrade">
@@ -201,6 +205,10 @@
   <a class="skip-link" href="#main">Skip to activity</a>
 
   <header>
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
     <p class="eyebrow">Literary Analysis Lab</p>
     <div class="page-title">Pattern Finder</div>
     <p class="lede">
@@ -620,7 +628,10 @@
         <div class="completion-actions">
           <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
           <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=pattern-finder">Reflect</a>
-        </div>
+        
+            <a class="linkbtn" href="all-labs.html">All Labs</a>
+            <a class="linkbtn" href="index.html">Student Home</a>
+          </div>
       `;
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {

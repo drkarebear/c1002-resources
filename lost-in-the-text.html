@@ -100,6 +100,10 @@
     @media(max-width:430px){.repair-steps{grid-template-columns:1fr}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  
+    .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
+    .student-nav a{font-weight:750}
+    
   </style>
 </head>
 
@@ -107,6 +111,10 @@
   <a class="skip-link" href="#main">Skip to activity</a>
 
   <header>
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
     <p class="eyebrow">1. Notice · Literary Analysis Lab</p>
     <h1>Lost in the Text?</h1>
     <p class="lede">
@@ -194,6 +202,9 @@
             <a class="linkbtn" href="notice-to-wonder.html">Next: Notice → Wonder</a>
             <a class="linkbtn" href="notice.html">Back to Notice Activities</a>
             <button id="restart" class="secondary" type="button">Practice Again</button>
+          
+            <a class="linkbtn" href="all-labs.html">All Labs</a>
+            <a class="linkbtn" href="index.html">Student Home</a>
           </div>
         </div>
       </div>

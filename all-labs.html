@@ -42,6 +42,10 @@
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  
+    .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
+    .student-nav a{font-weight:750}
+    
   </style>
 </head>
 <body>
@@ -50,6 +54,10 @@
     <img src="favicon4.png" alt="">
     <span>Literary Analysis Labs</span>
   </a>
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
   <p class="eyebrow">Browse Everything</p>
   <h1>All Literary Analysis Labs</h1>
   <p class="lede">Choose the skill that matches where you are getting stuck. You do not need to complete every lab unless your instructor asks you to.</p>
@@ -113,6 +121,9 @@
     </div>
     <div class="grid">
       <article class="card"><div class="tag">Feedback Help</div><h3>What Does My Professor Mean?</h3><p>Turn comments like “go deeper,” “too much summary,” or “explain the quote” into concrete revision moves.</p><a class="btn" href="what-does-my-professor-mean.html">Open Tool</a></article>
+
+      <article class="card"><div class="tag">Whole-Draft Revision</div><h3>Literary Analysis Triage</h3><p>Figure out what to revise first in a full literary-analysis draft: interpretation, paragraph jobs, evidence, explanation, complexity, or polish.</p><a class="btn" href="literary-analysis-triage.html">Open Tool</a></article>
+
     </div>
   </section>
 </main>

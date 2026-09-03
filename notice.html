@@ -58,6 +58,20 @@
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  
+    .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
+    .student-nav a{font-weight:750}
+    
+  
+    .student-problem{
+      margin:.2rem 0 .7rem!important;
+      padding:.7rem .8rem;
+      background:var(--soft);
+      border-radius:.6rem;
+      color:var(--text)!important;
+      font-weight:750;
+    }
+    
   </style>
 
 </head>
@@ -70,10 +84,11 @@
         <img src="favicon4.png" alt="">
         <span>Literary Analysis Labs</span>
       </a>
-      <nav class="toplinks" aria-label="Site navigation">
-        <a href="index.html">Student Home</a>
-        <a href="teachers.html">For Instructors</a>
-      </nav>
+      
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
     </div>
 
     <p class="eyebrow">Move 1 of 4</p>
@@ -94,7 +109,7 @@
           <span class="lab-number">Notice activity 1</span>
           <h3>Lost in the Text?</h3>
           <p>Find the exact place a difficult passage becomes confusing, repair enough meaning to continue, and return to the writer’s words.</p>
-          <p class="best"><strong>Try this if:</strong> you can read the words but are not yet sure what the sentence, image, speaker, or passage is saying.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“I read the words, but I still don’t understand what this passage is saying.”</p>
           <a class="btn btn-primary" href="lost-in-the-text.html">Open “Lost in the Text?”</a>
         </article>
 
@@ -102,7 +117,7 @@
           <span class="lab-number">Notice activity 2</span>
           <h3>What Kind of Thinking Is This?</h3>
           <p>Tell the difference between summary, observation, and analysis.</p>
-          <p class="best"><strong>Try this if:</strong> you are not sure what professors mean by “analysis.”</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“I understand what happened, but I don’t know what counts as analysis.”</p>
           <a class="btn btn-primary" href="what-kind-of-thinking-is-this.html">Open “What Kind of Thinking Is This?”</a>
         </article>
 
@@ -110,7 +125,7 @@
           <span class="lab-number">Notice activity 3</span>
           <h3>Notice → Wonder</h3>
           <p>Turn something you notice into a question that can lead toward interpretation.</p>
-          <p class="best"><strong>Try this if:</strong> you can notice details but are not sure what to ask about them.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“I noticed something, but I don’t know what question to ask about it.”</p>
           <a class="btn btn-primary" href="notice-to-wonder.html">Open “Notice → Wonder”</a>
         </article>
 
@@ -118,7 +133,7 @@
           <span class="lab-number">Notice activity 4</span>
           <h3>Pattern Finder</h3>
           <p>Decide which details belong together and identify the pattern they create.</p>
-          <p class="best"><strong>Try this if:</strong> you have several quotations or notes but do not know how they connect.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“I have several details, but I don’t know how they connect.”</p>
           <a class="btn btn-primary" href="pattern-finder.html">Open “Pattern Finder”</a>
         </article>
 
@@ -126,7 +141,7 @@
           <span class="lab-number">Notice activity 5</span>
           <h3>Zoom In</h3>
           <p>Focus closely on a word, image, contrast, or detail and ask what it does.</p>
-          <p class="best"><strong>Try this if:</strong> you tend to quote a passage without closely analyzing its language.</p>
+          <p class="student-problem"><strong>If this sounds like you:</strong><br>“I found a quotation, but I don’t know what part of it to analyze.”</p>
           <a class="btn btn-primary" href="zoom-in.html">Open “Zoom In”</a>
         </article>
       </div>
@@ -145,7 +160,11 @@
   </main>
 
   <footer>
-    <a href="index.html">← Back to all Literary Analysis Labs</a>
+    <div class="footer-links">
+      <a href="all-labs.html">← All Labs</a>
+      <a href="index.html">Student Home</a>
+      <a href="teachers.html">For Instructors</a>
+    </div>
   </footer>
 </body>
 </html>

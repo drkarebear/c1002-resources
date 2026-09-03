@@ -335,6 +335,40 @@
         --muted:#374151;
       }
     }
+  
+    .stuck-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.8rem;
+      margin-top:1rem;
+    }
+    .stuck-card{
+      display:block;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.75rem;
+      padding:1rem;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .stuck-card:hover{
+      border-color:var(--accent);
+      background:var(--soft);
+      color:var(--text);
+    }
+    .stuck-card strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.2rem;
+    }
+    .stuck-card span{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    @media(max-width:700px){
+      .stuck-grid{grid-template-columns:1fr}
+    }
+    
   </style>
 </head>
 
@@ -377,6 +411,58 @@
   </header>
 
   <main id="main" tabindex="-1">
+
+    <section id="where-stuck" aria-labelledby="stuck-heading">
+      <h2 id="stuck-heading">Where Are You Stuck?</h2>
+      <p class="moves-intro">
+        You do not need to know whether your problem is “analysis,” “interpretation,” or “development.”
+        Choose the sentence that sounds most like what is happening for you.
+      </p>
+
+      <div class="stuck-grid">
+        <a class="stuck-card" href="lost-in-the-text.html">
+          <strong>“I read it, but I don’t understand it.”</strong>
+          <span>Try <em>Lost in the Text?</em> to find the exact place the reading became confusing.</span>
+        </a>
+
+        <a class="stuck-card" href="what-kind-of-thinking-is-this.html">
+          <strong>“I understand what happened, but I don’t know what counts as analysis.”</strong>
+          <span>Start with <em>What Kind of Thinking Is This?</em></span>
+        </a>
+
+        <a class="stuck-card" href="interpret.html">
+          <strong>“I noticed something, but I don’t know what it means.”</strong>
+          <span>Go to <strong>Interpret</strong> and practice turning observations into possible meanings.</span>
+        </a>
+
+        <a class="stuck-card" href="support.html">
+          <strong>“I have an idea, but I don’t know how to prove it.”</strong>
+          <span>Go to <strong>Support</strong> for evidence, quotations, and explanation.</span>
+        </a>
+
+        <a class="stuck-card" href="literary-analysis-triage.html">
+          <strong>“I have a draft, but I don’t know what to fix.”</strong>
+          <span>Use <em>Literary Analysis Triage</em> to find the highest-impact revision.</span>
+        </a>
+
+        <a class="stuck-card" href="what-does-my-professor-mean.html">
+          <strong>“My professor wrote a comment I don’t understand.”</strong>
+          <span>Use <em>What Does My Professor Mean?</em> to turn feedback into a next move.</span>
+        </a>
+
+        <a class="stuck-card" href="literary-terms.html">
+          <strong>“I don’t know what this literary term means.”</strong>
+          <span>Use <em>Literary Terms Made Simple</em> for plain-language definitions and examples.</span>
+        </a>
+
+        <a class="stuck-card" href="how-to-read-literature.html">
+          <strong>“I’m not sure how to read a story, poem, or play.”</strong>
+          <span>Use <em>How to Read Literature</em> for simple genre-specific reading strategies.</span>
+        </a>
+      </div>
+    </section>
+
+
     <section id="choose-a-move" aria-labelledby="moves-heading">
       <h2 id="moves-heading">Choose a Move</h2>
       <p class="moves-intro">
