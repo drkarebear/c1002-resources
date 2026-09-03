@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lost in the Text? | Literary Analysis Lab</title>
+  <meta name="description" content="A short literary analysis practice activity that helps students find the exact place a difficult passage becomes confusing, repair understanding, and return to close reading.">
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
+      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;
+      --max:840px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+    a:focus-visible,button:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem}
+    .skip-link{position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding-top:1.8rem}
+    .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);letter-spacing:.03em;text-transform:uppercase;font-size:.86rem}
+    h1{margin:0;font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.04;font-weight:850;letter-spacing:-.04em}
+    h2{margin-top:2rem;line-height:1.25;font-size:1.5rem}
+    h3{line-height:1.3;font-size:1.15rem}
+    .lede{max-width:67ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.2rem}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
+    .repair-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-top:1rem}
+    .repair-step{border:1px solid var(--border);border-radius:.65rem;padding:.8rem;background:#fff}
+    .repair-step strong{display:block;color:var(--accent-dark);margin-bottom:.15rem}
+    .repair-step span{color:var(--muted);font-size:.91rem}
+    .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
+    .progress-wrap{margin-bottom:1rem}
+    .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+    progress{width:100%;height:.9rem;accent-color:var(--accent)}
+    .round-label{font-weight:850;color:var(--accent-dark);margin-bottom:.2rem}
+    .prompt{font-size:1.18rem;font-weight:750;margin-top:.45rem}
+    blockquote{margin:1rem 0;padding:1rem 1.15rem;border-left:5px solid var(--accent);background:var(--soft);border-radius:.35rem;font-size:1.08rem}
+    .context{margin:.55rem 0;color:var(--muted);font-size:.95rem}
+    .choices{display:grid;gap:.7rem;margin-top:1rem}
+    button{font:inherit}
+    .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
+    .choice:hover,.primary:hover{background:var(--soft)}
+    .choice[disabled]{cursor:default;opacity:.8}
+    .choice.correct{border-color:var(--success-border);background:var(--success-bg);color:#174d27}
+    .choice.incorrect{border-color:var(--try-border);background:var(--try-bg);color:#604000}
+    .feedback{margin-top:1rem;padding:1rem;border-radius:.6rem;border:2px solid var(--border);background:#fff}
+    .feedback.correct{border-color:var(--success-border);background:var(--success-bg)}
+    .feedback.try{border-color:var(--try-border);background:var(--try-bg)}
+    .feedback-title{font-weight:850;margin-bottom:.2rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+    .primary{background:var(--accent);color:#fff;text-align:center}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{border-color:var(--border);background:#fff;color:var(--text);text-align:center}
+    .secondary:hover{border-color:var(--text)}
+    .hidden{display:none!important}
+    footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+
+    .start-activity-wrap{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem}
+    .start-activity-btn,.review-instructions-btn{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;border:2px solid var(--accent);font:inherit;font-weight:800;cursor:pointer}
+    .start-activity-btn{background:var(--accent);color:#fff}
+    .start-activity-btn:hover{background:var(--accent-dark)}
+    .review-instructions-btn{background:#fff;color:var(--accent-dark)}
+    .activity-toolbar{display:flex;justify-content:flex-end;margin-bottom:.7rem}
+    body.activity-mode header,body.activity-mode main>section:first-of-type{display:none}
+    body.activity-mode #practice-heading{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    body.activity-mode main{width:min(calc(100% - 1rem),var(--max))}
+    body.activity-mode #labCard{margin-top:.35rem}
+    .completion{width:100%;max-width:540px;margin:0 auto}
+    .completion-capture{background:#fff;border:2px solid var(--success-border);border-radius:1rem;padding:1.25rem;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .completion-check{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:0 auto .7rem;background:var(--success-bg);border:2px solid var(--success-border);color:#174d27;font-size:2rem;font-weight:900}
+    .completion-kicker{margin:0 0 .25rem;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.04em;font-size:.78rem;font-weight:850}
+    .completion-capture h2{margin:.1rem 0 .35rem;font-size:clamp(2rem,9vw,3rem);line-height:1}
+    .completion-activity{margin:.45rem auto .7rem;max-width:34ch;font-size:1.06rem;font-weight:800;line-height:1.35}
+    .completion-takeaway{margin:.6rem auto 0;max-width:47ch;color:var(--muted);font-size:.94rem}
+    .completion-proof{margin:.9rem 0 0;color:var(--muted);font-size:.88rem;line-height:1.35}
+    .completion-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.9rem}
+    .completion-actions a,.completion-actions button{flex:1 1 180px;min-height:48px}
+    .linkbtn{border:2px solid var(--accent);border-radius:.55rem;padding:.8rem 1rem;text-decoration:none;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+
+    @media(max-width:680px){
+      .repair-steps{grid-template-columns:1fr 1fr}
+      .actions{flex-direction:column}.primary,.secondary{width:100%}
+      body.activity-mode{background:#fff}
+      body.activity-mode main{width:100%}
+      body.activity-mode #labCard{border-left:0;border-right:0;border-radius:0;box-shadow:none;margin:0;padding:1rem;min-height:100svh}
+      .activity-toolbar{margin-bottom:.3rem}
+      .review-instructions-btn{min-height:42px;padding:.55rem .75rem;font-size:.92rem}
+      #completion{display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 2rem);padding:.35rem 0}
+      .completion-capture{padding:1rem .9rem;border-radius:.85rem}
+      .completion-check{width:50px;height:50px;font-size:1.7rem}
+      .completion-capture h2{font-size:2.25rem}
+      .completion-actions{flex-direction:column}
+    }
+    @media(max-width:430px){.repair-steps{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <header>
+    <p class="eyebrow">1. Notice · Literary Analysis Lab</p>
+    <h1>Lost in the Text?</h1>
+    <p class="lede">
+      Sometimes the first problem is not “What does this mean?” It is
+      <strong>“Where did I stop understanding?”</strong>
+      This activity helps you find the snag, repair just enough meaning, and return to the text ready to notice something.
+    </p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="helps-heading">
+      <h2 id="helps-heading">When to Use This</h2>
+      <div class="card">
+        <p>
+          Use this when you can read the words in a story, poem, or play but a sentence, image, speaker, or shift still feels confusing.
+          You do <strong>not</strong> need to solve the whole text at once.
+        </p>
+
+        <div class="repair-steps" aria-label="Four reading repair moves">
+          <div class="repair-step"><strong>1. Find the snag</strong><span>Where exactly did meaning become unclear?</span></div>
+          <div class="repair-step"><strong>2. Repair it</strong><span>Use the smallest strategy that helps.</span></div>
+          <div class="repair-step"><strong>3. Say it back</strong><span>Put the basic meaning in your own words.</span></div>
+          <div class="repair-step"><strong>4. Return to the text</strong><span>Now notice what the writer is doing.</span></div>
+        </div>
+
+        <div class="tip">
+          <strong>Important:</strong> Paraphrasing is a temporary bridge, not the final analysis.
+          Once you understand enough to continue, go back to the writer's actual words, structure, images, and choices.
+        </div>
+
+        <div class="start-activity-wrap">
+          <button id="startActivity" class="start-activity-btn" type="button">Start Activity</button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Practice</h2>
+      <div id="labCard" class="card">
+        <div class="activity-toolbar">
+          <button id="reviewInstructions" class="review-instructions-btn hidden" type="button">Review Instructions</button>
+        </div>
+
+        <div id="questionArea">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span id="roundText">Round 1</span>
+              <span id="itemText">1 of 8</span>
+            </div>
+            <progress id="progress" max="8" value="1">1 of 8</progress>
+          </div>
+
+          <div id="roundLabel" class="round-label"></div>
+          <div id="prompt" class="prompt"></div>
+          <div id="context" class="context hidden"></div>
+          <blockquote id="passage"></blockquote>
+
+          <div id="choices" class="choices" aria-label="Answer choices"></div>
+
+          <div id="feedback" class="feedback hidden" tabindex="-1">
+            <div id="feedbackTitle" class="feedback-title"></div>
+            <div id="feedbackText"></div>
+          </div>
+
+          <div id="actions" class="actions hidden">
+            <button id="tryAgain" class="secondary hidden" type="button">Try Again</button>
+            <button id="next" class="primary hidden" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="completion" class="completion hidden" tabindex="-1">
+          <div class="completion-capture">
+            <div class="completion-check" aria-hidden="true">✓</div>
+            <p class="completion-kicker">1. Notice · Literary Analysis Lab</p>
+            <h2>You did it!</h2>
+            <p class="completion-activity">Lost in the Text?</p>
+            <p class="completion-takeaway">
+              When a passage feels confusing, you do not have to guess at the whole meaning.
+              <strong>Find the exact snag, repair enough to continue, then return to the text and notice what the writer is doing.</strong>
+            </p>
+            <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
+          </div>
+          <div class="completion-actions">
+            <a class="linkbtn" href="notice-to-wonder.html">Next: Notice → Wonder</a>
+            <a class="linkbtn" href="notice.html">Back to Notice Activities</a>
+            <button id="restart" class="secondary" type="button">Practice Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This practice activity is designed for low-stakes, self-paced learning. It does not record or submit student responses.
+  </footer>
+
+<script>
+(() => {
+  const items = [
+    {
+      round:"Round 1",
+      label:"Find the Snag",
+      prompt:"Before trying to interpret this sentence, what is the most useful thing to notice about why it may feel confusing?",
+      passage:"Only after the apartment door clicked shut did Nia realize that the key was still on the kitchen table.",
+      choices:[
+        ["The sentence puts events in an unusual order, so I should untangle what happened first.","correct"],
+        ["The key must symbolize freedom, so I should interpret the symbol first.","wrong"],
+        ["I need to understand every detail about Nia before I can continue.","wrong"]
+      ],
+      correct:"Exactly. The sentence begins with “Only after...” and delays the main action. First repair the sequence: the door shut, then Nia realized the key was inside.",
+      wrong:"Not yet. Before interpreting symbols or solving the whole story, locate the exact comprehension snag. Here, the sentence order is doing most of the work."
+    },
+    {
+      round:"Round 1",
+      label:"Find the Snag",
+      prompt:"What is the most precise source of confusion here?",
+      passage:"“You told her?” Mateo asked. “I told no one who did not already know,” Priya said.",
+      choices:[
+        ["The second sentence is indirect, so I need to work out what Priya actually admits.","correct"],
+        ["I cannot continue until I know exactly who “her” is.","wrong"],
+        ["The quotation marks are the main problem.","wrong"]
+      ],
+      correct:"Yes. Priya does not simply say “no.” Her wording leaves open the possibility that she told people who already knew. That is the part worth untangling.",
+      wrong:"The missing identity of “her” may matter later, but the immediate snag is Priya's indirect answer. Start with the smallest place where meaning becomes slippery."
+    },
+    {
+      round:"Round 2",
+      label:"Repair Just Enough",
+      prompt:"What is the best first repair strategy for these lines?",
+      context:"Read the poem as a sentence before deciding what the image means.",
+      passage:"At dawn\n\nthe empty swing\n\nkeeps moving\n\nthough the yard is still.",
+      choices:[
+        ["Read across the line breaks: an empty swing keeps moving even though the yard is still.","correct"],
+        ["Decide immediately that the swing represents childhood.","wrong"],
+        ["Ignore the line breaks because poetry is supposed to be confusing.","wrong"]
+      ],
+      correct:"Right. First recover the basic sentence across the line breaks. Once that is clear, you can return to the odd image: why is the swing moving when everything else is still?",
+      wrong:"Interpretation comes next. The first repair is simpler: reconstruct the basic sentence across the line breaks, then return to the image."
+    },
+    {
+      round:"Round 2",
+      label:"Repair Just Enough",
+      prompt:"One word is blocking the sentence. Which move is most useful?",
+      passage:"By evening, the bright room had gone wan, and even the yellow curtains seemed gray.",
+      choices:[
+        ["Use the surrounding contrast to infer that “wan” means pale, weak, or drained of color.","correct"],
+        ["Skip the whole sentence because one unfamiliar word makes it unusable.","wrong"],
+        ["Assume “wan” must be a literary device.","wrong"]
+      ],
+      correct:"Yes. Context gives you enough: the room changes from bright to drained and gray. You can keep reading with a workable meaning even if you did not know the word beforehand.",
+      wrong:"You usually do not need a perfect dictionary definition before continuing. Use the nearby contrast to build a workable meaning."
+    },
+    {
+      round:"Round 3",
+      label:"Say It Back",
+      prompt:"Which paraphrase captures the basic meaning without turning the image into a literal event?",
+      passage:"The hallway swallowed his footsteps before he reached the stairs.",
+      choices:[
+        ["The hallway was so quiet or enclosed that the sound of his footsteps seemed to disappear.","correct"],
+        ["A hallway literally ate the sound of his feet.","wrong"],
+        ["He walked down a hallway and then reached some stairs.","wrong"]
+      ],
+      correct:"Exactly. This paraphrase preserves the image's basic effect without flattening it completely. Now you can return to “swallowed” and ask why that verb matters.",
+      wrong:"A useful paraphrase keeps the basic meaning while recognizing figurative language. It should not make the image literal or erase the striking word completely."
+    },
+    {
+      round:"Round 3",
+      label:"Say It Back",
+      prompt:"Which version best untangles the sentence before analysis?",
+      passage:"Across the kitchen table, untouched beneath the morning light, lay the letter her father had sent three weeks before.",
+      choices:[
+        ["Her father's letter, sent three weeks ago, is still lying unopened on the kitchen table.","correct"],
+        ["Morning light symbolizes truth, and the table symbolizes family.","wrong"],
+        ["There is a kitchen table in the morning.","wrong"]
+      ],
+      correct:"Yes. You have recovered who did what and what object matters. Now the original wording becomes useful again: the letter is “untouched,” and the sentence makes us look at it before naming it.",
+      wrong:"First recover the sentence's basic relationship: the old letter is still untouched on the table. Interpretation can grow from the original wording afterward."
+    },
+    {
+      round:"Round 4",
+      label:"Return to the Text",
+      prompt:"Now that the basic meaning is clear, which observation gives you the strongest place to begin close reading?",
+      context:"The narrator begins alone but shifts pronouns in the final sentence.",
+      passage:"I waited behind the gym until the buses left. I told myself I preferred the quiet. By winter, we had all learned which doors the teachers forgot to lock.",
+      choices:[
+        ["The narration shifts from “I” to “we,” turning one person's experience into something shared.","correct"],
+        ["The narrator waits behind a gym.","wrong"],
+        ["The students are definitely planning a crime.","wrong"]
+      ],
+      correct:"Exactly. You are back in literary analysis now. The shift from “I” to “we” is a specific textual choice that could lead to questions about belonging, secrecy, or shared experience.",
+      wrong:"Look for a textual choice that becomes interesting once you understand the passage. The pronoun shift gives you more to investigate than plot summary or an unsupported conclusion."
+    },
+    {
+      round:"Round 4",
+      label:"Return to the Text",
+      prompt:"You understand the stage direction literally. What is the strongest next thing to notice?",
+      context:"Stage direction from an original short scene.",
+      passage:"(Mara folds the unopened note twice and places it beneath her cup before Eli enters.)",
+      choices:[
+        ["The note is still unopened, yet Mara carefully folds and hides it before Eli arrives.","correct"],
+        ["Mara has a cup.","wrong"],
+        ["The note proves Mara is angry with Eli.","wrong"]
+      ],
+      correct:"Yes. That observation stays close to what the stage direction actually gives you. Your next move could be to wonder why an unopened note already matters enough to hide.",
+      wrong:"The strongest observation is specific without jumping ahead. Notice the tension between the note being unopened and Mara treating it as something that must be hidden."
+    }
+  ];
+
+  const el = {
+    roundText:document.getElementById("roundText"),
+    itemText:document.getElementById("itemText"),
+    progress:document.getElementById("progress"),
+    roundLabel:document.getElementById("roundLabel"),
+    prompt:document.getElementById("prompt"),
+    context:document.getElementById("context"),
+    passage:document.getElementById("passage"),
+    choices:document.getElementById("choices"),
+    feedback:document.getElementById("feedback"),
+    feedbackTitle:document.getElementById("feedbackTitle"),
+    feedbackText:document.getElementById("feedbackText"),
+    actions:document.getElementById("actions"),
+    tryAgain:document.getElementById("tryAgain"),
+    next:document.getElementById("next"),
+    questionArea:document.getElementById("questionArea"),
+    completion:document.getElementById("completion"),
+    restart:document.getElementById("restart"),
+    start:document.getElementById("startActivity"),
+    review:document.getElementById("reviewInstructions")
+  };
+
+  let index=0, correct=false;
+
+  function focusQuestion(){
+    requestAnimationFrame(()=>document.getElementById("labCard").scrollIntoView({behavior:"auto",block:"start"}));
+  }
+
+  function render(){
+    const item=items[index];
+    correct=false;
+    el.roundText.textContent=item.round;
+    el.itemText.textContent=`${index+1} of ${items.length}`;
+    el.progress.value=index+1;
+    el.roundLabel.textContent=`${item.round}: ${item.label}`;
+    el.prompt.textContent=item.prompt;
+    el.passage.textContent=item.passage;
+
+    if(item.context){
+      el.context.textContent=item.context;
+      el.context.classList.remove("hidden");
+    }else{
+      el.context.textContent="";
+      el.context.classList.add("hidden");
+    }
+
+    el.choices.innerHTML="";
+    item.choices.forEach(([text,status])=>{
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="choice";
+      b.textContent=text;
+      b.dataset.status=status;
+      b.addEventListener("click",()=>answer(b,item));
+      el.choices.appendChild(b);
+    });
+
+    el.feedback.className="feedback hidden";
+    el.actions.classList.add("hidden");
+    el.tryAgain.classList.add("hidden");
+    el.next.classList.add("hidden");
+    el.questionArea.classList.remove("hidden");
+    el.completion.classList.add("hidden");
+  }
+
+  function answer(button,item){
+    const isCorrect=button.dataset.status==="correct";
+    [...el.choices.children].forEach(b=>b.disabled=true);
+    button.classList.add(isCorrect?"correct":"incorrect");
+    el.feedback.className=`feedback ${isCorrect?"correct":"try"}`;
+    el.feedbackTitle.textContent=isCorrect?"Yes — that's the useful move.":"Try a smaller repair first.";
+    el.feedbackText.textContent=isCorrect?item.correct:item.wrong;
+    el.actions.classList.remove("hidden");
+
+    if(isCorrect){
+      correct=true;
+      el.next.textContent=index===items.length-1?"Finish":"Continue";
+      el.next.classList.remove("hidden");
+    }else{
+      el.tryAgain.classList.remove("hidden");
+    }
+    el.feedback.focus({preventScroll:true});
+    requestAnimationFrame(()=>el.feedback.scrollIntoView({behavior:"auto",block:"nearest"}));
+  }
+
+  el.tryAgain.addEventListener("click",()=>{
+    render();
+    focusQuestion();
+  });
+
+  el.next.addEventListener("click",()=>{
+    if(!correct)return;
+    if(index<items.length-1){
+      index++;
+      render();
+      focusQuestion();
+    }else{
+      el.questionArea.classList.add("hidden");
+      el.completion.classList.remove("hidden");
+      el.completion.focus();
+      requestAnimationFrame(()=>el.completion.scrollIntoView({behavior:"auto",block:"start"}));
+    }
+  });
+
+  el.restart.addEventListener("click",()=>{
+    index=0;
+    render();
+    focusQuestion();
+  });
+
+  el.start.addEventListener("click",()=>{
+    document.body.classList.add("activity-mode");
+    el.review.classList.remove("hidden");
+    render();
+    focusQuestion();
+  });
+
+  el.review.addEventListener("click",()=>{
+    document.body.classList.remove("activity-mode");
+    window.scrollTo({top:0,behavior:"auto"});
+    el.start.focus({preventScroll:true});
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
