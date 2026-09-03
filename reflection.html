@@ -4,99 +4,141 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reflection Prompt | Literary Analysis Labs</title>
-  <meta name="description" content="An activity-specific reflection prompt students can answer in Canvas or another instructor-designated space.">
+  <meta name="description" content="Activity-specific reflection prompts for Literary Analysis Labs. Students respond in Canvas or wherever their instructor assigns the reflection.">
   <link rel="icon" type="image/png" href="favicon4.png">
 
   <style>
     :root{
       --bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;
       --accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;
-      --green-soft:#f0f7f2;--focus:#111827;--max:860px;
+      --green-soft:#f0f7f2;--focus:#111827;--max:850px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6
+    }
     a{color:var(--accent-dark);text-underline-offset:.18em}
     a:hover{color:var(--accent)}
-    a:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem}
-    .skip-link{position:absolute;top:-5rem;left:.75rem;z-index:1000;padding:.75rem 1rem;background:#fff;color:var(--text);border:2px solid var(--focus);border-radius:.4rem}
+    a:focus-visible,button:focus-visible{
+      outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem
+    }
+    .skip-link{
+      position:absolute;top:-5rem;left:.75rem;z-index:1000;
+      padding:.75rem 1rem;background:#fff;color:var(--text);
+      border:2px solid var(--focus);border-radius:.4rem
+    }
     .skip-link:focus{top:.75rem}
-    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
-    header{padding:1.5rem 0 .8rem}
-    .topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text)}
-    .brand img{width:44px;height:44px;object-fit:contain}.brand span{font-weight:850}
-    .eyebrow{margin:1.35rem 0 .2rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.82rem}
-    h1{margin:0;font-size:clamp(2.2rem,7vw,3.7rem);line-height:1.04;letter-spacing:-.04em}
-    h2{margin:0 0 .5rem;font-size:1.45rem;line-height:1.2}
-    .lede{max-width:74ch;color:var(--muted);font-size:1.05rem;margin:.8rem 0 0}
-    .activity-banner{margin-top:1rem;background:#fff;border:1px solid var(--border);border-radius:.8rem;padding:1rem 1.1rem}
-    .move-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-dark);font-weight:850}
-    .activity-name{font-size:1.18rem;font-weight:850;margin:.2rem 0}
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));margin-inline:auto
+    }
+    header{padding:1.5rem 0 .7rem}
+    .brand{
+      display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text)
+    }
+    .brand img{width:44px;height:44px;object-fit:contain}
+    .brand span{font-weight:850}
+    .eyebrow{
+      margin:1.35rem 0 .25rem;color:var(--accent-dark);font-weight:850;
+      text-transform:uppercase;letter-spacing:.04em;font-size:.82rem
+    }
+    h1{
+      margin:0;font-size:clamp(2.25rem,7vw,3.8rem);
+      line-height:1.04;letter-spacing:-.04em
+    }
+    h2{margin:0 0 .55rem;font-size:1.5rem;line-height:1.2}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.06rem;margin:.8rem 0 0}
+    .activity-card,.prompt-card{
+      background:#fff;border:1px solid var(--border);border-radius:.85rem;
+      padding:1.15rem;margin-top:1rem;box-shadow:0 1px 2px rgba(0,0,0,.04)
+    }
+    .move{
+      color:var(--accent-dark);font-size:.82rem;font-weight:850;
+      text-transform:uppercase;letter-spacing:.04em
+    }
+    .activity-name{font-size:1.22rem;font-weight:850;margin:.15rem 0}
     .purpose{color:var(--muted);margin:.2rem 0 0}
-    .submit-note{margin-top:1rem;background:var(--green-soft);border-left:5px solid var(--green);border-radius:.4rem;padding:.9rem 1rem}
-    .prompt-card{background:#fff;border:1px solid var(--border);border-radius:.85rem;padding:1.2rem;margin-top:1rem}
-    .prompt-text{font-size:1.12rem}
-    .prompt-text p{margin:.55rem 0}
-    .strong-response{background:var(--soft);border-radius:.65rem;padding:.9rem 1rem;margin-top:1rem}
-    .strong-response strong{display:block;color:var(--accent-dark);margin-bottom:.3rem}
-    .strong-response ul{margin:.35rem 0 0;padding-left:1.15rem}
-    .strong-response li{margin:.3rem 0}
-    .actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1rem}
-    .btn{min-height:48px;border-radius:.58rem;padding:.75rem 1rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--accent)}
-    .primary{background:var(--accent);color:#fff}.primary:hover{background:var(--accent-dark);color:#fff}
-    .secondary{background:#fff;color:var(--accent-dark)}.secondary:hover{background:var(--soft)}
+    .canvas-note{
+      margin-top:1rem;background:var(--green-soft);border-left:5px solid var(--green);
+      border-radius:.45rem;padding:.9rem 1rem
+    }
+    .prompt{
+      font-size:1.14rem;line-height:1.65;margin:.55rem 0 0
+    }
+    .useful{
+      margin-top:1rem;background:var(--soft);border-radius:.65rem;padding:.9rem 1rem
+    }
+    .useful strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .useful ul{margin:.35rem 0 0;padding-left:1.2rem}
+    .useful li{margin:.3rem 0}
+    .actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+    .btn{
+      min-height:48px;border-radius:.58rem;padding:.75rem 1rem;font-weight:800;
+      text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+      border:2px solid var(--accent)
+    }
+    .primary{background:var(--accent);color:#fff}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{background:#fff;color:var(--accent-dark)}
+    .secondary:hover{background:var(--soft);color:var(--accent-dark)}
+    .fallback{
+      margin-top:1rem;padding:.9rem 1rem;border:1px solid var(--border);
+      background:#fff;border-radius:.7rem;color:var(--muted)
+    }
     footer{padding:2.2rem 0 3rem;color:var(--muted);font-size:.92rem}
-    .footer-links{display:flex;flex-wrap:wrap;gap:.8rem 1rem}
     @media(max-width:650px){
       header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}
-      .actions{flex-direction:column}.actions .btn{width:100%}
+      .actions{flex-direction:column}
+      .actions .btn{width:100%}
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;animation-iteration-count:1!important;
+        transition-duration:.01ms!important
+      }
+    }
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#main">Skip to reflection prompt</a>
 
   <header>
-    <div class="topbar">
-      <a class="brand" href="index.html">
-        <img src="favicon4.png" alt="">
-        <span>Literary Analysis Labs</span>
-      </a>
-      <nav aria-label="Site navigation">
-        <a href="index.html">Student Home</a>
-      </nav>
-    </div>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
 
     <p class="eyebrow">Reflection Prompt</p>
     <h1>Take the Skill Back to Your Class</h1>
     <p class="lede">
-      If your instructor requires a reflection, use the prompt below and submit your response in Canvas or wherever your instructor asked you to post it.
+      If your instructor requires a reflection, answer the prompt below in Canvas
+      or wherever your instructor asked you to submit it.
     </p>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="activity-banner" aria-labelledby="activity-heading">
-      <div id="moveLabel" class="move-label">Literary Analysis</div>
-      <div id="activityName" class="activity-name">Literary Analysis Lab Reflection</div>
-      <p id="activityPurpose" class="purpose">Apply one useful analytical move to your current work.</p>
+    <section class="activity-card" aria-labelledby="activity-name">
+      <div id="move" class="move">Literary Analysis</div>
+      <div id="activity-name" class="activity-name">Reflection</div>
+      <p id="purpose" class="purpose">Apply the activity to something you are actually reading or writing.</p>
     </section>
 
-    <div class="submit-note">
+    <div class="canvas-note">
       <strong>Write your response in Canvas, not on this page.</strong>
-      This page only gives you the reflection prompt.
+      The point of this reflection is to help you use the skill on real course work.
     </div>
 
     <section class="prompt-card" aria-labelledby="prompt-heading">
-      <h2 id="prompt-heading">Reflection Prompt</h2>
-      <div id="promptText" class="prompt-text"></div>
+      <h2 id="prompt-heading">Your Reflection Prompt</h2>
+      <p id="prompt" class="prompt"></p>
 
-      <div class="strong-response">
+      <div class="useful">
         <strong>A useful response should:</strong>
-        <ul id="selfCheckList"></ul>
+        <ul id="checks"></ul>
       </div>
 
       <div class="actions">
@@ -104,161 +146,231 @@
         <a class="btn secondary" href="index.html">All Literary Analysis Labs</a>
       </div>
     </section>
+
+    <div id="fallback" class="fallback" hidden>
+      This link did not identify a specific activity, so a general literary-analysis reflection is shown.
+    </div>
   </main>
 
   <footer>
-    <div class="footer-links">
-      <a href="notice.html">1. Notice</a>
-      <a href="interpret.html">2. Interpret</a>
-      <a href="support.html">3. Support</a>
-      <a href="develop.html">4. Develop</a>
-    </div>
+    This site does not collect or submit student reflection responses.
   </footer>
 
 <script>
 (() => {
-  const reflections = {
+  const prompts = {
+    "lost-in-the-text": {
+      move:"1. Notice",
+      name:"Lost in the Text?",
+      purpose:"Repair confusion before trying to analyze.",
+      prompt:"Think of a passage from your current reading that confused you at first. Where exactly did your understanding break down, what helped you make enough sense of it to continue, and what became worth noticing once the passage was clearer?",
+      checks:[
+        "Identify the specific snag instead of saying only that the passage was confusing.",
+        "Explain the repair strategy that actually helped.",
+        "End with something in the writer’s language, structure, image, or perspective that you can now notice more closely."
+      ]
+    },
+
     "what-kind-of-thinking-is-this": {
       move:"1. Notice",
       name:"What Kind of Thinking Is This?",
-      purpose:"Move from telling what happened toward noticing and analyzing.",
-      prompt:"Choose something you are currently reading for class. Identify one specific detail you notice, then explain what that detail might suggest or why it might matter.",
-      checks:["Use a specific detail from a real text you are reading.","Go beyond summary or plot.","Explain the possible significance of the detail."]
+      purpose:"Move from summary or observation toward analysis.",
+      prompt:"Choose one moment from something you are reading for class. Write one brief observation about what you notice, then explain what that detail might suggest or why it might matter. How is your second statement different from simply summarizing what happened?",
+      checks:[
+        "Use a specific textual detail.",
+        "Go beyond telling what happened.",
+        "Explain a possible significance that could be supported with evidence."
+      ]
     },
+
     "notice-to-wonder": {
       move:"1. Notice",
       name:"Notice → Wonder",
-      purpose:"Turn an observation into a question worth exploring.",
-      prompt:"Choose one detail, pattern, contrast, or moment from something you are reading for class. What do you notice, and what analytical question does that observation make you wonder about?",
-      checks:["Start with something specific you noticed.","Ask a question that cannot be answered with a simple fact.","Make the question useful for further analysis."]
+      purpose:"Turn an observation into an analytical question.",
+      prompt:"Choose one detail, pattern, contrast, or moment from your current reading. What do you notice, and what question does that observation make you genuinely wonder about? Explain why answering that question would require you to look back at the text.",
+      checks:[
+        "Begin with something specific you noticed.",
+        "Ask a question that is not answered by a simple plot fact.",
+        "Make the question useful for further interpretation."
+      ]
     },
+
     "pattern-finder": {
       move:"1. Notice",
       name:"Pattern Finder",
-      purpose:"Connect separate details into a meaningful pattern.",
-      prompt:"Identify two or three details from your current reading that seem connected. What pattern do they create, and what larger idea might that pattern help you explore?",
-      checks:["Include more than one specific detail.","Explain what connects the details.","Point toward a larger idea rather than just listing evidence."]
+      purpose:"Connect details that begin to mean something together.",
+      prompt:"Identify two or three details from your current reading that seem connected. What pattern do they create, and what larger idea might that pattern help you investigate?",
+      checks:[
+        "Use more than one specific detail.",
+        "Explain what connects the details.",
+        "Point toward an idea you could develop further."
+      ]
     },
+
     "zoom-in": {
       move:"1. Notice",
       name:"Zoom In",
-      purpose:"Use a small language choice to produce a larger analytical insight.",
-      prompt:"Choose one word, image, comparison, repetition, or contrast from your current reading. What does that specific choice do, and how does it affect your understanding of the passage?",
-      checks:["Focus on a specific piece of language.","Explain the effect, not just the literary device.","Connect the detail to a larger idea."]
+      purpose:"Use close attention to language to generate insight.",
+      prompt:"Choose one word, image, comparison, repetition, contrast, stage direction, or other small textual choice from your current reading. What does that specific choice do, and how does noticing it change or deepen your understanding of the passage?",
+      checks:[
+        "Focus on a small, specific textual choice.",
+        "Explain its effect instead of only naming a device.",
+        "Connect the detail to a larger idea in the passage or text."
+      ]
     },
+
     "so-what": {
       move:"2. Interpret",
       name:"So What?",
-      purpose:"Move from a noticed detail toward interpretation.",
-      prompt:"Choose one detail or pattern from your current reading and answer: Why might this matter? What interpretation does that lead you toward?",
-      checks:["Explain significance rather than repeat the detail.","Connect the interpretation to textual evidence.","Keep the claim cautious enough to defend."]
+      purpose:"Move from an interesting detail toward interpretation.",
+      prompt:"Choose one detail or pattern from your current reading and complete this thought in your own words: “This might matter because…” What possible interpretation does that explanation lead you toward?",
+      checks:[
+        "Explain significance rather than repeat the detail.",
+        "Keep the interpretation connected to the text.",
+        "Treat the interpretation as something to test, not a hidden correct answer."
+      ]
     },
+
     "too-obvious-too-wild-just-right": {
       move:"2. Interpret",
       name:"Too Obvious, Too Wild, or Just Right?",
-      purpose:"Calibrate an interpretation so it is meaningful and supportable.",
-      prompt:"Write one interpretation you might make about a text you are reading. What evidence keeps the interpretation grounded? Is there any part you would make more specific, cautious, or arguable after completing this activity?",
-      checks:["Go beyond an obvious restatement.","Identify evidence that supports the interpretation.","Revise any claim that goes farther than the evidence."]
+      purpose:"Build an interpretation that is meaningful and supportable.",
+      prompt:"Write one interpretation you are considering about a text you are reading. What evidence makes that interpretation plausible? Is any part of your claim too obvious, too broad, too certain, or more specific than the evidence allows? Revise the claim if needed.",
+      checks:[
+        "Go beyond an obvious restatement.",
+        "Identify evidence that keeps the interpretation grounded.",
+        "Revise overclaims rather than forcing the evidence to fit."
+      ]
     },
+
     "build-an-interpretation": {
       move:"2. Interpret",
       name:"Build an Interpretation",
-      purpose:"Use several pieces of evidence to support one larger reading.",
-      prompt:"Choose two or three pieces of evidence from your current reading. What interpretation becomes possible when you consider those details together?",
-      checks:["Use multiple pieces of evidence.","Explain the connection among them.","Make a claim that the evidence can reasonably support."]
+      purpose:"Use several pieces of evidence to develop one larger reading.",
+      prompt:"Choose two or three pieces of evidence from your current reading. What interpretation becomes possible when you consider those details together? Briefly explain the connection among the details rather than discussing each one separately.",
+      checks:[
+        "Use multiple pieces of evidence.",
+        "Explain how the details connect.",
+        "Make a claim the evidence can reasonably support."
+      ]
     },
+
     "theme-or-topic": {
       move:"2. Interpret",
       name:"Theme or Topic?",
-      purpose:"Turn a broad topic into a text-specific thematic idea.",
-      prompt:"Choose one important topic in your current text, such as family, freedom, identity, power, fear, or belonging. What does this particular text seem to suggest about that topic, and what evidence led you there?",
-      checks:["State more than a one-word topic.","Make the idea specific to this text.","Connect the theme to evidence or a pattern."]
+      purpose:"Turn a broad subject into a text-specific thematic idea.",
+      prompt:"Choose one important topic in your current text, such as family, freedom, power, identity, fear, belonging, or knowledge. What does this particular text seem to suggest about that topic, and what pattern or evidence led you to that idea?",
+      checks:[
+        "State more than a one-word topic.",
+        "Make the thematic idea specific to this text.",
+        "Ground the idea in a pattern or textual detail."
+      ]
     },
+
     "whose-eyes": {
       move:"2. Interpret",
       name:"Whose Eyes Are We Seeing Through?",
       purpose:"Analyze how perspective shapes meaning.",
-      prompt:"Choose one scene from your current reading. Whose perspective shapes what the reader notices or understands? How might the scene feel or mean something different from another character’s perspective?",
-      checks:["Identify the perspective shaping the scene.","Explain what that perspective emphasizes or leaves uncertain.","Connect perspective to meaning."]
+      prompt:"Choose one scene from your current reading. Whose perspective shapes what the reader notices, knows, or values? What does that perspective emphasize or leave uncertain, and how might the scene feel or mean something different from another perspective?",
+      checks:[
+        "Identify the perspective shaping the scene.",
+        "Explain what it emphasizes or limits.",
+        "Connect perspective to meaning rather than only naming point of view."
+      ]
     },
+
     "claim-evidence-explanation": {
       move:"3. Support",
       name:"Claim, Evidence, or Explanation?",
-      purpose:"Connect a claim to evidence through explanation.",
-      prompt:"Choose one claim you are making in a discussion or paper. What evidence supports it, and what would you need to explain so a reader can see exactly how that evidence supports your claim?",
-      checks:["State a clear interpretive claim.","Use evidence that actually supports it.","Explain the connection instead of assuming it is obvious."]
+      purpose:"Show how evidence actually supports an interpretation.",
+      prompt:"Choose one interpretive claim from a discussion, draft, or idea you are developing. What evidence supports it, and what would you need to explain so that a reader can see exactly how that evidence supports the claim?",
+      checks:[
+        "State a clear interpretive claim.",
+        "Use evidence that genuinely fits the claim.",
+        "Explain the connection instead of assuming the quotation explains itself."
+      ]
     },
+
     "dont-drop-the-quote": {
       move:"3. Support",
       name:"Don't Drop the Quote",
       purpose:"Integrate evidence and return to your own analytical voice.",
-      prompt:"Choose one quotation you may use in a discussion or paper. Explain how you would introduce it and what you would say immediately after it to show why the quotation matters.",
-      checks:["Give enough context for the quotation.","Keep the quotation focused on the part you need.","Return to your own analysis after the evidence."]
+      prompt:"Choose one quotation you may use in a discussion or paper. How would you introduce it so a reader understands its context, and what would you say immediately after it to explain the part of the quotation that matters most for your interpretation?",
+      checks:[
+        "Give enough context for the quotation.",
+        "Keep the quotation focused on the language you actually need.",
+        "Return to your own analysis after the evidence."
+      ]
     },
+
     "strengthen-the-thesis": {
       move:"4. Develop",
       name:"Strengthen the Thesis",
-      purpose:"Turn a broad or formulaic thesis into a meaningful interpretive argument.",
-      prompt:"Write or describe your current working thesis. How would you revise it so it makes a more specific, arguable claim about what a pattern in the text suggests?",
-      checks:["Make an interpretation, not just name a topic.","Make the claim specific enough to support with evidence.","Avoid relying only on a formula or list of literary devices."]
+      purpose:"Turn a broad idea into a meaningful interpretive argument.",
+      prompt:"Write or describe your current working thesis. How could you revise it so it makes a more specific, arguable claim about what a pattern in the text suggests, rather than simply naming a topic or listing literary devices?",
+      checks:[
+        "Make an interpretation rather than only naming a topic.",
+        "Make the claim specific enough to support with textual evidence.",
+        "Develop an idea worth arguing instead of filling a formula."
+      ]
     },
+
     "complicate-it": {
       move:"4. Develop",
       name:"Complicate It",
-      purpose:"Use difficult evidence to make an argument stronger.",
-      prompt:"Think of a claim you are making about a text. What detail or piece of evidence does not fit that claim perfectly? How could you revise the claim so it accounts for both the original idea and the complication?",
-      checks:["Identify evidence that genuinely complicates the claim.","Do not ignore or dismiss the difficult evidence.","Revise the argument so it can hold both ideas."]
+      purpose:"Use difficult evidence to make an argument more accurate and complex.",
+      prompt:"Think of a claim you are making about a text. What detail, scene, or piece of evidence does not fit that claim perfectly? How could you revise the claim so it accounts for both your original insight and the complication?",
+      checks:[
+        "Identify evidence that genuinely complicates your first reading.",
+        "Do not ignore or dismiss the difficult evidence.",
+        "Revise the claim so it can hold both ideas."
+      ]
     },
+
     "analysis-repair-shop": {
       move:"4. Develop",
       name:"The Analysis Repair Shop",
-      purpose:"Diagnose one important weakness and make a focused revision.",
-      prompt:"Think about one paragraph from a current or recent literary-analysis assignment. What is the single most important repair it needs right now, and what specific change would you make?",
-      checks:["Name a specific problem rather than saying the paragraph is simply weak.","Describe a concrete revision.","Explain how the change would make the paragraph more analytical."]
+      purpose:"Diagnose the most important problem in an analytical paragraph.",
+      prompt:"Think about one paragraph from a current or recent literary-analysis assignment. What is the single most important repair it needs right now: less summary, a clearer claim, better evidence, stronger explanation, more careful interpretation, or something else? Describe one specific revision you would make and why it would improve the paragraph.",
+      checks:[
+        "Name a specific problem rather than saying only that the paragraph is weak.",
+        "Describe a concrete revision.",
+        "Explain how the change would make the paragraph do more analytical work."
+      ]
     }
   };
 
-  const aliases = {
-    "what-kind-of-thinking-is-this.html":"what-kind-of-thinking-is-this",
-    "notice-to-wonder.html":"notice-to-wonder",
-    "pattern-finder.html":"pattern-finder",
-    "so-what.html":"so-what",
-    "zoom-in.html":"zoom-in",
-    "too-obvious-too-wild-just-right.html":"too-obvious-too-wild-just-right",
-    "build-an-interpretation.html":"build-an-interpretation",
-    "theme-or-topic.html":"theme-or-topic",
-    "claim-evidence-explanation.html":"claim-evidence-explanation",
-    "dont-drop-the-quote.html":"dont-drop-the-quote",
-    "strengthen-the-thesis.html":"strengthen-the-thesis",
-    "analysis-repair-shop.html":"analysis-repair-shop",
-    "complicate-it.html":"complicate-it",
-    "whose-eyes.html":"whose-eyes"
-  };
-
-  const params = new URLSearchParams(window.location.search);
-  let key = (params.get("lab") || "").trim();
-  if (aliases[key]) key = aliases[key];
+  const params = new URLSearchParams(location.search);
+  let key = (params.get("lab") || "").trim().toLowerCase().replace(/\.html$/,"");
 
   const fallback = {
     move:"Literary Analysis",
-    name:"Literary Analysis Lab Reflection",
-    purpose:"Apply one useful analytical move to your current work.",
-    prompt:"Choose one useful idea from the activity you completed and apply it to something you are currently reading or writing for class. What specific analytical move will you carry into that work?",
-    checks:["Apply the skill to actual course work.","Use a specific detail, idea, or writing problem.","Leave with something you can use again."]
+    name:"Reflection",
+    purpose:"Apply one useful literary-analysis move to your own course work.",
+    prompt:"Choose one skill from the activity you completed and apply it to something you are currently reading or writing for class. What specific detail, interpretation, evidence connection, or revision became possible because of that skill?",
+    checks:[
+      "Apply the skill to actual course work.",
+      "Use something specific from a text or draft.",
+      "Leave with an idea or revision you can use again."
+    ]
   };
 
-  const data = reflections[key] || fallback;
-  document.getElementById("moveLabel").textContent = data.move;
-  document.getElementById("activityName").textContent = data.name;
-  document.getElementById("activityPurpose").textContent = data.purpose;
-  document.getElementById("promptText").innerHTML = `<p>${data.prompt}</p>`;
-  document.getElementById("selfCheckList").innerHTML =
-    data.checks.map(c => `<li>${c}</li>`).join("");
+  const data = prompts[key] || fallback;
+
+  document.getElementById("move").textContent = data.move;
+  document.getElementById("activity-name").textContent = data.name;
+  document.getElementById("purpose").textContent = data.purpose;
+  document.getElementById("prompt").textContent = data.prompt;
+  document.getElementById("checks").innerHTML =
+    data.checks.map(item => `<li>${item}</li>`).join("");
 
   const back = document.getElementById("backToLab");
-  if (key && reflections[key]) back.href = key + ".html";
+  if (prompts[key]) {
+    back.href = `${key}.html`;
+  } else {
+    document.getElementById("fallback").hidden = false;
+  }
 })();
 </script>
 </body>
 </html>
-
