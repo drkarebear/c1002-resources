@@ -52,6 +52,23 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 .actions .primary{background:#315f99}a{color:var(--accent-dark)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{max-width:760px;margin:1.1rem auto}
+    .instruction-graphic img{display:block;width:min(100%,700px);height:auto;margin:0 auto;border:1px solid var(--border,#d4dbe5);border-radius:.85rem;background:#fff}
+    .instruction-graphic figcaption{max-width:66ch;margin:.55rem auto 0;color:var(--muted,#5d6978);font-size:.94rem;text-align:center}
+    .graphic-full-text{max-width:700px;margin:.75rem auto 0;border:1px solid var(--border,#d4dbe5);border-radius:.75rem;background:var(--soft,#eef4fb);padding:.15rem .9rem .75rem}
+    .graphic-full-text summary{cursor:pointer;font-weight:800;padding:.7rem 0}
+    .graphic-full-text summary:focus-visible{outline:3px solid var(--focus,#111827);outline-offset:3px}
+    .graphic-transcript{background:var(--surface,#fff);border:1px solid var(--border,#d4dbe5);border-radius:.7rem;padding:.9rem}
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{margin:.55rem 0;padding:.6rem .7rem;border-left:4px solid var(--accent,#1f5da8);background:var(--surface,#fff);border-radius:.3rem}
+    .graphic-stage strong{display:block;margin-bottom:.1rem;color:var(--accent-dark,#163f74)}
+    .now-practice{margin:1.8rem 0 1.05rem;border:3px solid var(--accent,#1f5da8);border-radius:.9rem;background:var(--soft,#eef4fb);padding:1.05rem;text-align:center}
+    .now-practice .practice-kicker{display:block;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-dark,#163f74)}
+    .now-practice h2{font-size:clamp(1.9rem,6vw,2.65rem);margin:.15rem 0 .25rem}
+    .now-practice p{max-width:64ch;margin:.25rem auto}
+
 </style>
 </head>
 <body>
@@ -68,6 +85,25 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 <section class="learn" aria-labelledby="learn-heading">
 <h2 id="learn-heading">Before You Practice: Give Each Paragraph a Job</h2>
 <p class="learn-intro">If you know your thesis but still do not know what to put in each body paragraph, the missing step may be paragraph-level planning. Instead of asking only, “What should I write next?” ask, <strong>“What does this paragraph need to prove?”</strong></p>
+<figure class="instruction-graphic">
+<img src="every-paragraph-has-a-job.png" width="1024" height="1536" alt="Infographic showing how a thesis leads to a paragraph-level topic sentence, supported by evidence and analysis.">
+<figcaption>A body paragraph does one specific piece of the work needed to support the essay's larger argument.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Every Paragraph Has a Job</h3>
+<p>One body paragraph connects to the essay's larger argument.</p>
+<div class="graphic-stage"><strong>Thesis</strong>What the whole essay argues</div>
+<div class="graphic-stage"><strong>Topic Sentence</strong>The smaller claim this paragraph helps prove</div>
+<div class="graphic-stage"><strong>Evidence</strong>The part of the text you examine</div>
+<div class="graphic-stage"><strong>Analysis</strong>What you notice → what it suggests → how it supports the claim</div>
+<p><strong>Takeaway:</strong></p>
+<ol><li>The topic sentence makes the claim.</li><li>The evidence gives you something to examine.</li><li>The analysis does the proving.</li></ol>
+<p>The visual shows the thesis as the larger argument, with a topic sentence representing one smaller part of that argument. Evidence and analysis then support that paragraph's smaller claim.</p>
+</div>
+</details>
+</figure>
+
 
 <article class="lesson-card">
 <h3>1. Thesis vs. Topic Sentence</h3>

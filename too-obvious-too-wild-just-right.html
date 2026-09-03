@@ -354,6 +354,23 @@
       }
     }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{max-width:760px;margin:1.1rem auto}
+    .instruction-graphic img{display:block;width:min(100%,700px);height:auto;margin:0 auto;border:1px solid var(--border,#d4dbe5);border-radius:.85rem;background:#fff}
+    .instruction-graphic figcaption{max-width:66ch;margin:.55rem auto 0;color:var(--muted,#5d6978);font-size:.94rem;text-align:center}
+    .graphic-full-text{max-width:700px;margin:.75rem auto 0;border:1px solid var(--border,#d4dbe5);border-radius:.75rem;background:var(--soft,#eef4fb);padding:.15rem .9rem .75rem}
+    .graphic-full-text summary{cursor:pointer;font-weight:800;padding:.7rem 0}
+    .graphic-full-text summary:focus-visible{outline:3px solid var(--focus,#111827);outline-offset:3px}
+    .graphic-transcript{background:var(--surface,#fff);border:1px solid var(--border,#d4dbe5);border-radius:.7rem;padding:.9rem}
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{margin:.55rem 0;padding:.6rem .7rem;border-left:4px solid var(--accent,#1f5da8);background:var(--surface,#fff);border-radius:.3rem}
+    .graphic-stage strong{display:block;margin-bottom:.1rem;color:var(--accent-dark,#163f74)}
+    .now-practice{margin:1.8rem 0 1.05rem;border:3px solid var(--accent,#1f5da8);border-radius:.9rem;background:var(--soft,#eef4fb);padding:1.05rem;text-align:center}
+    .now-practice .practice-kicker{display:block;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-dark,#163f74)}
+    .now-practice h2{font-size:clamp(1.9rem,6vw,2.65rem);margin:.15rem 0 .25rem}
+    .now-practice p{max-width:64ch;margin:.25rem auto}
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -511,23 +528,44 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>As you read, interpretations often fall into one of three zones:</p>
-        <div class="types">
-          <div class="type"><strong>TOO OBVIOUS</strong>Mostly restates the text or names a detail without explaining its significance.</div>
-          <div class="type"><strong>TOO WILD</strong>Makes a claim that goes far beyond what the evidence can reasonably support.</div>
-          <div class="type"><strong>JUST RIGHT</strong>Makes an interpretive claim that grows from the evidence and can be defended.</div>
-        </div>
-        <div class="tip">
-          <strong>“Just right” does not mean “the one correct answer.”</strong>
-          More than one interpretation can be defensible if the reader can show how the text supports it.
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<h2 id="helps-heading">Before You Practice: Show the Steps, Not a Leap</h2>
+<div class="card">
+<p>Literary analysis should move beyond the literal text, but the interpretation still needs a visible path back to the evidence. A claim can be too close to the text, or it can leap so far away that the reader cannot see how you got there.</p>
+<figure class="instruction-graphic">
+<img src="show-us-the-steps-in-your-thinking.png" width="1122" height="1402" alt="Infographic contrasting a supported reasoning chain from textual detail to interpretive claim with an unsupported leap from a dark room to an evil mother.">
+<figcaption>Interpretation is not the problem. The problem is skipping the reasoning that connects the text to the claim.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Show Us the Steps in Your Thinking</h3>
+<p>The graphic contrasts a supported interpretation with an interpretation that makes too large a leap.</p>
+<p><strong>Supported reasoning:</strong></p>
+<div class="graphic-stage"><strong>Textual Detail</strong>The room becomes darker each time the mother enters.</div>
+<div class="graphic-stage"><strong>Pattern</strong>Darkness repeatedly accompanies her presence.</div>
+<div class="graphic-stage"><strong>Inference</strong>Her presence is associated with unease or restriction.</div>
+<div class="graphic-stage"><strong>Interpretive Claim</strong>The story uses changes in light to complicate the idea of home as a place of safety.</div>
+<p><strong>Too big a leap:</strong></p>
+<div class="graphic-stage"><strong>Dark room → The mother represents evil</strong></div>
+<p>The graphic asks: <strong>“What connects these ideas?”</strong></p>
+<p>The point is that literary interpretation can move beyond the literal text, but the writer needs to show the reasoning that connects textual evidence to the interpretive claim.</p>
+</div>
+</details>
+</figure>
+<div class="zones">
+<div class="zone"><strong>TOO OBVIOUS</strong>Mostly restates the text or names a detail without explaining its significance.</div>
+<div class="zone"><strong>TOO WILD</strong>Makes a claim that goes far beyond what the evidence can reasonably support.</div>
+<div class="zone"><strong>JUST RIGHT</strong>Makes an interpretive claim that grows from the evidence and can be defended.</div>
+</div>
+<div class="tip"><strong>“Just right” does not mean “the one correct answer.”</strong> More than one interpretation can be defensible if the reader can show the steps connecting the evidence to the claim.</div>
+</div>
+</section>
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Classify interpretations as too obvious, too wild, or just right by comparing how far each claim travels from the evidence and whether the reasoning can be defended.</p>
+</section>
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Calibrate the Interpretation Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">

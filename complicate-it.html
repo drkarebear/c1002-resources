@@ -1,12 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Complicate It | Literary Analysis Lab</title>
-  <link rel="icon" type="image/png" href="favicon4.png">
-  <meta name="description" content="An accessible interactive literary analysis activity that helps students revise interpretations when new evidence adds tension, contradiction, or complexity.">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Complicate It | Literary Analysis Lab</title>
+<link href="favicon4.png" rel="icon" type="image/png"/>
+<meta content="An accessible interactive literary analysis activity that helps students revise interpretations when new evidence adds tension, contradiction, or complexity." name="description"/>
+<style>
     :root{
       --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
       --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
@@ -453,9 +454,25 @@
       }
     }
 
-</style>
 
-  <style id="mobile-activity-upgrade">
+    /* Accessible instructional infographic */
+    .instruction-graphic{max-width:760px;margin:1.1rem auto}
+    .instruction-graphic img{display:block;width:min(100%,700px);height:auto;margin:0 auto;border:1px solid var(--border,#d4dbe5);border-radius:.85rem;background:#fff}
+    .instruction-graphic figcaption{max-width:66ch;margin:.55rem auto 0;color:var(--muted,#5d6978);font-size:.94rem;text-align:center}
+    .graphic-full-text{max-width:700px;margin:.75rem auto 0;border:1px solid var(--border,#d4dbe5);border-radius:.75rem;background:var(--soft,#eef4fb);padding:.15rem .9rem .75rem}
+    .graphic-full-text summary{cursor:pointer;font-weight:800;padding:.7rem 0}
+    .graphic-full-text summary:focus-visible{outline:3px solid var(--focus,#111827);outline-offset:3px}
+    .graphic-transcript{background:var(--surface,#fff);border:1px solid var(--border,#d4dbe5);border-radius:.7rem;padding:.9rem}
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{margin:.55rem 0;padding:.6rem .7rem;border-left:4px solid var(--accent,#1f5da8);background:var(--surface,#fff);border-radius:.3rem}
+    .graphic-stage strong{display:block;margin-bottom:.1rem;color:var(--accent-dark,#163f74)}
+    .now-practice{margin:1.8rem 0 1.05rem;border:3px solid var(--accent,#1f5da8);border-radius:.9rem;background:var(--soft,#eef4fb);padding:1.05rem;text-align:center}
+    .now-practice .practice-kicker{display:block;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-dark,#163f74)}
+    .now-practice h2{font-size:clamp(1.9rem,6vw,2.65rem);margin:.15rem 0 .25rem}
+    .now-practice p{max-width:64ch;margin:.25rem auto}
+
+</style>
+<style id="mobile-activity-upgrade">
     /* Mobile activity mode: once practice begins, the page behaves more like a
        sequence of screens than a long document. */
     .start-activity-wrap{
@@ -590,87 +607,84 @@
       .completion-actions{margin-top:.6rem}
     }
   </style>
-
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to activity</a>
-
-  <header>
-    <nav class="student-nav" aria-label="Student navigation">
-      <a href="index.html">Student Home</a>
-      <a href="all-labs.html">All Labs</a>
-    </nav>
-    <p class="eyebrow">Literary Analysis Lab</p>
-    <h1 class="page-title">Complicate It</h1>
-    <p class="lede">
+<a class="skip-link" href="#main">Skip to activity</a>
+<header>
+<nav aria-label="Student navigation" class="student-nav">
+<a href="index.html">Student Home</a>
+<a href="all-labs.html">All Labs</a>
+</nav>
+<p class="eyebrow">Literary Analysis Lab</p>
+<h1 class="page-title">Complicate It</h1>
+<p class="lede">
       Strong literary analysis does not force every detail to fit a simple claim.
       When new evidence creates tension, contradiction, or uncertainty, the better move is often to
       <strong>revise the interpretation so it can hold more of the text</strong>.
     </p>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <section aria-labelledby="helps-heading">
+</header>
+<main id="main" tabindex="-1">
+<section aria-labelledby="helps-heading">
 <h2 id="helps-heading">Before You Practice: Let the Text Complicate Your Idea</h2>
-
 <div class="card">
 <p>Your first interpretation does not have to explain everything perfectly. A working interpretation gives you something to test. When another detail does not fit, the goal is not to hide it or immediately throw your whole idea away.</p>
-
-<div class="complication-path" aria-label="First idea to more complex interpretation">
-  <div class="complication-step"><strong>FIRST IDEA</strong>Start with an interpretation that fits the evidence you have noticed.</div>
-  <div class="complication-arrow" aria-hidden="true">↓</div>
-  <div class="complication-step interrupt"><strong>BUT THEN YOU NOTICE...</strong>A detail, exception, change, or contradiction does not fit the first idea neatly.</div>
-  <div class="complication-arrow" aria-hidden="true">↓</div>
-  <div class="complication-step"><strong>BETTER QUESTION</strong>Can both ideas be true? Does the meaning change over time? What tension does the new evidence reveal?</div>
-  <div class="complication-arrow" aria-hidden="true">↓</div>
-  <div class="complication-step final"><strong>MORE PRECISE INTERPRETATION</strong>Revise the claim so it explains more of the text instead of pretending the difficult evidence is not there.</div>
+<figure class="instruction-graphic">
+<img alt="Infographic showing how evidence that does not fit a first interpretation can lead to a better question and a more complex interpretation." height="1402" src="when-the-text-doesnt-fit.png" width="1122"/>
+<figcaption>A difficult detail can become the reason to revise an interpretation rather than the reason to ignore the evidence.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>When the Text Doesn't Fit Your Idea, Don't Ignore It</h3>
+<p>The graphic shows how evidence that complicates an initial interpretation can lead to a stronger argument.</p>
+<div class="graphic-stage"><strong>First Idea</strong>The character wants freedom.</div>
+<div class="graphic-stage"><strong>But Then You Notice...</strong>She repeatedly returns home.</div>
+<div class="graphic-stage"><strong>Better Question</strong>What if she wants both freedom and security?</div>
+<div class="graphic-stage"><strong>More Complex Interpretation</strong>The story presents independence not as escaping attachment, but as negotiating how much attachment a person can tolerate without losing autonomy.</div>
+<p><strong>Takeaway:</strong> The detail that complicates your idea may lead to the better argument.</p>
+<p>The graphic emphasizes that contradictory evidence does not necessarily mean an interpretation has failed. It can help the reader revise a simple first idea into a more nuanced interpretation.</p>
 </div>
-
+</details>
+</figure>
 <div class="tip">
 <strong>The detail that complicates your idea may lead to the better argument.</strong>
 Contradictory evidence is not automatically evidence that you failed. It may show that the text is doing something more complicated than your first claim could explain.
 </div>
 </div>
-
 <div class="card">
 <h3>What Kind of Evidence Might Complicate a Claim?</h3>
 <div class="complication-grid">
-  <div class="complication-box"><strong>An exception</strong>A character usually avoids conflict, but speaks directly in one important scene.</div>
-  <div class="complication-box"><strong>Mixed motives</strong>A choice seems generous but also gives the character more control.</div>
-  <div class="complication-box"><strong>A cost or tradeoff</strong>Freedom gives a character independence but also produces isolation.</div>
-  <div class="complication-box"><strong>A change over time</strong>An image that first feels protective later begins to feel restrictive.</div>
-  <div class="complication-box"><strong>A limited perspective</strong>A narrator notices important patterns but also misreads some situations.</div>
-  <div class="complication-box"><strong>Ambiguity</strong>The evidence supports more than one plausible meaning.</div>
+<div class="complication-box"><strong>An exception</strong>A character usually avoids conflict, but speaks directly in one important scene.</div>
+<div class="complication-box"><strong>Mixed motives</strong>A choice seems generous but also gives the character more control.</div>
+<div class="complication-box"><strong>A cost or tradeoff</strong>Freedom gives a character independence but also produces isolation.</div>
+<div class="complication-box"><strong>A change over time</strong>An image that first feels protective later begins to feel restrictive.</div>
+<div class="complication-box"><strong>A limited perspective</strong>A narrator notices important patterns but also misreads some situations.</div>
+<div class="complication-box"><strong>Ambiguity</strong>The evidence supports more than one plausible meaning.</div>
 </div>
 </div>
-
 <div class="card">
 <h3>Do Not Swing From One Extreme to the Other</h3>
 <div class="example-pair">
-  <div>
-    <strong>First idea</strong>
-    <p>The locked gate represents protection.</p>
-  </div>
-  <div>
-    <strong>New evidence</strong>
-    <p>During an emergency, the same gate prevents a character from leaving.</p>
-  </div>
+<div>
+<strong>First idea</strong>
+<p>The locked gate represents protection.</p>
 </div>
-
+<div>
+<strong>New evidence</strong>
+<p>During an emergency, the same gate prevents a character from leaving.</p>
+</div>
+</div>
 <div class="example-pair">
-  <div>
-    <strong>Too far in the other direction</strong>
-    <p>The gate only represents imprisonment.</p>
-  </div>
-  <div class="better">
-    <strong>More complex</strong>
-    <p>The gate represents protection, but the emergency reveals how easily safety can become restriction when someone else controls whether it opens.</p>
-  </div>
+<div>
+<strong>Too far in the other direction</strong>
+<p>The gate only represents imprisonment.</p>
 </div>
-
+<div class="better">
+<strong>More complex</strong>
+<p>The gate represents protection, but the emergency reveals how easily safety can become restriction when someone else controls whether it opens.</p>
+</div>
+</div>
 <p>The goal is not to replace one absolute statement with another. Stronger interpretation often comes from explaining the <strong>relationship between two truths</strong>.</p>
 </div>
-
 <div class="card">
 <h3>Useful Questions When Something Does Not Fit</h3>
 <ul class="complication-check">
@@ -681,74 +695,62 @@ Contradictory evidence is not automatically evidence that you failed. It may sho
 <li>Does the text present a gain that also has a cost?</li>
 <li>Do I need to make my claim less absolute or more precise?</li>
 </ul>
-
 <div class="tip">
 <strong>Words such as “although,” “while,” and “yet” can help you express a tension, but they do not create complexity by themselves.</strong>
 The complexity comes from explaining why both sides of the evidence matter.
 </div>
 </div>
 </section>
-
-<section class="now-practice" aria-labelledby="now-practice-heading">
+<section aria-labelledby="now-practice-heading" class="now-practice">
 <span class="practice-kicker">Instruction Complete</span>
 <h2 id="now-practice-heading">Now Practice</h2>
 <p>Notice evidence that does not fit a first interpretation, then choose the revision that preserves what still works while making room for the new detail.</p>
 </section>
-
 <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Complicate the Interpretation Practice</h2>
-      <div id="labCard" class="card">
-        <div class="progress-wrap">
-          <div class="progress-label">
-            <span id="roundText">Round 1 of 3</span>
-            <span id="itemText">Example 1 of 8</span>
-          </div>
-          <progress id="progress" value="1" max="8">1 of 8</progress>
-        </div>
-
-        <div id="questionArea">
-          <div class="round-label" id="roundLabel">Round 1: Don't Ignore the New Evidence</div>
-
-          <p class="label">FIRST INTERPRETATION</p>
-          <div class="box" id="firstClaim"></div>
-
-          <p class="label">NEW EVIDENCE</p>
-          <div class="box new-evidence" id="newEvidence"></div>
-
-          <p class="prompt" id="prompt">What should the writer do next?</p>
-          <div id="choices" class="choices" aria-label="Choose the strongest revision move"></div>
-
-          <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-
-          <div id="actions" class="actions hidden">
-            <button id="tryAgain" class="secondary" type="button">Try This One Again</button>
-            <button id="next" class="primary" type="button">Continue</button>
-          </div>
-        </div>
-
-        <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced making an interpretation more complex.</p>
-          <p>When new evidence does not fit perfectly, try asking:</p>
-          <ul>
-            <li>Does my claim need a word like <em>although</em>, <em>while</em>, or <em>yet</em>?</li>
-            <li>Am I treating a complicated character as one-dimensional?</li>
-            <li>Can both ideas be true at the same time?</li>
-            <li>Does the tension reveal something more interesting than my first claim?</li>
-          </ul>
-          <p>
+<h2 id="practice-heading">Complicate the Interpretation Practice</h2>
+<div class="card" id="labCard">
+<div class="progress-wrap">
+<div class="progress-label">
+<span id="roundText">Round 1 of 3</span>
+<span id="itemText">Example 1 of 8</span>
+</div>
+<progress id="progress" max="8" value="1">1 of 8</progress>
+</div>
+<div id="questionArea">
+<div class="round-label" id="roundLabel">Round 1: Don't Ignore the New Evidence</div>
+<p class="label">FIRST INTERPRETATION</p>
+<div class="box" id="firstClaim"></div>
+<p class="label">NEW EVIDENCE</p>
+<div class="box new-evidence" id="newEvidence"></div>
+<p class="prompt" id="prompt">What should the writer do next?</p>
+<div aria-label="Choose the strongest revision move" class="choices" id="choices"></div>
+<div aria-atomic="true" aria-live="polite" class="feedback hidden" id="feedback" role="status"></div>
+<div class="actions hidden" id="actions">
+<button class="secondary" id="tryAgain" type="button">Try This One Again</button>
+<button class="primary" id="next" type="button">Continue</button>
+</div>
+</div>
+<div class="completion hidden" id="completion" tabindex="-1">
+<p class="big">You practiced making an interpretation more complex.</p>
+<p>When new evidence does not fit perfectly, try asking:</p>
+<ul>
+<li>Does my claim need a word like <em>although</em>, <em>while</em>, or <em>yet</em>?</li>
+<li>Am I treating a complicated character as one-dimensional?</li>
+<li>Can both ideas be true at the same time?</li>
+<li>Does the tension reveal something more interesting than my first claim?</li>
+</ul>
+<p>
             Strong arguments often become stronger when they explain contradiction, change, or mixed evidence instead of smoothing it away.
           </p>
-          <div class="actions">
-            <button id="restart" class="secondary" type="button">Practice Again</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>This low-stakes practice activity does not record or submit student responses.</footer>
-
-  <script>
+<div class="actions">
+<button class="secondary" id="restart" type="button">Practice Again</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>This low-stakes practice activity does not record or submit student responses.</footer>
+<script>
   (() => {
     const items = [
       {
@@ -989,8 +991,7 @@ The complexity comes from explaining why both sides of the evidence matter.
     render();
   })();
   </script>
-
-  <script id="mobile-activity-upgrade-js">
+<script id="mobile-activity-upgrade-js">
   (() => {
     function localDateParts(){
       const now = new Date();
@@ -1132,12 +1133,9 @@ The complexity comes from explaining why both sides of the evidence matter.
     });
   })();
   </script>
-
-
 <footer class="site-credit-footer">
-  <p>Created by Karen Crozer for ENGL C1002 classes.</p>
-  <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+<p>Created by Karen Crozer for ENGL C1002 classes.</p>
+<p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
 </footer>
-
 </body>
 </html>
