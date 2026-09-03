@@ -3,273 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Literary Analysis Labs | Karen Crozer</title>
-  <meta name="description" content="Accessible interactive literary analysis practice activities created by Karen Crozer for ENGL C1002, ENGL 218, and other literature courses.">
+  <title>Literary Analysis Labs | ENGL C1002 Resources</title>
+  <meta name="description" content="Short, accessible literary analysis practice activities organized around four moves: Notice, Interpret, Support, and Develop.">
+  <link rel="icon" type="image/png" href="favicon4.png">
   <style>
-    :root{
-      --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
-      --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--focus:#111827;--max:1000px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6
-    }
-    a{color:var(--accent-dark);text-underline-offset:.18em}
-    a:hover{color:var(--accent)}
-    a:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.2rem}
-    .skip-link{
-      position:absolute;left:.75rem;top:-5rem;z-index:1000;background:#fff;color:var(--text);
-      padding:.75rem 1rem;border:2px solid var(--focus);border-radius:.4rem
-    }
+    :root{--bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;--max:1040px;--focus:#111827}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:var(--accent-dark);text-underline-offset:.18em} a:hover{color:var(--accent)}
+    a:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem}
+    .skip-link{position:absolute;top:-5rem;left:.75rem;z-index:1000;padding:.75rem 1rem;background:#fff;color:var(--text);border:2px solid var(--focus);border-radius:.4rem}
     .skip-link:focus{top:.75rem}
     header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
-    header{padding-top:2.4rem;padding-bottom:1rem}
-    .eyebrow{
-      margin:0 0 .4rem;color:var(--accent-dark);font-weight:800;text-transform:uppercase;
-      letter-spacing:.04em;font-size:.86rem
-    }
-    h1{margin:0;font-size:clamp(2.3rem,7vw,4.2rem);line-height:1.04;letter-spacing:-.04em}
-    h2{margin-top:2.5rem;font-size:1.65rem;line-height:1.2}
-    h3{margin:.15rem 0 .35rem;font-size:1.17rem;line-height:1.25}
-    .lede{max-width:74ch;color:var(--muted);font-size:1.12rem;margin-top:1rem}
-    .intro{
-      background:var(--surface);border:1px solid var(--border);border-radius:.85rem;
-      padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04)
-    }
-    .highlight{
-      background:var(--soft);border-left:5px solid var(--accent);padding:1rem 1.1rem;
-      border-radius:.35rem;margin-top:1rem
-    }
-    .path{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:1rem
-    }
-    .path-step{
-      border:1px solid var(--border);background:#fff;border-radius:.65rem;padding:.85rem
-    }
-    .path-step strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
-    .section-intro{color:var(--muted);max-width:72ch}
-    .labs{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem
-    }
-    .lab-card{
-      background:var(--surface);border:1px solid var(--border);border-radius:.8rem;
-      padding:1.2rem;box-shadow:0 1px 2px rgba(0,0,0,.04);
-      display:flex;flex-direction:column
-    }
-    .lab-number{
-      display:inline-block;margin-bottom:.25rem;color:var(--accent-dark);font-weight:800;
-      font-size:.88rem;text-transform:uppercase;letter-spacing:.03em
-    }
-    .lab-card p{margin:.35rem 0 1rem;color:var(--muted)}
-    .lab-link{
-      display:inline-block;margin-top:auto;min-height:48px;padding:.76rem 1rem;background:var(--accent);
-      color:#fff;border-radius:.55rem;font-weight:800;text-decoration:none
-    }
-    .lab-link:hover{background:var(--accent-dark);color:#fff}
-    .use-note{
-      background:#fff;border:1px solid var(--border);border-radius:.75rem;padding:1rem 1.15rem;margin-top:1rem
-    }
-    footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.92rem}
-    @media(max-width:800px){.path{grid-template-columns:1fr 1fr}}
-    @media(max-width:650px){.labs,.path{grid-template-columns:1fr}}
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-    }
+    header{padding:2rem 0 1rem}.brand-row{display:flex;align-items:center;gap:1rem}.brand-icon{width:68px;height:68px;object-fit:contain;border-radius:.7rem;flex:0 0 auto}
+    .eyebrow{margin:0 0 .25rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.84rem}
+    h1{margin:0;font-size:clamp(2.35rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.045em}
+    h2{margin:2.6rem 0 .5rem;font-size:clamp(1.65rem,4vw,2.15rem);line-height:1.2} h3{margin:.05rem 0 .3rem;font-size:1.3rem;line-height:1.2}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.1rem;margin:1rem 0 0}
+    .hero-card{margin-top:1.4rem;padding:clamp(1rem,3vw,1.5rem);background:var(--surface);border:1px solid var(--border);border-radius:.9rem;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+    .hero-card p{margin-top:0}.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.8rem 1rem;border-radius:.6rem;font-weight:800;text-decoration:none;border:2px solid var(--accent)}
+    .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-dark);color:#fff}
+    .btn-secondary{background:#fff;color:var(--accent-dark)}.btn-secondary:hover{background:var(--soft);color:var(--accent-dark)}
+    .small-note{color:var(--muted);font-size:.93rem;margin:.85rem 0 0}
+    .moves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+    .move-card{background:var(--surface);border:1px solid var(--border);border-radius:.85rem;padding:1.25rem;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;min-height:245px}
+    .move-num{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:50%;background:var(--soft);color:var(--accent-dark);font-weight:900;margin-bottom:.6rem}
+    .move-card p{margin:.25rem 0 1rem;color:var(--muted)}.examples{margin:.15rem 0 1rem;padding-left:1.1rem;color:var(--text);font-size:.95rem}.examples li{margin:.25rem 0}.move-card .btn{margin-top:auto;width:100%}
+    .practice-note{margin-top:1rem;padding:1rem 1.15rem;background:#f0f7f2;border-left:5px solid var(--green);border-radius:.4rem}.practice-note strong{color:#1d5e31}
+    .help-section{display:grid;grid-template-columns:1.4fr .8fr;gap:1rem;align-items:start;margin-top:1rem}
+    .help-card,.teacher-card{background:#fff;border:1px solid var(--border);border-radius:.8rem;padding:1.15rem}.help-card p,.teacher-card p{margin:.3rem 0 .9rem;color:var(--muted)}
+    .simple-list{padding-left:1.15rem;margin:.5rem 0}.simple-list li{margin:.35rem 0}
+    footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.92rem}.footer-links{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;margin-bottom:.8rem}
+    @media(max-width:760px){header{padding-top:1.25rem}.brand-row{align-items:flex-start}.brand-icon{width:54px;height:54px}.moves,.help-section{grid-template-columns:1fr}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%}.move-card{min-height:0}}
+    @media(max-width:460px){header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}.brand-row{gap:.7rem}.brand-icon{width:46px;height:46px}h1{font-size:2.35rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-
   <header>
-    <p class="eyebrow">Interactive English Resources</p>
-    <h1>Literary Analysis Labs</h1>
-    <p class="lede">
-      Short, accessible interactive activities created by <strong>Karen Crozer</strong>
-      to help students practice the thinking moves behind literary analysis.
-    </p>
+    <div class="brand-row">
+      <img class="brand-icon" src="favicon4.png" alt="">
+      <div><p class="eyebrow">Interactive English Resources</p><h1>Literary Analysis Labs</h1></div>
+    </div>
+    <p class="lede">Practice literary analysis one move at a time. Start at the beginning, or choose the skill that would help you most right now.</p>
+
+    <nav aria-label="Audience navigation" style="margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap">
+      <a class="btn btn-secondary" href="#main">For Students</a>
+      <a class="btn btn-secondary" href="teachers.html">For Instructors</a>
+    </nav>
   </header>
 
   <main id="main" tabindex="-1">
-    <section aria-labelledby="about-heading">
-      <h2 id="about-heading">About These Labs</h2>
-      <div class="intro">
-        <p>
-          Literary analysis can feel overwhelming when several skills are expected at once.
-          These labs break the process into smaller moves so you can practice one skill at a time,
-          get immediate feedback, and try again without penalty.
-        </p>
-        <p>
-          The collection may be especially helpful in <strong>ENGL C1002: Introduction to Literature</strong>,
-          where students develop close-reading and analytical writing skills. The same skills can also support
-          students in upper-level English courses that require literary analysis, including
-          <strong>ENGL 218: Children’s Literature</strong>.
-        </p>
+    <section class="hero-card" aria-labelledby="start-heading">
+      <h2 id="start-heading" style="margin-top:0">Start Here</h2>
+      <p>These short activities are designed for low-stakes practice. You can try again, read the feedback, and work at your own pace. Your responses are not recorded or submitted.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="what-kind-of-thinking-is-this.html">Start from the beginning</a>
+        <a class="btn btn-secondary" href="#choose-skill">Choose a skill</a>
+      </div>
+      <p class="small-note">If your instructor asks for proof of completion, each activity ends with a screenshot-ready completion screen.</p>
+    </section>
 
-        <div class="highlight">
-          <strong>These are practice spaces, not tests.</strong>
-          You do not need to complete every lab in one sitting. Work through the sequence or jump directly
-          to the skill you want to practice.
+    <section id="choose-skill" aria-labelledby="choose-heading">
+      <h2 id="choose-heading">Choose a Skill</h2>
+      <p class="lede" style="margin-top:0">Literary analysis gets easier when you break it into four moves.</p>
+      <div class="moves">
+        <article class="move-card">
+          <span class="move-num" aria-hidden="true">1</span><h3>Notice</h3><p>See what the text is doing.</p>
+          <ul class="examples"><li>Tell summary from analysis</li><li>Notice details and patterns</li><li>Ask useful questions</li><li>Zoom in on language</li></ul>
+          <a class="btn btn-secondary" href="notice.html">Choose a Notice activity</a>
+        </article>
+        <article class="move-card">
+          <span class="move-num" aria-hidden="true">2</span><h3>Interpret</h3><p>Ask what the pattern might mean.</p>
+          <ul class="examples"><li>Move from observation to interpretation</li><li>Test whether a reading fits the evidence</li><li>Build thematic ideas</li><li>Analyze perspective</li></ul>
+          <a class="btn btn-secondary" href="interpret.html">Choose an Interpret activity</a>
+        </article>
+        <article class="move-card">
+          <span class="move-num" aria-hidden="true">3</span><h3>Support</h3><p>Use evidence and explain it.</p>
+          <ul class="examples"><li>Tell claims, evidence, and explanation apart</li><li>Integrate quotations</li><li>Explain how evidence supports a claim</li></ul>
+          <a class="btn btn-secondary" href="support.html">Choose a Support activity</a>
+        </article>
+        <article class="move-card">
+          <span class="move-num" aria-hidden="true">4</span><h3>Develop</h3><p>Build and complicate an argument.</p>
+          <ul class="examples"><li>Strengthen a thesis</li><li>Revise when evidence complicates a claim</li><li>Repair weak analysis</li></ul>
+          <a class="btn btn-secondary" href="develop.html">Choose a Develop activity</a>
+        </article>
+      </div>
+      <div class="practice-note"><strong>Not sure which one to choose?</strong> Start with <strong>Notice</strong>. The four moves build on one another, but you do not have to complete every activity.</div>
+    </section>
+
+    <section aria-labelledby="using-heading">
+      <h2 id="using-heading">Using These Labs</h2>
+      <div class="help-section">
+        <div class="help-card">
+          <h3>For Students</h3>
+          <p>You can use these activities before, during, or after working on a literary analysis assignment.</p>
+          <ul class="simple-list"><li>Choose the move that matches where you feel stuck.</li><li>Read the feedback even when your first answer is correct.</li><li>Try again when an answer does not work.</li><li>Use the completion screen if your instructor asks for proof.</li></ul>
         </div>
-
-        <div class="path" aria-label="Literary analysis learning pathway">
-          <div class="path-step"><strong>1. Notice</strong>See what the text is doing.</div>
-          <div class="path-step"><strong>2. Interpret</strong>Ask what the pattern might mean.</div>
-          <div class="path-step"><strong>3. Support</strong>Use evidence and explain it.</div>
-          <div class="path-step"><strong>4. Develop</strong>Build and complicate an argument.</div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="start-heading">
-      <h2 id="start-heading">Start Here: Learn the Core Moves</h2>
-      <p class="section-intro">
-        These labs help you recognize the difference between summary and analysis, notice meaningful details,
-        ask analytical questions, and begin moving toward interpretation.
-      </p>
-
-      <div class="labs">
-        <article class="lab-card">
-          <span class="lab-number">Lab 1</span>
-          <h3>What Kind of Thinking Is This?</h3>
-          <p>Tell the difference between summary, observation, and analysis.</p>
-          <a class="lab-link" href="what-kind-of-thinking-is-this.html">Open “What Kind of Thinking Is This?”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 2</span>
-          <h3>Notice → Wonder</h3>
-          <p>Turn something you notice in a text into a question that can lead toward interpretation.</p>
-          <a class="lab-link" href="notice-to-wonder.html">Open “Notice → Wonder”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 3</span>
-          <h3>Pattern Finder</h3>
-          <p>Decide which details belong together and identify the pattern they create.</p>
-          <a class="lab-link" href="pattern-finder.html">Open “Pattern Finder”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 4</span>
-          <h3>So What?</h3>
-          <p>Move from a useful analytical question toward a defensible interpretation.</p>
-          <a class="lab-link" href="so-what.html">Open “So What?”</a>
-        </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="interpret-heading">
-      <h2 id="interpret-heading">Build an Interpretation</h2>
-      <p class="section-intro">
-        These labs help you test interpretations against evidence, analyze language closely, and recognize
-        when a reading is too obvious or goes too far.
-      </p>
-
-      <div class="labs">
-        <article class="lab-card">
-          <span class="lab-number">Lab 5</span>
-          <h3>Zoom In</h3>
-          <p>Focus on the word, image, contrast, or detail doing the most interpretive work.</p>
-          <a class="lab-link" href="zoom-in.html">Open “Zoom In”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 6</span>
-          <h3>Too Obvious, Too Wild, or Just Right?</h3>
-          <p>Practice making interpretations that go beyond summary without outrunning the evidence.</p>
-          <a class="lab-link" href="too-obvious-too-wild-just-right.html">Open “Too Obvious, Too Wild, or Just Right?”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 7</span>
-          <h3>Build an Interpretation</h3>
-          <p>Connect several pieces of evidence into a larger, defensible reading of the text.</p>
-          <a class="lab-link" href="build-an-interpretation.html">Open “Build an Interpretation”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 8</span>
-          <h3>Theme or Topic?</h3>
-          <p>Move from broad subjects such as freedom or family toward specific thematic ideas.</p>
-          <a class="lab-link" href="theme-or-topic.html">Open “Theme or Topic?”</a>
-        </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="write-heading">
-      <h2 id="write-heading">Write the Analysis</h2>
-      <p class="section-intro">
-        These labs show how interpretation becomes analytical writing: claims, evidence, explanation,
-        quotation integration, and thesis development.
-      </p>
-
-      <div class="labs">
-        <article class="lab-card">
-          <span class="lab-number">Lab 9</span>
-          <h3>Claim, Evidence, or Explanation?</h3>
-          <p>Learn the different jobs sentences perform inside a literary-analysis paragraph.</p>
-          <a class="lab-link" href="claim-evidence-explanation.html">Open “Claim, Evidence, or Explanation?”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 10</span>
-          <h3>Don't Drop the Quote</h3>
-          <p>Give enough context, integrate textual evidence, and return to your own analysis.</p>
-          <a class="lab-link" href="dont-drop-the-quote.html">Open “Don't Drop the Quote”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 11</span>
-          <h3>Strengthen the Thesis</h3>
-          <p>Move from topic and observation toward a specific, arguable interpretive thesis.</p>
-          <a class="lab-link" href="strengthen-the-thesis.html">Open “Strengthen the Thesis”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 12</span>
-          <h3>The Analysis Repair Shop</h3>
-          <p>Diagnose and repair common problems in complete literary-analysis paragraphs.</p>
-          <a class="lab-link" href="analysis-repair-shop.html">Open “The Analysis Repair Shop”</a>
-        </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="deeper-heading">
-      <h2 id="deeper-heading">Go Deeper</h2>
-      <p class="section-intro">
-        These activities help you move beyond a first interpretation by considering complexity and perspective.
-      </p>
-
-      <div class="labs">
-        <article class="lab-card">
-          <span class="lab-number">Lab 13</span>
-          <h3>Complicate It</h3>
-          <p>Revise an interpretation when new evidence adds tension, contradiction, or complexity.</p>
-          <a class="lab-link" href="complicate-it.html">Open “Complicate It”</a>
-        </article>
-
-        <article class="lab-card">
-          <span class="lab-number">Lab 14</span>
-          <h3>Whose Eyes Are We Seeing Through?</h3>
-          <p>Analyze how perspective shapes what a reader notices, values, understands, or misses.</p>
-          <a class="lab-link" href="whose-eyes.html">Open “Whose Eyes Are We Seeing Through?”</a>
-        </article>
-      </div>
-
-      <div class="use-note">
-        <strong>Not sure where to begin?</strong>
-        Start with Lab 1 and work forward. If you are already writing a paper, jump to the lab that matches
-        the problem you are having right now.
+        <aside class="teacher-card" aria-labelledby="teacher-heading">
+          <h3 id="teacher-heading">For Instructors</h3>
+          <p>Looking for assignment links, category pages, or Canvas embed codes?</p>
+          <a class="btn btn-secondary" href="teachers.html">Open instructor resources</a>
+        </aside>
       </div>
     </section>
   </main>
 
   <footer>
-    Literary Analysis Labs created by Karen Crozer for student learning and practice.
+    <div class="footer-links"><a href="notice.html">Notice</a><a href="interpret.html">Interpret</a><a href="support.html">Support</a><a href="develop.html">Develop</a><a href="teachers.html">For Instructors</a></div>
+    <div>Literary Analysis Labs created by Karen Crozer for student learning and practice.</div>
   </footer>
 </body>
 </html>
