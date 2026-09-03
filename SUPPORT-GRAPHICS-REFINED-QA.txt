@@ -1,0 +1,13 @@
+C1002 SUPPORT GRAPHICS REFINED QA
+
+Graphic usage: {'read-your-text-themes.png': ['big-ideas.html'], 'from-topic-to-theme.png': ['big-ideas.html'], 'zoom-in-then-zoom-out.png': ['close-reading.html'], 'follow-the-clues-organizer.png': ['close-reading.html'], 'build-your-analysis.png': ['how-to-read-literature.html'], 'literary-analysis-path.png': ['what-is-literary-analysis.html'], 'summary-vs-analysis.png': ['what-is-literary-analysis.html']}
+Broken/local accessibility issues: []
+Orphaned HTML pages: []
+JavaScript syntax errors: []
+
+Refinement:
+- Graphics reduced to max width 760px.
+- Each graphic placed after explanatory text that introduces its concept.
+- Each graphic now has a short lead-in sentence before it.
+- Full accessible text descriptions remain below each image.
+- No graphics added to quiz/activity pages.
