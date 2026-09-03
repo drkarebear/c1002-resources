@@ -1,1 +1,995 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Literary Terms Made Simple | Literary Analysis Labs</title>
+  <meta name="description" content="Plain-language definitions, examples, and analysis questions for common literary terms.">
+
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --surface:#fff;
+      --text:#1f2933;
+      --muted:#5d6978;
+      --border:#d4dbe5;
+      --accent:#1f5da8;
+      --accent-dark:#163f74;
+      --soft:#eef4fb;
+      --green:#2f7a43;
+      --green-soft:#f0f7f2;
+      --gold-soft:#fff8e8;
+      --focus:#111827;
+      --max:1020px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible{
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+      border-radius:.3rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      top:-5rem;
+      left:.75rem;
+      z-index:1000;
+      padding:.75rem 1rem;
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
+    .skip-link:focus{top:.75rem}
+
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header{padding:1.5rem 0 .7rem}
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+
+    .brand span{font-weight:850}
+
+    .eyebrow{
+      margin:1.35rem 0 .25rem;
+      color:var(--accent-dark);
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.82rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.45rem,7vw,4.3rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    h2{
+      margin:2.25rem 0 .5rem;
+      font-size:1.7rem;
+      line-height:1.2;
+    }
+
+    h3{
+      margin:.1rem 0 .3rem;
+      font-size:1.3rem;
+      line-height:1.25;
+    }
+
+    .lede{
+      max-width:74ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:.8rem 0 0;
+    }
+
+    .big-note{
+      margin-top:1.1rem;
+      padding:1rem 1.1rem;
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+      border-radius:.45rem;
+    }
+
+    .big-note strong{color:#1f5b31}
+
+    .search-wrap{
+      margin-top:1.25rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1rem;
+    }
+
+    .search-wrap label{
+      display:block;
+      font-weight:850;
+      margin-bottom:.4rem;
+      color:var(--accent-dark);
+    }
+
+    #termSearch{
+      width:100%;
+      min-height:48px;
+      border:2px solid var(--border);
+      border-radius:.58rem;
+      padding:.75rem .85rem;
+      font:inherit;
+      color:var(--text);
+      background:#fff;
+    }
+
+    .search-hint{
+      margin:.4rem 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .jump{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      padding:.6rem .8rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.55rem;
+      text-decoration:none;
+      font-weight:750;
+    }
+
+    .category-intro{
+      color:var(--muted);
+      max-width:72ch;
+      margin:.2rem 0 0;
+    }
+
+    .terms{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .term-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      padding:1.15rem;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+    }
+
+    .term-card[hidden]{display:none}
+
+    .term-kind{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:var(--accent-dark);
+      font-weight:850;
+      margin-bottom:.2rem;
+    }
+
+    .plain{
+      margin:.35rem 0 .8rem;
+      color:var(--muted);
+    }
+
+    .mini{
+      border-top:1px solid var(--border);
+      padding-top:.65rem;
+      margin-top:.65rem;
+    }
+
+    .mini strong{
+      color:var(--accent-dark);
+      display:block;
+      margin-bottom:.2rem;
+    }
+
+    .mini p{
+      margin:.15rem 0;
+    }
+
+    .example{
+      margin-top:.65rem;
+      background:var(--soft);
+      border-radius:.6rem;
+      padding:.75rem .8rem;
+    }
+
+    .example strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.2rem;
+    }
+
+    .example p{margin:.1rem 0}
+
+    .not-found{
+      margin-top:1rem;
+      padding:1rem;
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      background:#fff;
+      color:var(--muted);
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1.2rem;
+    }
+
+    .btn{
+      min-height:48px;
+      border-radius:.58rem;
+      padding:.75rem 1rem;
+      font-weight:800;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:2px solid var(--accent);
+    }
+
+    .primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .primary:hover{
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .secondary{
+      background:#fff;
+      color:var(--accent-dark);
+    }
+
+    .secondary:hover{
+      background:var(--soft);
+      color:var(--accent-dark);
+    }
+
+    footer{
+      padding:2.3rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media(max-width:760px){
+      header,main,footer{
+        width:min(calc(100% - 1.25rem),var(--max));
+      }
+
+      .terms{grid-template-columns:1fr}
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .actions .btn{
+        width:100%;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+      }
+    }
+
+    @media(prefers-contrast:more){
+      :root{
+        --border:#4b5563;
+        --muted:#374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to literary terms</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
+
+    <p class="eyebrow">Quick Help</p>
+    <h1>Literary Terms Made Simple</h1>
+
+    <p class="lede">
+      You do not need to memorize every literary term before you can analyze a text.
+      Use this page when you run into a word you do not know, or when you want help figuring out what to notice.
+    </p>
+
+    <div class="big-note">
+      <strong>The term is not the analysis.</strong>
+      Knowing that something is a metaphor, symbol, or example of imagery is only the beginning.
+      The useful question is usually: <strong>What does this choice do, and why might it matter?</strong>
+    </div>
+
+    <div class="search-wrap">
+      <label for="termSearch">Find a term</label>
+      <input id="termSearch" type="search" placeholder="Try: imagery, narrator, theme, irony..." autocomplete="off">
+      <p class="search-hint">You can search by the literary term or by a plain-language word like “speaker,” “comparison,” or “repetition.”</p>
+    </div>
+
+    <nav class="jump" aria-label="Jump to term groups">
+      <a class="pill" href="#story">Stories and Narrators</a>
+      <a class="pill" href="#language">Language and Images</a>
+      <a class="pill" href="#patterns">Patterns and Meaning</a>
+      <a class="pill" href="#poetry">Poetry</a>
+      <a class="pill" href="#drama">Drama</a>
+      <a class="pill" href="#writing">Analysis Writing</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="story">
+      <h2>Stories and Narrators</h2>
+      <p class="category-intro">
+        These terms help you think about who is telling a story, what characters do, and how the story is organized.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="narrator voice tells story storyteller">
+          <div class="term-kind">Story term</div>
+          <h3>Narrator</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The voice that tells a story.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>What the narrator notices, knows, misunderstands, hides, or leaves out.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does this narrator shape what I believe or notice?</p>
+          </div>
+          <div class="example">
+            <strong>Example:</strong>
+            <p>A narrator insists, “I was not afraid,” but keeps describing every sound in the hallway. That tension may make the narrator seem less reliable or more frightened than they admit.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="point of view perspective first person third person narrator">
+          <div class="term-kind">Story term</div>
+          <h3>Point of View</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The position from which we experience the story.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Who can see what, whose thoughts we know, and whose experience is missing.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does this perspective allow me to know, and what does it keep uncertain?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="characterization character personality actions dialogue description">
+          <div class="term-kind">Story term</div>
+          <h3>Characterization</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The way a writer builds our understanding of a character.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>What a character says, does, avoids, notices, remembers, or how others respond to them.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What do these choices suggest about the character that the text does not state directly?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="setting place time location environment atmosphere">
+          <div class="term-kind">Story term</div>
+          <h3>Setting</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Where and when a text takes place.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Places that feel safe, threatening, open, closed, public, private, familiar, or strange.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does this place or time shape what the characters can do or how the scene feels?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="conflict struggle problem tension opposition character">
+          <div class="term-kind">Story term</div>
+          <h3>Conflict</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A struggle, pressure, or tension in a text.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>What a character wants, what gets in the way, and what competing values or desires appear.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What larger idea becomes visible through this struggle?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="structure order arrangement sequence flashback beginning ending">
+          <div class="term-kind">Story term</div>
+          <h3>Structure</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The way a text is arranged.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>What comes first, what is delayed, what repeats, where the text shifts, and how it ends.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>Why might the writer have arranged the text this way?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="flashback past memory earlier time structure">
+          <div class="term-kind">Story term</div>
+          <h3>Flashback</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A moment when the text moves back to an earlier event.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A memory, earlier scene, or shift away from the present timeline.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>Why does the text reveal this earlier event here instead of earlier?</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="language">
+      <h2>Language and Images</h2>
+      <p class="category-intro">
+        These terms help you slow down and notice what particular words or images are doing.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="diction word choice vocabulary language">
+          <div class="term-kind">Language term</div>
+          <h3>Diction</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The particular words a writer chooses.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A word that feels unusually strong, formal, casual, harsh, gentle, repeated, or surprising.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>Why this word instead of a simpler or more expected one?</p>
+          </div>
+          <div class="example">
+            <strong>Example:</strong>
+            <p>“The hallway <em>swallowed</em> his footsteps.” The word “swallowed” makes the hallway feel active and possibly threatening, not merely quiet.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="imagery sensory senses image sight sound smell taste touch">
+          <div class="term-kind">Language term</div>
+          <h3>Imagery</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Language that helps you imagine a sight, sound, smell, taste, touch, or other sensory experience.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Details that make you see, hear, feel, smell, or otherwise experience the scene.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does this image make especially vivid, and why might that matter?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="figurative language nonliteral comparison metaphor simile personification">
+          <div class="term-kind">Language term</div>
+          <h3>Figurative Language</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Language that is not meant only in a literal way.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Comparisons, exaggeration, personification, or images that ask you to imagine one thing through another.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What becomes easier, stranger, stronger, or more emotional because of this nonliteral language?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="metaphor comparison is figurative language">
+          <div class="term-kind">Language term</div>
+          <h3>Metaphor</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A comparison that treats one thing as if it were another.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A description that gives one thing the qualities of something else.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What qualities from the comparison get transferred, and what do they add?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="simile like as comparison figurative language">
+          <div class="term-kind">Language term</div>
+          <h3>Simile</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A comparison that usually uses “like” or “as.”</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Two unlike things being compared directly.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does the comparison help me see differently?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="personification human qualities object animal nature figurative language">
+          <div class="term-kind">Language term</div>
+          <h3>Personification</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Giving human actions or qualities to something nonhuman.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Objects, weather, places, or ideas that seem to act, feel, want, watch, or speak.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does making this thing seem human change the mood or meaning?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="symbol symbolism object image stands for meaning">
+          <div class="term-kind">Language term</div>
+          <h3>Symbol / Symbolism</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A concrete thing that takes on a larger meaning in the text.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>An object, place, color, image, or action that repeats or becomes unusually important.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What larger idea might this connect to, and what evidence makes that reading plausible?</p>
+          </div>
+          <div class="example">
+            <strong>Important:</strong>
+            <p>A symbol does not have one automatic meaning. A bird does not always mean freedom. The text has to help build that meaning.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="patterns">
+      <h2>Patterns and Meaning</h2>
+      <p class="category-intro">
+        These terms help you connect details and think about larger ideas.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="repetition repeat repeated word image phrase pattern">
+          <div class="term-kind">Pattern term</div>
+          <h3>Repetition</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A word, image, phrase, sound, action, or idea that appears more than once.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Something that keeps returning.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What changes when this appears again? What pattern is being built?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="contrast difference opposite juxtaposition comparison">
+          <div class="term-kind">Pattern term</div>
+          <h3>Contrast</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A noticeable difference between two things placed near each other.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Light/dark, silence/noise, inside/outside, what a character says versus what they do, or two very different characters or scenes.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What becomes clearer because these two things are different?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="motif repeated pattern image idea object">
+          <div class="term-kind">Pattern term</div>
+          <h3>Motif</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A recurring image, idea, object, phrase, or situation that helps build meaning.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A repeated detail that seems connected to a larger idea.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What larger pattern does this repeated detail help create?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="theme topic larger idea message meaning">
+          <div class="term-kind">Meaning term</div>
+          <h3>Theme</h3>
+          <p class="plain"><strong>Plain meaning:</strong> An idea the text develops about a larger topic.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Patterns involving topics like family, power, freedom, identity, fear, belonging, memory, or knowledge.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does this particular text seem to suggest about that topic?</p>
+          </div>
+          <div class="example">
+            <strong>Not quite:</strong>
+            <p>“The theme is family.”</p>
+            <strong style="margin-top:.5rem">Stronger:</strong>
+            <p>“The story suggests that family loyalty can become a form of pressure when belonging depends on silence.”</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="tone attitude feeling voice mood">
+          <div class="term-kind">Meaning term</div>
+          <h3>Tone</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The attitude or emotional quality created by the speaker's or narrator's language.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Word choice, sentence rhythm, exaggeration, understatement, repetition, or changes in how something is described.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does the language make the speaker or narrator seem to feel about the subject?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="irony ironic difference expectation reality opposite">
+          <div class="term-kind">Meaning term</div>
+          <h3>Irony</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A meaningful gap between what is expected, said, known, or intended and what is actually true or happens.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A difference between words and meaning, expectation and outcome, or what one character knows versus another.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does this gap make the reader notice or understand?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="foreshadowing hint clue future later event">
+          <div class="term-kind">Pattern term</div>
+          <h3>Foreshadowing</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A detail that hints at something that may become important later.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>An early image, warning, object, line, or event that gains new meaning later.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does the earlier detail change once I know what happens later?</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="poetry">
+      <h2>Poetry</h2>
+      <p class="category-intro">
+        Poetry often asks you to pay attention to the voice, the line, and the way language is arranged on the page.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="speaker poem voice poet narrator">
+          <div class="term-kind">Poetry term</div>
+          <h3>Speaker</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The voice speaking in a poem.</p>
+          <div class="mini">
+            <strong>Important:</strong>
+            <p>The speaker is not automatically the poet.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>Who seems to be speaking, to whom, and what does this voice reveal or hide?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="stanza poetry paragraph group lines">
+          <div class="term-kind">Poetry term</div>
+          <h3>Stanza</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A group of lines in a poem, somewhat like a paragraph.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Where one stanza ends and another begins, and whether the poem shifts in subject, tone, image, or idea there.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>Why might the poem divide its ideas at this point?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="line break poetry line ending enjambment">
+          <div class="term-kind">Poetry term</div>
+          <h3>Line Break</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The place where one line of a poem ends and the next begins.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A break that creates a pause, surprise, double meaning, emphasis, or unusual connection.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What changes because the line ends here?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="rhyme poetry sound same endings">
+          <div class="term-kind">Poetry term</div>
+          <h3>Rhyme</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Repeated or similar sounds, often at the ends of words.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Words that echo each other and places where a rhyme pattern changes or breaks.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What ideas or words get connected because they sound alike?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="rhythm beat pace sound poetry">
+          <div class="term-kind">Poetry term</div>
+          <h3>Rhythm</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The pattern and pace of stressed and unstressed sounds in language.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Language that speeds up, slows down, becomes regular, or suddenly breaks its pattern.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does the pace or beat affect the feeling of the poem?</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="drama">
+      <h2>Drama</h2>
+      <p class="category-intro">
+        Plays communicate through spoken words, actions, silence, and stage directions.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="dialogue speech conversation characters play drama">
+          <div class="term-kind">Drama term</div>
+          <h3>Dialogue</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The words characters speak to one another.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>What characters say, avoid saying, repeat, interrupt, misunderstand, or imply.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does this conversation reveal beyond the literal words?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="stage direction play drama action parentheses movement">
+          <div class="term-kind">Drama term</div>
+          <h3>Stage Direction</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Written instructions in a play that describe action, movement, setting, sound, or how something happens.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Actions that do not match what a character says, meaningful pauses, entrances, exits, or objects being handled.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What does the action show that the dialogue does not say?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="scene drama play section location time">
+          <div class="term-kind">Drama term</div>
+          <h3>Scene</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A section of a play, often organized around a particular place, time, or group of characters.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Who enters, who leaves, what changes, and what the scene accomplishes before it ends.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What changes because this scene happened?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="dramatic irony audience knows character does not know">
+          <div class="term-kind">Drama term</div>
+          <h3>Dramatic Irony</h3>
+          <p class="plain"><strong>Plain meaning:</strong> When the audience knows something important that a character does not.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>A character making decisions without information the audience already has.</p>
+          </div>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>How does knowing more than the character change the tension or meaning of the scene?</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="writing">
+      <h2>Words You May Hear in Literary Analysis</h2>
+      <p class="category-intro">
+        These are common college words instructors may use when they talk about reading and writing.
+      </p>
+
+      <div class="terms">
+        <article class="term-card" data-search="analysis analyze meaning explain significance">
+          <div class="term-kind">Analysis word</div>
+          <h3>Analysis</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Explaining how or why something in the text matters.</p>
+          <div class="mini">
+            <strong>Shortcut:</strong>
+            <p><strong>Notice something → ask why it matters → explain your idea.</strong></p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="interpret interpretation meaning reading possibility">
+          <div class="term-kind">Analysis word</div>
+          <h3>Interpretation</h3>
+          <p class="plain"><strong>Plain meaning:</strong> A possible explanation of what a text or pattern might mean.</p>
+          <div class="mini">
+            <strong>Important:</strong>
+            <p>More than one interpretation can be reasonable if it fits the evidence.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="claim argument idea point assertion">
+          <div class="term-kind">Writing word</div>
+          <h3>Claim</h3>
+          <p class="plain"><strong>Plain meaning:</strong> An idea you are asking your reader to consider or believe.</p>
+          <div class="mini">
+            <strong>Ask:</strong>
+            <p>What am I actually saying about this text?</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="textual evidence quote quotation detail support example">
+          <div class="term-kind">Writing word</div>
+          <h3>Textual Evidence</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The words, actions, images, patterns, stage directions, or other details from the text that help support your idea.</p>
+          <div class="mini">
+            <strong>Important:</strong>
+            <p>Evidence is not only a long quotation. A single word or small pattern can be powerful evidence.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="close reading close read zoom detail language">
+          <div class="term-kind">Analysis word</div>
+          <h3>Close Reading</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Slowing down and looking carefully at a small part of the text.</p>
+          <div class="mini">
+            <strong>Look for:</strong>
+            <p>Specific words, images, repetitions, contrasts, shifts, sounds, actions, or structural choices.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="thesis main claim argument essay">
+          <div class="term-kind">Writing word</div>
+          <h3>Thesis</h3>
+          <p class="plain"><strong>Plain meaning:</strong> The main interpretive claim your essay develops.</p>
+          <div class="mini">
+            <strong>Important:</strong>
+            <p>Your thesis can change as you read, write, and discover more. That is normal.</p>
+          </div>
+        </article>
+
+        <article class="term-card" data-search="complicate complexity qualify tension contradiction">
+          <div class="term-kind">Analysis word</div>
+          <h3>Complicate</h3>
+          <p class="plain"><strong>Plain meaning:</strong> Make an idea more accurate by including tension, exceptions, or evidence that does not fit perfectly.</p>
+          <div class="mini">
+            <strong>Example:</strong>
+            <p>Instead of “The character wants freedom,” you might discover: “The character wants freedom, yet repeatedly chooses the safety of familiar restrictions.”</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">What Should You Do With These Terms?</h2>
+      <div class="big-note">
+        You do not need to use literary vocabulary just to sound academic.
+        Use a term when it helps you <strong>notice something more clearly</strong> or
+        <strong>explain your interpretation more precisely</strong>.
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="practice-literary-terms.html">Practice Literary Terms</a>
+        <a class="btn secondary" href="what-is-literary-analysis.html">What Is Literary Analysis?</a>
+        <a class="btn secondary" href="all-labs.html">All Labs</a>
+        <a class="btn secondary" href="index.html">Student Home</a>
+      </div>
+    </section>
+
+    <div id="notFound" class="not-found" hidden>
+      No terms matched your search. Try a broader word, or clear the search box.
+    </div>
+  </main>
+
+  <footer>
+    Literary terms are tools for noticing and explaining, not a test of whether you “belong” in a literature class.
+  </footer>
+
+<script>
+(() => {
+  const input = document.getElementById("termSearch");
+  const cards = [...document.querySelectorAll(".term-card")];
+  const notFound = document.getElementById("notFound");
+
+  function filterTerms(){
+    const q = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const haystack = (
+        card.textContent + " " + (card.dataset.search || "")
+      ).toLowerCase();
+
+      const show = !q || haystack.includes(q);
+      card.hidden = !show;
+      if(show) visible++;
+    });
+
+    notFound.hidden = visible !== 0;
+  }
+
+  input.addEventListener("input", filterTerms);
+})();
+</script>
+</body>
+</html>
