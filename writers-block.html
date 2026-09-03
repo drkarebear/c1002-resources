@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Writer’s Block: Go Back to the Text | ENGL C1002 Literary Analysis Lab</title>
+<meta name="description" content="A low-stakes ENGL C1002 lab that helps students respond to literary-analysis writer’s block by returning to close reading, patterns, questions, and evidence rather than padding a draft.">
+<link rel="icon" type="image/png" href="favicon4.png">
+<style>
+:root{--bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;--green-soft:#f0f7f2;--gold-soft:#fff8e8;--focus:#111827;--max:820px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:var(--accent-dark);text-underline-offset:.18em}a:focus-visible,button:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+header,main,footer{width:min(calc(100% - 1.4rem),var(--max));margin-inline:auto}
+header{padding:1.35rem 0 .7rem}
+.brand{display:flex;gap:.65rem;align-items:center;text-decoration:none;color:var(--text);font-weight:850}.brand img{width:42px;height:42px;object-fit:contain}
+.student-nav{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.7rem}.student-nav a{font-weight:750}
+.eyebrow{margin:1.2rem 0 .25rem;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;font-weight:850;color:var(--accent-dark)}
+h1{margin:0;font-size:clamp(2.2rem,7vw,4rem);line-height:1.04;letter-spacing:-.04em}h2{line-height:1.2}
+.lede{color:var(--muted);font-size:1.06rem;max-width:72ch}
+.big-note{background:var(--green-soft);border-left:5px solid var(--green);padding:1rem;border-radius:.5rem;margin:1rem 0}
+.rescue{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1rem 0}
+.rescue div{background:var(--surface);border:1px solid var(--border);border-radius:.7rem;padding:.8rem}
+.rescue strong{display:block;color:var(--accent-dark);margin-bottom:.15rem}
+.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;gap:1rem}progress{width:100%;height:.8rem;accent-color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.1rem;margin-top:1rem}
+.round-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;font-weight:850;color:var(--accent-dark)}
+.passage{background:var(--gold-soft);border:1px solid var(--border);border-radius:.65rem;padding:.85rem;margin:.75rem 0;font-family:Georgia,"Times New Roman",serif}
+.prompt{font-weight:800;margin:.75rem 0}
+.choices{display:grid;gap:.65rem}.choice{width:100%;text-align:left;background:var(--surface);color:var(--text);border:2px solid var(--border);border-radius:.65rem;padding:.8rem;min-height:50px;font:inherit;cursor:pointer}
+.choice:hover{border-color:var(--accent)}.feedback{display:none;margin-top:.8rem;padding:.8rem;border-radius:.6rem;background:var(--soft)}.feedback.show{display:block}.feedback.correct{background:var(--green-soft);border-left:5px solid var(--green)}
+.actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.8rem}.actions button,.actions a{min-height:48px;padding:.7rem .9rem;border-radius:.55rem;font:inherit;font-weight:800;text-decoration:none;border:2px solid var(--accent);display:inline-flex;align-items:center;justify-content:center}
+.actions button{background:var(--surface);color:var(--text)}.actions .primary{background:var(--accent);color:#fff}
+.hidden{display:none!important}
+.transfer{background:var(--soft);padding:1rem;border-radius:.7rem;margin:1.2rem 0}
+.completion{max-width:540px;margin:1.2rem auto 0}.completion-capture{background:var(--surface);border:2px solid var(--green);border-radius:1rem;padding:1.1rem;text-align:center}.completion-check{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:0 auto .55rem;background:var(--green-soft);border:2px solid var(--green);font-size:1.8rem;font-weight:900}
+.completion-kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;font-weight:850;color:var(--accent-dark);margin:.1rem 0}.completion h2{font-size:2.2rem;margin:.1rem 0}.completion-activity{font-weight:800}
+.completion-meta{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:.7rem 0}.completion-meta>div{background:var(--soft);border:1px solid var(--border);border-radius:.6rem;padding:.55rem}.completion-meta span{display:block;font-size:.68rem;text-transform:uppercase;color:var(--muted);font-weight:800}
+.completion-actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.65rem}.completion-actions a,.completion-actions button{min-height:48px;border-radius:.55rem;padding:.65rem;font:inherit;font-weight:800;border:2px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none}.completion-actions .reflect{border-color:var(--accent);background:var(--soft);color:var(--accent-dark)}.completion-links{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.completion-links a{border:0;background:transparent;text-decoration:underline;justify-content:flex-start}
+footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.rescue{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.rescue{grid-template-columns:1fr}.actions{flex-direction:column}.actions button,.actions a{width:100%}}
+@media(prefers-color-scheme:dark){
+:root{--bg:#10151b;--surface:#18212a;--text:#f3f6f9;--muted:#bdc7d2;--border:#3b4856;--accent:#8dbbff;--accent-dark:#bdd7ff;--soft:#202c38;--green:#72d287;--green-soft:#182a1d;--gold-soft:#302817;--focus:#fff}
+.actions .primary{background:#315f99}a{color:var(--accent-dark)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html"><img src="favicon4.png" alt=""><span>ENGL C1002 Literary Analysis Lab</span></a>
+<nav class="student-nav" aria-label="Student navigation"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
+<p class="eyebrow">Getting Unstuck</p>
+<h1>Writer’s Block: Go Back to the Text</h1>
+<p class="lede">When you get stuck in literary analysis, the problem is not always that you need to “write more.” Often, you need <strong>more to think about</strong>. This lab helps you figure out what to do before you start padding a paragraph.</p>
+<div class="big-note"><strong>A useful rule:</strong> If you do not know what to write next, do not immediately add words. Return to the text and create more analytical material.</div>
+<div class="rescue" aria-label="Four rescue moves">
+<div><strong>1. Look Again</strong>Zoom in on a word, image, action, contrast, or stage direction.</div>
+<div><strong>2. Find a Pattern</strong>Connect two or three details instead of treating each one separately.</div>
+<div><strong>3. Ask a Better Question</strong>Move from “what happened?” to “why might this matter?”</div>
+<div><strong>4. Revise the Idea</strong>If evidence does not fit, complicate the claim instead of ignoring it.</div>
+</header>
+<main>
+<section id="activity">
+<div class="progress-label"><span id="progressText"></span><span>Low-stakes practice</span></div>
+<progress id="progress" value="1" max="9"></progress>
+<div id="questionCard" class="card">
+<div id="roundLabel" class="round-label"></div>
+<div id="passage" class="passage"></div>
+<div id="prompt" class="prompt"></div>
+<div id="choices" class="choices"></div>
+<div id="feedback" class="feedback" aria-live="polite"></div>
+<div class="actions"><button id="tryAgain" class="hidden" type="button">Try Again</button><button id="next" class="primary hidden" type="button">Continue</button></div>
+</div>
+</section>
+
+<section id="completion" class="completion hidden" tabindex="-1">
+<div class="completion-capture">
+<div class="completion-check" aria-hidden="true">✓</div>
+<p class="completion-kicker">Literary Analysis Lab</p>
+<h2>You did it!</h2>
+<p class="completion-activity">Writer’s Block: Go Back to the Text</p>
+<div class="completion-meta"><div><span>Completed</span><strong id="date"></strong></div><div><span>Time</span><strong id="time"></strong></div></div>
+<p>Screenshot this screen if your instructor asked for proof of completion.</p>
+</div>
+<div class="completion-actions"><button id="restart" type="button">Practice Again</button><a class="reflect" href="reflection.html?lab=writers-block">Reflect</a><div class="completion-links"><a href="all-labs.html">All Labs</a><a href="index.html">Student Home</a></div></div>
+</section>
+
+<section class="transfer">
+<h2>When You Get Stuck in Your Own Draft</h2>
+<p>Before trying to make the paragraph longer, write down one of these:</p>
+<ul>
+<li><strong>One detail I have not examined closely yet:</strong> ______</li>
+<li><strong>One pattern I see across two or more details:</strong> ______</li>
+<li><strong>One question I have not answered yet:</strong> ______</li>
+<li><strong>One piece of evidence that complicates my current idea:</strong> ______</li>
+</ul>
+<p>If you can fill in even one blank, you probably have somewhere meaningful to go next.</p>
+<div class="actions">
+<a href="close-reading.html">Close Reading Made Visible</a>
+<a href="pattern-finder.html">Pattern Finder</a>
+<a href="using-textual-evidence.html">Using Textual Evidence</a>
+<a href="literary-analysis-triage.html">Literary Analysis Triage</a>
+</div>
+</section>
+</main>
+<footer><p>Created by Karen Crozer for ENGL C1002 classes.</p><p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p></footer>
+
+<script>
+(() => {
+const items=[{"round": "What Kind of Stuck Is This?", "passage": "Draft: “The mirror is important in Snow White because the queen keeps asking it who is most beautiful.”", "prompt": "The writer says, “I don’t know what else to write.” What is probably the best next move?", "choices": [{"text": "Add three more sentences explaining that mirrors are important in many stories.", "correct": false, "feedback": "That adds length without deepening this interpretation. The writer needs to return to the specific pattern in this tale."}, {"text": "Look again at when the queen consults the mirror, what changes in its answers, and how her behavior changes afterward.", "correct": true, "feedback": "Yes. The paragraph is not mainly short because it lacks sentences. It is short because the writer has not yet examined the pattern closely enough."}, {"text": "Find a longer quotation so the paragraph takes up more space.", "correct": false, "feedback": "A longer quotation can make the paragraph longer without giving the writer more analysis. The goal is more thinking, not more quoted words."}]}, {"round": "Return to the Evidence", "passage": "Draft: “The child in The Emperor’s New Clothes tells the truth. This shows honesty is important.”", "prompt": "What could the writer investigate before trying to add more prose?", "choices": [{"text": "Why the crowd stays silent before the child speaks, and what changes once someone breaks that silence.", "correct": true, "feedback": "Exactly. The contrast between group silence and one act of speech gives the writer something specific to analyze."}, {"text": "How many pages long the story is.", "correct": false, "feedback": "That fact will not deepen the paragraph’s interpretation."}, {"text": "A dictionary definition of honesty.", "correct": false, "feedback": "The literary question is not what honesty means in general. It is what this particular scene suggests about speaking, conformity, and truth."}]}, {"round": "Zoom In", "passage": "Evidence: “your name stayed / bright on my tongue.”", "prompt": "The writer has used the quotation but feels stuck after it. Which move creates the most analytical material?", "choices": [{"text": "Ask why the poem uses “stayed,” why the memory is “bright,” and why it is located “on my tongue.”", "correct": true, "feedback": "Yes. One short quotation can generate several layers of analysis when the writer slows down and examines the actual language."}, {"text": "Immediately add another quotation from later in the poem.", "correct": false, "feedback": "Another quotation may eventually help, but the writer has not yet unpacked the evidence already on the page."}, {"text": "Write, “This quote is very significant to the poem.”", "correct": false, "feedback": "That announces significance without explaining it."}]}, {"round": "Find the Missing Question", "passage": "Draft: “Rapunzel lives in a tower. The tower keeps her safe, but she cannot leave it.”", "prompt": "Which question is most likely to help the writer move forward?", "choices": [{"text": "How many windows does the tower have?", "correct": false, "feedback": "A detail can matter, but this question does not yet develop the tension already visible in the paragraph."}, {"text": "How can protection become a form of control when safety depends on restricting someone’s choices?", "correct": true, "feedback": "Exactly. The writer already has a useful contradiction. A deeper question turns that contradiction into analytical material."}, {"text": "What happens next in the plot?", "correct": false, "feedback": "Continuing the plot summary may give the paragraph more words without giving it more analysis."}]}, {"round": "Find a Pattern", "passage": "Notes: “The sister in The Six Swans stays silent while working. She cannot defend herself when accused. She keeps working anyway.”", "prompt": "The writer has several details but cannot figure out what to write next. What should they do?", "choices": [{"text": "Name the relationship among the details: the same silence functions as commitment and vulnerability.", "correct": true, "feedback": "Yes. When several details are present, writer’s block can come from not yet naming the pattern that connects them."}, {"text": "Turn each note into a separate sentence and stop there.", "correct": false, "feedback": "That would create more sentences, but the paragraph would still lack an interpretation connecting them."}, {"text": "Add unrelated background about the history of fairy tales.", "correct": false, "feedback": "Background is useful only when it helps the argument. Here the writer already has enough textual material to build a pattern."}]}, {"round": "Test the Interpretation", "passage": "Working claim: “The Red Shoes suggests that desire is dangerous.” New evidence: the shoes are initially attractive and freely chosen, but later become difficult to control.", "prompt": "The writer feels stuck because the evidence does not fit the claim perfectly. What should happen next?", "choices": [{"text": "Ignore the evidence that complicates the claim.", "correct": false, "feedback": "The difficult evidence is often where the most interesting analysis begins."}, {"text": "Revise the claim so desire can be both attractive and dangerous, especially when something initially chosen begins to control the chooser.", "correct": true, "feedback": "Exactly. Writer’s block can signal that the interpretation needs to become more accurate, not that the writer needs filler."}, {"text": "Repeat the original claim in several different ways.", "correct": false, "feedback": "Rephrasing the same idea does not solve the conflict between the claim and the evidence."}]}, {"round": "When the Paragraph Feels Too Short", "passage": "Paragraph so far: claim → one short quotation → one sentence explaining the quotation.", "prompt": "Before deciding the paragraph “needs more words,” what should the writer ask?", "choices": [{"text": "Have I looked closely at the evidence, explained how it supports the claim, and considered another detail, pattern, contrast, or complication?", "correct": true, "feedback": "Yes. Paragraph length should grow from analytical work. It is not the goal by itself."}, {"text": "How many sentences does a college paragraph have to contain?", "correct": false, "feedback": "There is no universally correct sentence count. The paragraph needs enough development to make its reasoning clear."}, {"text": "Can I add a sentence that says, “This is important because it is significant”?", "correct": false, "feedback": "That adds words without adding reasoning."}]}, {"round": "When the Introduction Is Blocking You", "passage": "The writer has a rough thesis and several useful observations but has spent twenty minutes trying to invent the perfect first sentence.", "prompt": "What is a productive next move?", "choices": [{"text": "Keep rewriting the first sentence until it sounds impressive enough.", "correct": false, "feedback": "The opening does not need to be perfect before the analytical work can begin."}, {"text": "Draft the body paragraph where the evidence is clearest, then return to the introduction once the argument is more developed.", "correct": true, "feedback": "Yes. Literary-analysis essays do not have to be drafted from first sentence to last. Writing the clearest analytical section can help the introduction become easier later."}, {"text": "Begin with “Since the beginning of time…” so the page is no longer blank.", "correct": false, "feedback": "A broad filler hook may solve the blank page without helping the essay’s actual argument."}]}, {"round": "Choose the Best Rescue Move", "passage": "A student says: “I have my thesis and my quote, but everything I write after the quote just repeats what it says.”", "prompt": "Which rescue move is most useful?", "choices": [{"text": "Return to one or two words in the quotation and ask why those words, images, actions, or contrasts were used.", "correct": true, "feedback": "Exactly. The writer needs more close reading, not more paraphrase."}, {"text": "Replace the quotation with a longer one.", "correct": false, "feedback": "A longer quotation does not automatically create more analysis."}, {"text": "Write the thesis again after the quotation.", "correct": false, "feedback": "Repeating the thesis does not show the reader how the evidence supports it."}]}];
+let index=0,locked=false;
+
+function orderFor(item){
+ if(item.__order)return item.__order;
+ const order=item.choices.map((_,i)=>i);
+ for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+ if(order.length===3 && order.every((v,i)=>v===i))[order[0],order[1]]=[order[1],order[0]];
+ item.__order=order;return order;
+}
+
+const el={progressText:document.getElementById("progressText"),progress:document.getElementById("progress"),round:document.getElementById("roundLabel"),passage:document.getElementById("passage"),prompt:document.getElementById("prompt"),choices:document.getElementById("choices"),feedback:document.getElementById("feedback"),tryAgain:document.getElementById("tryAgain"),next:document.getElementById("next"),card:document.getElementById("questionCard"),activity:document.getElementById("activity"),completion:document.getElementById("completion")};
+
+function render(){
+ locked=false;const item=items[index];
+ el.progressText.textContent=`Question ${index+1} of ${items.length}`;el.progress.value=index+1;el.round.textContent=item.round;el.passage.textContent=item.passage;el.prompt.textContent=item.prompt;el.choices.innerHTML="";
+ orderFor(item).forEach(i=>{const c=item.choices[i];const b=document.createElement("button");b.type="button";b.className="choice";b.textContent=c.text;b.addEventListener("click",()=>answer(c));el.choices.appendChild(b);});
+ el.feedback.className="feedback";el.feedback.textContent="";el.tryAgain.classList.add("hidden");el.next.classList.add("hidden");
+}
+function answer(c){if(locked)return;locked=true;[...el.choices.children].forEach(b=>b.disabled=true);el.feedback.textContent=c.feedback;el.feedback.className="feedback show"+(c.correct?" correct":"");if(c.correct)el.next.classList.remove("hidden");else el.tryAgain.classList.remove("hidden");}
+el.tryAgain.addEventListener("click",()=>{locked=false;[...el.choices.children].forEach(b=>b.disabled=false);el.feedback.className="feedback";el.feedback.textContent="";el.tryAgain.classList.add("hidden");});
+el.next.addEventListener("click",()=>{if(index<items.length-1){index++;render();el.card.scrollIntoView({block:"start"});}else finish();});
+function finish(){el.activity.classList.add("hidden");el.completion.classList.remove("hidden");const now=new Date();document.getElementById("date").textContent=new Intl.DateTimeFormat(undefined,{year:"numeric",month:"long",day:"numeric"}).format(now);document.getElementById("time").textContent=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit"}).format(now);el.completion.focus();el.completion.scrollIntoView({block:"start"});}
+document.getElementById("restart").addEventListener("click",()=>{index=0;el.completion.classList.add("hidden");el.activity.classList.remove("hidden");render();el.activity.scrollIntoView({block:"start"});});
+render();
+})();
+</script>
+</body>
+</html>
