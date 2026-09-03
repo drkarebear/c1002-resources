@@ -39,6 +39,104 @@ h1{margin:0;font-size:clamp(2.25rem,7vw,4rem);line-height:1.04;letter-spacing:-.
 .choice{background:var(--surface)} .actions .primary{background:#315f99} a{color:var(--accent-dark)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.before-practice{
+  margin:1.1rem 0 1.5rem;
+}
+.before-practice h2{
+  margin:1.4rem 0 .45rem;
+}
+.lesson-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:.8rem;
+  padding:1rem;
+  margin:.8rem 0 1rem;
+}
+.lesson-card h3{
+  margin:.05rem 0 .45rem;
+}
+.lesson-card p{
+  margin:.45rem 0;
+}
+.lesson-card ul,
+.lesson-card ol{
+  margin:.45rem 0;
+  padding-left:1.3rem;
+}
+.lesson-card li{
+  margin:.3rem 0;
+}
+.title-formula{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.7rem;
+  margin:.75rem 0;
+}
+.title-formula > div{
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:.65rem;
+  padding:.8rem;
+}
+.good-example{
+  background:var(--green-soft);
+  border-left:5px solid var(--green);
+  border-radius:.55rem;
+  padding:.8rem .9rem;
+  margin:.65rem 0;
+}
+.hatmat-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.65rem;
+  margin:.75rem 0;
+}
+.hatmat-grid > div{
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:.65rem;
+  padding:.75rem;
+}
+.hatmat-letter{
+  display:inline-grid;
+  place-items:center;
+  width:2rem;
+  height:2rem;
+  margin-right:.35rem;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-weight:900;
+}
+.now-practice{
+  margin:1.7rem 0 1rem;
+  border:3px solid var(--accent);
+  border-radius:.85rem;
+  background:var(--soft);
+  padding:1.05rem;
+  text-align:center;
+}
+.now-practice .practice-kicker{
+  display:block;
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--accent-dark);
+}
+.now-practice h2{
+  margin:.15rem 0 .25rem;
+  font-size:clamp(1.8rem,5vw,2.5rem);
+}
+.now-practice p{
+  margin:.2rem auto;
+  max-width:60ch;
+}
+@media(max-width:650px){
+  .title-formula,.hatmat-grid{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -51,6 +149,145 @@ h1{margin:0;font-size:clamp(2.25rem,7vw,4rem);line-height:1.04;letter-spacing:-.
 <div class="tip"><strong>Keep in mind:</strong> These parts are not formulas. Their job is to help a reader enter, follow, and leave your interpretation.</div>
 </header>
 <main>
+
+<section class="before-practice" aria-labelledby="before-practice-heading">
+  <h2 id="before-practice-heading">Before You Practice: Frame the Argument</h2>
+  <p>
+    The title, introduction, and conclusion should help the reader understand the
+    argument you are building. They do not need to sound dramatic or overly formal.
+    Their job is to make the essay’s direction clear.
+  </p>
+
+  <article class="lesson-card">
+    <h3>1. Create a Title That Gives the Reader a Clue</h3>
+    <p>
+      A literary-analysis title is usually more engaging when it hints at the
+      <strong>specific idea you are exploring</strong>, not just the name of the assignment.
+    </p>
+    <p>
+      <strong>Literary analysis titles love a good colon.</strong> A colon lets you pair
+      something memorable with something specific:
+      <strong>interesting phrase or big idea: analytical focus and text.</strong>
+      The first half catches the reader’s attention; the second half tells the reader
+      what the essay is actually analyzing.
+    </p>
+
+    <div class="title-formula">
+      <div>
+        <strong>Too generic</strong>
+        <p><strong>An Analysis of The Emperor’s New Clothes</strong></p>
+        <p>The reader knows the text, but not what your essay is actually about.</p>
+      </div>
+      <div>
+        <strong>More focused</strong>
+        <p><strong>The Pressure to Agree: Public Performance in The Emperor’s New Clothes</strong></p>
+        <p>The reader can already see the essay’s interpretive direction.</p>
+      </div>
+    </div>
+
+
+    <div class="good-example">
+      <strong>A very useful pattern:</strong><br>
+      <strong>Interesting phrase or idea: Specific analytical focus</strong><br><br>
+      The Pressure to Agree: Public Performance in The Emperor’s New Clothes<br>
+      Mirrors and Measurement: Comparison, Beauty, and Power in Snow White<br>
+      “Keeps Her Safe”: Protection and Confinement in Rapunzel
+    </div>
+
+    <p><strong>Useful title patterns:</strong></p>
+    <ul>
+      <li><strong>Key idea + text:</strong> Comparison and Control in Snow White</li>
+      <li><strong>Interesting phrase + explanation:</strong> “Keeps Her Safe”: Protection and Confinement in Rapunzel</li>
+      <li><strong>Tension + text:</strong> Wanting Freedom, Fearing Change in The Red Shoes</li>
+      <li><strong>Short creative phrase + analytical subtitle:</strong> The Pressure to Agree: Public Performance in The Emperor’s New Clothes</li>
+    </ul>
+
+    <div class="good-example">
+      <strong>Try this:</strong> Write down the most interesting idea in your thesis.
+      Then ask, “Can my title give the reader a hint about this idea?”
+    </div>
+
+    <p>
+      <strong>Formatting note:</strong> Your <em>essay title itself</em> is not italicized.
+      Inside the title, format the literary work the way you normally would:
+      book and play titles are usually italicized, while short-story and poem titles
+      are usually placed in quotation marks.
+    </p>
+
+  </article>
+
+  <article class="lesson-card">
+    <h3>2. Build the Introduction with HATMAT</h3>
+    <p>
+      A useful planning checklist for a literary-analysis introduction is
+      <strong>HATMAT</strong>. You do not need one sentence for every letter, and you do not
+      have to follow the checklist mechanically. Use it to make sure the reader gets the
+      information needed to understand your argument.
+    </p>
+
+    <div class="hatmat-grid">
+      <div><span class="hatmat-letter">H</span><strong>Hook</strong><p>Open with an idea, tension, or question that connects directly to your argument. Avoid a giant statement like “Since the beginning of time…”</p></div>
+      <div><span class="hatmat-letter">A</span><strong>Author</strong><p>Name the author when you introduce the literary work.</p></div>
+      <div><span class="hatmat-letter">T</span><strong>Title</strong><p>Identify the work you are analyzing and format its title appropriately for the genre.</p></div>
+      <div><span class="hatmat-letter">M</span><strong>Main Character(s) or Central Situation</strong><p>Orient the reader to the character, speaker, relationship, or conflict your argument actually needs.</p></div>
+      <div><span class="hatmat-letter">A</span><strong>A Short Summary</strong><p>Give only enough context to understand the analytical problem. Do not retell the entire plot.</p></div>
+      <div><span class="hatmat-letter">T</span><strong>Thesis</strong><p>End the introduction by stating the specific, debatable interpretation your essay will develop.</p></div>
+    </div>
+
+    <p><strong>Think of HATMAT as a checklist, not a formula.</strong> A poem may not have a “main character,” for example, so you might identify the speaker or central situation instead.</p>
+
+    <div class="good-example">
+      <strong>Mini example:</strong>
+      Social pressure can make people distrust what they see with their own eyes.
+      In Hans Christian Andersen’s <em>The Emperor’s New Clothes</em>, officials and
+      townspeople publicly praise clothing they cannot actually see because they fear
+      appearing foolish. The child’s eventual interruption exposes how fragile that
+      agreement is. <strong>By showing adult after adult repeat a claim they privately
+      doubt, Andersen suggests that fear of social judgment can make conformity stronger
+      than individual perception.</strong>
+    </div>
+  </article>
+
+  <article class="lesson-card">
+    <h3>3. End with Significance, Not Just Repetition</h3>
+    <p>
+      A conclusion should give the reader a sense of closure while showing what your
+      analysis has helped us understand. You can return to the thesis, but do not simply
+      copy and paste it with a few synonyms.
+    </p>
+
+    <ul>
+      <li><strong>Return to your central claim</strong> in fresh language.</li>
+      <li><strong>Pull the evidence together.</strong> What becomes clearer when we consider the patterns as a whole?</li>
+      <li><strong>Answer the final “so what?”</strong> What larger idea, tension, or human problem does your interpretation help us see?</li>
+      <li><strong>Do not introduce a brand-new argument</strong> that would require another body paragraph to prove.</li>
+      <li><strong>Keep it focused.</strong> One developed paragraph is often enough.</li>
+    </ul>
+
+    <div class="good-example">
+      <strong>Instead of:</strong> “In conclusion, the crowd agrees because they are afraid.”<br>
+      <strong>Try:</strong> “The child’s interruption matters because it reveals how fragile
+      the crowd’s agreement actually is. Once one person says what everyone can see, the
+      performance becomes harder to maintain, suggesting that social pressure depends
+      partly on the belief that no one else will break from the group.”
+    </div>
+  </article>
+</section>
+
+<section class="summary">
+<h2>Quick Recap</h2>
+<p><strong>Title:</strong> signal the text and interpretive focus. <strong>Introduction:</strong> give only the context the argument needs, identify the problem or pattern, and arrive at a working thesis. <strong>Conclusion:</strong> return to the central tension and explain what the analysis has made clearer, more complex, or worth noticing.</p>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+  <span class="practice-kicker">Instruction Complete</span>
+  <h2 id="now-practice-heading">Now Practice</h2>
+  <p>
+    Use what you just reviewed to choose the strongest titles, introductions, theses,
+    and conclusions. You can scroll back to the examples above at any time.
+  </p>
+</section>
+
 <section id="activity">
 <div class="progress-label"><span id="progressText"></span><span id="roundText"></span></div>
 <progress id="progress" value="1" max="8"></progress>
@@ -83,10 +320,7 @@ h1{margin:0;font-size:clamp(2.25rem,7vw,4rem);line-height:1.04;letter-spacing:-.
 </div>
 </section>
 
-<section class="summary">
-<h2>A Simple Way to Think About the Frame</h2>
-<p><strong>Title:</strong> signal the text and interpretive focus. <strong>Introduction:</strong> give only the context the argument needs, identify the problem or pattern, and arrive at a working thesis. <strong>Conclusion:</strong> return to the central tension and explain what the analysis has made clearer, more complex, or worth noticing.</p>
-</section>
+
 </main>
 <footer><p>Created by Karen Crozer for ENGL C1002 classes.</p><p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p></footer>
 <script>
