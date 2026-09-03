@@ -369,7 +369,32 @@
       .stuck-grid{grid-template-columns:1fr}
     }
     
-  </style>
+  
+.site-credit-footer{
+  width:min(calc(100% - 2rem), 1020px);
+  margin:2.5rem auto 0;
+  padding:1.25rem 0 2.5rem;
+  border-top:1px solid #cbd5e1;
+  color:#52606d;
+  font-size:.92rem;
+  line-height:1.55;
+}
+.site-credit-footer p{margin:.2rem 0}
+.site-credit-footer a{font-weight:700;text-underline-offset:.18em}
+@media(max-width:700px){
+  .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
+}
+
+
+.first-gen-note{
+  margin:1.4rem 0;
+  padding:1rem 1.1rem;
+  background:#f0f7f2;
+  border-left:5px solid #2f7a43;
+  border-radius:.45rem;
+}
+
+</style>
 </head>
 
 <body>
@@ -417,6 +442,9 @@
       <p class="moves-intro">
         You do not need to know whether your problem is “analysis,” “interpretation,” or “development.”
         Choose the sentence that sounds most like what is happening for you.
+        <br><strong>Not sure which one fits?</strong>
+        Start with <a href="what-is-literary-analysis.html">What Is Literary Analysis?</a>.
+        You can come back here whenever you need a different kind of help.
       </p>
 
       <div class="stuck-grid">
@@ -462,6 +490,13 @@
       </div>
     </section>
 
+
+    
+    <aside class="first-gen-note" aria-label="A note for students new to college literature">
+      <strong>You are not expected to know all of this already.</strong>
+      College literature has its own vocabulary and habits of thinking.
+      These pages are here so you can learn them as you go.
+    </aside>
 
     <section id="choose-a-move" aria-labelledby="moves-heading">
       <h2 id="moves-heading">Choose a Move</h2>
@@ -557,5 +592,11 @@
 
     <div>Literary Analysis Labs created by Karen Crozer for student learning and practice.</div>
   </footer>
+
+<footer class="site-credit-footer">
+  <p>Created by Karen Crozer for ENGL C1002 classes.</p>
+  <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+</footer>
+
 </body>
 </html>

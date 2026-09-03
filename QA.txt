@@ -1,0 +1,8 @@
+QA results
+HTML pages: 30
+Broken local links: []
+H1 issues: []
+Favicon issues: []
+Missing privacy links: []
+Missing creator credit: []
+Orphaned HTML pages: []

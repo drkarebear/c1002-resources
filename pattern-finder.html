@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pattern Finder | Literary Analysis Lab</title>
+  <link rel="icon" type="image/png" href="favicon4.png">
   <meta name="description" content="An accessible interactive literary analysis activity that helps students identify meaningful patterns across multiple textual details.">
   <style>
     :root{
@@ -62,7 +63,23 @@
     .student-nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem;font-size:.95rem}
     .student-nav a{font-weight:750}
     
-  </style>
+  
+.site-credit-footer{
+  width:min(calc(100% - 2rem), 1020px);
+  margin:2.5rem auto 0;
+  padding:1.25rem 0 2.5rem;
+  border-top:1px solid #cbd5e1;
+  color:#52606d;
+  font-size:.92rem;
+  line-height:1.55;
+}
+.site-credit-footer p{margin:.2rem 0}
+.site-credit-footer a{font-weight:700;text-underline-offset:.18em}
+@media(max-width:700px){
+  .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
+}
+
+</style>
 
   <style id="mobile-activity-upgrade">
     /* Mobile activity mode: once practice begins, the page behaves more like a
@@ -210,7 +227,7 @@
       <a href="all-labs.html">All Labs</a>
     </nav>
     <p class="eyebrow">Literary Analysis Lab</p>
-    <div class="page-title">Pattern Finder</div>
+    <h1 class="page-title">Pattern Finder</h1>
     <p class="lede">
       Literary analysis often begins when several small details start to point in the same direction.
       This lab helps you decide which details belong together and what kind of pattern they create.
@@ -667,6 +684,12 @@
     });
   })();
   </script>
+
+
+<footer class="site-credit-footer">
+  <p>Created by Karen Crozer for ENGL C1002 classes.</p>
+  <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+</footer>
 
 </body>
 </html>

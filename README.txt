@@ -1,19 +1,27 @@
-C1002 Student Navigation Update
+C1002 Literary Analysis Labs — First-Gen + Instructor Usability Update
 
-This bundle includes:
-- index.html with "Where Are You Stuck?"
-- notice.html, interpret.html, support.html, develop.html with student-problem language
-- Student Home + All Labs navigation across student-facing pages
-- all 15 activity pages with completion navigation
-- all-labs.html
-- what-is-literary-analysis.html
-- literary-terms.html
-- practice-literary-terms.html
-- how-to-read-literature.html
-- what-does-my-professor-mean.html
-- literary-analysis-triage.html
-- reflection.html
-- teachers.html
-- favicon4.png
+Major changes in this package:
+- Added Privacy Policy (privacy.html)
+- Added "Created by Karen Crozer for ENGL C1002 classes" + Privacy link site-wide
+- Removed obsolete orphaned index-literary-analysis-labs.html
+- Added missing favicon to the original lab pages
+- Converted original lab page-title divs to semantic H1 headings
+- Updated All Labs so Literary Terms, term practice, How to Read Literature, and What Is Literary Analysis are not hidden
+- Strengthened first-generation student reassurance on the Student Home page
+- Rebuilt teachers.html around common faculty decisions:
+  * What should I assign?
+  * simple assignment patterns
+  * all four move pages
+  * all 15 current labs
+  * Lost in the Text included
+  * reading/terminology/feedback/triage tools included
+  * direct links and Canvas embed code
+  * reflection + completion workflow
+  * privacy explanation
 
-Upload these files into the same GitHub Pages repository folder, replacing files with the same names.
+Privacy statement:
+The site itself does not collect, store, or submit student answers or personal information.
+It uses no site analytics, advertising trackers, cookies, forms, or account system.
+GitHub Pages may process ordinary technical hosting logs under GitHub's own policies.
+
+Upload the contents of this folder to the root of the GitHub Pages repository.
