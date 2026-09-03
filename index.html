@@ -599,6 +599,76 @@
       }
     }
 
+
+    .quick-help{
+      margin-top:2.4rem;
+    }
+
+    .quick-help-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:.9rem;
+    }
+
+    .quick-help-head h2{
+      margin:0;
+    }
+
+    .quick-help-head p{
+      margin:.2rem 0 0;
+      color:var(--muted);
+      max-width:64ch;
+    }
+
+    .quick-help-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.8rem;
+    }
+
+    .quick-help-card{
+      display:block;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1rem;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .quick-help-card:hover{
+      background:var(--soft);
+      border-color:var(--accent);
+      color:var(--text);
+    }
+
+    .quick-help-card strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .quick-help-card span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media(max-width:900px){
+      .quick-help-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:620px){
+      .quick-help-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
 </style>
 </head>
 
@@ -676,6 +746,39 @@
           </p>
           <a href="all-labs.html">Explore all tools →</a>
         </article>
+      </div>
+    </section>
+
+
+    
+    <section class="quick-help" aria-labelledby="quick-help-heading">
+      <div class="quick-help-head">
+        <div>
+          <h2 id="quick-help-heading">Quick Help</h2>
+          <p>If you already know what kind of help you want, jump straight to it.</p>
+        </div>
+      </div>
+
+      <div class="quick-help-grid">
+        <a class="quick-help-card" href="how-to-read-literature.html">
+          <strong>How to Read Literature</strong>
+          <span>Simple strategies for stories, poems, and plays.</span>
+        </a>
+
+        <a class="quick-help-card" href="close-reading.html">
+          <strong>Close Reading Made Visible</strong>
+          <span>See what close reading actually looks like in different genres.</span>
+        </a>
+
+        <a class="quick-help-card" href="literary-terms.html">
+          <strong>Literary Terms Made Simple</strong>
+          <span>Plain-language definitions, examples, and analysis questions.</span>
+        </a>
+
+        <a class="quick-help-card" href="practice-literary-terms.html">
+          <strong>Practice Literary Terms</strong>
+          <span>Optional, low-stakes flashcards with no score or timer.</span>
+        </a>
       </div>
     </section>
 
