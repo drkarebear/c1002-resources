@@ -1,0 +1,23 @@
+C1002 ANALYSIS REPAIR SHOP INSTRUCTION + ACTIVITY AUDIT
+
+- paragraph-level purpose explicit: PASS
+- triage distinction/link: PASS
+- instruction before practice: PASS
+- NOW PRACTICE present: PASS
+- five repair categories: PASS
+- reasoning before polish: PASS
+- actionable diagnosis: PASS
+- 8 coherent questions: PASS
+- three repair rounds: PASS
+- old Nightingale corruption removed: PASS
+- old Goose-Girl garden corruption removed: PASS
+- old Talkative Tortoise Mina corruption removed: PASS
+- answer shuffling retained: PASS
+- completion retained: PASS
+
+HTML pages: 39
+Broken local links: []
+Orphaned HTML pages: ['index-literary-analysis-labs.html']
+Pages missing dark mode: ['index-literary-analysis-labs.html']
+H1 issues: []
+JavaScript syntax errors: []

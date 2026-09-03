@@ -58,6 +58,97 @@
     .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
     footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
     @media(max-width:760px){.repairs{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    
+    /* Analysis Repair Shop instruction upgrade */
+    .repair-path{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.45rem;
+      margin:.85rem 0;
+    }
+    .repair-step{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+    }
+    .repair-step strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.15rem;
+    }
+    .repair-step.final{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .repair-arrow{
+      text-align:center;
+      font-size:1.15rem;
+      font-weight:900;
+      color:var(--muted);
+    }
+    .repair-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.7rem;
+      margin:.8rem 0;
+    }
+    .repair-box{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+    }
+    .repair-box strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.15rem;
+    }
+    .repair-grid .repair-box:last-child{
+      grid-column:1/-1;
+    }
+    .priority-example{
+      background:var(--gold-soft);
+      border:1px solid var(--border);
+      border-radius:.75rem;
+      padding:.9rem;
+      margin:.75rem 0;
+    }
+    .priority-example p{margin:.45rem 0}
+    .repair-check{
+      margin:.55rem 0;
+      padding-left:1.25rem;
+    }
+    .repair-check li{margin:.35rem 0}
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent);
+      border-radius:.9rem;
+      background:var(--soft);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+    @media(max-width:650px){
+      .repair-grid{grid-template-columns:1fr}
+      .repair-grid .repair-box:last-child{grid-column:auto}
+    }
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   
@@ -527,25 +618,93 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>This lab helps you diagnose what is missing or misfiring in a literary-analysis paragraph and choose the most useful repair.</p>
+<h2 id="helps-heading">Before You Practice: Diagnose Before You Rewrite</h2>
 
-        <div class="repairs">
-          <div class="repair"><strong>DIAGNOSE</strong>Identify the exact problem instead of deciding that the whole paragraph “doesn't work.”</div>
-          <div class="repair"><strong>REPAIR</strong>Choose the revision that fixes the analytical gap.</div>
-          <div class="repair"><strong>COMPARE</strong>See how the repaired paragraph becomes clearer and more analytical.</div>
-        </div>
+<div class="card">
+<p><strong>The Analysis Repair Shop works at the paragraph level.</strong> If you are not sure which part of an entire draft deserves attention first, start with <a href="literary-analysis-triage.html">Literary Analysis Triage</a>. Once you have a paragraph that needs work, this lab helps you identify its biggest analytical gap and choose a repair.</p>
 
-        <div class="tip">
-          <strong>You do not have to fix everything at once.</strong>
-          Strong revision often means identifying the most important problem and repairing that first.
-        </div>
-      </div>
-    </section>
+<div class="repair-path" aria-label="Diagnose and repair sequence">
+  <div class="repair-step"><strong>1. READ FOR THE PARAGRAPH'S JOB</strong>What is this paragraph trying to prove?</div>
+  <div class="repair-arrow" aria-hidden="true">↓</div>
+  <div class="repair-step"><strong>2. DIAGNOSE THE BIGGEST GAP</strong>Is the problem the claim, evidence, explanation, connection, or complexity?</div>
+  <div class="repair-arrow" aria-hidden="true">↓</div>
+  <div class="repair-step"><strong>3. REPAIR THAT GAP FIRST</strong>Choose the revision that most improves the paragraph's reasoning.</div>
+  <div class="repair-arrow" aria-hidden="true">↓</div>
+  <div class="repair-step final"><strong>4. READ AGAIN</strong>After the repair, decide whether another problem still needs attention.</div>
+</div>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<div class="tip">
+<strong>Do not try to fix everything at once.</strong>
+A paragraph may have several imperfections, but one analytical problem usually matters more than sentence polish, transition words, or adding another quotation.
+</div>
+</div>
+
+<div class="card">
+<h3>Five Common Analytical Repairs</h3>
+<div class="repair-grid">
+  <div class="repair-box">
+    <strong>CLAIM REPAIR</strong>
+    The paragraph summarizes a topic or event but never makes an interpretive point.
+  </div>
+  <div class="repair-box">
+    <strong>EVIDENCE REPAIR</strong>
+    The paragraph makes a promising claim but gives little or no textual support.
+  </div>
+  <div class="repair-box">
+    <strong>EXPLANATION REPAIR</strong>
+    Evidence appears, but the writer restates it instead of explaining what it suggests.
+  </div>
+  <div class="repair-box">
+    <strong>CONNECTION REPAIR</strong>
+    The paragraph analyzes a detail but never shows how that analysis supports the paragraph's larger claim.
+  </div>
+  <div class="repair-box">
+    <strong>COMPLEXITY REPAIR</strong>
+    The claim ignores an exception, contradiction, ambiguity, or other evidence that makes the interpretation less simple.
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h3>Fix the Reasoning Before the Polish</h3>
+<div class="priority-example">
+<p><strong>Paragraph:</strong> The narrator mentions the photograph three times. “She turns it face down.” This quote shows that she turns the photograph over. Furthermore, this is symbolism.</p>
+
+<p><strong>You could edit:</strong> replace “Furthermore,” vary the vocabulary, or fix sentence rhythm.</p>
+
+<p><strong>But the bigger repair is:</strong> explain why turning the photograph face down matters.</p>
+
+<p><strong>Possible repair:</strong> Turning the photograph face down does not remove it from the room; it only blocks the image from view. The gesture therefore makes avoidance feel temporary and deliberate, supporting the paragraph's claim that the narrator is trying to control when she confronts the memory.</p>
+</div>
+
+<p>Once the reasoning works, sentence-level editing becomes worthwhile. Until then, polishing may only make a weak analytical move sound smoother.</p>
+</div>
+
+<div class="card">
+<h3>Use One Diagnostic Question at a Time</h3>
+<ul class="repair-check">
+<li><strong>Claim:</strong> What is this paragraph trying to prove?</li>
+<li><strong>Evidence:</strong> What specific part of the text gives me something to examine?</li>
+<li><strong>Explanation:</strong> What should the reader notice in that evidence, and what does it suggest?</li>
+<li><strong>Connection:</strong> How does that explanation help support the paragraph's claim?</li>
+<li><strong>Complexity:</strong> Is there evidence that requires the claim to become more precise?</li>
+</ul>
+
+<div class="tip">
+<strong>A diagnosis should point toward an action.</strong>
+“Needs work” is not very useful. “The evidence is here, but I only paraphrase it” tells you exactly what to revise next.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Identify the biggest analytical gap in each paragraph, then choose the repair that improves the reasoning rather than merely making the writing sound more polished.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Analysis Repair Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -556,7 +715,7 @@
         </div>
 
         <div id="questionArea">
-          <div class="round-label" id="roundLabel">Round 1: Diagnose the Problem</div>
+          <div class="round-label" id="roundLabel">Round 1: Diagnose the Biggest Gap</div>
 
           <p class="label">PARAGRAPH UNDER REPAIR</p>
           <div class="paragraph" id="paragraph"></div>
@@ -574,7 +733,7 @@
         </div>
 
         <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced repairing literary analysis.</p>
+          <p class="big">You practiced diagnosing and repairing literary analysis.</p>
           <p>When a paragraph feels weak, try diagnosing it with one question at a time:</p>
           <ul>
             <li>Am I summarizing instead of interpreting?</li>
@@ -603,104 +762,7 @@
 
   <script>
   (() => {
-    const items = [
-      {
-        round:1,
-        roundLabel:"Round 1: Diagnose the Problem",
-        paragraph:"Cinderella goes to the ball, dances with the prince, leaves before midnight, loses her slipper, and later tries on the slipper when the prince arrives.",
-        prompt:"What is the biggest problem if this paragraph is supposed to be literary analysis?",
-        choices:[
-          {text:"It contains too much plot summary and no interpretive claim.",correct:true,feedback:"Exactly. The paragraph tells what happens but does not explain why any pattern, detail, or choice matters."},
-          {text:"It needs a longer quotation.",correct:false,feedback:"A quotation would not solve the main problem. The paragraph first needs an interpretive idea."},
-          {text:"It needs more transition words.",correct:false,feedback:"Transitions may improve flow, but they cannot turn summary into analysis by themselves."}
-        ],
-        after:"Possible repair: Start with an interpretive claim, such as: “Because Cinderella’s social treatment changes when her appearance changes, the story connects outward appearance with social status.” Then use only the plot details needed to support that idea."
-      },
-      {
-        round:1,
-        roundLabel:"Round 1: Diagnose the Problem",
-        paragraph:"In The Little Match Girl, the visions are comforting. The girl imagines warmth and food. This shows that she wants warmth and food.",
-        prompt:"What is the central analytical problem?",
-        choices:[
-          {text:"The explanation simply repeats the evidence instead of analyzing why comfort appears through imagined scenes rather than the girl’s actual surroundings.",correct:true,feedback:"Yes. The paragraph has a claim and evidence, but the explanation paraphrases instead of interpreting the word “imagined comfort.”"},
-          {text:"The paragraph should remove the quotation.",correct:false,feedback:"The quotation is useful evidence. The issue is what the writer does after it."},
-          {text:"The claim is too long.",correct:false,feedback:"The claim is actually very short. The missing work is explanation."}
-        ],
-        after:"Possible repair: “The word ‘imagined comfort’ makes the hallway seem active and consuming, as though the setting erases the character’s presence.”"
-      },
-      {
-        round:1,
-        roundLabel:"Round 1: Diagnose the Problem",
-        paragraph:"The poem uses imagery. The speaker says the empty chair is “holding the afternoon light.” This is imagery and it makes you picture the chair.",
-        prompt:"What is missing most?",
-        choices:[
-          {text:"An explanation of why the image of an empty chair “holding” light matters to the poem's larger idea.",correct:true,feedback:"Exactly. Naming imagery and saying that it creates a picture are only starting points. The paragraph still needs to interpret this particular image."},
-          {text:"A dictionary definition of imagery.",correct:false,feedback:"A definition would not explain what this image is doing in this poem."},
-          {text:"Two more literary devices from the same line.",correct:false,feedback:"More labels would not replace interpretation. The writer needs to explain the significance of the image already identified."}
-        ],
-        after:"Possible repair: “Describing the empty chair as “holding the afternoon light” gives absence a physical presence, suggesting that what is missing can still shape how the speaker experiences the room.”"
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Choose the Best Repair",
-        paragraph:"In The Nightingale, the court becomes fascinated by an artificial bird. The court likes the artificial bird.",
-        prompt:"Which revision best repairs the gap between evidence and claim?",
-        choices:[
-          {text:"Add: “The courteous greeting sounds reassuring rather than threatening, helping disguise the danger behind familiar social behavior.”",correct:true,feedback:"Yes. This explains how the tone of the dialogue supports the claim."},
-          {text:"Add: “This is dialogue.”",correct:false,feedback:"That identifies the form but not its effect."},
-          {text:"Add: “The court likes the artificial bird because it is impressive.”",correct:false,feedback:"That relies on a general stereotype instead of analyzing the evidence in this story."}
-        ],
-        after:"Repaired version: “The court’s courteous greeting, ‘Good evening, little one,’ sounds reassuring rather than threatening, helping disguise the danger behind familiar social behavior.”"
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Choose the Best Repair",
-        paragraph:"The youngest girl looks outside the frame. This proves that she plans to run away from her family.",
-        prompt:"Which revision best fixes the overreach?",
-        choices:[
-          {text:"Qualify the claim: “Her different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.”",correct:true,feedback:"Yes. This stays interpretive while removing a specific plot claim the evidence cannot support."},
-          {text:"Make the claim stronger: “She definitely escapes the family later.”",correct:false,feedback:"That adds even more unsupported information."},
-          {text:"Remove all interpretation and say only: “She looks outside the frame.”",correct:false,feedback:"That avoids overreach but also removes analysis. The better move is a more cautious interpretation."}
-        ],
-        after:"Repaired version: “Because the youngest girl alone looks outside the frame, her different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.”"
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Choose the Best Repair",
-        paragraph:"In The Goose-Girl, the princess loses her position. Then she works with the geese. Then other people treat the servant as the bride. Then the truth is eventually revealed.",
-        prompt:"Which repair would make this paragraph more analytical?",
-        choices:[
-          {text:"Replace some plot sequence with a claim connecting the garden’s wildness, the children’s happiness, and adult control.",correct:true,feedback:"Exactly. The details are potentially useful, but they need to be organized around an interpretation rather than a timeline."},
-          {text:"Add more events in the order they happen.",correct:false,feedback:"That would increase summary rather than analysis."},
-          {text:"Add a sentence saying, “The author uses imagery.”",correct:false,feedback:"That label does not explain the relationship among the details."}
-        ],
-        after:"Possible repair: “The garden’s ‘true identity’ condition coincides with the children’s happiest moments, suggesting that the story associates freedom with spaces less controlled by adults.”"
-      },
-      {
-        round:3,
-        roundLabel:"Round 3: Repair the Whole Paragraph",
-        paragraph:"In The Talkative Tortoise, the tortoise is warned not to speak. He speaks anyway. This shows he talks too much. Talking symbolizes danger.",
-        prompt:"Which revision strategy would improve this paragraph the most?",
-        choices:[
-          {text:"Focus on the contrast between what the group notices and what Mina notices, then explain how that difference supports the interpretation.",correct:true,feedback:"Yes. This replaces repeated claims and generic symbol labels with close reading of the actual contrast."},
-          {text:"Add two more quotations about windows.",correct:false,feedback:"More evidence is not the main need. The existing evidence has not yet been fully analyzed."},
-          {text:"Replace “hopeful” with a more complicated vocabulary word.",correct:false,feedback:"Stronger vocabulary will not fix the reasoning. The paragraph needs closer explanation of the evidence."}
-        ],
-        after:"Repaired version: “Mina’s perspective differs from the group’s because she notices possibility where they see only a barrier. While the others study the ‘warning,’ Mina focuses on the ‘decision to speak beneath it.’ The contrast shifts attention from what blocks them to what exists beyond the barrier, suggesting that hope in the passage depends on where a character chooses to look.”"
-      },
-      {
-        round:3,
-        roundLabel:"Round 3: Repair the Whole Paragraph",
-        paragraph:"The child is powerless because adults make all the decisions. However, she is also the first person to recognize the danger. This contradicts my thesis, so I would probably leave that part out.",
-        prompt:"What is the strongest repair?",
-        choices:[
-          {text:"Revise the thesis so it distinguishes physical or social power from perceptiveness or knowledge.",correct:true,feedback:"Exactly. The new evidence does not ruin the argument; it makes the idea of power more complex."},
-          {text:"Delete the contradictory evidence.",correct:false,feedback:"Ignoring relevant evidence weakens the argument."},
-          {text:"Change the thesis to say the child is powerful in every way.",correct:false,feedback:"That overcorrects. The stronger interpretation can hold different kinds of power at once."}
-        ],
-        after:"Possible repair: “Although adults control the decisions around her, the child’s ability to recognize danger gives her a form of knowledge that complicates her apparent powerlessness.”"
-      }
-    ];
+    const items = [{"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "Jonah misses the train, walks home, returns to the station the next day, and misses the train again.", "prompt": "What is the biggest problem if this paragraph is supposed to be literary analysis?", "choices": [{"text": "It summarizes events but never makes an interpretive claim about the repeated missed departures.", "correct": true, "feedback": "Exactly. The repeated events may become useful evidence, but the paragraph first needs to explain what the pattern may suggest."}, {"text": "It needs a longer quotation from the story.", "correct": false, "feedback": "More evidence would not solve the main problem because the paragraph has not yet said what it wants that evidence to help prove."}, {"text": "It needs transition words between every event.", "correct": false, "feedback": "Transitions may improve flow, but they cannot turn plot sequence into interpretation."}], "after": "Possible repair: “Jonah's repeated missed departures turn leaving into a pattern of hesitation, suggesting that his inability to go is emotional as well as practical.”"}, {"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "The poem presents memory as difficult to erase. The speaker says, “I swept the room clean / but your name stayed in the dust.” This means the room was cleaned but some dust remained.", "prompt": "What is the central analytical problem?", "choices": [{"text": "The paragraph has relevant evidence, but the explanation merely paraphrases the literal action instead of analyzing the contrast and image.", "correct": true, "feedback": "Yes. The paragraph needs to explain how “but” and the name remaining “in the dust” make memory feel resistant to deliberate removal."}, {"text": "The paragraph needs a second quotation immediately.", "correct": false, "feedback": "The existing quotation already gives the writer enough material to analyze. Another quotation would not replace the missing explanation."}, {"text": "The claim should be removed because poems can have more than one meaning.", "correct": false, "feedback": "Interpretive claims are appropriate as long as they remain grounded in the text. The problem here is the weak explanation, not the presence of a claim."}], "after": "Possible repair: “The word ‘but’ turns the second line against the speaker's attempt to clean the room, while the name remaining ‘in the dust’ makes memory feel like a physical trace that resists removal.”"}, {"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "The cracked-glass imagery suggests that the narrator's confidence in her own perspective is becoming unstable. Later, she describes the window as “split by a thin white line.”", "prompt": "What is missing most?", "choices": [{"text": "The paragraph needs explanation of what the “thin white line” makes the reader notice and how that detail supports the claim about unstable perception.", "correct": true, "feedback": "Exactly. The claim and evidence are present, but the paragraph stops before showing how the evidence does analytical work."}, {"text": "The paragraph needs to define imagery for the reader.", "correct": false, "feedback": "A definition of imagery would not explain this particular image or its relationship to the paragraph's claim."}, {"text": "The paragraph needs a more complicated transition phrase.", "correct": false, "feedback": "The analytical gap is between evidence and interpretation, not between sentences."}], "after": "Possible repair: “The ‘thin white line’ makes the break look small but impossible to ignore, turning an ordinary window into a visual sign that the narrator's once-unified view has begun to divide.”"}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The workers become silent whenever the supervisor enters. The story shows that the supervisor is powerful.", "prompt": "Which revision would improve the paragraph the most?", "choices": [{"text": "Add evidence showing the repeated shift into silence, then explain how the workers' self-censorship allows the supervisor's authority to operate even without a direct command.", "correct": true, "feedback": "Yes. This gives the claim textual support and explains the mechanism of power rather than simply labeling the supervisor as powerful."}, {"text": "Replace “powerful” with “formidable.”", "correct": false, "feedback": "A stronger vocabulary word does not repair the missing evidence and explanation."}, {"text": "Add “Furthermore” before the second sentence.", "correct": false, "feedback": "A transition can connect sentences, but it cannot create the analytical reasoning the paragraph lacks."}], "after": "Possible repair: “Each time the supervisor enters, conversation stops before he gives an order. The repeated silence suggests that his authority has been internalized by the workers, who begin regulating themselves in anticipation of his judgment.”"}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The youngest figure in the portrait is the only person looking outside the frame. This proves that she is planning to escape her family.", "prompt": "Which repair best fixes the overreach without eliminating interpretation?", "choices": [{"text": "Qualify the claim so the different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.", "correct": true, "feedback": "Yes. This keeps the interpretation while removing a specific future action the image cannot prove."}, {"text": "Make the sentence more confident: “She definitely plans to escape.”", "correct": false, "feedback": "Greater certainty makes the unsupported leap larger."}, {"text": "Remove all interpretation and write only, “She looks outside the frame.”", "correct": false, "feedback": "That avoids overreach but also gives up the analytical work. The stronger move is a proportionate interpretation."}], "after": "Possible repair: “Because the youngest figure alone looks beyond the frame, her gaze may associate her with curiosity or possibilities that the other figures do not appear to notice.”"}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The parent repeatedly calls the rules “protection.” The locked bedroom door also keeps the child from leaving. The paragraph concludes: “The parent is simply cruel.”", "prompt": "What repair would create a more useful interpretation?", "choices": [{"text": "Revise the conclusion to examine how care and control become difficult to separate when one person decides what safety requires for another.", "correct": true, "feedback": "Exactly. The evidence supports a tension between protection and restriction more strongly than a one-word moral judgment."}, {"text": "Add several synonyms for “cruel.”", "correct": false, "feedback": "Stronger labeling would not make the interpretation more precise or better grounded."}, {"text": "Delete the detail about protection because it complicates the conclusion.", "correct": false, "feedback": "The complicating detail is valuable. It is the reason the argument can become more nuanced."}], "after": "Possible repair: “By describing restrictive rules as ‘protection,’ the parent makes care difficult to separate from control, suggesting that concern can become coercive when only one person has the authority to define safety.”"}, {"round": 3, "roundLabel": "Round 3: Repair the Whole Paragraph", "paragraph": "The story is about belonging. Lena changes the way she speaks after joining the group. “You sound better now,” one member tells her. This quote shows they like how she talks. The group accepts her.", "prompt": "Which revision strategy would improve this paragraph the most?", "choices": [{"text": "Turn “belonging” into a more specific claim, then analyze how “better” makes acceptance depend on changing the way Lena sounds.", "correct": true, "feedback": "Yes. This repair improves both the paragraph claim and the explanation of the evidence, giving the details a clear analytical relationship."}, {"text": "Add two more quotations showing that the group accepts Lena.", "correct": false, "feedback": "The paragraph already establishes acceptance. Its biggest need is interpretation of the condition attached to that acceptance."}, {"text": "Replace “shows” with a more sophisticated verb but keep the rest of the paragraph unchanged.", "correct": false, "feedback": "Vocabulary polish would not fix the paragraph's vague claim or repeated explanation."}], "after": "Repaired version: “The story presents belonging as conditional because Lena receives approval only after changing how she speaks. When a group member tells her, ‘You sound better now,’ the comparative word ‘better’ turns one way of speaking into the standard Lena must approach in order to be accepted.”"}, {"round": 3, "roundLabel": "Round 3: Repair the Whole Paragraph", "paragraph": "The child is powerless because adults make all the decisions. However, she is also the first person to recognize the danger. This contradicts my claim, so I would probably leave that part out.", "prompt": "What is the strongest repair?", "choices": [{"text": "Revise the claim so it distinguishes decision-making authority from perceptiveness or knowledge.", "correct": true, "feedback": "Exactly. The new evidence does not ruin the interpretation; it reveals that power can take more than one form."}, {"text": "Delete the contradictory evidence and keep the original claim.", "correct": false, "feedback": "Ignoring relevant evidence makes the argument less credible and less interesting."}, {"text": "Reverse the claim and say the child is powerful in every way.", "correct": false, "feedback": "That simply swings to the opposite extreme. The stronger repair makes room for both kinds of evidence."}], "after": "Possible repair: “Although adults control the decisions around her, the child's ability to recognize danger gives her a form of knowledge that complicates her apparent powerlessness.”"}];
 
     const els={
       roundText:document.getElementById("roundText"),

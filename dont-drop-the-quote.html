@@ -57,6 +57,96 @@
     .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
     footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
     @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    
+    /* Don't Drop the Quote instruction upgrade */
+    .after-evidence-path{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.45rem;
+      margin:.85rem 0;
+    }
+    .after-step{
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+      background:var(--soft);
+    }
+    .after-step strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.15rem;
+    }
+    .after-step.final{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .after-arrow{
+      text-align:center;
+      font-weight:900;
+      color:var(--muted);
+      font-size:1.15rem;
+    }
+    .analysis-compare{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.7rem;
+      margin:.8rem 0;
+    }
+    .analysis-compare > div{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+    }
+    .analysis-compare strong{
+      display:block;
+      color:var(--accent-dark);
+    }
+    .analysis-compare .better{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .micro-analysis{
+      background:var(--gold-soft);
+      border:1px solid var(--border);
+      border-radius:.75rem;
+      padding:.9rem;
+      margin:.8rem 0;
+    }
+    .micro-analysis p{margin:.35rem 0}
+    .analysis-check{
+      margin:.55rem 0;
+      padding-left:1.25rem;
+    }
+    .analysis-check li{margin:.3rem 0}
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent);
+      border-radius:.9rem;
+      background:var(--soft);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:62ch;
+      margin:.25rem auto;
+    }
+    @media(max-width:720px){
+      .analysis-compare{grid-template-columns:1fr}
+    }
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   
@@ -511,20 +601,84 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>This lab helps you use quotations as part of your own reasoning instead of dropping them into a paragraph and moving on.</p>
-        <div class="steps">
-          <div class="step"><strong>1. Give Context</strong>Help the reader understand the moment without retelling the whole story.</div>
-          <div class="step"><strong>2. Integrate the Evidence</strong>Make the quotation fit naturally into your sentence.</div>
-          <div class="step"><strong>3. Analyze It</strong>Return to your own voice and explain what the evidence does.</div>
-        </div>
-        <div class="tip"><strong>Think bridge, not dump.</strong> Your sentence should carry the reader into the quotation and then back into your analysis.</div>
-      </div>
-    </section>
+<h2 id="helps-heading">Before You Practice: Evidence Is Not the Analysis</h2>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<div class="card">
+<p>This lab begins <strong>after you have already chosen relevant evidence</strong>. If you need help deciding what to quote, paraphrase, or summarize, use <a href="using-textual-evidence.html">Using Textual Evidence</a>. Here, the question is: <strong>What do I say after the evidence?</strong></p>
+
+<div class="after-evidence-path" aria-label="Evidence to analysis sequence">
+  <div class="after-step"><strong>EVIDENCE</strong>Give the reader the relevant textual moment.</div>
+  <div class="after-arrow" aria-hidden="true">↓</div>
+  <div class="after-step"><strong>ZOOM IN</strong>Point to a word, image, action, contrast, repetition, silence, stage direction, or other specific feature.</div>
+  <div class="after-arrow" aria-hidden="true">↓</div>
+  <div class="after-step"><strong>EXPLAIN</strong>What does that feature suggest, reveal, complicate, or help us understand?</div>
+  <div class="after-arrow" aria-hidden="true">↓</div>
+  <div class="after-step final"><strong>CONNECT</strong>How does the explanation help support the paragraph's claim?</div>
+</div>
+
+<div class="tip">
+<strong>Do not make the reader do the interpretive work for you.</strong>
+The reader can see the quotation. Your job is to show what you see in it.
+</div>
+</div>
+
+<div class="card">
+<h3>Restating Is Not the Same as Analyzing</h3>
+<div class="analysis-compare">
+  <div>
+    <strong>Evidence</strong>
+    <p>“She clutched the letter.”</p>
+  </div>
+  <div>
+    <strong>Restatement</strong>
+    <p>This shows that she holds the letter tightly.</p>
+  </div>
+  <div class="better">
+    <strong>Analysis</strong>
+    <p>The verb “clutched” makes the action feel tense rather than casual, suggesting that the letter carries emotional weight she is not ready to release.</p>
+  </div>
+</div>
+<p>The analytical version does not simply translate the quotation. It notices a choice in the language and makes an inference about its significance.</p>
+</div>
+
+<div class="card">
+<h3>Sometimes One Word Is Enough</h3>
+<p>You do not always need to explain an entire quotation at once. Often the strongest analysis slows down around the smallest useful detail.</p>
+
+<div class="micro-analysis">
+<p><strong>Quotation:</strong> “I swept the room clean / <em>but</em> your name stayed in the dust.”</p>
+<p><strong>Zoom in:</strong> Why does the speaker use “but”?</p>
+<p><strong>Explain:</strong> The word turns the second line against the speaker's attempt to clean the room, making memory feel resistant to deliberate removal.</p>
+<p><strong>Connect:</strong> The contrast supports the paragraph's claim that the speaker cannot simply decide to leave the memory behind.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Do Not Rush to the Next Quotation</h3>
+<p>Writers sometimes add quotation after quotation because the paragraph feels too short. But a paragraph may need <strong>more explanation, not more evidence</strong>.</p>
+<ul class="analysis-check">
+<li>What exact word, action, image, or contrast should my reader notice?</li>
+<li>Why might the author have made that choice?</li>
+<li>What does the detail suggest beyond its literal meaning?</li>
+<li>How does my explanation support or complicate the paragraph's claim?</li>
+<li>Have I stayed with the evidence long enough before moving on?</li>
+</ul>
+
+<div class="tip">
+<strong>“This quote shows...” is not automatically wrong.</strong>
+The problem is what comes next. If the sentence only repeats the quotation, analysis has not happened yet.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Practice the move that comes after evidence: notice something specific, explain what it suggests, and connect that explanation to the paragraph's claim.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Don’t Drop the Quote Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -535,7 +689,7 @@
         </div>
 
         <div id="questionArea">
-          <div class="round-label" id="roundLabel">Round 1: Give Enough Context</div>
+          <div class="round-label" id="roundLabel">Round 1: What Comes After the Evidence?</div>
 
           <div id="claimWrap">
             <p class="label">PARAGRAPH IDEA</p>
@@ -559,7 +713,7 @@
         </div>
 
         <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced using quotations as part of your own thinking.</p>
+          <p class="big">You practiced turning evidence into analysis.</p>
           <p>Before you add a quotation, ask:</p>
           <ul>
             <li>Does my reader need a little context?</li>
@@ -580,107 +734,7 @@
 
   <script>
   (() => {
-    const items = [
-      {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The story presents the child as intimidated by the adult-controlled space.",
-        quote:"She crept quietly toward the enormous door.",
-        prompt:"Which setup gives the reader useful context without burying the quotation in plot summary?",
-        choices:[
-          {text:"As the child approaches the room where the adults are waiting, the narrator says that she “crept quietly toward the enormous door.”",correct:true,feedback:"This gives just enough context to locate the moment and then gets quickly to the evidence."},
-          {text:"Earlier in the story, the child wakes up, gets dressed, walks downstairs, eats breakfast, talks to her brother, goes outside, comes back in, and eventually approaches the room where the adults are waiting. She “crept quietly toward the enormous door.”",correct:false,feedback:"This is too much context for the evidence. Most of the plot summary does not help the reader understand the quotation."},
-          {text:"“She crept quietly toward the enormous door.”",correct:false,feedback:"The quotation is clear, but it appears without any signal about when or why this moment matters. A small amount of context helps the reader enter the evidence."}
-        ]
-      },
-      {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The passage suggests that Mina sees possibility where the others see restriction.",
-        quote:"At the ball, the guests respond to Cinderella differently once her appearance changes.",
-        prompt:"Which introduction gives the most useful context?",
-        choices:[
-          {text:"When the group reaches the bthe crowd’s shared praise, the narrator contrasts what the others notice with Mina’s attention: “At the ball, the guests respond to Cinderella differently once her appearance changes.”",correct:true,feedback:"This identifies the situation and prepares the reader to notice the contrast without overexplaining it first."},
-          {text:"There are many characters in this story and they have been traveling for a long time. Eventually they reach a window. The window is important. “At the ball, the guests respond to Cinderella differently once her appearance changes.”",correct:false,feedback:"This adds vague background but does not sharpen the reader’s understanding of the specific analytical moment."},
-          {text:"Here is a quote that shows Mina is hopeful: “At the ball, the guests respond to Cinderella differently once her appearance changes.”",correct:false,feedback:"This announces the quotation mechanically and tells the reader what it “shows” before analyzing how the language supports that idea."}
-        ]
-      },
-      {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The narrator presents memory as both comforting and painful.",
-        quote:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
-        prompt:"Which setup is strongest?",
-        choices:[
-          {text:"When she finds an object connected to the person she misses, she “pressed the old sweater to her face” before “folding it away again.”",correct:true,feedback:"This gives the emotional situation and preserves the two actions that will matter most for the analysis."},
-          {text:"The sweater appears in the middle of the story. It is old. It smells like cedar. She used to see it in the closet. Then one day she finds it again.",correct:false,feedback:"This summarizes surrounding details but delays the evidence the paragraph actually needs."},
-          {text:"According to the story, “She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.”",correct:false,feedback:"“According to the story” does not give meaningful context. The reader needs the situation, not a generic signal phrase."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"The Snow Queen scene presents forgetting as a threat to Kay’s connection with his earlier life.",
-        quote:"The familiar things that once mattered to him now seem distant and unimportant.",
-        prompt:"Which sentence integrates the quotation most naturally?",
-        choices:[
-          {text:"The setting seems to erase the character’s presence as the hallway “the familiar things that once mattered to him now seem distant and unimportant.”",correct:true,feedback:"The writer’s own sentence leads directly into the quoted language, so the evidence feels grammatically and conceptually connected."},
-          {text:"The hallway is oppressive. “The familiar things that once mattered to him now seem distant and unimportant.”",correct:false,feedback:"This is a dropped quotation. The reader can understand it, but the evidence is disconnected from the writer’s sentence."},
-          {text:"The author says, quote, “The hallway the familiar things that once mattered to him now seem distant and unimportant,” end quote.",correct:false,feedback:"This is not how written literary analysis normally integrates evidence. The quotation should become part of the writer’s own sentence."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"The child’s perspective makes the adult space seem overwhelming.",
-        quote:"the enormous door",
-        prompt:"Which sentence uses the short quotation most efficiently?",
-        choices:[
-          {text:"By describing the doorway from the child’s perspective as “the enormous door,” the narration makes ordinary architecture feel intimidating.",correct:true,feedback:"This embeds a short phrase directly inside the analysis, which is often more effective than quoting a whole sentence."},
-          {text:"The narrator says, “the enormous door.” This quote is important.",correct:false,feedback:"The quotation is technically present, but the sentence does not yet integrate or analyze it."},
-          {text:"The entire sentence should always be quoted instead of using only the words “the enormous door.”",correct:false,feedback:"You do not need to quote more than you plan to use. Short embedded quotations can make close reading more precise."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"Rapunzel connects the tower with both protection and confinement.",
-        quote:"keeps her safe",
-        prompt:"Which version integrates the evidence most effectively?",
-        choices:[
-          {text:"Describing the tower as the place that “keeps her safe” while also preventing her from leaving turns protection into a form of confinement.",correct:true,feedback:"The short quoted phrase is woven into the writer’s analytical sentence."},
-          {text:"The tower protects her. “Keeps her safe.”",correct:false,feedback:"The fragment is dropped into the paragraph without a grammatical bridge."},
-          {text:"The phrase “keeps her safe” shows that the tower keeps her safe.",correct:false,feedback:"This repeats the quotation instead of using it as evidence for an interpretation."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"The poem presents memory as something the speaker cannot completely remove.",
-        quote:"I swept the room clean / but your name stayed in the dust.",
-        prompt:"What should come immediately after this poetic evidence?",
-        choices:[
-          {text:"The word “but” turns the second line against the speaker's attempt to clean the room, while the name remaining “in the dust” makes memory feel like a physical trace that resists removal.",correct:true,feedback:"This returns to the writer’s own voice and analyzes the contrast and image instead of simply translating the lines."},
-          {text:"This means the speaker cleaned the room but there was still dust.",correct:false,feedback:"That paraphrases the lines but does not explain how the language develops the interpretation of memory."},
-          {text:"Then the poem moves to the next stanza.",correct:false,feedback:"That describes what happens next instead of staying with the evidence long enough to analyze it."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"In The Tiger, the Brahman, and the Jackal, the tiger’s earlier promises make his later threat expose how quickly language can change when power changes.",
-        quote:"Good evening, little one.",
-        prompt:"Which follow-up does the strongest analytical work?",
-        choices:[
-          {text:"The courteous greeting sounds reassuring rather than threatening, which helps disguise the danger behind familiar social behavior.",correct:true,feedback:"This explains how the tone of the evidence supports the interpretation."},
-          {text:"The tiger promised to be grateful.",correct:false,feedback:"This simply restates what the quotation already tells us."},
-          {text:"This is dialogue.",correct:false,feedback:"Naming the form is not enough. The analytical question is what this particular dialogue does in the scene."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"Mina notices possibility where the others see only a barrier.",
-        quote:"At the ball, the guests respond to Cinderella differently once her appearance changes.",
-        prompt:"Which complete sequence works best?",
-        choices:[
-          {text:"When the group reaches the bthe crowd’s shared praise, the narrator contrasts their attention: “At the ball, the guests respond to Cinderella differently once her appearance changes.” The contrast shifts focus from the barrier itself to what exists beyond it, showing how Mina’s perspective opens toward possibility.",correct:true,feedback:"This sequence gives context, integrates the evidence, and then explains the contrast. The quotation is part of the reasoning rather than an interruption."},
-          {text:"The group finds a window. “At the ball, the guests respond to Cinderella differently once her appearance changes.” Then they keep going.",correct:false,feedback:"This provides plot before and after the quotation, but the interpretation never arrives."},
-          {text:"Mina is hopeful. “At the ball, the guests respond to Cinderella differently once her appearance changes.” This shows Mina is hopeful.",correct:false,feedback:"The claim and quotation are present, but the final sentence only repeats the claim. It does not explain how the contrast supports it."}
-        ]
-      }
-    ];
+    const items = [{"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "The poem presents memory as something the speaker cannot completely remove.", "quote": "I swept the room clean / but your name stayed in the dust.", "prompt": "Which sentence does the strongest analytical work immediately after the quotation?", "choices": [{"text": "The word “but” turns the second line against the speaker's attempt to clean the room, while the name remaining “in the dust” makes memory feel like a physical trace that resists removal.", "correct": true, "feedback": "Yes. This points to a specific contrast and image, then explains how they support the interpretation of memory as resistant to deliberate removal."}, {"text": "This means the speaker cleaned the room but there was still dust.", "correct": false, "feedback": "That restates the literal action but does not explain what the contrast or image contributes to the interpretation."}, {"text": "This quote is important because it is about memory.", "correct": false, "feedback": "That labels the topic but leaves the actual language unexplained."}]}, {"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "Mara's calm words hide how seriously she is taking the warning.", "quote": "“It's fine,” Mara said, folding the letter into smaller and smaller squares.", "prompt": "Which follow-up best analyzes the evidence?", "choices": [{"text": "The repetition of “smaller” makes Mara's nervous movement feel like an attempt to contain the problem physically, so her behavior undermines the calmness of “It's fine.”", "correct": true, "feedback": "Exactly. The analysis notices repetition and the contradiction between speech and action, then explains what that contrast suggests."}, {"text": "Mara says that it is fine and then folds the letter.", "correct": false, "feedback": "That paraphrases the evidence without explaining why the two actions matter together."}, {"text": "This is an example of dialogue and characterization.", "correct": false, "feedback": "Naming techniques does not explain what this particular dialogue and action reveal."}]}, {"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "The child's perspective makes the adult-controlled space feel intimidating.", "quote": "the enormous door", "prompt": "Which sentence moves from the quoted phrase into analysis?", "choices": [{"text": "The adjective “enormous” enlarges an ordinary doorway through the child's perspective, making the adult space feel overwhelming before she even enters it.", "correct": true, "feedback": "Yes. One carefully analyzed word is enough to show how the description supports the paragraph's claim."}, {"text": "The door is enormous, which means it is very big.", "correct": false, "feedback": "That defines the word rather than interpreting why the description matters from this perspective."}, {"text": "The author uses diction here.", "correct": false, "feedback": "The literary term is accurate, but the paragraph still needs to explain what this diction does."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The scene presents Elena's silence as a deliberate form of resistance rather than simple passivity.", "quote": "[Elena looks at the judge, folds her hands, and says nothing.]", "prompt": "What is the most useful feature to zoom in on?", "choices": [{"text": "The sequence of looking directly at the judge, deliberately folding her hands, and then remaining silent.", "correct": true, "feedback": "Yes. Those coordinated actions make the silence look chosen and controlled rather than merely empty."}, {"text": "The fact that the sentence is inside brackets.", "correct": false, "feedback": "The brackets identify a stage direction, but the more important analytical work comes from what the physical actions suggest."}, {"text": "The fact that there is a judge in the scene.", "correct": false, "feedback": "The judge matters to the context, but this claim specifically depends on how Elena's behavior gives silence an active quality."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The speaker's grief remains unresolved even while she tries to move forward.", "quote": "Still I packed the boxes. / Still I left your cup beside the sink.", "prompt": "Which feature gives the writer the strongest material for close analysis?", "choices": [{"text": "The repeated word “Still,” especially because it introduces both an act of leaving and an act of preserving.", "correct": true, "feedback": "Exactly. The repetition links two contradictory behaviors and gives the writer a way to analyze grief as movement and attachment at the same time."}, {"text": "The fact that boxes can be made from cardboard.", "correct": false, "feedback": "That is unrelated to the interpretive problem in the paragraph."}, {"text": "The number of words in each line.", "correct": false, "feedback": "Line length could matter in some poems, but nothing in this evidence makes it the most productive feature for this particular claim."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The narrator treats the character's attempt to leave as uncertain rather than decisive.", "quote": "She reached for the handle, stopped, and left her hand there.", "prompt": "Which detail most directly complicates the idea that she has already decided to leave?", "choices": [{"text": "The interruption between “reached” and “stopped,” followed by her hand remaining on the handle.", "correct": true, "feedback": "Yes. The movement begins with apparent intention but freezes before completion, turning the physical action into hesitation."}, {"text": "The word “hand” because hands are used to open doors.", "correct": false, "feedback": "That observation is literal but does not yet explain the hesitation built into the sequence of actions."}, {"text": "The sentence is written in the past tense.", "correct": false, "feedback": "Tense is not the feature doing the most interpretive work for this claim."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The locked gate makes protection dependent on someone else's control.", "quote": "“It keeps you safe,” he says, pocketing the only key.", "prompt": "Which sequence best turns the evidence into analysis?", "choices": [{"text": "He describes the gate as something that “keeps you safe,” but he also pockets “the only key.” The contrast makes protection inseparable from control: safety depends on his ability to decide when the gate can open.", "correct": true, "feedback": "Yes. The writer quotes only the useful language, notices the contradiction, and explains how it supports the paragraph's claim."}, {"text": "“It keeps you safe,” he says, pocketing the only key. This quote shows the gate.", "correct": false, "feedback": "The evidence is present, but the final sentence does not explain the contradiction between safety and control."}, {"text": "He has the key. The gate is locked. Later there is another scene with the gate.", "correct": false, "feedback": "This adds more plot information instead of analyzing the significance of the evidence already available."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The character's public confidence depends on careful performance.", "quote": "Before entering the meeting, she whispers each answer twice to the empty hallway.", "prompt": "Which paragraph move should follow?", "choices": [{"text": "Rehearsing “each answer twice” before anyone can hear her reveals the preparation hidden beneath her later confidence, making authority look practiced rather than effortless.", "correct": true, "feedback": "Exactly. The analysis focuses on repetition and privacy, then connects those details to the paragraph's claim about performed confidence."}, {"text": "This shows that she practices her answers before the meeting.", "correct": false, "feedback": "That repeats the action but does not explain what the private rehearsal changes about how we understand her public confidence."}, {"text": "Then she goes into the meeting and talks.", "correct": false, "feedback": "Moving forward in the plot abandons the evidence before the paragraph has interpreted it."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The poem presents departure as emotionally incomplete.", "quote": "At the station, the speaker says, “I left the ticket on the seat beside me.”", "prompt": "Which follow-up gives the quotation an analytical purpose?", "choices": [{"text": "Leaving the ticket beside her rather than discarding it keeps the possibility of departure physically close but unused, turning the object into evidence of hesitation rather than a completed decision.", "correct": true, "feedback": "Yes. The writer stays with the physical detail and explains how it complicates the idea of departure."}, {"text": "The ticket is on the seat beside her.", "correct": false, "feedback": "That simply repeats where the object is located."}, {"text": "This is symbolism because the ticket symbolizes something.", "correct": false, "feedback": "Calling the object a symbol does not explain what its placement suggests or how it supports the paragraph's claim."}]}];
 
     const els={
       roundText:document.getElementById("roundText"),

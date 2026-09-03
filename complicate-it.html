@@ -57,6 +57,105 @@
     .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
     footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
     @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    
+    /* Complicate It instruction upgrade */
+    .complication-path{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.45rem;
+      margin:.85rem 0;
+    }
+    .complication-step{
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+      background:var(--soft);
+    }
+    .complication-step strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.15rem;
+    }
+    .complication-step.interrupt{
+      background:var(--gold-soft);
+      border-left:5px solid var(--gold);
+    }
+    .complication-step.final{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .complication-arrow{
+      text-align:center;
+      font-weight:900;
+      color:var(--muted);
+      font-size:1.15rem;
+    }
+    .complication-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.7rem;
+      margin:.8rem 0;
+    }
+    .complication-box{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:.7rem;
+      padding:.8rem;
+    }
+    .complication-box strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.15rem;
+    }
+    .example-pair{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.7rem;
+      margin:.8rem 0;
+    }
+    .example-pair > div{
+      border:1px solid var(--border);
+      border-radius:.68rem;
+      padding:.8rem;
+      background:var(--soft);
+    }
+    .example-pair .better{
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+    }
+    .complication-check{
+      margin:.55rem 0;
+      padding-left:1.25rem;
+    }
+    .complication-check li{margin:.3rem 0}
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent);
+      border-radius:.9rem;
+      background:var(--soft);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:62ch;
+      margin:.25rem auto;
+    }
+    @media(max-width:650px){
+      .complication-grid,.example-pair{grid-template-columns:1fr}
+    }
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   
@@ -512,23 +611,92 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>Sometimes your first interpretation is reasonable but incomplete. New evidence can help you make it more precise.</p>
-        <div class="steps">
-          <div class="step"><strong>1. Make a Reading</strong>Start with a claim that fits the evidence you have.</div>
-          <div class="step"><strong>2. Notice the Tension</strong>Look for evidence that does not fit perfectly.</div>
-          <div class="step"><strong>3. Revise</strong>Qualify, complicate, or expand the interpretation.</div>
-        </div>
-        <div class="tip">
-          <strong>Contradictory evidence is not a failure.</strong>
-          It can be the moment when an argument gets more interesting.
-        </div>
-      </div>
-    </section>
+<h2 id="helps-heading">Before You Practice: Let the Text Complicate Your Idea</h2>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<div class="card">
+<p>Your first interpretation does not have to explain everything perfectly. A working interpretation gives you something to test. When another detail does not fit, the goal is not to hide it or immediately throw your whole idea away.</p>
+
+<div class="complication-path" aria-label="First idea to more complex interpretation">
+  <div class="complication-step"><strong>FIRST IDEA</strong>Start with an interpretation that fits the evidence you have noticed.</div>
+  <div class="complication-arrow" aria-hidden="true">↓</div>
+  <div class="complication-step interrupt"><strong>BUT THEN YOU NOTICE...</strong>A detail, exception, change, or contradiction does not fit the first idea neatly.</div>
+  <div class="complication-arrow" aria-hidden="true">↓</div>
+  <div class="complication-step"><strong>BETTER QUESTION</strong>Can both ideas be true? Does the meaning change over time? What tension does the new evidence reveal?</div>
+  <div class="complication-arrow" aria-hidden="true">↓</div>
+  <div class="complication-step final"><strong>MORE PRECISE INTERPRETATION</strong>Revise the claim so it explains more of the text instead of pretending the difficult evidence is not there.</div>
+</div>
+
+<div class="tip">
+<strong>The detail that complicates your idea may lead to the better argument.</strong>
+Contradictory evidence is not automatically evidence that you failed. It may show that the text is doing something more complicated than your first claim could explain.
+</div>
+</div>
+
+<div class="card">
+<h3>What Kind of Evidence Might Complicate a Claim?</h3>
+<div class="complication-grid">
+  <div class="complication-box"><strong>An exception</strong>A character usually avoids conflict, but speaks directly in one important scene.</div>
+  <div class="complication-box"><strong>Mixed motives</strong>A choice seems generous but also gives the character more control.</div>
+  <div class="complication-box"><strong>A cost or tradeoff</strong>Freedom gives a character independence but also produces isolation.</div>
+  <div class="complication-box"><strong>A change over time</strong>An image that first feels protective later begins to feel restrictive.</div>
+  <div class="complication-box"><strong>A limited perspective</strong>A narrator notices important patterns but also misreads some situations.</div>
+  <div class="complication-box"><strong>Ambiguity</strong>The evidence supports more than one plausible meaning.</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Do Not Swing From One Extreme to the Other</h3>
+<div class="example-pair">
+  <div>
+    <strong>First idea</strong>
+    <p>The locked gate represents protection.</p>
+  </div>
+  <div>
+    <strong>New evidence</strong>
+    <p>During an emergency, the same gate prevents a character from leaving.</p>
+  </div>
+</div>
+
+<div class="example-pair">
+  <div>
+    <strong>Too far in the other direction</strong>
+    <p>The gate only represents imprisonment.</p>
+  </div>
+  <div class="better">
+    <strong>More complex</strong>
+    <p>The gate represents protection, but the emergency reveals how easily safety can become restriction when someone else controls whether it opens.</p>
+  </div>
+</div>
+
+<p>The goal is not to replace one absolute statement with another. Stronger interpretation often comes from explaining the <strong>relationship between two truths</strong>.</p>
+</div>
+
+<div class="card">
+<h3>Useful Questions When Something Does Not Fit</h3>
+<ul class="complication-check">
+<li>Is this an exception to the pattern, or does it change what I thought the pattern was?</li>
+<li>Can two apparently conflicting ideas both be true?</li>
+<li>Does the meaning change depending on the moment, character, or point of view?</li>
+<li>What does the contradiction reveal about a character's motives or limits?</li>
+<li>Does the text present a gain that also has a cost?</li>
+<li>Do I need to make my claim less absolute or more precise?</li>
+</ul>
+
+<div class="tip">
+<strong>Words such as “although,” “while,” and “yet” can help you express a tension, but they do not create complexity by themselves.</strong>
+The complexity comes from explaining why both sides of the evidence matter.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Notice evidence that does not fit a first interpretation, then choose the revision that preserves what still works while making room for the new detail.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Complicate the Interpretation Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -568,7 +736,7 @@
             <li>Does the tension reveal something more interesting than my first claim?</li>
           </ul>
           <p>
-            Strong arguments often become stronger when they make room for contradiction instead of smoothing it away.
+            Strong arguments often become stronger when they explain contradiction, change, or mixed evidence instead of smoothing it away.
           </p>
           <div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
@@ -597,12 +765,12 @@
       {
         round:1,
         roundLabel:"Round 1: Don't Ignore the New Evidence",
-        firstClaim:"In The Red Shoes, the shoes represent the character’s desire for beauty and attention.",
-        newEvidence:"As the tale continues, the shoes also become something she cannot simply control or stop.",
+        firstClaim:"The locked gate represents protection because it keeps danger outside.",
+        newEvidence:"During an emergency, the same gate prevents a character from leaving until someone else chooses to unlock it.",
         choices:[
-          {text:"Revise the interpretation so the shoes represent only beauty and pleasure.",correct:false,feedback:"The new evidence shows that the shoes’ attraction is not entirely simple or safe."},
-          {text:"Revise the claim: The garden represents freedom from adult control, but the story also suggests that complete freedom can become disorienting.",correct:true,feedback:"Yes. This allows the garden to hold two meanings at once rather than forcing it into a single positive symbol."},
-          {text:"Delete the earlier evidence about happiness because it no longer matters.",correct:false,feedback:"Both pieces of evidence matter. The tension between them is what makes the interpretation richer."}
+          {text:"Revise the interpretation so the gate represents only imprisonment.",correct:false,feedback:"That swings from one absolute reading to another and ignores the earlier evidence that the gate also provides protection."},
+          {text:"Revise the claim: The gate represents protection, but the emergency reveals how easily safety can become restriction when someone else controls whether it opens.",correct:true,feedback:"Yes. This keeps the protective meaning while using the new evidence to reveal the cost and limit of that protection."},
+          {text:"Ignore the emergency because it happens only once.",correct:false,feedback:"An exception can be especially important when it exposes a limit or tension in an established pattern."}
         ]
       },
       {
@@ -620,13 +788,13 @@
       {
         round:2,
         roundLabel:"Round 2: Hold Two Ideas at Once",
-        firstClaim:"In The Frog Prince, the princess initially treats her promise as something she should not have to honor.",
-        newEvidence:"The child notices that some of his questions feel intrusive and hesitates before answering.",
+        firstClaim:"Mara's silence shows that she is afraid to challenge the interviewer.",
+        newEvidence:"Later, Mara deliberately refuses to answer a question after realizing that any response will be used against her.",
         prompt:"Which interpretation becomes stronger?",
         choices:[
-          {text:"The story presents trust as automatic whenever someone is polite.",correct:false,feedback:"The child's hesitation complicates that idea."},
-          {text:"The princess's politeness makes danger harder to recognize, yet the child's hesitation suggests that social cues can create both trust and suspicion at the same time.",correct:true,feedback:"Yes. This uses the tension rather than flattening the scene into a single response."},
-          {text:"The promise does not matter because the princess dislikes the frog.",correct:false,feedback:"The hesitation does not erase the threat. It adds complexity to how the child perceives it."}
+          {text:"Mara's silence always means fear.",correct:false,feedback:"The later scene gives silence a different function, so “always” is too absolute."},
+          {text:"Mara's silence begins as a sign of fear but later becomes a deliberate form of resistance, showing that the same behavior can change meaning as her understanding of the situation changes.",correct:true,feedback:"Yes. This treats the shift as meaningful rather than forcing every silence to mean the same thing."},
+          {text:"Mara was never afraid at all.",correct:false,feedback:"The later act of resistance does not erase the earlier evidence of fear. The stronger interpretation explains the change."}
         ]
       },
       {
@@ -644,14 +812,13 @@
       {
         round:3,
         roundLabel:"Round 3: Revise the Claim",
-        firstClaim:"In The Snow Queen, Gerda’s memories of home represent the strength of her connection to Kay.",
-        newEvidence:"At several points, those memories must be recovered or renewed because distraction and forgetting can weaken her purpose.",
+        firstClaim:"Mina's repeated attention to the light represents hope.",
+        newEvidence:"She watches the light most closely in the scenes when she is frightened and unsure what will happen next.",
         prompt:"Which revised claim is most defensible?",
         choices:[
           {text:"Mina is purely hopeful and never afraid.",correct:false,feedback:"The new evidence directly contradicts this simplified reading."},
-          {text:"Mina's attention to the light can still represent possibility, but the story complicates hope by showing that it may coexist with fear rather than replace it.",correct:true,feedback:"Yes. This preserves the original interpretation while allowing two emotions to exist together."},
-          {text:"The memories no longer matter because Gerda sometimes forgets.",correct:false,feedback:"The symbol can still matter. The new evidence changes how we understand it rather than canceling it."
-          }
+          {text:"The light still represents possibility, but Mina's attention to it during moments of fear suggests that hope does not replace uncertainty; it becomes something she reaches for because uncertainty remains.",correct:true,feedback:"Yes. This preserves the original interpretation while explaining why hope and fear appear together."},
+          {text:"The light cannot represent hope because Mina is sometimes afraid.",correct:false,feedback:"Fear does not cancel hope. The tension between them may be exactly what gives the image its significance."}
         ]
       },
       {
