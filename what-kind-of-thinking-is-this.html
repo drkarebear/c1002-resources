@@ -610,7 +610,7 @@
         }
       };
 
-      const items = [
+      const sourceItems = [
         {
           round: 1,
           roundLabel: "Round 1: See the Difference",
@@ -717,6 +717,78 @@
           }
         }
       ];
+
+
+      /*
+       * Question-order safeguard:
+       * Each round still contains one Summary, one Observation, and one Analysis
+       * example, but their order changes. This prevents students from learning
+       * Summary → Observation → Analysis as a positional pattern.
+       *
+       * Safeguards:
+       * - never use the original S → O → A order for a round
+       * - avoid repeating the exact same sequence in consecutive rounds
+       * - avoid starting a new round with the same type that ended the prior round
+       */
+      function buildShuffledItems(source) {
+        const byRound = new Map();
+
+        source.forEach(item => {
+          if (!byRound.has(item.round)) byRound.set(item.round, []);
+          byRound.get(item.round).push(item);
+        });
+
+        const canonical = "summary|observation|analysis";
+        let previousSequence = "";
+        let previousLast = "";
+        const result = [];
+
+        [...byRound.keys()].sort((a, b) => a - b).forEach(round => {
+          const roundItems = byRound.get(round);
+          const permutations = [];
+
+          function permute(arr, start = 0) {
+            if (start === arr.length - 1) {
+              permutations.push([...arr]);
+              return;
+            }
+            for (let i = start; i < arr.length; i++) {
+              [arr[start], arr[i]] = [arr[i], arr[start]];
+              permute(arr, start + 1);
+              [arr[start], arr[i]] = [arr[i], arr[start]];
+            }
+          }
+
+          permute([...roundItems]);
+
+          let valid = permutations.filter(order => {
+            const seq = order.map(item => item.answer).join("|");
+            return seq !== canonical &&
+                   seq !== previousSequence &&
+                   (!previousLast || order[0].answer !== previousLast);
+          });
+
+          // There should always be valid options with three distinct answer types,
+          // but keep a graceful fallback just in case the content changes later.
+          if (!valid.length) {
+            valid = permutations.filter(order => {
+              const seq = order.map(item => item.answer).join("|");
+              return seq !== canonical && seq !== previousSequence;
+            });
+          }
+
+          if (!valid.length) valid = permutations;
+
+          const chosen = valid[Math.floor(Math.random() * valid.length)];
+          previousSequence = chosen.map(item => item.answer).join("|");
+          previousLast = chosen[chosen.length - 1].answer;
+          result.push(...chosen);
+        });
+
+        return result;
+      }
+
+      const items = buildShuffledItems(sourceItems);
 
       const elements = {
         roundText: document.getElementById("roundText"),
