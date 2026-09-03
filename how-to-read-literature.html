@@ -1,1 +1,632 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How to Read Literature | Literary Analysis Labs</title>
+  <meta name="description" content="Simple strategies for reading stories, poems, and plays using the four literary analysis moves: Notice, Interpret, Support, and Develop.">
+
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --surface:#fff;
+      --text:#1f2933;
+      --muted:#5d6978;
+      --border:#d4dbe5;
+      --accent:#1f5da8;
+      --accent-dark:#163f74;
+      --soft:#eef4fb;
+      --green:#2f7a43;
+      --green-soft:#f0f7f2;
+      --gold-soft:#fff8e8;
+      --focus:#111827;
+      --max:980px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+
+    a{
+      color:var(--accent-dark);
+      text-underline-offset:.18em;
+    }
+
+    a:hover{color:var(--accent)}
+
+    a:focus-visible,
+    button:focus-visible{
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+      border-radius:.3rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      top:-5rem;
+      left:.75rem;
+      z-index:1000;
+      padding:.75rem 1rem;
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
+    .skip-link:focus{top:.75rem}
+
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header{
+      padding:1.5rem 0 .7rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+
+    .brand span{font-weight:850}
+
+    .eyebrow{
+      margin:1.35rem 0 .25rem;
+      color:var(--accent-dark);
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.82rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.45rem,7vw,4.35rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    h2{
+      margin:2.3rem 0 .5rem;
+      font-size:1.75rem;
+      line-height:1.2;
+    }
+
+    h3{
+      margin:.1rem 0 .35rem;
+      font-size:1.25rem;
+      line-height:1.25;
+    }
+
+    .lede{
+      max-width:74ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:.8rem 0 0;
+    }
+
+    .big-note{
+      margin-top:1.1rem;
+      padding:1rem 1.1rem;
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+      border-radius:.45rem;
+    }
+
+    .jump{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      padding:.6rem .8rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.55rem;
+      text-decoration:none;
+      font-weight:750;
+    }
+
+    .before-box{
+      margin-top:1.4rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      padding:1.1rem;
+    }
+
+    .before-box ul{
+      margin:.4rem 0 0;
+      padding-left:1.2rem;
+    }
+
+    .before-box li{margin:.35rem 0}
+
+    .genre-card{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.9rem;
+      padding:1.2rem;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+    }
+
+    .genre-kicker{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:var(--accent-dark);
+      font-weight:850;
+    }
+
+    .genre-summary{
+      color:var(--muted);
+      margin:.3rem 0 1rem;
+      max-width:74ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:.75rem;
+      padding:1rem;
+      background:#fff;
+    }
+
+    .mini-card strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .mini-card ul{
+      margin:.35rem 0 0;
+      padding-left:1.15rem;
+    }
+
+    .mini-card li{margin:.3rem 0}
+
+    .moves{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.7rem;
+      margin-top:1rem;
+    }
+
+    .move{
+      background:var(--soft);
+      border-radius:.65rem;
+      padding:.8rem;
+    }
+
+    .move-num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:1.9rem;
+      height:1.9rem;
+      border-radius:50%;
+      background:#fff;
+      color:var(--accent-dark);
+      font-weight:900;
+      margin-bottom:.35rem;
+    }
+
+    .move strong{
+      display:block;
+      color:var(--accent-dark);
+    }
+
+    .move p{
+      margin:.2rem 0 0;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .example{
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:.75rem;
+      background:var(--gold-soft);
+      border:1px solid #dec887;
+    }
+
+    .example strong{
+      color:#6f4b00;
+    }
+
+    .stuck{
+      margin-top:1rem;
+      padding:1rem;
+      background:var(--green-soft);
+      border-radius:.7rem;
+    }
+
+    .stuck strong{
+      color:#1f5b31;
+    }
+
+    .stuck ul{
+      margin:.35rem 0 0;
+      padding-left:1.15rem;
+    }
+
+    .stuck li{margin:.3rem 0}
+
+    .myth{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1rem;
+    }
+
+    .myth p{
+      margin:.35rem 0;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1.25rem;
+    }
+
+    .btn{
+      min-height:48px;
+      border-radius:.58rem;
+      padding:.75rem 1rem;
+      font-weight:800;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:2px solid var(--accent);
+    }
+
+    .primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .primary:hover{
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .secondary{
+      background:#fff;
+      color:var(--accent-dark);
+    }
+
+    .secondary:hover{
+      background:var(--soft);
+      color:var(--accent-dark);
+    }
+
+    footer{
+      padding:2.3rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media(max-width:800px){
+      .moves{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media(max-width:700px){
+      header,main,footer{
+        width:min(calc(100% - 1.25rem),var(--max));
+      }
+
+      .grid,
+      .moves{
+        grid-template-columns:1fr;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .actions .btn{
+        width:100%;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+      }
+    }
+
+    @media(prefers-contrast:more){
+      :root{
+        --border:#4b5563;
+        --muted:#374151;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to reading strategies</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
+
+    <p class="eyebrow">Quick Help</p>
+    <h1>How to Read Literature</h1>
+
+    <p class="lede">
+      Stories, poems, and plays do not always ask you to read in exactly the same way.
+      This page gives you a few simple things to look for so you do not have to wonder,
+      “What am I supposed to notice?”
+    </p>
+
+    <div class="big-note">
+      <strong>You do not need to understand everything on the first read.</strong>
+      Your first job is to understand enough to keep going. Then you can return, notice something specific,
+      and start asking what it might mean.
+    </div>
+
+    <nav class="jump" aria-label="Jump to a type of literature">
+      <a class="pill" href="#story">Reading a Story</a>
+      <a class="pill" href="#poem">Reading a Poem</a>
+      <a class="pill" href="#play">Reading a Play</a>
+      <a class="pill" href="#stuck">If You Get Stuck</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="before-box" aria-labelledby="before-heading">
+      <h2 id="before-heading" style="margin-top:0">Before You Start</h2>
+      <ul>
+        <li><strong>Read once for basic understanding.</strong> You do not need to analyze every sentence while you are still figuring out what is happening.</li>
+        <li><strong>Mark confusion, not everything.</strong> If a line, image, or moment feels strange, put a question mark next to it and keep going if you can.</li>
+        <li><strong>Notice what repeats or changes.</strong> Repetition and shifts often give you somewhere useful to look again.</li>
+        <li><strong>Do not hunt for a hidden answer.</strong> Literary analysis is about building a reasonable interpretation from evidence.</li>
+      </ul>
+    </section>
+
+    <section id="story" aria-labelledby="story-heading">
+      <h2 id="story-heading">Reading a Story</h2>
+
+      <div class="genre-card">
+        <div class="genre-kicker">Short stories · novels · narrative fiction</div>
+        <h3>Start with what changes</h3>
+        <p class="genre-summary">
+          In a story, it is easy to focus only on plot. Plot matters, but analysis often begins when you notice
+          <strong>how a character, relationship, setting, pattern, or point of view changes or creates tension.</strong>
+        </p>
+
+        <div class="grid">
+          <div class="mini-card">
+            <strong>What to notice</strong>
+            <ul>
+              <li>What a character wants</li>
+              <li>What gets in the way</li>
+              <li>What changes</li>
+              <li>Repeated objects, images, or phrases</li>
+              <li>Contrasts between what characters say and do</li>
+              <li>Who tells the story and what they know</li>
+              <li>Places that feel safe, threatening, open, or closed</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <strong>Questions that can lead to analysis</strong>
+            <ul>
+              <li>Why does this character react this way?</li>
+              <li>Why does this detail keep appearing?</li>
+              <li>What does the narrator notice or avoid?</li>
+              <li>What changes between the beginning and the end?</li>
+              <li>What does the story make easy or difficult for this character?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example">
+          <strong>Example:</strong>
+          <p>
+            If a character keeps standing near a doorway whenever they must make a decision,
+            do not stop at “the door is a symbol.” Notice the pattern first. Then ask:
+            <em>Why does the story keep connecting doors with moments of choice?</em>
+          </p>
+        </div>
+
+        <div class="moves" aria-label="Four moves for reading a story">
+          <div class="move"><span class="move-num">1</span><strong>Notice</strong><p>The doorway keeps appearing.</p></div>
+          <div class="move"><span class="move-num">2</span><strong>Interpret</strong><p>Maybe it connects physical movement with difficult choices.</p></div>
+          <div class="move"><span class="move-num">3</span><strong>Support</strong><p>Find another scene where the pattern appears.</p></div>
+          <div class="move"><span class="move-num">4</span><strong>Develop</strong><p>Ask whether every doorway means the same thing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="poem" aria-labelledby="poem-heading">
+      <h2 id="poem-heading">Reading a Poem</h2>
+
+      <div class="genre-card">
+        <div class="genre-kicker">Poetry</div>
+        <h3>Slow down and read more than once</h3>
+        <p class="genre-summary">
+          Poems often pack a lot into a small space. You may need to read once for the basic situation,
+          then read again for <strong>words, images, sounds, line breaks, patterns, and shifts.</strong>
+        </p>
+
+        <div class="grid">
+          <div class="mini-card">
+            <strong>What to notice</strong>
+            <ul>
+              <li>Who seems to be speaking</li>
+              <li>Who the speaker may be talking to</li>
+              <li>Words or images that repeat</li>
+              <li>Comparisons and figurative language</li>
+              <li>Line breaks that create surprise or emphasis</li>
+              <li>Changes in tone or mood</li>
+              <li>Where the poem turns or shifts</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <strong>Helpful reading moves</strong>
+            <ul>
+              <li>Read the poem once without stopping.</li>
+              <li>Read it again aloud if you can.</li>
+              <li>Read across line breaks to recover the sentence.</li>
+              <li>Circle one repeated or surprising word.</li>
+              <li>Mark the place where the poem seems to change direction.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example">
+          <strong>Example:</strong>
+          <p>
+            If a poem says, “The empty swing / keeps moving / though the yard is still,” first make sure you understand
+            the sentence across the line breaks. Then ask why the moving swing is placed against a still yard.
+          </p>
+        </div>
+
+        <div class="moves" aria-label="Four moves for reading a poem">
+          <div class="move"><span class="move-num">1</span><strong>Notice</strong><p>The swing moves while everything else is still.</p></div>
+          <div class="move"><span class="move-num">2</span><strong>Interpret</strong><p>The image may connect absence with something that continues.</p></div>
+          <div class="move"><span class="move-num">3</span><strong>Support</strong><p>Look for other images of movement or stillness.</p></div>
+          <div class="move"><span class="move-num">4</span><strong>Develop</strong><p>Ask whether the poem treats memory as comforting, unsettling, or both.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="play" aria-labelledby="play-heading">
+      <h2 id="play-heading">Reading a Play</h2>
+
+      <div class="genre-card">
+        <div class="genre-kicker">Drama</div>
+        <h3>Read the actions, not just the dialogue</h3>
+        <p class="genre-summary">
+          In a play, meaning comes from more than what characters say. Pay attention to
+          <strong>stage directions, silence, entrances, exits, objects, interruptions, and what characters avoid saying.</strong>
+        </p>
+
+        <div class="grid">
+          <div class="mini-card">
+            <strong>What to notice</strong>
+            <ul>
+              <li>Who is present in the scene</li>
+              <li>Who enters or leaves</li>
+              <li>What characters do while speaking</li>
+              <li>Pauses or silence</li>
+              <li>Repeated objects or gestures</li>
+              <li>What characters know that others do not</li>
+              <li>Differences between words and actions</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <strong>Questions that can lead to analysis</strong>
+            <ul>
+              <li>What does the action show that the dialogue does not?</li>
+              <li>Why does this character avoid answering directly?</li>
+              <li>What changes when someone enters or leaves?</li>
+              <li>What does the audience know that a character does not?</li>
+              <li>Why might this pause or silence matter?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example">
+          <strong>Example:</strong>
+          <p>
+            A stage direction says: “Mara folds the unopened note twice and places it beneath her cup before Eli enters.”
+            The note is unopened, but Mara already hides it. That action may matter more than anything she says next.
+          </p>
+        </div>
+
+        <div class="moves" aria-label="Four moves for reading a play">
+          <div class="move"><span class="move-num">1</span><strong>Notice</strong><p>Mara hides an unopened note.</p></div>
+          <div class="move"><span class="move-num">2</span><strong>Interpret</strong><p>She may already fear what the note represents.</p></div>
+          <div class="move"><span class="move-num">3</span><strong>Support</strong><p>Use the stage direction as evidence.</p></div>
+          <div class="move"><span class="move-num">4</span><strong>Develop</strong><p>Compare the action with what Mara later says to Eli.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stuck" aria-labelledby="stuck-heading">
+      <h2 id="stuck-heading">If You Get Stuck</h2>
+
+      <div class="stuck">
+        <strong>Try the problem that sounds most like yours:</strong>
+        <ul>
+          <li><strong>“I do not understand the passage.”</strong> Try <a href="lost-in-the-text.html">Lost in the Text?</a></li>
+          <li><strong>“I know what happened, but I do not know what to notice.”</strong> Start with <a href="notice.html">Notice</a>.</li>
+          <li><strong>“I noticed something, but I do not know what it means.”</strong> Go to <a href="interpret.html">Interpret</a>.</li>
+          <li><strong>“I have an idea, but I do not know how to prove it.”</strong> Go to <a href="support.html">Support</a>.</li>
+          <li><strong>“I have a draft, but I do not know what to fix.”</strong> Try <a href="literary-analysis-triage.html">Literary Analysis Triage</a>.</li>
+          <li><strong>“I do not know what a literary term means.”</strong> Use <a href="literary-terms.html">Literary Terms Made Simple</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="myth-heading">
+      <h2 id="myth-heading">One Last Thing</h2>
+      <div class="myth">
+        <p><strong>You are not supposed to notice everything.</strong></p>
+        <p>
+          Strong literary reading often starts with one small thing that feels interesting, strange, repeated, confusing, or important.
+          You can look again, test an idea, change your mind, and build from there.
+        </p>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="what-is-literary-analysis.html">What Is Literary Analysis?</a>
+        <a class="btn secondary" href="literary-terms.html">Literary Terms Made Simple</a>
+        <a class="btn secondary" href="all-labs.html">All Labs</a>
+        <a class="btn secondary" href="index.html">Student Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Stories, poems, and plays may look different, but the same basic process can help:
+    notice something, test what it might mean, support the idea, and keep developing it.
+  </footer>
+</body>
+</html>
