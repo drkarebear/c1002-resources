@@ -622,6 +622,89 @@
       }
     }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{
+      max-width:760px;
+      margin:1.1rem auto;
+    }
+    .instruction-graphic img{
+      display:block;
+      width:min(100%,700px);
+      height:auto;
+      margin:0 auto;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.85rem;
+      background:#fff;
+    }
+    .instruction-graphic figcaption{
+      max-width:66ch;
+      margin:.55rem auto 0;
+      color:var(--muted,#5d6978);
+      font-size:.94rem;
+      text-align:center;
+    }
+    .graphic-full-text{
+      max-width:700px;
+      margin:.75rem auto 0;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.75rem;
+      background:var(--soft,#eef4fb);
+      padding:.15rem .9rem .75rem;
+    }
+    .graphic-full-text summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0;
+    }
+    .graphic-full-text summary:focus-visible{
+      outline:3px solid var(--focus,#111827);
+      outline-offset:3px;
+    }
+    .graphic-transcript{
+      background:var(--surface,#fff);
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{
+      margin:.55rem 0;
+      padding:.6rem .7rem;
+      border-left:4px solid var(--accent,#1f5da8);
+      background:var(--surface,#fff);
+      border-radius:.3rem;
+    }
+    .graphic-stage strong{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent,#1f5da8);
+      border-radius:.9rem;
+      background:var(--soft,#eef4fb);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -780,39 +863,52 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>
-          You will practice moving from something you notice, to something you wonder, to an interpretation
-          that stays close to the evidence.
-        </p>
+<h2 id="helps-heading">Before You Practice: Make the Significance Clearer, Not Bigger</h2>
+<div class="card">
+<p>“So what?” does not mean you have to make a sweeping statement about all people, all society, or all of human nature. It means explaining <strong>why your interpretation matters inside the text</strong>.</p>
 
-        <div class="move-grid" aria-label="Notice, wonder, interpret process">
-          <div class="move-box">
-            <strong>NOTICE</strong>
-            What pattern, contrast, word, action, or detail stands out?
-          </div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="move-box">
-            <strong>WONDER</strong>
-            Why might that detail matter?
-          </div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="move-box">
-            <strong>INTERPRET</strong>
-            What could the detail suggest?
-          </div>
-        </div>
+<figure class="instruction-graphic">
+<img src="what-to-so-what.png" width="1024" height="1536" alt="Infographic showing observation, pattern, interpretation, and significance using repeated mirror imagery to explain the move from “What” to “So What.”">
+<figcaption>The “So What?” move clarifies the significance of an interpretation rather than simply making the claim larger.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Move From “What” to “So What”</h3>
+<p>Move through four stages to explain not only what you notice in a literary text, but why it matters.</p>
+<div class="graphic-stage"><strong>Observation</strong>The narrator mentions mirrors repeatedly.</div>
+<div class="graphic-stage"><strong>Pattern</strong>Mirrors appear whenever she thinks about how others see her.</div>
+<div class="graphic-stage"><strong>Interpretation</strong>The mirrors connect identity with external judgment.</div>
+<div class="graphic-stage"><strong>Significance</strong>The story suggests that her sense of self has been shaped by being watched and evaluated.</div>
+<p><strong>Takeaway:</strong> You do not have to make the claim bigger. Make its significance clearer.</p>
+</div>
+</details>
+</figure>
 
-        <div class="tip">
-          <strong>A good interpretation is not just “deep sounding.”</strong>
-          It should grow from the evidence and remain possible to defend with the text.
-        </div>
-      </div>
-    </section>
+<div aria-label="Observation, pattern, interpretation, significance process" class="move-grid">
+<div class="move-box"><strong>OBSERVATION</strong>What specific detail do you notice?</div>
+<div aria-hidden="true" class="arrow">→</div>
+<div class="move-box"><strong>PATTERN</strong>What relationship develops across details?</div>
+<div aria-hidden="true" class="arrow">→</div>
+<div class="move-box"><strong>INTERPRETATION</strong>What might the pattern suggest?</div>
+<div aria-hidden="true" class="arrow">→</div>
+<div class="move-box"><strong>SIGNIFICANCE</strong>Why does that interpretation matter here?</div>
+</div>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<div class="tip">
+<strong>Significance is not the same as a universal life lesson.</strong>
+A precise explanation of what the pattern changes, reveals, complicates, costs, or makes possible in this text is often a stronger “So What?” than a giant statement about humanity.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Start with an observation, pattern, and interpretation, then choose the significance statement that makes the idea clearer without overreaching.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">“So What?” Practice</h2>
 
       <div id="labCard" class="card">
         <div class="progress-wrap">
@@ -827,18 +923,18 @@
           <div class="round-label" id="roundLabel">Round 1: Follow the Thinking</div>
 
           <div id="passageWrap" class="hidden">
-            <p class="step-label">TEXT</p>
+            <p class="step-label">OBSERVATION</p>
             <blockquote id="passage"></blockquote>
           </div>
 
-          <p class="step-label">NOTICE</p>
+          <p class="step-label">PATTERN</p>
           <div class="step-box" id="notice"></div>
 
-          <p class="step-label">WONDER</p>
+          <p class="step-label">INTERPRETATION</p>
           <div class="step-box" id="wonder"></div>
 
-          <p class="prompt">Which interpretation best grows from this evidence and question?</p>
-          <div id="choices" class="choices" aria-label="Choose the strongest interpretation"></div>
+          <p class="prompt">Which statement best explains why this interpretation matters?</p>
+          <div id="choices" class="choices" aria-label="Choose the strongest significance statement"></div>
 
           <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
@@ -849,20 +945,15 @@
         </div>
 
         <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced moving from wonder to interpretation.</p>
-          <p>
-            A useful interpretation usually does three things:
-          </p>
-          <ul>
-            <li>grows from something specific in the text,</li>
-            <li>answers a meaningful question about that detail, and</li>
-            <li>stays close enough to the evidence that you could defend it.</li>
-          </ul>
-          <p>
-            You do not need to prove that your interpretation is the only possible reading.
-            You need to show why it is a <strong>reasonable reading of the text</strong>.
-          </p>
-          <div class="actions">
+          <p class="big">You practiced moving from interpretation to significance.</p>
+<p>A useful “So What?” usually does three things:</p>
+<ul>
+<li>stays connected to the interpretation you already built,</li>
+<li>clarifies what the pattern reveals, complicates, costs, or changes, and</li>
+<li>avoids becoming a sweeping claim the text cannot support.</li>
+</ul>
+<p>You do not have to make the claim bigger. Make its significance clearer.</p>
+<div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
         </div>
@@ -876,195 +967,7 @@
 
   <script>
     (() => {
-      const items = [
-        {
-          round: 1,
-          roundLabel: "Round 1: Follow the Thinking",
-          notice: "Cinderella’s appearance changes before other characters begin treating her differently.",
-          wonder: "Why does the story connect changes in appearance with changes in social treatment?",
-          choices: [
-            {
-              text: "The story may suggest that social status is shaped partly by how others judge outward appearance.",
-              correct: true,
-              feedback: "This interpretation grows directly from the pattern. It does not claim more than the evidence can support, and it opens a larger idea about appearance and status."
-            },
-            {
-              text: "Cinderella is the most beautiful person in the kingdom.",
-              correct: false,
-              feedback: "This turns the passage into a factual ranking that the pattern does not establish. The stronger interpretation asks what the changing treatment may suggest."
-            },
-            {
-              text: "The author proves that everyone in society is shallow.",
-              correct: false,
-              feedback: "This overreaches. The evidence may support an idea about social judgment, but it does not prove a universal claim about everyone."
-            }
-          ]
-        },
-        {
-          round: 1,
-          roundLabel: "Round 1: Follow the Thinking",
-          notice: "In The Goose-Girl, the princess loses control of her identity after her servant forces a reversal of their roles.",
-          wonder: "Why might the story emphasize a child’s need to follow adult rules?",
-          choices: [
-            {
-              text: "The story may connect childhood safety with obedience to adult authority.",
-              correct: true,
-              feedback: "This interpretation answers the analytical question and stays close to the repeated pattern of warnings and rules."
-            },
-            {
-              text: "Children should always obey adults.",
-              correct: false,
-              feedback: "This turns the story into a direct rule for real life. Literary analysis asks what the story may be representing, not what students themselves are required to believe."
-            },
-            {
-              text: "The adults are definitely correct about everything.",
-              correct: false,
-              feedback: "The repeated warnings show adult authority, but they do not automatically prove that every adult judgment in the story is correct."
-            }
-          ]
-        },
-        {
-          round: 2,
-          roundLabel: "Round 2: Stay Close to the Evidence",
-          notice: "In The Fir Tree, the tree repeatedly longs for the next stage of life instead of valuing the moment it is in.",
-          wonder: "Why might the story connect a word like “wild” with happiness?",
-          choices: [
-            {
-              text: "The story may complicate the idea that order is always desirable by connecting freedom and disorder with the children’s joy.",
-              correct: true,
-              feedback: "This interpretation uses the tension in the word “wild” and connects it to a larger idea without claiming that the story rejects all order."
-            },
-            {
-              text: "The story proves that wanting anything is always harmful.",
-              correct: false,
-              feedback: "This is too absolute. The evidence may complicate ideas about order and freedom, but it does not prove that every rule is harmful."
-            },
-            {
-              text: "The children probably hate every indoor space.",
-              correct: false,
-              feedback: "The passage does not give enough evidence for this claim. Stay with the contrast the text actually provides."
-            }
-          ]
-        },
-        {
-          round: 2,
-          roundLabel: "Round 2: Stay Close to the Evidence",
-          notice: "In The Tiger, the Brahman, and the Jackal, the tiger promises gratitude while trapped, then threatens the Brahman once released.",
-          wonder: "Why might danger first appear polite or ordinary?",
-          choices: [
-            {
-              text: "The story may suggest that danger is harder to recognize when it first appears familiar or trustworthy.",
-              correct: true,
-              feedback: "This interpretation grows from the contrast between politeness and threat. It explains why that contrast may matter."
-            },
-            {
-              text: "Polite people are secretly dangerous.",
-              correct: false,
-              feedback: "This takes one literary pattern and turns it into a sweeping claim about real people. The stronger interpretation stays focused on how the story represents danger."
-            },
-            {
-              text: "Anyone who asks for help is lying.",
-              correct: false,
-              feedback: "This relies on a broad stereotype about villains rather than the specific pattern in this story."
-            }
-          ]
-        },
-        {
-          round: 2,
-          roundLabel: "Round 2: Stay Close to the Evidence",
-          notice: "A child is described as physically small whenever adults make important decisions.",
-          wonder: "Why emphasize the child’s smallness during moments of adult power?",
-          choices: [
-            {
-              text: "The repeated contrast may make the child’s limited power feel visible through physical scale.",
-              correct: true,
-              feedback: "This links the physical description to the power dynamic that appears at the same moments. It is specific and defensible."
-            },
-            {
-              text: "The child will definitely grow up to defeat the adults.",
-              correct: false,
-              feedback: "That predicts a future event not supported by the observation. Interpretation should grow from what the text gives us now."
-            },
-            {
-              text: "The author thinks children are weak.",
-              correct: false,
-              feedback: "This jumps from the text to a claim about the author’s personal belief. The safer and stronger move is to interpret how the story represents power."
-            }
-          ]
-        },
-        {
-          round: 3,
-          roundLabel: "Round 3: Try It Somewhere New",
-          passage: "Nico kept the ticket stub folded inside his notebook. Each time the teacher asked the class to write about home, he touched the folded paper but never took it out.",
-          notice: "The hidden ticket stub becomes noticeable whenever Nico is asked to think about home.",
-          wonder: "Why might this private object become important when Nico is asked to write about home?",
-          choices: [
-            {
-              text: "The ticket stub may represent a private memory or connection that Nico associates with home but is not ready to share.",
-              correct: true,
-              feedback: "This interpretation is grounded in the object’s repeated connection to home and in Nico’s choice to touch it without revealing it."
-            },
-            {
-              text: "Nico definitely moved from another country.",
-              correct: false,
-              feedback: "That is possible, but the passage does not give enough evidence to make it a defensible interpretation."
-            },
-            {
-              text: "The teacher is insensitive and should stop assigning personal writing.",
-              correct: false,
-              feedback: "The passage does not give enough evidence to judge the teacher this strongly. The richest evidence is Nico’s relationship to the hidden object."
-            }
-          ]
-        },
-        {
-          round: 3,
-          roundLabel: "Round 3: Try It Somewhere New",
-          passage: "The apartment was never called quiet. At night, pipes knocked in the walls, buses sighed at the curb, and someone upstairs always seemed to be moving a chair. On the first night after her sister left, Amaya noticed every sound.",
-          notice: "Ordinary apartment noises become especially noticeable after Amaya’s sister leaves.",
-          wonder: "Why might familiar sounds suddenly stand out after the sister is gone?",
-          choices: [
-            {
-              text: "Amaya’s changed attention to ordinary sounds may make her sister’s absence feel larger and more present.",
-              correct: true,
-              feedback: "This interpretation connects a shift in perception to the emotional change in the scene. It remains grounded in the passage."
-            },
-            {
-              text: "Amaya has developed unusually sensitive hearing.",
-              correct: false,
-              feedback: "The passage frames the change around the sister’s departure, not around a physical change in Amaya’s hearing."
-            },
-            {
-              text: "The apartment is haunted.",
-              correct: false,
-              feedback: "Nothing in the passage supports a supernatural explanation. This is an example of an interpretation that moves too far beyond the evidence."
-            }
-          ]
-        },
-        {
-          round: 3,
-          roundLabel: "Round 3: Try It Somewhere New",
-          passage: "Every portrait in the hallway showed someone facing forward. In the last frame, the youngest girl had turned her head toward something outside the picture.",
-          notice: "The youngest girl is the only figure looking outside the frame.",
-          wonder: "Why might the youngest figure be the only one looking somewhere else?",
-          choices: [
-            {
-              text: "The contrast may associate the youngest figure with curiosity, independence, or attention to possibilities beyond what the others accept.",
-              correct: true,
-              feedback: "This is appropriately cautious and grows from the contrast. Notice that it offers possibilities rather than pretending the detail has only one fixed meaning."
-            },
-            {
-              text: "The girl is planning to run away that night.",
-              correct: false,
-              feedback: "That may be imaginable, but the passage gives no evidence for this specific plot prediction."
-            },
-            {
-              text: "Young people are always more imaginative than adults.",
-              correct: false,
-              feedback: "This turns one image into a universal claim. Literary analysis works better when the interpretation stays attached to the particular text."
-            }
-          ]
-        }
-      ];
+      const items = [{"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "The narrator keeps turning a family photograph face down but never removes it from the room.", "notice": "Avoidance repeats, but the object remains physically close.", "wonder": "The photograph suggests that the narrator is trying to control when she confronts the memory rather than erase it completely.", "choices": [{"text": "The memory matters because avoidance becomes part of the narrator's relationship to the past: she cannot fully let go, but she also cannot face it continuously.", "correct": true, "feedback": "Yes. This explains why the interpretation matters inside the text without turning it into a universal claim about memory."}, {"text": "Everyone eventually has to confront the past.", "correct": false, "feedback": "That makes the claim much larger than the evidence. “So what?” does not require a statement about everyone."}, {"text": "The photograph is important because it appears more than once.", "correct": false, "feedback": "That identifies the pattern but does not yet explain the significance of the narrator's repeated behavior."}]}, {"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "Lena receives praise from the group only after changing how she speaks.", "notice": "Acceptance repeatedly follows moments when Lena sounds more like the group.", "wonder": "The story presents belonging as conditional rather than automatic.", "choices": [{"text": "The pattern makes belonging emotionally complicated because acceptance gives Lena connection while also asking her to suppress part of how she normally expresses herself.", "correct": true, "feedback": "Exactly. The significance clarifies the cost built into the interpretation instead of merely repeating that belonging is conditional."}, {"text": "The group is bad.", "correct": false, "feedback": "That is a broad judgment. The stronger significance explains what the condition of belonging does to Lena."}, {"text": "This proves that people should never change how they speak.", "correct": false, "feedback": "That turns the text into a rule for real life. Stay with the tension the story creates between connection and self-suppression."}]}, {"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "A child notices contradictions in the adults' explanations but is repeatedly told she is “too young to understand.”", "notice": "Her observations become sharper at the same moments that adults dismiss her understanding.", "wonder": "The text separates social authority from perceptive knowledge.", "choices": [{"text": "This matters because the child can understand something important without having the authority to make others listen, creating a gap between knowing and being believed.", "correct": true, "feedback": "Yes. The significance explains the tension created by the interpretation rather than simply saying that the adults are wrong."}, {"text": "Children are wiser than adults.", "correct": false, "feedback": "That is too absolute. The passage supports a specific tension between knowledge and authority in this text."}, {"text": "The child asks many questions.", "correct": false, "feedback": "That returns to observation instead of explaining why the pattern matters."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "Workers stop talking whenever the supervisor enters, even before he gives an order.", "notice": "The silence happens automatically and repeatedly.", "wonder": "The supervisor's authority has become internalized; the workers begin regulating themselves in anticipation of his judgment.", "choices": [{"text": "The scene makes power feel strongest when it no longer requires a direct command, because the workers have learned to enforce its expectations on themselves.", "correct": true, "feedback": "Yes. This significance stays focused on how power operates in the scene and why the pattern is important."}, {"text": "All workplaces are oppressive.", "correct": false, "feedback": "That leaps far beyond the text. A significant claim can still remain local and precise."}, {"text": "The supervisor has power.", "correct": false, "feedback": "That repeats the interpretation at a simpler level instead of clarifying what is significant about the form that power takes."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "A character repeatedly repairs a broken toy, saves every loose piece, and finally places the unrepaired toy carefully on a shelf.", "notice": "Care continues even after successful repair becomes impossible.", "wonder": "The story may define caring as persistence rather than restoration.", "choices": [{"text": "The failed repair matters because the character's care is no longer measured by whether she can fix the object; valuing it becomes possible even without restoring it.", "correct": true, "feedback": "Exactly. The significance clarifies what changes in the meaning of care within this pattern."}, {"text": "Nothing can ever be fixed.", "correct": false, "feedback": "That turns a specific pattern into an absolute statement the evidence does not support."}, {"text": "The character likes the toy a lot.", "correct": false, "feedback": "That is plausible but too shallow. It does not explain why continued care after failed repair is significant."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "The parent repeatedly calls restrictive rules “protection,” while the child has no say in when the locked door opens.", "notice": "Language of care appears alongside unequal control over movement.", "wonder": "The story makes protection difficult to separate from control.", "choices": [{"text": "The tension matters because care can remain genuine while still limiting another person's autonomy, making the relationship harder to divide into simple categories of loving or controlling.", "correct": true, "feedback": "Yes. This significance preserves the complexity already present in the evidence."}, {"text": "Parents should never make rules.", "correct": false, "feedback": "That converts the interpretation into a sweeping real-world rule rather than explaining the tension inside the story."}, {"text": "The door is locked.", "correct": false, "feedback": "That returns to the evidence without explaining why the relationship between protection and control matters."}]}, {"round": 3, "roundLabel": "Round 3: Make the Significance Clearer, Not Bigger", "passage": "The poem repeats “still” at the end of three lines, then replaces it with “moving” in the final stanza.", "notice": "A repeated pattern of stasis is interrupted by movement.", "wonder": "The structural change suggests that possibility begins not by erasing stillness but by breaking its repetition.", "choices": [{"text": "The final shift matters because a single change carries more weight after the poem has trained the reader to expect stillness; movement feels tentative but newly possible.", "correct": true, "feedback": "Exactly. The significance explains why the formal pattern makes the final change meaningful."}, {"text": "Change is the most important thing in life.", "correct": false, "feedback": "That makes the claim enormous without making it more useful. The poem's own pattern gives you a more precise significance."}, {"text": "The word “moving” is different from “still.”", "correct": false, "feedback": "That notices the contrast but does not explain why the contrast matters after the repetition."}]}, {"round": 3, "roundLabel": "Round 3: Make the Significance Clearer, Not Bigger", "passage": "Mara says, “It's fine,” while folding the warning letter into smaller and smaller squares.", "notice": "Her calm statement conflicts with an increasingly tense physical action.", "wonder": "The scene presents composure as something Mara performs while anxiety continues underneath it.", "choices": [{"text": "The contradiction matters because the scene makes emotional control look like a performance rather than the absence of fear; what Mara does reveals pressure that her words try to conceal.", "correct": true, "feedback": "Yes. This makes the significance of the contradiction clearer without claiming that all calm behavior is false."}, {"text": "People always hide their true feelings.", "correct": false, "feedback": "That is too universal. The evidence supports a specific reading of Mara in this moment."}, {"text": "Mara folds the letter because she is nervous.", "correct": false, "feedback": "That gives a plausible inference but stops before explaining why the conflict between speech and action matters to the scene."}]}];
 
       const els = {
         roundText: document.getElementById("roundText"),
@@ -1176,7 +1079,7 @@
           button.classList.add("correct");
           els.feedback.className = "feedback correct";
           els.feedback.innerHTML =
-            `<div class="feedback-title">Yes — this interpretation stays close to the evidence.</div>
+            `<div class="feedback-title">Yes — this significance grows from the interpretation without overreaching.</div>
              <div>${choice.feedback}</div>`;
           els.next.classList.remove("hidden");
           els.tryAgain.classList.add("hidden");
@@ -1184,7 +1087,7 @@
           button.classList.add("incorrect");
           els.feedback.className = "feedback try";
           els.feedback.innerHTML =
-            `<div class="feedback-title">Not quite. Check how far the claim travels from the text.</div>
+            `<div class="feedback-title">Not quite. Ask whether this clarifies why the interpretation matters or simply makes the claim bigger.</div>
              <div>${choice.feedback}</div>`;
           els.tryAgain.classList.remove("hidden");
           els.next.classList.add("hidden");

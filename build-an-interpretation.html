@@ -372,6 +372,89 @@
       }
     }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{
+      max-width:760px;
+      margin:1.1rem auto;
+    }
+    .instruction-graphic img{
+      display:block;
+      width:min(100%,700px);
+      height:auto;
+      margin:0 auto;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.85rem;
+      background:#fff;
+    }
+    .instruction-graphic figcaption{
+      max-width:66ch;
+      margin:.55rem auto 0;
+      color:var(--muted,#5d6978);
+      font-size:.94rem;
+      text-align:center;
+    }
+    .graphic-full-text{
+      max-width:700px;
+      margin:.75rem auto 0;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.75rem;
+      background:var(--soft,#eef4fb);
+      padding:.15rem .9rem .75rem;
+    }
+    .graphic-full-text summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0;
+    }
+    .graphic-full-text summary:focus-visible{
+      outline:3px solid var(--focus,#111827);
+      outline-offset:3px;
+    }
+    .graphic-transcript{
+      background:var(--surface,#fff);
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{
+      margin:.55rem 0;
+      padding:.6rem .7rem;
+      border-left:4px solid var(--accent,#1f5da8);
+      background:var(--surface,#fff);
+      border-radius:.3rem;
+    }
+    .graphic-stage strong{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent,#1f5da8);
+      border-radius:.9rem;
+      background:var(--soft,#eef4fb);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -530,23 +613,50 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>When several pieces of evidence point in a similar direction, you can begin building a larger reading of the text.</p>
-        <div class="steps">
-          <div class="step"><strong>1. Gather</strong>Look at more than one detail.</div>
-          <div class="step"><strong>2. Connect</strong>Ask what pattern or tension the details share.</div>
-          <div class="step"><strong>3. Interpret</strong>Make a claim that explains the pattern without overreaching.</div>
-        </div>
-        <div class="tip">
-          <strong>The best interpretation should fit the whole evidence set.</strong>
-          A claim that explains only one detail may be too narrow. A claim that adds ideas the text never gives you may be too wild.
-        </div>
-      </div>
-    </section>
+<h2 id="helps-heading">Before You Practice: Let the Interpretation Grow From the Text</h2>
+<div class="card">
+<p>A literary interpretation should not appear out of nowhere. It begins with something concrete in the text, then grows as you notice what the detail may imply and test that idea against more evidence.</p>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<figure class="instruction-graphic">
+<img src="big-interpretations-small-details.png" width="1122" height="1402" alt="Infographic showing a literary interpretation growing from one textual detail through noticing and inference to interpretation and significance.">
+<figcaption>A larger interpretation can begin with one small, specific detail.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Big Interpretations Start With Small Details</h3>
+<p>The graphic shows five stages in developing a literary interpretation from a specific textual detail.</p>
+<div class="graphic-stage"><strong>1. Textual Detail</strong>She leaves the key on the table.</div>
+<div class="graphic-stage"><strong>2. Notice</strong>She does not take the key with her.</div>
+<div class="graphic-stage"><strong>3. Infer</strong>Her departure may be intended as permanent.</div>
+<div class="graphic-stage"><strong>4. Interpret</strong>The story presents independence as requiring a deliberate break from security.</div>
+<div class="graphic-stage"><strong>5. Why It Matters</strong>Her freedom is presented as both empowering and costly.</div>
+<p><strong>Takeaway:</strong> Start with what is actually on the page.</p>
+<p>The progression demonstrates that a larger literary interpretation can grow from careful attention to a small, concrete textual detail.</p>
+</div>
+</details>
+</figure>
+
+<p>Once you have a possible interpretation, do not stop with the first detail. Look for other moments that support, challenge, or complicate it.</p>
+<div class="steps">
+<div class="step"><strong>1. Gather</strong>Look at more than one relevant detail.</div>
+<div class="step"><strong>2. Connect</strong>Ask what pattern, contrast, or tension the details share.</div>
+<div class="step"><strong>3. Interpret</strong>Make a claim that explains the evidence without overreaching.</div>
+</div>
+<div class="tip">
+<strong>The best interpretation should fit the whole evidence set.</strong>
+A claim that explains only one detail may be too narrow. A claim that adds ideas the text never gives you may be too wild.
+</div>
+</div>
+</section>
+
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Look across several details and choose an interpretation that explains the pattern while staying grounded in the evidence.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Build an Interpretation Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -583,8 +693,7 @@
             <li>What claim could I defend using the full evidence set?</li>
           </ul>
           <p>
-            Strong literary analysis does not just collect quotations. It shows the reader what the quotations begin to mean
-            when they are considered together.
+            Strong literary analysis does not just collect evidence. It shows the reader what the details begin to mean when they are considered together.
           </p>
           <div class="transfer-box">
             <h3>Try It With Your Text</h3>
@@ -602,117 +711,9 @@
 
   <script>
   (() => {
-    const items = [
-      {
-        round:1, roundLabel:"Round 1: Connect the Pattern",
-        evidence:[
-          "Adults repeatedly tell the child where she may go.",
-          "Adults make important decisions without asking for her opinion.",
-          "The narrator describes the child as physically small during these moments."
-        ],
-        choices:[
-          {text:"The story may connect childhood with limited power inside an adult-controlled world.",correct:true,feedback:"This interpretation explains all three details: rules, decision-making, and the repeated emphasis on smallness."},
-          {text:"The child is short.",correct:false,feedback:"This fits only one detail and stays on the surface. It does not explain the repeated pattern of adult authority."},
-          {text:"All adults are cruel to children.",correct:false,feedback:"This is too broad. The evidence supports a pattern of limited child power, but it does not prove that every adult is cruel."}
-        ]
-      },
-      {
-        round:1, roundLabel:"Round 1: Connect the Pattern",
-        evidence:[
-          "In The Six Swans, the sister must remain silent while she works to free her brothers.",
-          "Her silence makes it difficult to defend herself when other people accuse her.",
-          "She continues the task even when speaking could protect her immediately."
-        ],
-        choices:[
-          {text:"The story may associate freedom and play with spaces that are less controlled by adults.",correct:true,feedback:"This interpretation connects the language of wildness, the children’s happiness, and the change that occurs when adult control returns."},
-          {text:"The sister does not speak while she works.",correct:false,feedback:"That is true, but it does not connect the full pattern or explain why the garden matters."},
-          {text:"The story proves that rules should never exist.",correct:false,feedback:"That claim goes far beyond the evidence. The text may complicate adult control without rejecting every possible rule."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Test the Whole Claim",
-        evidence:[
-          "A character keeps repairing a broken toy even when the repair fails.",
-          "She saves every loose piece rather than throwing it away.",
-          "After the final failed attempt, she places the toy carefully on a shelf."
-        ],
-        choices:[
-          {text:"The character may connect caring with persistence, even when something cannot be fully restored.",correct:true,feedback:"This interpretation explains the repeated repair attempts, the saved pieces, and the final act of care."},
-          {text:"The character likes toys.",correct:false,feedback:"This is possible but too narrow. It does not explain the repeated effort or the careful treatment after failure."},
-          {text:"The toy represents the inevitable collapse of civilization.",correct:false,feedback:"Nothing in the evidence supports such a sweeping symbolic claim. The interpretation should stay closer to the character’s actions."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Test the Whole Claim",
-        evidence:[
-          "The narrator repeatedly describes the house as quiet.",
-          "Family members leave conversations unfinished.",
-          "Important conflicts are handled through gestures rather than direct speech."
-        ],
-        choices:[
-          {text:"The repeated silence may reflect a family pattern of avoiding direct communication.",correct:true,feedback:"This interpretation connects setting, dialogue, and behavior into one coherent pattern."},
-          {text:"The family lives in a quiet neighborhood.",correct:false,feedback:"That may explain one detail, but it does not account for unfinished conversations and nonverbal conflict."},
-          {text:"The family members secretly hate one another.",correct:false,feedback:"The text may support conflict or avoidance, but “secretly hate” adds a specific emotional claim the evidence does not establish."}
-        ]
-      },
-      {
-        round:2, roundLabel:"Round 2: Test the Whole Claim",
-        evidence:[
-          "The youngest character asks questions the adults refuse to answer.",
-          "She notices contradictions in the family’s stories.",
-          "She is repeatedly told that she is “too young to understand.”"
-        ],
-        choices:[
-          {text:"The story may question the assumption that age automatically determines who understands the truth.",correct:true,feedback:"This interpretation connects the child’s questions, her observations, and the adults’ repeated dismissal of her understanding."},
-          {text:"The child asks a lot of questions.",correct:false,feedback:"This describes one pattern but does not explain why her questioning matters in relation to adult authority."},
-          {text:"Children are always wiser than adults.",correct:false,feedback:"That is too absolute. The evidence supports a challenge to adult assumptions, not a universal claim about all children and adults."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
-        evidence:[
-          "Nico touches a hidden ticket stub whenever he is asked to write about home.",
-          "He never takes the ticket stub out in front of the class.",
-          "The ticket is described as worn from being handled."
-        ],
-        prompt:"Two interpretations could be defensible. Which answer recognizes that possibility?",
-        choices:[
-          {text:"The ticket could represent a private connection to home, or it could represent a memory Nico is not ready to share. Both readings fit the evidence and would need further support.",correct:true,feedback:"Exactly. Literary evidence can support more than one plausible interpretation. The next step would be to test each reading against more of the text."},
-          {text:"The ticket definitely proves Nico is homesick.",correct:false,feedback:"Homesickness is possible, but “definitely proves” closes down other readings the evidence could also support."},
-          {text:"Because the text does not tell us exactly what the ticket means, we cannot interpret it at all.",correct:false,feedback:"Literary analysis often works precisely with this kind of uncertainty. We can make a cautious reading as long as we support it."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
-        evidence:[
-          "Every portrait faces forward except the youngest girl.",
-          "The girl looks toward something outside the frame.",
-          "The narrator never tells us what she sees."
-        ],
-        prompt:"Which interpretation handles the evidence most responsibly?",
-        choices:[
-          {text:"Her different gaze could suggest curiosity, independence, or attention to possibilities beyond what the others see; the ambiguity is part of what makes the image open to interpretation.",correct:true,feedback:"This acknowledges several plausible readings while staying grounded in the contrast the text actually gives us."},
-          {text:"She is definitely planning to run away.",correct:false,feedback:"That is one imaginable story, but the text does not provide enough evidence for such a specific plot claim."},
-          {text:"The detail has no meaning because we are not told what she is looking at.",correct:false,feedback:"Ambiguity does not prevent interpretation. It means the reader must be careful about what the evidence can and cannot support."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: More Than One Reading Can Work",
-        evidence:[
-          "In The Talkative Tortoise, the tortoise is warned that speaking during the journey will put him in danger.",
-          "He agrees to stay silent while being carried through the air.",
-          "The danger becomes obvious only after trust has already been established."
-        ],
-        prompt:"Which interpretation best connects the pattern without turning it into a universal rule?",
-        choices:[
-          {text:"The story may suggest that danger can be difficult to recognize when it first appears through familiar or trustworthy social behavior.",correct:true,feedback:"This connects all three details and keeps the claim focused on how the story represents danger."},
-          {text:"Polite people cannot be trusted.",correct:false,feedback:"That turns one literary pattern into a sweeping rule about real people."},
-          {text:"The tortoise speaks after being told not to.",correct:false,feedback:"This restates the sequence but does not yet explain what the pattern might mean."}
-        ]
-      }
-    ];
+    const items = [{"round": 1, "roundLabel": "Round 1: Connect the Pattern", "evidence": ["Adults repeatedly tell the child where she may go.", "Adults make important decisions without asking for her opinion.", "The narrator describes the child as physically small during these moments."], "choices": [{"text": "The story may connect childhood with limited power inside an adult-controlled world.", "correct": true, "feedback": "This interpretation explains all three details: rules, decision-making, and the repeated emphasis on smallness."}, {"text": "The child is short.", "correct": false, "feedback": "This fits only one detail and stays on the surface. It does not explain the repeated pattern of adult authority."}, {"text": "All adults are cruel to children.", "correct": false, "feedback": "This is too broad. The evidence supports a pattern of limited child power, but it does not prove that every adult is cruel."}]}, {"round": 1, "roundLabel": "Round 1: Connect the Pattern", "evidence": ["In The Six Swans, the sister must remain silent while she works to free her brothers.", "Her silence makes it difficult to defend herself when other people accuse her.", "She continues the task even when speaking could protect her immediately."], "choices": [{"text": "The story may present silence as both devotion and vulnerability: the sister's silence helps her continue the work of freeing her brothers, but it also limits her ability to defend herself.", "correct": true, "feedback": "Yes. This interpretation accounts for the purpose of the silence, the cost it creates, and the sister's decision to continue despite that cost."}, {"text": "The sister does not speak while she works.", "correct": false, "feedback": "That is an accurate observation, but it does not yet explain what the repeated silence may mean across the evidence set."}, {"text": "The story proves that silence is always noble.", "correct": false, "feedback": "That is too absolute. The evidence shows that silence has both value and consequences in this situation."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["A character keeps repairing a broken toy even when the repair fails.", "She saves every loose piece rather than throwing it away.", "After the final failed attempt, she places the toy carefully on a shelf."], "choices": [{"text": "The character may connect caring with persistence, even when something cannot be fully restored.", "correct": true, "feedback": "This interpretation explains the repeated repair attempts, the saved pieces, and the final act of care."}, {"text": "The character likes toys.", "correct": false, "feedback": "This is possible but too narrow. It does not explain the repeated effort or the careful treatment after failure."}, {"text": "The toy represents the inevitable collapse of civilization.", "correct": false, "feedback": "Nothing in the evidence supports such a sweeping symbolic claim. The interpretation should stay closer to the character’s actions."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["The narrator repeatedly describes the house as quiet.", "Family members leave conversations unfinished.", "Important conflicts are handled through gestures rather than direct speech."], "choices": [{"text": "The repeated silence may reflect a family pattern of avoiding direct communication.", "correct": true, "feedback": "This interpretation connects setting, dialogue, and behavior into one coherent pattern."}, {"text": "The family lives in a quiet neighborhood.", "correct": false, "feedback": "That may explain one detail, but it does not account for unfinished conversations and nonverbal conflict."}, {"text": "The family members secretly hate one another.", "correct": false, "feedback": "The text may support conflict or avoidance, but “secretly hate” adds a specific emotional claim the evidence does not establish."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["The youngest character asks questions the adults refuse to answer.", "She notices contradictions in the family’s stories.", "She is repeatedly told that she is “too young to understand.”"], "choices": [{"text": "The story may question the assumption that age automatically determines who understands the truth.", "correct": true, "feedback": "This interpretation connects the child’s questions, her observations, and the adults’ repeated dismissal of her understanding."}, {"text": "The child asks a lot of questions.", "correct": false, "feedback": "This describes one pattern but does not explain why her questioning matters in relation to adult authority."}, {"text": "Children are always wiser than adults.", "correct": false, "feedback": "That is too absolute. The evidence supports a challenge to adult assumptions, not a universal claim about all children and adults."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["Nico touches a hidden ticket stub whenever he is asked to write about home.", "He never takes the ticket stub out in front of the class.", "The ticket is described as worn from being handled."], "prompt": "Two interpretations could be defensible. Which answer recognizes that possibility?", "choices": [{"text": "The ticket could represent a private connection to home, or it could represent a memory Nico is not ready to share. Both readings fit the evidence and would need further support.", "correct": true, "feedback": "Exactly. Literary evidence can support more than one plausible interpretation. The next step would be to test each reading against more of the text."}, {"text": "The ticket definitely proves Nico is homesick.", "correct": false, "feedback": "Homesickness is possible, but “definitely proves” closes down other readings the evidence could also support."}, {"text": "Because the text does not tell us exactly what the ticket means, we cannot interpret it at all.", "correct": false, "feedback": "Literary analysis often works precisely with this kind of uncertainty. We can make a cautious reading as long as we support it."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["Every portrait faces forward except the youngest girl.", "The girl looks toward something outside the frame.", "The narrator never tells us what she sees."], "prompt": "Which interpretation handles the evidence most responsibly?", "choices": [{"text": "Her different gaze could suggest curiosity, independence, or attention to possibilities beyond what the others see; the ambiguity is part of what makes the image open to interpretation.", "correct": true, "feedback": "This acknowledges several plausible readings while staying grounded in the contrast the text actually gives us."}, {"text": "She is definitely planning to run away.", "correct": false, "feedback": "That is one imaginable story, but the text does not provide enough evidence for such a specific plot claim."}, {"text": "The detail has no meaning because we are not told what she is looking at.", "correct": false, "feedback": "Ambiguity does not prevent interpretation. It means the reader must be careful about what the evidence can and cannot support."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["In The Talkative Tortoise, the tortoise is warned that speaking during the journey will make him fall.", "He agrees to remain silent while being carried through the air.", "When people below mock him, he opens his mouth to answer them and falls."], "prompt": "Which interpretation best connects the pattern without turning it into a universal rule?", "choices": [{"text": "The tale may present self-control as especially difficult when pride is provoked by other people's judgment.", "correct": true, "feedback": "Yes. This interpretation connects the warning, the agreement to stay silent, and the moment when mockery becomes strong enough to break that self-control."}, {"text": "The tortoise speaks after being told not to.", "correct": false, "feedback": "That restates the event but does not explain the larger pattern connecting pride, provocation, and self-control."}, {"text": "The tale proves that people should never respond when others insult them.", "correct": false, "feedback": "That turns one literary situation into a universal rule. A stronger interpretation stays with what the story makes visible about this character's conflict."}]}];
 
-    const els={
+      const els={
       roundText:document.getElementById("roundText"),
       itemText:document.getElementById("itemText"),
       progress:document.getElementById("progress"),

@@ -585,6 +585,89 @@
       }
     }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{
+      max-width:760px;
+      margin:1.1rem auto;
+    }
+    .instruction-graphic img{
+      display:block;
+      width:min(100%,700px);
+      height:auto;
+      margin:0 auto;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.85rem;
+      background:#fff;
+    }
+    .instruction-graphic figcaption{
+      max-width:66ch;
+      margin:.55rem auto 0;
+      color:var(--muted,#5d6978);
+      font-size:.94rem;
+      text-align:center;
+    }
+    .graphic-full-text{
+      max-width:700px;
+      margin:.75rem auto 0;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.75rem;
+      background:var(--soft,#eef4fb);
+      padding:.15rem .9rem .75rem;
+    }
+    .graphic-full-text summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0;
+    }
+    .graphic-full-text summary:focus-visible{
+      outline:3px solid var(--focus,#111827);
+      outline-offset:3px;
+    }
+    .graphic-transcript{
+      background:var(--surface,#fff);
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{
+      margin:.55rem 0;
+      padding:.6rem .7rem;
+      border-left:4px solid var(--accent,#1f5da8);
+      background:var(--surface,#fff);
+      border-radius:.3rem;
+    }
+    .graphic-stage strong{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent,#1f5da8);
+      border-radius:.9rem;
+      background:var(--soft,#eef4fb);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -744,37 +827,51 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>
-          This lab helps you identify which part of a quotation is worth analyzing and explain
-          why that detail matters to an interpretation.
-        </p>
+<h2 id="helps-heading">Before You Practice: Slow Down Around the Smallest Useful Detail</h2>
+<div class="card">
+<p>Close reading does not require you to explain every word in a quotation. Often the strongest analysis begins when you identify one word or phrase that carries unusual weight and ask why that choice matters.</p>
 
-        <div class="strategy">
-          <div class="strategy-box">
-            <strong>1. Find the Detail</strong>
-            Which word, image, contrast, or choice stands out?
-          </div>
-          <div class="strategy-box">
-            <strong>2. Ask What It Does</strong>
-            What feeling, idea, tension, or relationship does it create?
-          </div>
-          <div class="strategy-box">
-            <strong>3. Connect It Back</strong>
-            How does that detail support the larger interpretation?
-          </div>
-        </div>
+<figure class="instruction-graphic">
+<img src="one-word-enough-to-analyze.png" width="1024" height="1536" alt="Infographic showing how close reading the word “clutched” can move from word choice to possible meanings and interpretation.">
+<figcaption>One carefully chosen word can give you enough material for several sentences of analysis.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Sometimes One Word Is Enough to Analyze</h3>
+<p>Consider this sentence:</p>
+<p><strong>“She clutched the letter.”</strong></p>
+<p>The word <strong>“clutched”</strong> is emphasized.</p>
+<div class="graphic-stage"><strong>Ask</strong>Why “clutched” instead of “held”?</div>
+<div class="graphic-stage"><strong>What might the word suggest?</strong>fear • urgency • possessiveness • reluctance to let go</div>
+<div class="graphic-stage"><strong>Next question</strong>Which meaning fits this scene best?</div>
+<div class="graphic-stage"><strong>Then</strong>Connect it to your interpretation.</div>
+<p><strong>Paraphrase:</strong> She holds the letter.</p>
+<p><strong>Analysis:</strong> Why did the author choose “clutched”?</p>
+<p>The point is that close reading can begin by slowing down and examining the implications of one important word instead of merely restating what the sentence says.</p>
+</div>
+</details>
+</figure>
 
-        <div class="tip">
-          <strong>You do not have to analyze every word in a quotation.</strong>
-          Sometimes one carefully chosen word can give you more to say than an entire sentence.
-        </div>
-      </div>
-    </section>
+<div class="strategy">
+<div class="strategy-box"><strong>1. Find the Detail</strong>Which word, image, contrast, action, or choice stands out?</div>
+<div class="strategy-box"><strong>2. Ask What It Does</strong>What feeling, idea, tension, or relationship does it create?</div>
+<div class="strategy-box"><strong>3. Connect It Back</strong>How does that detail support the larger interpretation?</div>
+</div>
+<div class="tip">
+<strong>Do not choose a word just because it sounds interesting.</strong>
+Choose the detail that gives you something useful to explain in relation to your interpretation.
+</div>
+</div>
+</section>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Identify the smallest useful part of the evidence, then explain what that particular word, image, action, or contrast contributes to the interpretation.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Zoom In Practice</h2>
 
       <div id="labCard" class="card">
         <div class="progress-wrap">
@@ -838,200 +935,7 @@
 
   <script>
     (() => {
-      const items = [
-        {
-          round:1,
-          roundLabel:"Round 1: Find the Detail",
-          claim:"The passage presents the child as intimidated by the adult-controlled space.",
-          quote:"She crept quietly toward the enormous door.",
-          prompt:"Which part of the quotation gives you the strongest material for close analysis?",
-          choices:[
-            {
-              text:"“crept” and “enormous”",
-              correct:true,
-              feedback:"These words create a relationship between cautious movement and overwhelming scale. Together, they help make the child seem small and intimidated."
-            },
-            {
-              text:"“the” and “toward”",
-              correct:false,
-              feedback:"These words help the sentence function, but they do not carry much interpretive weight here. Look for language that shapes movement, scale, feeling, or power."
-            },
-            {
-              text:"The entire sentence equally",
-              correct:false,
-              feedback:"You can discuss the whole sentence, but close reading usually gets sharper when you identify the specific words doing the most work."
-            }
-          ]
-        },
-        {
-          round:1,
-          roundLabel:"Round 1: Find the Detail",
-          claim:"The passage makes Cinderella’s arrival feel socially powerful rather than merely beautiful.",
-          quote:"When she entered, the room seemed to pause before anyone remembered to speak.",
-          prompt:"Which detail would be most useful to zoom in on?",
-          choices:[
-            {
-              text:"“the room seemed to pause”",
-              correct:true,
-              feedback:"These words describe disorder, but the larger interpretation connects that disorder with freedom. That tension gives you something meaningful to analyze."
-            },
-            {
-              text:"“the gate” only because every gate is symbolic",
-              correct:false,
-              feedback:"A gate could become meaningful, but it is not automatically symbolic. Analysis should come from how a detail functions in this specific passage."
-            },
-            {
-              text:"“beneath”",
-              correct:false,
-              feedback:"This preposition helps locate the garden, but it carries less interpretive weight than the description of the garden as “the room’s collective pause.”"
-            }
-          ]
-        },
-        {
-          round:2,
-          roundLabel:"Round 2: Explain What the Detail Does",
-          claim:"The narrator presents the house as emotionally oppressive.",
-          quote:"In Rumpelstiltskin, the secret of the little man’s name seems to belong only to him.",
-          prompt:"Which explanation best analyzes the phrase “belong only to him”?",
-          choices:[
-            {
-              text:"The phrase turns the name into a form of private possession, making knowledge itself feel like a source of power.",
-              correct:true,
-              feedback:"This explanation focuses on what the word does, not just what it literally means. It connects the image to the interpretation of the house as oppressive."
-            },
-            {
-              text:"It means that nobody else knows his name.",
-              correct:false,
-              feedback:"This paraphrases the situation but does not explain why the language of ownership matters."
-            },
-            {
-              text:"The tale uses a secret.",
-              correct:false,
-              feedback:"Naming the device is a useful start, but analysis still needs to explain the effect of that personification and why it matters."
-            }
-          ]
-        },
-        {
-          round:2,
-          roundLabel:"Round 2: Explain What the Detail Does",
-          claim:"The passage suggests that the character’s sense of belonging is uncertain.",
-          quote:"He hovered at the edge of the family photograph.",
-          prompt:"Which explanation best analyzes “hovered at the edge”?",
-          choices:[
-            {
-              text:"The phrase places him physically near the family while also making him seem only partly included, turning position into a sign of uncertain belonging.",
-              correct:true,
-              feedback:"This explanation connects physical placement to the larger interpretation without merely repeating the quotation."
-            },
-            {
-              text:"He is standing at the edge of the photograph.",
-              correct:false,
-              feedback:"This restates the evidence. Close analysis needs to explain what being at the edge may suggest."
-            },
-            {
-              text:"The phrase is imagery.",
-              correct:false,
-              feedback:"That label is not wrong, but it does not yet explain how the image contributes to the idea of uncertain belonging."
-            }
-          ]
-        },
-        {
-          round:2,
-          roundLabel:"Round 2: Explain What the Detail Does",
-          claim:"The narrator sees adulthood as restrictive rather than freeing.",
-          quote:"The child’s voice was the first one in the crowd to say plainly that the emperor wore nothing.",
-          prompt:"Which explanation best analyzes the contrast in this sentence?",
-          choices:[
-            {
-              text:"Calling the child’s voice “the first one” emphasizes that many people could see the same thing but had not said it, turning speech into a break from group silence.",
-              correct:true,
-              feedback:"This close reading notices that the sentence contains two competing signals. Strong analysis often grows from exactly this kind of tension."
-            },
-            {
-              text:"The child tells the truth, so children are always more honest than adults.",
-              correct:false,
-              feedback:"This focuses on one positive word while ignoring the restrictive language around it."
-            },
-            {
-              text:"The author uses dialogue.",
-              correct:false,
-              feedback:"Naming a technique is not enough. The stronger analysis explains why this particular act of speaking matters in a crowd that has remained silent."
-            }
-          ]
-        },
-        {
-          round:3,
-          roundLabel:"Round 3: Try It Somewhere New",
-          claim:"The passage suggests that the character experiences memory as something both comforting and painful.",
-          quote:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
-          prompt:"Which close-reading explanation best supports the interpretation?",
-          choices:[
-            {
-              text:"The act of pressing the sweater close suggests comfort, while folding it away again introduces distance, making the memory feel both desired and difficult to hold onto.",
-              correct:true,
-              feedback:"This explanation uses two small actions and their contrast to support the interpretation."
-            },
-            {
-              text:"The sweater smells like cedar.",
-              correct:false,
-              feedback:"That is an observation, but it does not yet explain how the detail contributes to the character’s mixed emotional experience."
-            },
-            {
-              text:"Sweaters symbolize memories.",
-              correct:false,
-              feedback:"The object may carry memory here, but saying what sweaters symbolize in general skips the specific actions and context that make this one meaningful."
-            }
-          ]
-        },
-        {
-          round:3,
-          roundLabel:"Round 3: Try It Somewhere New",
-          claim:"The poem presents grief as something that remains even after the speaker tries to move forward.",
-          quote:"I closed the door / but your name stayed / bright on my tongue.",
-          prompt:"Which detail gives the strongest material for close analysis?",
-          choices:[
-            {
-              text:"“but your name stayed / bright on my tongue”",
-              correct:true,
-              feedback:"The contrast introduced by “but” interrupts the attempt to close something off, while “bright on my tongue” makes the remembered name feel vivid and physically present. The line break helps the word “stayed” stand out."
-            },
-            {
-              text:"“door” because doors always symbolize change",
-              correct:false,
-              feedback:"A door may become meaningful, but it does not automatically carry one fixed symbolic meaning. The more revealing language here is the name that “stayed” despite the speaker’s attempt to close the door."
-            },
-            {
-              text:"Only the word “I”",
-              correct:false,
-              feedback:"The first-person speaker matters, but this interpretation depends more strongly on the contrast between trying to close something and the remembered name remaining."
-            }
-          ]
-        },
-        {
-          round:3,
-          roundLabel:"Round 3: Try It Somewhere New",
-          claim:"The passage suggests that the youngest character sees possibility where the others see limits.",
-          quote:"The poem ends three lines with the word “still,” but the final stanza changes it to “moving.”",
-          prompt:"Which explanation best zooms in on the contrast?",
-          choices:[
-            {
-              text:"Repeating “still” establishes a pattern of stasis, so the final change to “moving” becomes a structural shift that can signal altered feeling or possibility.",
-              correct:true,
-              feedback:"This explanation compares the two details and shows how the contrast supports the larger interpretation."
-            },
-            {
-              text:"The window is locked.",
-              correct:false,
-              feedback:"That is true, but it only restates part of the evidence. The interpretive power comes from the contrast between what the group notices and what Mina notices."
-            },
-            {
-              text:"Light always means hope in literature.",
-              correct:false,
-              feedback:"Light can carry many meanings. Strong close reading explains what it does in this specific passage rather than assigning a universal symbol."
-            }
-          ]
-        }
-      ];
+      const items = [{"round": 1, "roundLabel": "Round 1: Find the Detail", "claim": "The passage presents the child as intimidated by the adult-controlled space.", "quote": "She crept quietly toward the enormous door.", "prompt": "Which part of the quotation gives you the strongest material for close analysis?", "choices": [{"text": "“crept” and “enormous”", "correct": true, "feedback": "These words create a relationship between cautious movement and overwhelming scale. Together, they help make the child seem small and intimidated."}, {"text": "“the” and “toward”", "correct": false, "feedback": "These words help the sentence function, but they do not carry much interpretive weight here. Look for language that shapes movement, scale, feeling, or power."}, {"text": "The entire sentence equally", "correct": false, "feedback": "You can discuss the whole sentence, but close reading usually gets sharper when you identify the specific words doing the most work."}]}, {"round": 1, "roundLabel": "Round 1: Find the Detail", "claim": "The passage makes Cinderella's arrival feel socially powerful rather than merely beautiful.", "quote": "When she entered, the room seemed to pause before anyone remembered to speak.", "prompt": "Which detail would be most useful to zoom in on?", "choices": [{"text": "“the room seemed to pause”", "correct": true, "feedback": "Yes. The phrase gives the entire room a collective reaction, making Cinderella's arrival feel powerful enough to interrupt normal social behavior."}, {"text": "“entered” because every entrance symbolizes transformation", "correct": false, "feedback": "The verb tells us what Cinderella does, but the room's unusual reaction gives you more evidence for this particular claim. An entrance does not automatically carry one symbolic meaning."}, {"text": "The entire sentence equally", "correct": false, "feedback": "You can discuss the full sentence, but close reading becomes sharper when you identify the words doing the most interpretive work."}]}, {"round": 2, "roundLabel": "Round 2: Explain What the Detail Does", "claim": "The hidden name functions as a form of power because access to it is controlled.", "quote": "The secret of the little man's name seems to belong only to him.", "prompt": "Which explanation best analyzes the phrase “belong only to him”?", "choices": [{"text": "The phrase turns the name into a form of private possession, making knowledge itself feel like a source of power.", "correct": true, "feedback": "Yes. The language of ownership helps explain why learning the name changes the balance of power."}, {"text": "It means that nobody else knows his name.", "correct": false, "feedback": "That paraphrases the situation but does not explain why the language of ownership matters."}, {"text": "The tale uses a secret.", "correct": false, "feedback": "Naming the feature is only a start. Analysis explains what the secret does in the conflict and why access to it matters."}]}, {"round": 2, "roundLabel": "Round 2: Explain What the Detail Does", "claim": "The passage suggests that the character’s sense of belonging is uncertain.", "quote": "He hovered at the edge of the family photograph.", "prompt": "Which explanation best analyzes “hovered at the edge”?", "choices": [{"text": "The phrase places him physically near the family while also making him seem only partly included, turning position into a sign of uncertain belonging.", "correct": true, "feedback": "This explanation connects physical placement to the larger interpretation without merely repeating the quotation."}, {"text": "He is standing at the edge of the photograph.", "correct": false, "feedback": "This restates the evidence. Close analysis needs to explain what being at the edge may suggest."}, {"text": "The phrase is imagery.", "correct": false, "feedback": "That label is not wrong, but it does not yet explain how the image contributes to the idea of uncertain belonging."}]}, {"round": 2, "roundLabel": "Round 2: Explain What the Detail Does", "claim": "The scene presents public agreement as fragile because one spoken contradiction breaks the crowd's silence.", "quote": "The child's voice was the first one in the crowd to say plainly that the emperor wore nothing.", "prompt": "Which explanation best analyzes “the first one”?", "choices": [{"text": "Calling the child's voice “the first one” emphasizes that many people could see the same thing but had not said it, turning speech into a break from group silence.", "correct": true, "feedback": "Yes. The phrase makes the important contrast not simply child versus adult, but speaking versus a crowd that has remained publicly silent."}, {"text": "The child tells the truth, so children are always more honest than adults.", "correct": false, "feedback": "That turns one scene into a universal statement. The stronger analysis stays with the crowd's silence and the significance of being first to speak."}, {"text": "The author uses dialogue.", "correct": false, "feedback": "Naming a technique does not explain what this particular act of speaking changes in the scene."}]}, {"round": 3, "roundLabel": "Round 3: Try It Somewhere New", "claim": "The passage suggests that the character experiences memory as something both comforting and painful.", "quote": "She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.", "prompt": "Which close-reading explanation best supports the interpretation?", "choices": [{"text": "The act of pressing the sweater close suggests comfort, while folding it away again introduces distance, making the memory feel both desired and difficult to hold onto.", "correct": true, "feedback": "This explanation uses two small actions and their contrast to support the interpretation."}, {"text": "The sweater smells like cedar.", "correct": false, "feedback": "That is an observation, but it does not yet explain how the detail contributes to the character’s mixed emotional experience."}, {"text": "Sweaters symbolize memories.", "correct": false, "feedback": "The object may carry memory here, but saying what sweaters symbolize in general skips the specific actions and context that make this one meaningful."}]}, {"round": 3, "roundLabel": "Round 3: Try It Somewhere New", "claim": "The poem presents grief as something that remains even after the speaker tries to move forward.", "quote": "I closed the door / but your name stayed / bright on my tongue.", "prompt": "Which detail gives the strongest material for close analysis?", "choices": [{"text": "“but your name stayed / bright on my tongue”", "correct": true, "feedback": "The contrast introduced by “but” interrupts the attempt to close something off, while “bright on my tongue” makes the remembered name feel vivid and physically present. The line break helps the word “stayed” stand out."}, {"text": "“door” because doors always symbolize change", "correct": false, "feedback": "A door may become meaningful, but it does not automatically carry one fixed symbolic meaning. The more revealing language here is the name that “stayed” despite the speaker’s attempt to close the door."}, {"text": "Only the word “I”", "correct": false, "feedback": "The first-person speaker matters, but this interpretation depends more strongly on the contrast between trying to close something and the remembered name remaining."}]}, {"round": 3, "roundLabel": "Round 3: Try It Somewhere New", "claim": "The poem suggests that movement is beginning to replace a pattern of stasis.", "quote": "The poem ends three lines with the word “still,” but the final stanza changes it to “moving.”", "prompt": "Which explanation best zooms in on the contrast?", "choices": [{"text": "Repeating “still” establishes a pattern of stasis, so the final change to “moving” becomes a structural shift that can signal altered feeling or possibility.", "correct": true, "feedback": "Yes. The analysis uses repetition and change together, showing why the final word carries more significance because of the pattern that came before it."}, {"text": "The poem uses the word “still” three times.", "correct": false, "feedback": "That notices the repetition but stops before explaining what the repetition makes the later change to “moving” do."}, {"text": "“Still” always symbolizes sadness.", "correct": false, "feedback": "Words do not have one automatic literary meaning. The important evidence here is the contrast between the repeated stasis and the final movement."}]}];
 
       const els = {
         roundText:document.getElementById("roundText"),

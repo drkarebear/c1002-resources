@@ -368,6 +368,89 @@
       }
     }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{
+      max-width:760px;
+      margin:1.1rem auto;
+    }
+    .instruction-graphic img{
+      display:block;
+      width:min(100%,700px);
+      height:auto;
+      margin:0 auto;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.85rem;
+      background:#fff;
+    }
+    .instruction-graphic figcaption{
+      max-width:66ch;
+      margin:.55rem auto 0;
+      color:var(--muted,#5d6978);
+      font-size:.94rem;
+      text-align:center;
+    }
+    .graphic-full-text{
+      max-width:700px;
+      margin:.75rem auto 0;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.75rem;
+      background:var(--soft,#eef4fb);
+      padding:.15rem .9rem .75rem;
+    }
+    .graphic-full-text summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0;
+    }
+    .graphic-full-text summary:focus-visible{
+      outline:3px solid var(--focus,#111827);
+      outline-offset:3px;
+    }
+    .graphic-transcript{
+      background:var(--surface,#fff);
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{
+      margin:.55rem 0;
+      padding:.6rem .7rem;
+      border-left:4px solid var(--accent,#1f5da8);
+      background:var(--surface,#fff);
+      border-radius:.3rem;
+    }
+    .graphic-stage strong{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent,#1f5da8);
+      border-radius:.9rem;
+      background:var(--soft,#eef4fb);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -525,25 +608,50 @@
 
   <main id="main" tabindex="-1">
     <section aria-labelledby="helps-heading">
-      <h2 id="helps-heading">What This Helps You Do</h2>
-      <div class="card">
-        <p>Instead of treating each quotation as a separate island, look for relationships among details.</p>
+<h2 id="helps-heading">Before You Practice: Look for Relationships Across Details</h2>
+<div class="card">
+<p>One detail can be worth noticing. A pattern becomes more convincing when several details repeat, change together, contrast with one another, or create the same tension.</p>
 
-        <div class="steps">
-          <div class="step"><strong>1. Collect</strong>Notice several details from the text.</div>
-          <div class="step"><strong>2. Group</strong>Decide which details belong together.</div>
-          <div class="step"><strong>3. Name the Pattern</strong>Ask what the group may reveal about the text.</div>
-        </div>
+<figure class="instruction-graphic">
+<img src="pattern-builds-interpretation.png" width="1122" height="1402" alt="Infographic showing three related moments forming a pattern of increasing separation, which supports an interpretation about independence and isolation.">
+<figcaption>Several related details can give an interpretation a stronger foundation than one isolated moment.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>One Detail Might Be Interesting. A Pattern Builds an Interpretation.</h3>
+<p>Three textual moments are shown:</p>
+<div class="graphic-stage"><strong>Moment 1</strong>The character closes a door.</div>
+<div class="graphic-stage"><strong>Moment 2</strong>The character closes a window.</div>
+<div class="graphic-stage"><strong>Moment 3</strong>The character stops answering calls.</div>
+<p>The three moments converge to form a pattern:</p>
+<div class="graphic-stage"><strong>Pattern</strong>Increasing separation</div>
+<div class="graphic-stage"><strong>Interpretation</strong>The character's independence is increasingly difficult to distinguish from isolation.</div>
+<p><strong>Takeaway:</strong> Collect related details before deciding what they mean.</p>
+<p>The visual emphasizes that one detail may be interesting, but several related details can establish a pattern that supports a stronger interpretation.</p>
+</div>
+</details>
+</figure>
 
-        <div class="tip">
-          <strong>A pattern is more than repetition.</strong>
-          Details can belong together because they repeat, contrast, develop, or create tension with one another.
-        </div>
-      </div>
-    </section>
+<div class="steps">
+<div class="step"><strong>1. Collect</strong>Notice several details from the text.</div>
+<div class="step"><strong>2. Group</strong>Decide which details actually belong together.</div>
+<div class="step"><strong>3. Name the Pattern</strong>Describe the relationship before deciding what it means.</div>
+</div>
+<div class="tip">
+<strong>A pattern is more than repetition.</strong>
+Details can belong together because they repeat, contrast, develop, shift, or create tension with one another.
+</div>
+</div>
+</section>
 
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Try It</h2>
+<section class="now-practice" aria-labelledby="now-practice-heading">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Decide which details belong together, name the pattern they create, and distinguish a genuine pattern from a coincidence or overreach.</p>
+</section>
+
+<section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Pattern Finder Practice</h2>
       <div id="labCard" class="card">
         <div class="progress-wrap">
           <div class="progress-label">
@@ -598,130 +706,9 @@
 
   <script>
   (() => {
-    const items = [
-      {
-        round:1,
-        roundLabel:"Round 1: Which Details Belong Together?",
-        details:[
-          "Adults repeatedly tell the child where she may go.",
-          "The narrator describes the child as physically small during arguments.",
-          "The child’s favorite food is strawberries."
-        ],
-        prompt:"Which two details form the strongest analytical pattern?",
-        choices:[
-          {text:"The adult rules and the repeated description of the child as small.",correct:true,feedback:"Yes. These details can work together as a pattern about power, authority, and childhood."},
-          {text:"The child’s small size and her favorite food.",correct:false,feedback:"These details could both describe the child, but they do not yet create a meaningful analytical relationship."},
-          {text:"The adult rules and the strawberries.",correct:false,feedback:"Nothing in the evidence suggests that these details belong together as a pattern."}
-        ]
-      },
-      {
-        round:1,
-        roundLabel:"Round 1: Which Details Belong Together?",
-        details:[
-          "The poem ends three different lines with the word “still.”",
-          "An empty chair appears again in the final stanza.",
-          "The moon is mentioned once in the opening line."
-        ],
-        prompt:"Which two details are most likely to form a meaningful pattern?",
-        choices:[
-          {text:"The repeated word “still” and the returning image of the empty chair.",correct:true,feedback:"Yes. Repetition across the poem and the returning empty-chair image can work together as a pattern involving absence, waiting, stillness, or memory."},
-          {text:"The moon and the empty chair simply because both are images.",correct:false,feedback:"Two images do not automatically form a pattern. Look for repetition, contrast, change, or another relationship the text actually builds."},
-          {text:"The moon and the word “still” because they both appear in the poem.",correct:false,feedback:"Appearing in the same poem is not enough. The repeated “still” and returning chair give you stronger evidence of an intentional pattern."}
-        ]
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Name the Pattern",
-        details:[
-          "Family conversations repeatedly end before anyone names the conflict.",
-          "The narrator describes the house as unusually quiet.",
-          "Characters communicate anger through gestures instead of direct speech."
-        ],
-        prompt:"Which phrase best names the pattern?",
-        choices:[
-          {text:"Avoided communication and silence.",correct:true,feedback:"Yes. This captures what the details share without jumping immediately to a full thesis."},
-          {text:"Furniture and setting.",correct:false,feedback:"The evidence is not mainly about objects or physical setting. The strongest connection is communication."},
-          {text:"Everyone secretly hates one another.",correct:false,feedback:"That is already an overreaching interpretation, not a neutral name for the pattern."}
-        ]
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Name the Pattern",
-        details:[
-          "In Hansel and Gretel, the children are repeatedly left to find their way through an environment controlled by adults.",
-          "They repeatedly rely on small objects and remembered routes to recover a sense of direction.",
-          "The danger becomes obvious only after trust has begun."
-        ],
-        prompt:"Which phrase best names the pattern?",
-        choices:[
-          {text:"Danger hidden inside familiar social behavior.",correct:true,feedback:"Yes. This phrase captures the relationship among politeness, trust, and delayed recognition of danger."},
-          {text:"Animals talking.",correct:false,feedback:"That is a feature of the story, but it does not connect the three details analytically."},
-          {text:"The children are in a forest.",correct:false,feedback:"That is a character judgment, not the shared pattern across the evidence."}
-        ]
-      },
-      {
-        round:2,
-        roundLabel:"Round 2: Name the Pattern",
-        details:[
-          "A child notices contradictions adults ignore.",
-          "She asks questions adults refuse to answer.",
-          "She is told she is “too young to understand.”"
-        ],
-        prompt:"Which pattern best connects these details?",
-        choices:[
-          {text:"Conflict between age and authority over knowledge.",correct:true,feedback:"Exactly. The details all raise questions about who is allowed to understand and whose interpretation counts."},
-          {text:"The child talks too much.",correct:false,feedback:"That reduces the pattern to behavior and misses the larger issue of knowledge and authority."},
-          {text:"Adults are always wrong.",correct:false,feedback:"That is too absolute and moves beyond what the pattern itself establishes."}
-        ]
-      },
-      {
-        round:3,
-        roundLabel:"Round 3: Pattern or Coincidence?",
-        details:[
-          "Nico touches a hidden ticket stub when asked to write about home.",
-          "The ticket is worn from repeated handling.",
-          "Nico never shows it to classmates."
-        ],
-        prompt:"Which conclusion is the strongest next step?",
-        choices:[
-          {text:"These details form a pattern connecting the ticket with a private, emotionally important relationship to home.",correct:true,feedback:"Yes. The object’s repetition, wear, and secrecy all point toward emotional significance."},
-          {text:"The ticket must be valuable because it is old.",correct:false,feedback:"Nothing here establishes financial value."},
-          {text:"The ticket is probably unrelated because each detail happens at a different moment.",correct:false,feedback:"Patterns often emerge precisely because related details recur across different moments."}
-        ]
-      },
-      {
-        round:3,
-        roundLabel:"Round 3: Pattern or Coincidence?",
-        details:[
-          "In The Six Swans, the sister continues making the shirts in silence.",
-          "Later, she listens for sounds beyond a closed door.",
-          "She repeatedly focuses on what exists beyond barriers."
-        ],
-        prompt:"What pattern is emerging?",
-        choices:[
-          {text:"Mina repeatedly directs attention beyond boundaries, which may connect her perspective with curiosity or possibility.",correct:true,feedback:"Yes. The specific objects differ, but the repeated relationship to barriers creates a meaningful pattern."},
-          {text:"Mina likes windows and doors.",correct:false,feedback:"That is too literal. The pattern is about what she notices in relation to barriers, not a preference for architecture."},
-          {text:"Every barrier symbolizes freedom.",correct:false,feedback:"The evidence supports a pattern involving barriers and what lies beyond them, but not a universal symbolic rule."}
-        ]
-      },
-      {
-        round:3,
-        roundLabel:"Round 3: Pattern or Coincidence?",
-        details:[
-          "The grandmother cannot physically stop the threat.",
-          "She recognizes the danger before anyone else.",
-          "Other characters ignore her warning until it is too late."
-        ],
-        prompt:"Which pattern gives the strongest foundation for analysis?",
-        choices:[
-          {text:"A tension between physical powerlessness and perceptive knowledge.",correct:true,feedback:"Exactly. The details do not all point in one simple direction; their tension is the pattern."},
-          {text:"The grandmother is weak.",correct:false,feedback:"That explains only one detail and ignores her knowledge."},
-          {text:"The grandmother is the most powerful character.",correct:false,feedback:"That flips the problem rather than accounting for both limitation and insight."}
-        ]
-      }
-    ];
+    const items = [{"round": 1, "roundLabel": "Round 1: Which Details Belong Together?", "details": ["Adults repeatedly tell the child where she may go.", "The narrator describes the child as physically small during arguments.", "The child’s favorite food is strawberries."], "prompt": "Which two details form the strongest analytical pattern?", "choices": [{"text": "The adult rules and the repeated description of the child as small.", "correct": true, "feedback": "Yes. These details can work together as a pattern about power, authority, and childhood."}, {"text": "The child’s small size and her favorite food.", "correct": false, "feedback": "These details could both describe the child, but they do not yet create a meaningful analytical relationship."}, {"text": "The adult rules and the strawberries.", "correct": false, "feedback": "Nothing in the evidence suggests that these details belong together as a pattern."}]}, {"round": 1, "roundLabel": "Round 1: Which Details Belong Together?", "details": ["The poem ends three different lines with the word “still.”", "An empty chair appears again in the final stanza.", "The moon is mentioned once in the opening line."], "prompt": "Which two details are most likely to form a meaningful pattern?", "choices": [{"text": "The repeated word “still” and the returning image of the empty chair.", "correct": true, "feedback": "Yes. Repetition across the poem and the returning empty-chair image can work together as a pattern involving absence, waiting, stillness, or memory."}, {"text": "The moon and the empty chair simply because both are images.", "correct": false, "feedback": "Two images do not automatically form a pattern. Look for repetition, contrast, change, or another relationship the text actually builds."}, {"text": "The moon and the word “still” because they both appear in the poem.", "correct": false, "feedback": "Appearing in the same poem is not enough. The repeated “still” and returning chair give you stronger evidence of an intentional pattern."}]}, {"round": 2, "roundLabel": "Round 2: Name the Pattern", "details": ["Family conversations repeatedly end before anyone names the conflict.", "The narrator describes the house as unusually quiet.", "Characters communicate anger through gestures instead of direct speech."], "prompt": "Which phrase best names the pattern?", "choices": [{"text": "Avoided communication and silence.", "correct": true, "feedback": "Yes. This captures what the details share without jumping immediately to a full thesis."}, {"text": "Furniture and setting.", "correct": false, "feedback": "The evidence is not mainly about objects or physical setting. The strongest connection is communication."}, {"text": "Everyone secretly hates one another.", "correct": false, "feedback": "That is already an overreaching interpretation, not a neutral name for the pattern."}]}, {"round": 2, "roundLabel": "Round 2: Name the Pattern", "details": ["In Hansel and Gretel, the children are repeatedly left to find their way through an environment controlled by adults.", "They repeatedly rely on small objects and remembered routes to recover a sense of direction.", "The danger becomes obvious only after trust has begun."], "prompt": "Which phrase best names the pattern?", "choices": [{"text": "Children trying to regain direction and agency inside an unsafe environment shaped by adult decisions.", "correct": true, "feedback": "Yes. The details connect adult-controlled danger with the children's repeated attempts to recover direction and some control over what happens next."}, {"text": "A forest setting.", "correct": false, "feedback": "The setting is part of the story, but it does not capture the relationship among adult control, navigation, and the children's efforts to regain agency."}, {"text": "Adults are always dangerous.", "correct": false, "feedback": "That is an overreaching interpretation, not a careful name for the pattern in these particular details."}]}, {"round": 2, "roundLabel": "Round 2: Name the Pattern", "details": ["A child notices contradictions adults ignore.", "She asks questions adults refuse to answer.", "She is told she is “too young to understand.”"], "prompt": "Which pattern best connects these details?", "choices": [{"text": "Conflict between age and authority over knowledge.", "correct": true, "feedback": "Exactly. The details all raise questions about who is allowed to understand and whose interpretation counts."}, {"text": "The child talks too much.", "correct": false, "feedback": "That reduces the pattern to behavior and misses the larger issue of knowledge and authority."}, {"text": "Adults are always wrong.", "correct": false, "feedback": "That is too absolute and moves beyond what the pattern itself establishes."}]}, {"round": 3, "roundLabel": "Round 3: Pattern or Coincidence?", "details": ["Nico touches a hidden ticket stub when asked to write about home.", "The ticket is worn from repeated handling.", "Nico never shows it to classmates."], "prompt": "Which conclusion is the strongest next step?", "choices": [{"text": "These details form a pattern connecting the ticket with a private, emotionally important relationship to home.", "correct": true, "feedback": "Yes. The object’s repetition, wear, and secrecy all point toward emotional significance."}, {"text": "The ticket must be valuable because it is old.", "correct": false, "feedback": "Nothing here establishes financial value."}, {"text": "The ticket is probably unrelated because each detail happens at a different moment.", "correct": false, "feedback": "Patterns often emerge precisely because related details recur across different moments."}]}, {"round": 3, "roundLabel": "Round 3: Pattern or Coincidence?", "details": ["Early in the story, Lena answers messages almost immediately.", "After the argument, her replies become shorter and more delayed.", "By the final scene, she reads messages but leaves them unanswered."], "prompt": "What pattern is emerging?", "choices": [{"text": "Communication gradually narrowing into withdrawal.", "correct": true, "feedback": "Yes. The three moments form a developing pattern: quick engagement becomes delay, then silence."}, {"text": "Lena uses a phone often.", "correct": false, "feedback": "That names the medium but misses the meaningful change in how she responds over time."}, {"text": "Lena hates everyone.", "correct": false, "feedback": "That adds an emotional conclusion the evidence does not establish. First name the pattern the details actually create."}]}, {"round": 3, "roundLabel": "Round 3: Pattern or Coincidence?", "details": ["The grandmother cannot physically stop the threat.", "She recognizes the danger before anyone else.", "Other characters ignore her warning until it is too late."], "prompt": "Which pattern gives the strongest foundation for analysis?", "choices": [{"text": "A tension between physical powerlessness and perceptive knowledge.", "correct": true, "feedback": "Exactly. The details do not all point in one simple direction; their tension is the pattern."}, {"text": "The grandmother is weak.", "correct": false, "feedback": "That explains only one detail and ignores her knowledge."}, {"text": "The grandmother is the most powerful character.", "correct": false, "feedback": "That flips the problem rather than accounting for both limitation and insight."}]}];
 
-    const els={
+      const els={
       roundText:document.getElementById("roundText"),
       itemText:document.getElementById("itemText"),
       progress:document.getElementById("progress"),

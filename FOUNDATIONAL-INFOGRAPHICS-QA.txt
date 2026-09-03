@@ -1,0 +1,52 @@
+C1002 FOUNDATIONAL INFOGRAPHIC INTEGRATION QA
+
+Graphic page checks:
+
+build-an-interpretation.html
+- image present: PASS
+- concise alt: PASS
+- full text details: PASS
+- NOW PRACTICE: PASS
+- graphic before practice: PASS
+- width-height match: PASS
+
+pattern-finder.html
+- image present: PASS
+- concise alt: PASS
+- full text details: PASS
+- NOW PRACTICE: PASS
+- graphic before practice: PASS
+- width-height match: PASS
+
+zoom-in.html
+- image present: PASS
+- concise alt: PASS
+- full text details: PASS
+- NOW PRACTICE: PASS
+- graphic before practice: PASS
+- width-height match: PASS
+
+so-what.html
+- image present: PASS
+- concise alt: PASS
+- full text details: PASS
+- NOW PRACTICE: PASS
+- graphic before practice: PASS
+- width-height match: PASS
+
+Content repair checks:
+- Build: no old Swan Brothers/tortoise mismatch: PASS
+- Pattern: no old Hansel/Gretel garden mismatch: PASS
+- Zoom: no old Cinderella/window mismatch: PASS
+- So What: activity is significance-focused: PASS
+- So What: universal-claim warning: PASS
+- Double quotation style in new transcript: PASS
+
+Site-wide technical QA
+- HTML pages: 38
+- Broken local links: []
+- Orphaned HTML pages: []
+- Pages missing dark mode: []
+- Pages missing favicon: []
+- H1 issues: []
+- JavaScript syntax errors: []
