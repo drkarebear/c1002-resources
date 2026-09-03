@@ -1,0 +1,25 @@
+Answer Shuffle Update
+
+Multiple-choice answer positions are now randomized in 14 labs.
+
+Design choice:
+- The order is randomized when the page loads.
+- If a student selects a wrong answer and chooses Try Again, the same question keeps the same answer order. This avoids moving the choices while the student is using feedback to reconsider.
+- Correctness and feedback are attached to the answer itself, not its screen position.
+- The activity "Too Obvious, Too Wild, or Just Right?" remains intentionally ordered because the three choices form a meaningful conceptual scale rather than an arbitrary set of options.
+
+Updated labs:
+- Lost in the Text?
+- What Kind of Thinking Is This?
+- Notice → Wonder
+- Pattern Finder
+- Zoom In
+- So What?
+- Build an Interpretation
+- Theme or Topic?
+- Whose Eyes Are We Seeing Through?
+- Claim, Evidence, or Explanation?
+- Don't Drop the Quote
+- Strengthen the Thesis
+- Complicate It
+- Analysis Repair Shop

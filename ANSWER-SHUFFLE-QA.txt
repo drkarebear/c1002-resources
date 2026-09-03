@@ -1,0 +1,18 @@
+Answer Shuffle QA
+
+lost-in-the-text.html: helper/call present=True, occurrences=2
+what-kind-of-thinking-is-this.html: helper/call present=True, occurrences=2
+notice-to-wonder.html: helper/call present=True, occurrences=2
+pattern-finder.html: helper/call present=True, occurrences=2
+zoom-in.html: helper/call present=True, occurrences=2
+so-what.html: helper/call present=True, occurrences=2
+build-an-interpretation.html: helper/call present=True, occurrences=2
+theme-or-topic.html: helper/call present=True, occurrences=2
+whose-eyes.html: helper/call present=True, occurrences=2
+claim-evidence-explanation.html: helper/call present=True, occurrences=2
+dont-drop-the-quote.html: helper/call present=True, occurrences=2
+strengthen-the-thesis.html: helper/call present=True, occurrences=2
+complicate-it.html: helper/call present=True, occurrences=2
+analysis-repair-shop.html: helper/call present=True, occurrences=2
+
+Too Obvious / Too Wild / Just Right intentionally unshuffled: True

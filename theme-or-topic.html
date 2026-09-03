@@ -465,7 +465,40 @@
 
     let index=0,solved=false;
 
-    function render(){
+    
+      /*
+       * Answer-order safeguard:
+       * Randomize multiple-choice positions so students cannot learn a
+       * predictable "correct answer is always first/second" pattern.
+       * The order is saved on the current item so Try Again keeps the
+       * same layout instead of moving buttons while the student retries.
+       */
+      function applyStableChoiceShuffle(container, item, key="main") {
+        const buttons = [...container.querySelectorAll(".choice")];
+        if (buttons.length < 2) return;
+
+        if (!item.__choiceOrders) item.__choiceOrders = {};
+        let order = item.__choiceOrders[key];
+
+        if (!order || order.length !== buttons.length) {
+          order = Array.from({length: buttons.length}, (_, i) => i);
+          for (let i = order.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [order[i], order[j]] = [order[j], order[i]];
+          }
+
+          // Avoid leaving 3-choice questions in their original order when possible.
+          if (order.length === 3 && order.every((value, i) => value === i)) {
+            [order[0], order[1]] = [order[1], order[0]];
+          }
+
+          item.__choiceOrders[key] = order;
+        }
+
+        order.forEach(i => container.appendChild(buttons[i]));
+      }
+
+      function render(){
       const item=items[index];
       solved=false;
 
@@ -501,6 +534,8 @@
         btn.addEventListener("click",()=>check(i,btn));
         els.choices.appendChild(btn);
       });
+
+      applyStableChoiceShuffle(els.choices, item, "main");
 
       els.feedback.className="feedback hidden";
       els.feedback.innerHTML="";
