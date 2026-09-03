@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How a Literary Analysis Essay Holds Together | ENGL C1002 Learning Lab</title>
+<meta name="description" content="See how the introduction, thesis, topic sentences, evidence, analysis, paragraph connections, and conclusion work together in a literary-analysis essay.">
+<link rel="icon" type="image/png" href="favicon4.png">
+<style>
+:root{
+  --bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;
+  --accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;
+  --green-soft:#f0f7f2;--gold:#8b6514;--gold-soft:#fff8e8;--focus:#111827;--max:900px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light dark}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62
+}
+a{color:var(--accent-dark);text-underline-offset:.18em}
+a:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+header,main,footer{width:min(calc(100% - 1.4rem),var(--max));margin-inline:auto}
+header{padding:1.35rem 0 .7rem}
+.brand{display:flex;gap:.65rem;align-items:center;text-decoration:none;color:var(--text);font-weight:850}
+.brand img{width:42px;height:42px;object-fit:contain}
+.student-nav{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.7rem}
+.student-nav a{font-weight:750}
+.eyebrow{margin:1.2rem 0 .25rem;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;font-weight:850;color:var(--accent-dark)}
+h1{margin:0;font-size:clamp(2.15rem,7vw,4rem);line-height:1.04;letter-spacing:-.04em}
+h2{line-height:1.2;margin-top:1.7rem}
+h3{line-height:1.25}
+.lede{color:var(--muted);font-size:1.08rem;max-width:74ch}
+.big-idea{
+  background:var(--green-soft);border-left:5px solid var(--green);
+  border-radius:.55rem;padding:1rem;margin:1rem 0 1.4rem
+}
+.section-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:.9rem;padding:1rem;margin:1rem 0
+}
+.section-card h2,.section-card h3{margin-top:.1rem}
+.essay-map{display:grid;grid-template-columns:1fr;gap:.55rem;margin:1rem 0}
+.map-box{
+  border:1px solid var(--border);border-radius:.75rem;
+  padding:.85rem;background:var(--soft)
+}
+.map-box strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
+.map-box.thesis{background:var(--gold-soft);border-width:2px}
+.map-box.conclusion{background:var(--green-soft)}
+.arrow{text-align:center;color:var(--muted);font-weight:900;font-size:1.2rem}
+.body-group{
+  border:2px solid var(--border);border-radius:.9rem;padding:.9rem;margin:.8rem 0;background:var(--surface)
+}
+.body-group h3{margin:.05rem 0 .4rem}
+.body-parts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem}
+.body-part{
+  background:var(--soft);border:1px solid var(--border);border-radius:.65rem;padding:.7rem;min-width:0
+}
+.body-part strong{display:block;color:var(--accent-dark)}
+.example{
+  background:var(--gold-soft);border:1px solid var(--border);
+  border-radius:.8rem;padding:1rem;margin:.8rem 0
+}
+.example .label{
+  display:block;font-size:.76rem;font-weight:850;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--gold);margin-top:.45rem
+}
+.example p{margin:.15rem 0 .55rem}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.8rem 0}
+.compare>div{border:1px solid var(--border);border-radius:.7rem;padding:.8rem;background:var(--soft)}
+.compare .better{background:var(--green-soft);border-left:5px solid var(--green)}
+.checklist{padding-left:1.25rem}
+.checklist li{margin:.35rem 0}
+.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:.9rem 0}
+.route{
+  display:block;background:var(--surface);border:1px solid var(--border);
+  border-radius:.75rem;padding:.8rem;text-decoration:none
+}
+.route strong{display:block;color:var(--accent-dark)}
+.note{
+  background:var(--soft);border-left:5px solid var(--accent);
+  border-radius:.55rem;padding:.9rem 1rem;margin:.9rem 0
+}
+footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
+@media(max-width:720px){
+  .body-parts{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .compare,.route-grid,.body-parts{grid-template-columns:1fr}
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#10151b;--surface:#18212a;--text:#f3f6f9;--muted:#bdc7d2;--border:#3b4856;
+    --accent:#8dbbff;--accent-dark:#bdd7ff;--soft:#202c38;--green:#72d287;
+    --green-soft:#182a1d;--gold:#e3bd68;--gold-soft:#302817;--focus:#fff
+  }
+  a{color:var(--accent-dark)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html"><img src="favicon4.png" alt=""><span>ENGL C1002 Learning Lab</span></a>
+<nav class="student-nav" aria-label="Student navigation">
+<a href="index.html">Student Home</a>
+<a href="all-labs.html">All Labs</a>
+</nav>
+<p class="eyebrow">Essay Structure Support</p>
+<h1>How a Literary Analysis Essay Holds Together</h1>
+<p class="lede">
+A literary-analysis essay is not a collection of unrelated observations. The thesis gives the essay a larger argument, and each body paragraph develops one smaller part of that argument with evidence and analysis.
+</p>
+<div class="big-idea">
+<strong>The central idea:</strong> Your thesis does not prove itself. Your body paragraphs build the case for it one smaller claim at a time.
+</div>
+</header>
+
+<main>
+<section class="section-card" aria-labelledby="whole-map-heading">
+<h2 id="whole-map-heading">The Whole Essay at a Glance</h2>
+
+<div class="essay-map">
+<div class="map-box">
+<strong>INTRODUCTION</strong>
+Give the reader the context needed to understand the interpretive problem. Move toward the argument rather than retelling the whole plot.
+</div>
+
+<div class="arrow" aria-hidden="true">↓</div>
+
+<div class="map-box thesis">
+<strong>THESIS</strong>
+What does the whole essay argue about the text? The thesis usually appears near the end of the introduction.
+</div>
+
+<div class="arrow" aria-hidden="true">↓</div>
+
+<div class="map-box">
+<strong>BODY PARAGRAPH 1</strong>
+One smaller claim that helps develop the thesis.
+</div>
+
+<div class="map-box">
+<strong>BODY PARAGRAPH 2</strong>
+A different smaller claim that adds another part of the argument.
+</div>
+
+<div class="map-box">
+<strong>BODY PARAGRAPH 3</strong>
+Another claim, development, contrast, or complication that moves the argument forward.
+</div>
+
+<div class="arrow" aria-hidden="true">↓</div>
+
+<div class="map-box conclusion">
+<strong>CONCLUSION</strong>
+Pull the argument together and show what the analysis has helped us understand. Answer the final “so what?” rather than simply repeating the thesis.
+</div>
+</div>
+
+<p class="note">
+<strong>Important:</strong> Three body paragraphs are shown here only to make the structure visible. A literary-analysis essay can have fewer or more body paragraphs depending on the assignment and the argument.
+</p>
+</section>
+
+<section class="section-card">
+<h2>Inside a Body Paragraph</h2>
+<p>Each body paragraph needs a clear job. A useful way to see the relationship is:</p>
+
+<div class="body-group">
+<h3>Paragraph Job</h3>
+<div class="body-parts">
+<div class="body-part"><strong>CLAIM</strong><span>What is this paragraph trying to show? This often appears in or near the topic sentence.</span></div>
+<div class="body-part"><strong>EVIDENCE</strong><span>What specific part of the text gives you a reason to make that claim?</span></div>
+<div class="body-part"><strong>EXPLAIN</strong><span>What should the reader notice in the evidence? What does it suggest or reveal?</span></div>
+<div class="body-part"><strong>CONNECT</strong><span>How does this paragraph's thinking help develop the larger thesis?</span></div>
+</div>
+</div>
+
+<p>
+These are <strong>jobs</strong>, not a four-sentence formula. A paragraph may use several pieces of evidence and move back and forth between evidence and explanation before making the larger connection.
+</p>
+</section>
+
+<section class="section-card">
+<h2>Watch One Thesis Become an Essay</h2>
+
+<div class="example">
+<span class="label">Thesis</span>
+<p>The story suggests that fear of social judgment can make conformity stronger than individual perception.</p>
+
+<span class="label">Body Paragraph 1</span>
+<p><strong>Topic sentence:</strong> The adults' exaggerated praise shows how fear of embarrassment turns private doubt into public conformity.</p>
+<p><strong>What this paragraph would analyze:</strong> Adults praising clothing they cannot actually see, especially the language they use to imitate one another's certainty.</p>
+
+<span class="label">Body Paragraph 2</span>
+<p><strong>Topic sentence:</strong> The crowd's repetition of the same claims shows how public agreement can begin to feel like evidence even when no one has actually confirmed it.</p>
+<p><strong>What this paragraph would analyze:</strong> Repeated phrases, crowd responses, and the way one person's claim is echoed by others.</p>
+
+<span class="label">Body Paragraph 3</span>
+<p><strong>Topic sentence:</strong> The child's simple contradiction exposes how fragile the crowd's certainty has been all along.</p>
+<p><strong>What this paragraph would analyze:</strong> The contrast between the child's blunt statement and the adults' elaborate praise.</p>
+
+<span class="label">Conclusion</span>
+<p>The essay could then step back and ask what the collapse of the crowd's agreement suggests about conformity, social pressure, and the willingness to trust one's own perception.</p>
+</div>
+
+<p>
+Notice that the body paragraphs do <strong>not</strong> repeat the thesis. Each one develops a different part of the larger argument.
+</p>
+</section>
+
+<section class="section-card">
+<h2>A Paragraph Should Add Something</h2>
+
+<div class="compare">
+<div>
+<strong>Repeats the thesis</strong>
+<p>Social pressure makes people conform even when they privately disagree.</p>
+</div>
+<div class="better">
+<strong>Develops one part of the thesis</strong>
+<p>The adults' exaggerated praise shows how fear of embarrassment turns private doubt into public conformity.</p>
+</div>
+</div>
+
+<p>
+A useful test is to ask: <strong>If I removed this paragraph, what part of my argument would disappear?</strong> If the answer is “nothing,” the paragraph may need a clearer job.
+</p>
+</section>
+
+<section class="section-card">
+<h2>Organization Is About Relationships, Not Just Order</h2>
+<p>
+A well-organized essay does more than place paragraphs in a row. The reader should understand why one idea comes after another.
+</p>
+<ul class="checklist">
+<li>Does each paragraph focus on one clear part of the argument?</li>
+<li>Does the next paragraph add, deepen, contrast, or complicate what came before?</li>
+<li>Do the topic sentences create a logical progression when you read them by themselves?</li>
+<li>Does every paragraph have evidence that actually fits its claim?</li>
+<li>Does the analysis show how that evidence matters?</li>
+</ul>
+<p>
+Transitions help when they explain the <strong>relationship between ideas</strong>. A phrase such as “in contrast” is useful only if the paragraph actually introduces a meaningful contrast.
+</p>
+</section>
+
+<section class="section-card">
+<h2>Try a Quick Reverse Outline</h2>
+<p>
+If you already have a draft, you can see its structure without rewriting the whole paper.
+</p>
+<ol class="checklist">
+<li>Write your thesis in one sentence.</li>
+<li>Beside each body paragraph, write: <strong>“This paragraph proves that…”</strong></li>
+<li>Do not copy the topic sentence. Explain the paragraph's job in plain language.</li>
+<li>Read only those paragraph jobs in order.</li>
+<li>Ask whether they build a logical case for the thesis.</li>
+</ol>
+
+<div class="note">
+<strong>If two paragraphs do the same job:</strong> you may need to combine them, give one a more specific purpose, or move one in a different direction.<br><br>
+<strong>If a paragraph has no clear job:</strong> the problem may be the topic sentence, the evidence, or the paragraph's connection to the thesis.
+</div>
+</section>
+
+<section class="section-card">
+<h2>Where Do You Need Help?</h2>
+<div class="route-grid">
+<a class="route" href="strengthen-the-thesis.html"><strong>My thesis is too broad or obvious.</strong><span>Try Strengthen the Thesis.</span></a>
+<a class="route" href="what-should-this-paragraph-prove.html"><strong>I have a thesis, but I do not know what each paragraph should do.</strong><span>Try What Should This Paragraph Prove?</span></a>
+<a class="route" href="claim-evidence-explanation.html"><strong>I know my paragraph's idea, but I do not know how to build it.</strong><span>Try Claim, Evidence, Explain & Connect.</span></a>
+<a class="route" href="using-textual-evidence.html"><strong>I do not know what evidence to use or what to say after it.</strong><span>Try Using Textual Evidence.</span></a>
+<a class="route" href="ask-a-deeper-question.html"><strong>My argument feels shallow.</strong><span>Try Ask a Deeper Question.</span></a>
+<a class="route" href="literary-analysis-triage.html"><strong>I have a draft, but I do not know what needs revision.</strong><span>Try Literary Analysis Triage.</span></a>
+</div>
+</section>
+</main>
+
+<footer>
+<p>Created by Karen Crozer for ENGL C1002 classes.</p>
+<p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+</footer>
+</body>
+</html>
