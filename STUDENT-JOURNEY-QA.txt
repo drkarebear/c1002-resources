@@ -1,0 +1,31 @@
+C1002 STUDENT-JOURNEY AUDIT — FINAL
+
+Home-to-help paths
+- Reading is confusing: index.html → lost-in-the-text.html (1 click(s))
+- Doesn't know what analysis is: index.html → what-kind-of-thinking-is-this.html (1 click(s))
+- Noticed something, doesn't know meaning: index.html → so-what.html (1 click(s))
+- Has an idea, needs support: index.html → claim-evidence-explanation.html (1 click(s))
+- Evidence is present, explanation is missing: index.html → dont-drop-the-quote.html (1 click(s))
+- Has thesis, body paragraphs unclear: index.html → what-should-this-paragraph-prove.html (1 click(s))
+- One paragraph is weak: index.html → analysis-repair-shop.html (1 click(s))
+- Whole draft needs revision: index.html → literary-analysis-triage.html (1 click(s))
+- Professor feedback is confusing: index.html → what-does-my-professor-mean.html (1 click(s))
+- Doesn't understand close reading: index.html → close-reading.html (1 click(s))
+
+Student-facing checks
+- Home direct to So What: PASS
+- Home direct to Claim/Evidence/Explain/Connect: PASS
+- Home direct to Don't Drop the Quote: PASS
+- Home direct to Analysis Repair Shop: PASS
+- Support page has current Don't Drop purpose: PASS
+- All Labs has current Don't Drop purpose: PASS
+- Legacy duplicate index removed: PASS
+
+Technical QA
+- HTML pages: 38
+- Broken local links: []
+- Orphaned HTML pages: []
+- Missing dark mode: []
+- Missing favicon: []
+- H1 issues: []
+- JavaScript syntax errors: []

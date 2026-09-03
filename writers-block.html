@@ -195,9 +195,14 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
       margin:.25rem auto;
     }
 
+
+    /* Keyboard skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;overflow:visible;z-index:9999;background:var(--surface,#fff);color:var(--text,#1f2933);border:2px solid var(--focus,#111827);border-radius:.45rem;padding:.65rem .8rem;font-weight:800}
+
 </style>
 </head>
-<body>
+<body><a class="skip-link" href="#main">Skip to main content</a>
 <header>
 <a class="brand" href="index.html"><img alt="" src="favicon4.png"/><span>ENGL C1002 Learning Lab</span></a>
 <nav aria-label="Student navigation" class="student-nav"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
@@ -211,8 +216,7 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 <div><strong>3. Ask a Better Question</strong>Move from “what happened?” to “why might this matter?”</div>
 <div><strong>4. Revise the Idea</strong>If evidence does not fit, complicate the claim instead of ignoring it.</div>
 </div></header>
-<main>
-
+<main id="main" tabindex="-1">
 <section aria-labelledby="really-stuck-heading" class="practical-intro">
 <h2 id="really-stuck-heading">What Writers Actually Do When They’re Stuck</h2>
 <p class="intro-copy">Getting stuck does not always mean you need to force yourself to produce more sentences. In literary analysis, it often means you have not yet done enough noticing, questioning, connecting, or close reading to know what you want to say next.</p>
@@ -297,7 +301,6 @@ You should now have something new to think with: another detail, a pattern, a qu
 <h2 id="now-practice-heading">Now Practice</h2>
 <p>Choose the next move that would create more analytical material before you simply add more sentences to the draft.</p>
 </section>
-
 <section id="activity">
 <div class="progress-label"><span id="progressText"></span><span>Low-stakes practice</span></div>
 <progress id="progress" max="9" value="1"></progress>

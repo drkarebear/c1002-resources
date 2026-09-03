@@ -217,9 +217,14 @@
       margin:.35rem 0;
     }
 
+
+    /* Keyboard skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;overflow:visible;z-index:9999;background:var(--surface,#fff);color:var(--text,#1f2933);border:2px solid var(--focus,#111827);border-radius:.45rem;padding:.65rem .8rem;font-weight:800}
+
 </style>
 </head>
-<body>
+<body><a class="skip-link" href="#main">Skip to main content</a>
 <header>
 <a class="brand" href="index.html">
 <img alt="" src="favicon4.png"/>
@@ -239,7 +244,7 @@
     Literary analysis is making a thoughtful claim about a text and showing your reader why that claim makes sense.
   </div>
 </header>
-<main>
+<main id="main" tabindex="-1">
 <section aria-labelledby="four-heading">
 <h2 id="four-heading">You Can Break It Into Four Moves</h2>
 <div class="moves">

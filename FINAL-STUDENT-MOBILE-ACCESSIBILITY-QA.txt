@@ -1,0 +1,38 @@
+C1002 FINAL STUDENT-JOURNEY + MOBILE/ACCESSIBILITY AUDIT
+
+Student journey
+- Home has a direct route to lost-in-the-text.html: PASS
+- Home has a direct route to what-kind-of-thinking-is-this.html: PASS
+- Home has a direct route to so-what.html: PASS
+- Home has a direct route to claim-evidence-explanation.html: PASS
+- Home has a direct route to dont-drop-the-quote.html: PASS
+- Home has a direct route to what-should-this-paragraph-prove.html: PASS
+- Home has a direct route to analysis-repair-shop.html: PASS
+- Home has a direct route to literary-analysis-triage.html: PASS
+- Home has a direct route to what-does-my-professor-mean.html: PASS
+- Home has a direct route to close-reading.html: PASS
+
+Accessibility/mobile static checks
+- viewport meta on every page: PASS
+- skip link on every page: PASS
+- one H1 on every page: PASS
+- main landmark on every page: PASS
+- alt attribute on every image: PASS
+- labels/ARIA names on form fields: PASS
+- visible focus styles on every page: PASS
+- reduced-motion support on every page: PASS
+- dark mode on every page: PASS
+- details elements have summaries: PASS
+- no positive tabindex: PASS
+- iframes have titles: PASS
+- interactive pages include 44px+ target sizing: PASS
+- non-favicon images have responsive sizing: PASS
+
+Repository QA
+- HTML pages: 38
+- Broken local links: []
+- Orphaned HTML pages: []
+- Light-mode core text/muted/accent variables checked against page backgrounds: PASS
+- Dark-mode core text/muted/accent variables checked against page backgrounds: PASS
+
+Note: This pass uses static HTML/CSS/JavaScript checks. Automated browser rendering is restricted in this environment, so final device-level visual spot-checking in Safari/Chrome is still recommended after deployment.
