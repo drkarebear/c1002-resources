@@ -134,6 +134,169 @@
       }
     }
 
+
+    /* Standard simple completion screen */
+    #completion.screenshot-completion,
+    #completion.completion{
+      width:100%;
+      max-width:540px;
+      margin:0 auto;
+      background:transparent;
+      border:0;
+      padding:0;
+      text-align:initial;
+    }
+
+    .completion-capture{
+      background:#fff;
+      border:2px solid var(--success-border, #2f7a43);
+      border-radius:1rem;
+      padding:1.15rem;
+      text-align:center;
+      box-shadow:0 1px 3px rgba(0,0,0,.06);
+    }
+
+    .completion-check{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin:0 auto .6rem;
+      background:var(--success-bg, #eef8f1);
+      border:2px solid var(--success-border, #2f7a43);
+      color:#174d27;
+      font-size:1.85rem;
+      font-weight:900;
+    }
+
+    .completion-kicker{
+      margin:0 0 .2rem;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.76rem;
+      font-weight:850;
+    }
+
+    .completion-capture h2{
+      margin:.05rem 0 .25rem;
+      font-size:clamp(2rem,8vw,2.75rem);
+      line-height:1;
+    }
+
+    .completion-activity{
+      margin:.35rem auto .7rem;
+      max-width:36ch;
+      font-size:1.04rem;
+      font-weight:800;
+      line-height:1.3;
+    }
+
+    .completion-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.55rem;
+      margin:.7rem 0;
+    }
+
+    .completion-meta > div{
+      background:#f7f8fb;
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      padding:.6rem .45rem;
+    }
+
+    .completion-meta span{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.7rem;
+      font-weight:800;
+    }
+
+    .completion-meta strong{
+      display:block;
+      font-size:.92rem;
+    }
+
+    .completion-proof{
+      margin:.65rem 0 0;
+      color:var(--muted);
+      font-size:.83rem;
+      line-height:1.35;
+    }
+
+    .completion-actions{
+      display:grid !important;
+      grid-template-columns:1fr 1fr;
+      gap:.6rem;
+      margin-top:.65rem;
+    }
+
+    .completion-actions > button,
+    .completion-actions > a.review-instructions-btn{
+      min-height:48px;
+      width:100%;
+      border-radius:.55rem;
+      padding:.7rem .8rem;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      box-sizing:border-box;
+    }
+
+    .completion-actions > button{
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--border);
+    }
+
+    .completion-actions > a.review-instructions-btn{
+      background:var(--soft);
+      color:var(--accent-dark);
+      border:2px solid var(--accent);
+    }
+
+    .completion-links{
+      grid-column:1 / -1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.6rem;
+      margin-top:.05rem;
+    }
+
+    .completion-links a{
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      padding:.3rem 0;
+      font-weight:500;
+      text-decoration:underline;
+      border:0 !important;
+      background:transparent !important;
+      color:#551a8b;
+    }
+
+    .completion-links a:first-child{justify-content:flex-start}
+    .completion-links a:last-child{justify-content:flex-start}
+
+    @media(max-width:520px){
+      .completion-actions{
+        grid-template-columns:1fr 1fr;
+      }
+      .completion-meta{
+        grid-template-columns:1fr 1fr;
+      }
+      .completion-capture{
+        padding:1rem .85rem;
+      }
+    }
+
 </style>
 </head>
 
@@ -215,26 +378,31 @@
           </div>
         </div>
 
-        <div id="completion" class="completion hidden" tabindex="-1">
-          <div class="completion-capture">
+        <div id="completion" class="completion screenshot-completion hidden" tabindex="-1">
+          <div class="completion-capture" aria-label="Completion confirmation">
             <div class="completion-check" aria-hidden="true">✓</div>
-            <p class="completion-kicker">1. Notice · Literary Analysis Lab</p>
+            <p class="completion-kicker">Literary Analysis Lab</p>
             <h2>You did it!</h2>
             <p class="completion-activity">Lost in the Text?</p>
-            <p class="completion-takeaway">
-              When a passage feels confusing, you do not have to guess at the whole meaning.
-              <strong>Find the exact snag, repair enough to continue, then return to the text and notice what the writer is doing.</strong>
-            </p>
+            <div class="completion-meta">
+              <div>
+                <span>Completed</span>
+                <strong id="completionDate"></strong>
+              </div>
+              <div>
+                <span>Time</span>
+                <strong id="completionTime"></strong>
+              </div>
+            </div>
             <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
           </div>
           <div class="completion-actions">
-            <a class="linkbtn" href="reflection.html?lab=lost-in-the-text">Reflect</a>
-            <a class="linkbtn" href="notice-to-wonder.html">Next: Notice → Wonder</a>
-            <a class="linkbtn" href="notice.html">Back to Notice Activities</a>
             <button id="restart" class="secondary" type="button">Practice Again</button>
-          
-            <a class="linkbtn" href="all-labs.html">All Labs</a>
-            <a class="linkbtn" href="index.html">Student Home</a>
+            <a class="review-instructions-btn" href="reflection.html?lab=lost-in-the-text">Reflect</a>
+            <div class="completion-links">
+              <a href="all-labs.html">All Labs</a>
+              <a href="index.html">Student Home</a>
+            </div>
           </div>
         </div>
       </div>
@@ -374,6 +542,8 @@
     next:document.getElementById("next"),
     questionArea:document.getElementById("questionArea"),
     completion:document.getElementById("completion"),
+    completionDate:document.getElementById("completionDate"),
+    completionTime:document.getElementById("completionTime"),
     restart:document.getElementById("restart"),
     start:document.getElementById("startActivity"),
     review:document.getElementById("reviewInstructions")
@@ -490,6 +660,17 @@
       focusQuestion();
     }else{
       el.questionArea.classList.add("hidden");
+      const now = new Date();
+      if (el.completionDate) {
+        el.completionDate.textContent = new Intl.DateTimeFormat(undefined, {
+          year:"numeric", month:"long", day:"numeric"
+        }).format(now);
+      }
+      if (el.completionTime) {
+        el.completionTime.textContent = new Intl.DateTimeFormat(undefined, {
+          hour:"numeric", minute:"2-digit"
+        }).format(now);
+      }
       el.completion.classList.remove("hidden");
       el.completion.focus();
       requestAnimationFrame(()=>el.completion.scrollIntoView({behavior:"auto",block:"start"}));
@@ -498,6 +679,8 @@
 
   el.restart.addEventListener("click",()=>{
     index=0;
+    el.completion.classList.add("hidden");
+    el.questionArea.classList.remove("hidden");
     render();
     focusQuestion();
   });

@@ -1,0 +1,18 @@
+What Kind of Thinking Is This? — Sequence Update
+
+Two different kinds of predictability are now addressed:
+
+1. Answer-button positions are shuffled.
+2. The QUESTION TYPES within each round are also shuffled.
+
+Each round still contains exactly:
+- one Summary example
+- one Observation example
+- one Analysis example
+
+But the runtime order is constrained so:
+- the original Summary → Observation → Analysis sequence is not used;
+- consecutive rounds do not use the exact same sequence;
+- when possible, a new round does not begin with the same answer type that ended the previous round.
+
+This preserves the pedagogical comparison among the three kinds of thinking without making the answer inferable from the question number.

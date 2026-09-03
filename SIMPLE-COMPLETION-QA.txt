@@ -1,0 +1,36 @@
+C1002 Simple Completion Screen QA
+
+Standard for every core lab:
+- success check
+- "Literary Analysis Lab"
+- "You did it!"
+- activity title
+- date
+- time
+- one screenshot sentence
+- Practice Again
+- Reflect
+- All Labs
+- Student Home
+
+Removed from the completion screen:
+- Next activity
+- Back to category
+- long takeaway text
+- additional completion choices
+
+lost-in-the-text.html: PASS
+what-kind-of-thinking-is-this.html: PASS
+notice-to-wonder.html: PASS
+pattern-finder.html: PASS
+zoom-in.html: PASS
+so-what.html: PASS
+too-obvious-too-wild-just-right.html: PASS
+build-an-interpretation.html: PASS
+theme-or-topic.html: PASS
+whose-eyes.html: PASS
+claim-evidence-explanation.html: PASS
+dont-drop-the-quote.html: PASS
+strengthen-the-thesis.html: PASS
+complicate-it.html: PASS
+analysis-repair-shop.html: PASS

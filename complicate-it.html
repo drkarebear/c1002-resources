@@ -93,6 +93,169 @@
       }
     }
 
+
+    /* Standard simple completion screen */
+    #completion.screenshot-completion,
+    #completion.completion{
+      width:100%;
+      max-width:540px;
+      margin:0 auto;
+      background:transparent;
+      border:0;
+      padding:0;
+      text-align:initial;
+    }
+
+    .completion-capture{
+      background:#fff;
+      border:2px solid var(--success-border, #2f7a43);
+      border-radius:1rem;
+      padding:1.15rem;
+      text-align:center;
+      box-shadow:0 1px 3px rgba(0,0,0,.06);
+    }
+
+    .completion-check{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin:0 auto .6rem;
+      background:var(--success-bg, #eef8f1);
+      border:2px solid var(--success-border, #2f7a43);
+      color:#174d27;
+      font-size:1.85rem;
+      font-weight:900;
+    }
+
+    .completion-kicker{
+      margin:0 0 .2rem;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.76rem;
+      font-weight:850;
+    }
+
+    .completion-capture h2{
+      margin:.05rem 0 .25rem;
+      font-size:clamp(2rem,8vw,2.75rem);
+      line-height:1;
+    }
+
+    .completion-activity{
+      margin:.35rem auto .7rem;
+      max-width:36ch;
+      font-size:1.04rem;
+      font-weight:800;
+      line-height:1.3;
+    }
+
+    .completion-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.55rem;
+      margin:.7rem 0;
+    }
+
+    .completion-meta > div{
+      background:#f7f8fb;
+      border:1px solid var(--border);
+      border-radius:.65rem;
+      padding:.6rem .45rem;
+    }
+
+    .completion-meta span{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.7rem;
+      font-weight:800;
+    }
+
+    .completion-meta strong{
+      display:block;
+      font-size:.92rem;
+    }
+
+    .completion-proof{
+      margin:.65rem 0 0;
+      color:var(--muted);
+      font-size:.83rem;
+      line-height:1.35;
+    }
+
+    .completion-actions{
+      display:grid !important;
+      grid-template-columns:1fr 1fr;
+      gap:.6rem;
+      margin-top:.65rem;
+    }
+
+    .completion-actions > button,
+    .completion-actions > a.review-instructions-btn{
+      min-height:48px;
+      width:100%;
+      border-radius:.55rem;
+      padding:.7rem .8rem;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      box-sizing:border-box;
+    }
+
+    .completion-actions > button{
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--border);
+    }
+
+    .completion-actions > a.review-instructions-btn{
+      background:var(--soft);
+      color:var(--accent-dark);
+      border:2px solid var(--accent);
+    }
+
+    .completion-links{
+      grid-column:1 / -1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.6rem;
+      margin-top:.05rem;
+    }
+
+    .completion-links a{
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      padding:.3rem 0;
+      font-weight:500;
+      text-decoration:underline;
+      border:0 !important;
+      background:transparent !important;
+      color:#551a8b;
+    }
+
+    .completion-links a:first-child{justify-content:flex-start}
+    .completion-links a:last-child{justify-content:flex-start}
+
+    @media(max-width:520px){
+      .completion-actions{
+        grid-template-columns:1fr 1fr;
+      }
+      .completion-meta{
+        grid-template-columns:1fr 1fr;
+      }
+      .completion-capture{
+        padding:1rem .85rem;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -659,17 +822,16 @@
               <strong>${parts.time}</strong>
             </div>
           </div>
-          <p class="completion-proof">
-            Screenshot this screen if your instructor asked for proof of completion.
-          </p>
+          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
         </div>
         <div class="completion-actions">
           <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
           <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=complicate-it">Reflect</a>
-        
-            <a class="linkbtn" href="all-labs.html">All Labs</a>
-            <a class="linkbtn" href="index.html">Student Home</a>
+          <div class="completion-links">
+            <a href="all-labs.html">All Labs</a>
+            <a href="index.html">Student Home</a>
           </div>
+        </div>
       `;
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
