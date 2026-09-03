@@ -394,6 +394,211 @@
   border-radius:.45rem;
 }
 
+
+    .continuity-band{
+      margin-top:3.4rem;
+      background:#26364f;
+      color:#fff;
+      border-radius:1rem;
+      padding:clamp(1.35rem,4vw,2rem);
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);
+      gap:2rem;
+      align-items:center;
+    }
+
+    .continuity-band h2{
+      margin:0;
+      font-size:clamp(1.9rem,4vw,2.7rem);
+      line-height:1.05;
+      color:#fff;
+    }
+
+    .continuity-band p{
+      margin:0;
+      color:#eef3f8;
+      font-size:1.02rem;
+    }
+
+    .small-tools{
+      margin-top:3.2rem;
+      text-align:center;
+    }
+
+    .small-tools h2{
+      margin-bottom:.3rem;
+    }
+
+    .small-tools > p{
+      margin:.2rem auto 1.2rem;
+      max-width:64ch;
+      color:var(--muted);
+    }
+
+    .principles{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      text-align:left;
+    }
+
+    .principle-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      padding:1.05rem;
+    }
+
+    .principle-card strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:.35rem;
+    }
+
+    .principle-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .collection-footer{
+      margin-top:3.6rem;
+      padding:1.5rem 0 2.6rem;
+      border-top:1px solid var(--border);
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) auto;
+      gap:2rem;
+      align-items:end;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .collection-footer strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:.25rem;
+    }
+
+    .collection-footer p{
+      margin:.15rem 0;
+      max-width:62ch;
+    }
+
+    .collection-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:.7rem 1rem;
+    }
+
+    .collection-links a{
+      font-weight:700;
+    }
+
+    @media(max-width:760px){
+      .continuity-band{
+        grid-template-columns:1fr;
+        gap:.8rem;
+      }
+
+      .principles{
+        grid-template-columns:1fr;
+      }
+
+      .collection-footer{
+        grid-template-columns:1fr;
+        align-items:start;
+      }
+
+      .collection-links{
+        justify-content:flex-start;
+      }
+    }
+
+
+    .start-paths{
+      margin-top:2.8rem;
+      text-align:center;
+    }
+
+    .start-paths h2{
+      margin-bottom:.25rem;
+    }
+
+    .start-paths > p{
+      margin:.15rem auto 1.2rem;
+      max-width:60ch;
+      color:var(--muted);
+    }
+
+    .path-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      text-align:left;
+    }
+
+    .path-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:1rem;
+      padding:1.15rem;
+      display:flex;
+      flex-direction:column;
+      min-height:255px;
+    }
+
+    .path-icon{
+      width:3rem;
+      height:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.8rem;
+      background:var(--soft);
+      font-size:1.45rem;
+      margin-bottom:.75rem;
+    }
+
+    .path-label{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      font-weight:850;
+      color:var(--muted);
+      margin-bottom:.2rem;
+    }
+
+    .path-card h3{
+      margin:.1rem 0 .45rem;
+      font-size:1.35rem;
+      line-height:1.2;
+    }
+
+    .path-card p{
+      margin:.1rem 0 1rem;
+      color:var(--muted);
+    }
+
+    .path-card a{
+      margin-top:auto;
+      font-weight:850;
+      text-decoration:none;
+    }
+
+    .path-card a:hover{
+      text-decoration:underline;
+    }
+
+    @media(max-width:760px){
+      .path-grid{
+        grid-template-columns:1fr;
+      }
+
+      .path-card{
+        min-height:0;
+      }
+    }
+
 </style>
 </head>
 
@@ -403,11 +608,11 @@
   <header>
     <div class="brand">
       <img src="favicon4.png" alt="">
-      <div class="brand-text">Literary Analysis Labs</div>
+      <div class="brand-text">ENGL C1002 Literary Analysis Lab</div>
     </div>
 
     <div class="hero">
-      <p class="eyebrow">Interactive practice for literature courses</p>
+      <p class="eyebrow">California Community College English</p>
       <h1>Make Literary Analysis Easier</h1>
 
       <p class="lede">
@@ -419,7 +624,6 @@
         <a class="btn btn-primary" href="what-is-literary-analysis.html">What Is Literary Analysis?</a>
         <a class="btn btn-secondary" href="all-labs.html">See All Labs</a>
         <a class="btn btn-secondary" href="what-kind-of-thinking-is-this.html">Start from the beginning</a>
-        <a class="btn btn-secondary" href="#choose-a-move">Choose what you want to practice</a>
       </div>
 
       <div class="how-box" style="margin-top:1.25rem">
@@ -436,6 +640,45 @@
   </header>
 
   <main id="main" tabindex="-1">
+
+    
+    <section class="start-paths" aria-labelledby="start-paths-heading">
+      <h2 id="start-paths-heading">Where Would You Like to Start?</h2>
+      <p>Choose the path that fits what you are here to do.</p>
+
+      <div class="path-grid">
+        <article class="path-card">
+          <div class="path-icon" aria-hidden="true">📖</div>
+          <div class="path-label">For Students</div>
+          <h3>I need help with literary analysis.</h3>
+          <p>
+            Start with the problem you are having. You do not need to know the academic term for it.
+          </p>
+          <a href="#where-stuck">Find the help I need →</a>
+        </article>
+
+        <article class="path-card">
+          <div class="path-icon" aria-hidden="true">🍎</div>
+          <div class="path-label">For Instructors</div>
+          <h3>I teach ENGL C1002.</h3>
+          <p>
+            Find student activities, Canvas links, assignment ideas, and recommendations by assignment stage.
+          </p>
+          <a href="teachers.html">Open instructor resources →</a>
+        </article>
+
+        <article class="path-card">
+          <div class="path-icon" aria-hidden="true">🧰</div>
+          <div class="path-label">Browse the Collection</div>
+          <h3>I know what I’m looking for.</h3>
+          <p>
+            Browse all labs, reading guides, literary terms, feedback tools, and revision support.
+          </p>
+          <a href="all-labs.html">Explore all tools →</a>
+        </article>
+      </div>
+    </section>
+
 
     <section id="where-stuck" aria-labelledby="stuck-heading">
       <h2 id="stuck-heading">Where Are You Stuck?</h2>
@@ -481,6 +724,11 @@
         <a class="stuck-card" href="literary-terms.html">
           <strong>“I don’t know what this literary term means.”</strong>
           <span>Use <em>Literary Terms Made Simple</em> for plain-language definitions and examples.</span>
+        </a>
+
+        <a class="stuck-card" href="close-reading.html">
+          <strong>“I’m supposed to close read, but I don’t know what that means.”</strong>
+          <span>Use <em>Close Reading Made Visible</em> to see the process in a story, poem, and play.</span>
         </a>
 
         <a class="stuck-card" href="how-to-read-literature.html">
@@ -574,29 +822,63 @@
     <section class="teacher-box" aria-labelledby="teacher-heading">
       <h2 id="teacher-heading">For Instructors</h2>
       <p>
-        Find student links, “choose one” category pages, Canvas embed codes, and ideas for assigning the labs.
+        Find student links, “choose one” category pages, Canvas embed codes, assignment ideas,
+        and recommendations by assignment stage.
       </p>
       <a class="btn btn-secondary" href="teachers.html">Open Instructor Resources</a>
     </section>
+
+    <section class="continuity-band" aria-labelledby="visibility-heading">
+      <h2 id="visibility-heading">Not remediation.<br>More visibility.</h2>
+      <p>
+        Literary readers do many things that are easy to leave invisible: making sense of a difficult passage,
+        noticing a pattern, deciding what might matter, moving from evidence to interpretation, explaining a quotation,
+        and revising an idea when the text gets more complicated. These labs make those processes easier to see,
+        practice, and use.
+      </p>
+    </section>
+
+    <section class="small-tools" aria-labelledby="small-tools-heading">
+      <h2 id="small-tools-heading">Small tools. Real literary analysis.</h2>
+      <p>
+        The collection is designed to support students without lowering the intellectual work of ENGL C1002.
+      </p>
+
+      <div class="principles">
+        <article class="principle-card">
+          <strong>Make the hidden move visible.</strong>
+          <p>Break literary reading and analysis into decisions students can see, practice, and transfer to their own texts.</p>
+        </article>
+
+        <article class="principle-card">
+          <strong>Start from the problem.</strong>
+          <p>Help students find a tool by what they are experiencing, not by whether they already know literary or academic terminology.</p>
+        </article>
+
+        <article class="principle-card">
+          <strong>Keep agency with the learner.</strong>
+          <p>Offer strategies, retries, choices, and opportunities to test an interpretation rather than prescribing one “right” reading.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="what-is-literary-analysis.html">What Is Literary Analysis?</a>
-      <a href="all-labs.html">All Labs</a>
-      <a href="notice.html">1. Notice</a>
-      <a href="interpret.html">2. Interpret</a>
-      <a href="support.html">3. Support</a>
-      <a href="develop.html">4. Develop</a>
+  <footer class="collection-footer">
+    <div>
+      <strong>About this collection</strong>
+      <p>
+        This collection was created by Karen Crozer to support ENGL C1002 learning in California Community Colleges (CCCs).
+      </p>
+      <p>The site does not collect or submit student responses or personal information.</p>
     </div>
 
-    <div>Literary Analysis Labs created by Karen Crozer for student learning and practice.</div>
+    <nav class="collection-links" aria-label="Collection links">
+      <a href="index.html">Students</a>
+      <a href="teachers.html">Faculty</a>
+      <a href="all-labs.html">All Labs</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
   </footer>
-
-<footer class="site-credit-footer">
-  <p>Created by Karen Crozer for ENGL C1002 classes.</p>
-  <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
-</footer>
 
 </body>
 </html>

@@ -1,0 +1,8 @@
+Close Reading Update QA
+HTML pages: 31
+Broken local links: []
+Orphaned pages: []
+close-reading.html linked from homepage: True
+close-reading.html linked from all-labs: True
+close-reading.html linked from how-to-read-literature: True
+close-reading.html linked from teachers: True
