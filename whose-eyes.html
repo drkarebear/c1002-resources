@@ -81,6 +81,20 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">

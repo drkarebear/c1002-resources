@@ -79,6 +79,20 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -374,13 +388,13 @@
       },
       {
         round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"The classroom moment makes the student feel exposed.",
-        quote:"twenty faces lifted at once",
-        prompt:"What should come immediately after the quotation?",
+        claim:"The poem presents memory as something the speaker cannot completely remove.",
+        quote:"I swept the room clean / but your name stayed in the dust.",
+        prompt:"What should come immediately after this poetic evidence?",
         choices:[
-          {text:"The number and simultaneous movement create a sudden wall of attention, making the student feel like the focus of the entire room.",correct:true,feedback:"This returns to the writer’s own voice and analyzes how the language creates the feeling of exposure."},
-          {text:"This means that twenty people looked up.",correct:false,feedback:"This paraphrases the quotation but does not explain its effect."},
-          {text:"Then the teacher continued talking and the lesson moved on.",correct:false,feedback:"This returns to plot summary instead of staying with the evidence long enough to analyze it."}
+          {text:"The word 'but' turns the second line against the speaker's attempt to clean the room, while the name remaining 'in the dust' makes memory feel like a physical trace that resists removal.",correct:true,feedback:"This returns to the writer’s own voice and analyzes the contrast and image instead of simply translating the lines."},
+          {text:"This means the speaker cleaned the room but there was still dust.",correct:false,feedback:"That paraphrases the lines but does not explain how the language develops the interpretation of memory."},
+          {text:"Then the poem moves to the next stanza.",correct:false,feedback:"That describes what happens next instead of staying with the evidence long enough to analyze it."}
         ]
       },
       {

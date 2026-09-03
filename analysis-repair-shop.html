@@ -80,6 +80,34 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    .transfer-box{
+      margin:1rem 0;
+      padding:1rem;
+      background:#eef4fb;
+      border-left:5px solid #1f5da8;
+      border-radius:.55rem;
+    }
+    .transfer-box h3{
+      margin:.05rem 0 .35rem;
+      font-size:1.08rem;
+    }
+    .transfer-box p{margin:.25rem 0}
+
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -298,7 +326,11 @@
           <p>
             Revision gets easier when you can name the problem. A paragraph is not broken all at once; it usually needs one repair at a time.
           </p>
-          <div class="actions">
+          <div class="transfer-box">
+            <h3>Try It With Your Draft</h3>
+            <p>Choose one paragraph from your own draft. Name its biggest problem in a few words, such as <strong>too much summary</strong>, <strong>needs evidence</strong>, or <strong>evidence needs explanation</strong>. Fix that one problem before trying to repair everything else.</p>
+          </div>
+<div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
         </div>
@@ -338,14 +370,14 @@
       {
         round:1,
         roundLabel:"Round 1: Diagnose the Problem",
-        paragraph:"The author uses symbolism. The garden is wild and tangled. This symbolism is important.",
+        paragraph:"The poem uses imagery. The speaker says the empty chair is 'holding the afternoon light.' This is imagery and it makes you picture the chair.",
         prompt:"What is missing most?",
         choices:[
-          {text:"An explanation of what the garden may represent and how the description creates that meaning.",correct:true,feedback:"Exactly. Naming symbolism is only the beginning. The paragraph still needs to explain the effect and significance."},
-          {text:"A definition of symbolism from a dictionary.",correct:false,feedback:"A definition would not analyze this specific garden."},
-          {text:"Three more literary devices.",correct:false,feedback:"Listing more devices would add labels, not interpretation."}
+          {text:"An explanation of why the image of an empty chair 'holding' light matters to the poem's larger idea.",correct:true,feedback:"Exactly. Naming imagery and saying that it creates a picture are only starting points. The paragraph still needs to interpret this particular image."},
+          {text:"A dictionary definition of imagery.",correct:false,feedback:"A definition would not explain what this image is doing in this poem."},
+          {text:"Two more literary devices from the same line.",correct:false,feedback:"More labels would not replace interpretation. The writer needs to explain the significance of the image already identified."}
         ],
-        after:"Possible repair: “Describing the garden as ‘wild and tangled’ during the children’s happiest moments connects freedom with spaces that escape adult control.”"
+        after:"Possible repair: “Describing the empty chair as 'holding the afternoon light' gives absence a physical presence, suggesting that what is missing can still shape how the speaker experiences the room.”"
       },
       {
         round:2,

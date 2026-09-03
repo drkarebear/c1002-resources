@@ -80,6 +80,20 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -400,16 +414,16 @@
         round:3,
         roundLabel:"Round 3: Build Theme From Evidence",
         evidence:[
-          "Family conversations repeatedly end unfinished.",
-          "Conflict is communicated through gestures.",
-          "The house is repeatedly described as quiet."
+          "The poem repeats the word 'home' in each stanza.",
+          "Each return to 'home' is paired with a different image of distance.",
+          "The final line calls home 'the place I keep leaving toward.'"
         ],
-        statement:"Communication",
+        statement:"Home and belonging",
         prompt:"Which thematic interpretation best fits the pattern?",
         choices:[
-          {text:"The text suggests that avoiding direct communication can become a way families preserve peace while also allowing conflict to remain unresolved.",correct:true,feedback:"Yes. This interpretation accounts for both the silence and its possible function, making the theme more complex."},
-          {text:"Communication is important.",correct:false,feedback:"This is too general and does not explain what the text suggests about communication."},
-          {text:"The family never communicates.",correct:false,feedback:"The characters do communicate, but often indirectly. The stronger theme captures that tension."}
+          {text:"The poem presents home as something shaped by distance: leaving can make belonging more complicated rather than simply ending it.",correct:true,feedback:"Yes. This interpretation grows from the repeated word, the changing distance images, and the final contradiction in 'leaving toward.'"},
+          {text:"Home is important.",correct:false,feedback:"This is a topic-level statement. It does not explain what the poem suggests about home."},
+          {text:"The speaker hates home.",correct:false,feedback:"The evidence shows tension and distance, but not simple hatred. The stronger interpretation makes room for the poem's contradiction."}
         ]
       },
       {

@@ -83,6 +83,34 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    .transfer-box{
+      margin:1rem 0;
+      padding:1rem;
+      background:#eef4fb;
+      border-left:5px solid #1f5da8;
+      border-radius:.55rem;
+    }
+    .transfer-box h3{
+      margin:.05rem 0 .35rem;
+      font-size:1.08rem;
+    }
+    .transfer-box p{margin:.25rem 0}
+
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -297,7 +325,11 @@
             Strong literary analysis does not just collect quotations. It shows the reader what the quotations begin to mean
             when they are considered together.
           </p>
-          <div class="actions">
+          <div class="transfer-box">
+            <h3>Try It With Your Text</h3>
+            <p>Take one pattern you have noticed and write a sentence that begins: <strong>“Taken together, these details may suggest…”</strong> Treat it as a possible interpretation you can test, not a final answer you have to defend forever.</p>
+          </div>
+<div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
         </div>

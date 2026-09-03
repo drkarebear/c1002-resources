@@ -79,6 +79,34 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    .transfer-box{
+      margin:1rem 0;
+      padding:1rem;
+      background:#eef4fb;
+      border-left:5px solid #1f5da8;
+      border-radius:.55rem;
+    }
+    .transfer-box h3{
+      margin:.05rem 0 .35rem;
+      font-size:1.08rem;
+    }
+    .transfer-box p{margin:.25rem 0}
+
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -293,7 +321,11 @@
           <p>
             A strong interpretation often begins when separate details stop looking separate.
           </p>
-          <div class="actions">
+          <div class="transfer-box">
+            <h3>Try It With Your Text</h3>
+            <p>Find two or three details from your current reading that seem connected. In your notes, name the pattern in a short phrase before you try to explain what it means.</p>
+          </div>
+<div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
         </div>
@@ -325,15 +357,15 @@
         round:1,
         roundLabel:"Round 1: Which Details Belong Together?",
         details:[
-          "The garden is described as 'wild and tangled.'",
-          "The children laugh most when adults are absent.",
-          "The kitchen clock is painted blue."
+          "The poem ends three different lines with the word 'still.'",
+          "An empty chair appears again in the final stanza.",
+          "The moon is mentioned once in the opening line."
         ],
-        prompt:"Which pair is most likely to support an interpretation?",
+        prompt:"Which two details are most likely to form a meaningful pattern?",
         choices:[
-          {text:"The wild garden and the children’s happiness when adults are absent.",correct:true,feedback:"Exactly. These details can support a pattern connecting freedom, play, and reduced adult control."},
-          {text:"The blue clock and the garden.",correct:false,feedback:"A color can matter, but there is no evidence here connecting the clock to the garden."},
-          {text:"The blue clock and the children laughing.",correct:false,feedback:"These details do not yet form a clear pattern."}
+          {text:"The repeated word 'still' and the returning image of the empty chair.",correct:true,feedback:"Yes. Repetition across the poem and the returning empty-chair image can work together as a pattern involving absence, waiting, stillness, or memory."},
+          {text:"The moon and the empty chair simply because both are images.",correct:false,feedback:"Two images do not automatically form a pattern. Look for repetition, contrast, change, or another relationship the text actually builds."},
+          {text:"The moon and the word 'still' because they both appear in the poem.",correct:false,feedback:"Appearing in the same poem is not enough. The repeated 'still' and returning chair give you stronger evidence of an intentional pattern."}
         ]
       },
       {

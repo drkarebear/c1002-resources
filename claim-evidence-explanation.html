@@ -323,6 +323,20 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -652,27 +666,27 @@
         {
           round:3,
           roundLabel:"Round 3: Repair the Missing Move",
-          passage:"When the teacher called her name, twenty faces lifted at once.",
-          sentence:"The character feels exposed. 'Twenty faces lifted at once.'",
+          passage:"[Lena reaches for the door, then pulls her hand back when Marcus enters.]",
+          sentence:"The scene shows Lena becoming uncertain about leaving. The stage direction says that she 'reaches for the door, then pulls her hand back when Marcus enters.'",
           prompt:"What is this paragraph fragment missing most?",
           customChoices:[
             {
               key:"explanation",
-              text:"Explanation: a sentence showing how 'twenty faces lifted at once' creates the feeling of exposure.",
+              text:"Explanation: show how the interrupted movement turns Lena's physical hesitation into evidence of her uncertainty.",
               correct:true,
-              feedback:"Exactly. The fragment has a claim and evidence, but it leaves the reader to make the connection."
+              feedback:"Exactly. The claim and stage-direction evidence are present. The missing move is explaining how the action supports the interpretation."
             },
             {
               key:"moreEvidence",
-              text:"More evidence: add two more quotations before explaining anything.",
+              text:"More evidence: add several lines of dialogue before explaining the stage direction.",
               correct:false,
-              feedback:"More evidence will not fix the core problem. The writer already has useful evidence but has not analyzed it."
+              feedback:"More evidence is not the main need. The writer already has useful evidence but has not explained what the action does."
             },
             {
               key:"summary",
-              text:"Summary: explain what happened earlier in the scene.",
+              text:"Summary: explain everything that happened earlier in the scene.",
               correct:false,
-              feedback:"Additional plot summary may add context, but the analytical gap is between the existing evidence and the claim."
+              feedback:"Some context can help, but the analytical gap is between the stage direction and the claim about hesitation."
             }
           ]
         },

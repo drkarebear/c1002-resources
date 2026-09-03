@@ -310,6 +310,20 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -711,24 +725,24 @@
         {
           round:3,
           roundLabel:"Round 3: Try It Somewhere New",
-          claim:"The passage presents the classroom as a place where the student feels exposed.",
-          quote:"When the teacher called her name, twenty faces lifted at once.",
-          prompt:"Which detail gives the strongest support for the interpretation?",
+          claim:"The poem presents grief as something that remains even after the speaker tries to move forward.",
+          quote:"I closed the door / but your name stayed / bright on my tongue.",
+          prompt:"Which detail gives the strongest material for close analysis?",
           choices:[
             {
-              text:"“twenty faces lifted at once”",
+              text:"“but your name stayed / bright on my tongue”",
               correct:true,
-              feedback:"The number and simultaneous movement create a sudden sense of collective attention, which supports the feeling of exposure."
+              feedback:"The contrast introduced by 'but' interrupts the attempt to close something off, while 'bright on my tongue' makes the remembered name feel vivid and physically present. The line break helps the word 'stayed' stand out."
             },
             {
-              text:"“teacher”",
+              text:"“door” because doors always symbolize change",
               correct:false,
-              feedback:"The teacher matters to the scene, but the strongest evidence for feeling exposed is the sudden attention of many people at once."
+              feedback:"A door may become meaningful, but it does not automatically carry one fixed symbolic meaning. The more revealing language here is the name that 'stayed' despite the speaker's attempt to close the door."
             },
             {
-              text:"“name”",
+              text:"Only the word “I”",
               correct:false,
-              feedback:"Being named may matter, but the more powerful detail is the immediate reaction of 'twenty faces,' which makes the character the center of attention."
+              feedback:"The first-person speaker matters, but this interpretation depends more strongly on the contrast between trying to close something and the remembered name remaining."
             }
           ]
         },

@@ -79,6 +79,34 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    .transfer-box{
+      margin:1rem 0;
+      padding:1rem;
+      background:#eef4fb;
+      border-left:5px solid #1f5da8;
+      border-radius:.55rem;
+    }
+    .transfer-box h3{
+      margin:.05rem 0 .35rem;
+      font-size:1.08rem;
+    }
+    .transfer-box p{margin:.25rem 0}
+
+
+    /* Final mobile QA safeguards */
+    button, .choice, .primary, .secondary, .linkbtn, .btn{
+      touch-action:manipulation;
+    }
+    .passage, .quote, .evidence, .prompt, .feedback, .after, .card, .choice{
+      overflow-wrap:anywhere;
+    }
+    @media(max-width:700px){
+      button, .choice, .primary, .secondary, .linkbtn, .btn{
+        min-height:48px;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -296,7 +324,11 @@
             A strong thesis gives your essay direction because it tells the reader not only <em>what</em> you noticed,
             but <em>what you think that pattern means</em>.
           </p>
-          <div class="actions">
+          <div class="transfer-box">
+            <h3>Try It With Your Draft</h3>
+            <p>Look at your current thesis or main idea. Revise it so it says not only <strong>what</strong> pattern you noticed, but <strong>what you think that pattern may suggest</strong>. Keep both versions so you can see what changed.</p>
+          </div>
+<div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
         </div>
