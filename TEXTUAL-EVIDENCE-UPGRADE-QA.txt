@@ -1,0 +1,21 @@
+C1002 USING TEXTUAL EVIDENCE UPGRADE QA
+
+- instruction before practice: PASS
+- NOW PRACTICE present: PASS
+- four evidence types taught: PASS
+- claim-to-evidence fit taught: PASS
+- amount of evidence taught: PASS
+- context evidence notice explain connect taught: PASS
+- quotation mechanics retained: PASS
+- worked example included: PASS
+- 12 practice questions: PASS
+- reflection broadened: PASS
+- support description updated: PASS
+- homepage description updated: PASS
+- completion standard retained: PASS
+
+HTML pages: 36
+Broken local links: []
+Orphaned HTML pages: []
+Pages missing dark mode: []
+JavaScript syntax errors: []

@@ -1,0 +1,9 @@
+TITLE COLON UPDATE QA
+
+- colon guidance present: PASS
+- colon formula present: PASS
+- formatting note present: PASS
+- generic title example not italicized: PASS
+- focused title example not italicized: PASS
+- now practice retained: PASS
+- HATMAT retained: PASS
