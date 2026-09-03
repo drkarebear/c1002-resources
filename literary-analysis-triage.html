@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Literary Analysis Triage | Literary Analysis Labs</title>
+  <meta name="description" content="A short whole-draft revision tool that helps students decide what to revise first in a literary analysis essay.">
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;
+      --accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;
+      --green-soft:#f0f7f2;--gold-soft:#fff8e8;--gold:#946200;--focus:#111827;--max:880px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+    a:focus-visible,button:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem}
+    .skip-link{position:absolute;top:-5rem;left:.75rem;z-index:1000;padding:.75rem 1rem;background:#fff;color:var(--text);border:2px solid var(--focus);border-radius:.4rem}
+    .skip-link:focus{top:.75rem}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding:1.5rem 0 .6rem}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text)}
+    .brand img{width:44px;height:44px;object-fit:contain}.brand span{font-weight:850}
+    .eyebrow{margin:1.35rem 0 .25rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.82rem}
+    h1{margin:0;font-size:clamp(2.3rem,7vw,4rem);line-height:1.03;letter-spacing:-.045em}
+    h2{margin:1.9rem 0 .5rem;font-size:1.5rem;line-height:1.2}
+    h3{margin:.05rem 0 .4rem;font-size:1.2rem;line-height:1.25}
+    .lede{max-width:74ch;color:var(--muted);font-size:1.07rem;margin:.8rem 0 0}
+    .note{margin-top:1rem;padding:.95rem 1rem;background:var(--green-soft);border-left:5px solid var(--green);border-radius:.45rem}
+    .order{margin-top:1rem;background:#fff;border:1px solid var(--border);border-radius:.8rem;padding:1rem}
+    .order strong{color:var(--accent-dark)}
+    .order ol{margin:.45rem 0 0;padding-left:1.2rem}
+    .order li{margin:.3rem 0}
+    .card{background:#fff;border:1px solid var(--border);border-radius:.85rem;padding:1.15rem;margin-top:1rem;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+    .question-number{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-dark);font-weight:850}
+    .question{font-size:1.15rem;font-weight:800;margin:.35rem 0 .8rem}
+    .choices{display:grid;gap:.65rem}
+    .choice{min-height:50px;border-radius:.6rem;border:2px solid var(--border);background:#fff;color:var(--text);font:inherit;font-weight:750;padding:.8rem 1rem;text-align:left;cursor:pointer}
+    .choice:hover{border-color:var(--accent);background:var(--soft)}
+    .progress{margin-bottom:.8rem;color:var(--muted);font-size:.92rem}
+    .result{background:#fff;border:1px solid var(--border);border-radius:.85rem;padding:1.2rem;margin-top:1rem}
+    .priority{display:inline-block;background:var(--gold-soft);border:1px solid #d7b765;color:#604000;padding:.35rem .55rem;border-radius:.45rem;font-weight:850;font-size:.86rem}
+    .result h2{margin:.7rem 0 .4rem}
+    .result p{margin:.45rem 0}
+    .next-moves{background:var(--soft);border-radius:.65rem;padding:.9rem 1rem;margin-top:1rem}
+    .next-moves strong{color:var(--accent-dark)}
+    .next-moves ol{margin:.35rem 0 0;padding-left:1.2rem}
+    .next-moves li{margin:.3rem 0}
+    .actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+    .btn{min-height:48px;border-radius:.58rem;padding:.75rem 1rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--accent);background:#fff;color:var(--accent-dark)}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn:hover{background:var(--soft)}.btn.primary:hover{background:var(--accent-dark);color:#fff}
+    footer{padding:2.2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    .hidden{display:none!important}
+    @media(max-width:650px){
+      header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}
+      .actions{flex-direction:column}.actions .btn{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to draft triage</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
+
+    <p class="eyebrow">Whole-Draft Revision Help</p>
+    <h1>Literary Analysis Triage</h1>
+    <p class="lede">
+      When a draft needs work, everything can feel urgent. This tool helps you identify the
+      <strong>highest-impact revision to make first</strong>.
+    </p>
+
+    <div class="note">
+      <strong>Revise big things before small things.</strong>
+      A clearer argument usually matters more than perfect commas in a paragraph you may later rewrite.
+    </div>
+
+    <div class="order">
+      <strong>Recommended revision order</strong>
+      <ol>
+        <li>Interpretation</li>
+        <li>Paragraph jobs and organization</li>
+        <li>Evidence</li>
+        <li>Explanation</li>
+        <li>Connections and complexity</li>
+        <li>Sentence-level polish and MLA</li>
+      </ol>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section id="quiz" class="card" aria-labelledby="triage-heading">
+      <h2 id="triage-heading" style="margin-top:0">Find Your First Revision Priority</h2>
+      <div id="progress" class="progress">Question 1 of 6</div>
+      <div id="questionNumber" class="question-number"></div>
+      <div id="question" class="question"></div>
+      <div id="choices" class="choices"></div>
+    </section>
+
+    <section id="result" class="result hidden" tabindex="-1">
+      <span class="priority">Revise this first</span>
+      <h2 id="resultTitle"></h2>
+      <p id="resultWhy"></p>
+
+      <div class="next-moves">
+        <strong>Try these next moves:</strong>
+        <ol id="resultSteps"></ol>
+      </div>
+
+      <div class="actions">
+        <a id="recommendedLab" class="btn primary" href="all-labs.html">Open Recommended Lab</a>
+        <button id="restart" class="btn" type="button">Run Triage Again</button>
+        <a class="btn" href="all-labs.html">All Labs</a>
+        <a class="btn" href="index.html">Student Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This tool does not read, store, or evaluate your draft.
+  </footer>
+
+<script>
+(() => {
+  const questions = [
+    {
+      area:"interpretation",
+      label:"Interpretation",
+      text:"If you had to explain your essay's main idea without using the words “theme,” “symbolism,” “imagery,” or “the author shows,” could you state a specific interpretation of the text?",
+      yes:"yes", no:"no"
+    },
+    {
+      area:"organization",
+      label:"Paragraph Jobs",
+      text:"Does each body paragraph do a different job in developing that interpretation, rather than repeating the same point with a new example?",
+      yes:"yes", no:"no"
+    },
+    {
+      area:"evidence",
+      label:"Evidence",
+      text:"Does each body paragraph include specific textual evidence that actually fits the claim the paragraph is making?",
+      yes:"yes", no:"no"
+    },
+    {
+      area:"explanation",
+      label:"Explanation",
+      text:"After each important quotation or example, do you explain how a specific detail in the evidence supports your interpretation?",
+      yes:"yes", no:"no"
+    },
+    {
+      area:"connections",
+      label:"Connections and Complexity",
+      text:"Do your paragraphs connect to the essay's larger argument, and have you accounted for evidence that complicates or qualifies your first reading?",
+      yes:"yes", no:"no"
+    },
+    {
+      area:"polish",
+      label:"Polish",
+      text:"Once the larger ideas are working, have you checked sentence clarity, quotation punctuation, citations, MLA formatting, and proofreading?",
+      yes:"yes", no:"no"
+    }
+  ];
+
+  const results = {
+    interpretation:{
+      title:"Clarify the Interpretation",
+      why:"If the essay's central reading is still broad, descriptive, or formulaic, later revisions may not have a stable argument to support.",
+      steps:[
+        "Write the most interesting thing you currently think the text is doing or suggesting.",
+        "Identify the pattern or evidence that led you there.",
+        "Turn that idea into a specific working claim before revising paragraph details."
+      ],
+      lab:"strengthen-the-thesis.html",
+      labText:"Open Strengthen the Thesis"
+    },
+    organization:{
+      title:"Give Each Paragraph a Clear Job",
+      why:"A draft can contain strong ideas and still feel repetitive if several paragraphs perform the same function. Organization improves when each paragraph develops a distinct part of the interpretation.",
+      steps:[
+        "Write a one-sentence description of what each paragraph actually does.",
+        "Look for repeated paragraph jobs or paragraphs that do not advance the argument.",
+        "Reorder, combine, or refocus paragraphs before polishing sentences."
+      ],
+      lab:"analysis-repair-shop.html",
+      labText:"Open Analysis Repair Shop"
+    },
+    evidence:{
+      title:"Strengthen the Evidence",
+      why:"A paragraph cannot fully support an interpretation if its evidence is too general, thin, or only loosely related to the claim.",
+      steps:[
+        "Restate the paragraph's claim.",
+        "Choose evidence that reveals something specific about that claim.",
+        "Prefer revealing words, patterns, actions, images, or structural choices over quotation quantity."
+      ],
+      lab:"claim-evidence-explanation.html",
+      labText:"Open Claim, Evidence, or Explanation?"
+    },
+    explanation:{
+      title:"Explain What the Evidence Does",
+      why:"Your draft may already have the right quotations. The higher-impact revision may be showing your reader what to notice in them and why those details matter.",
+      steps:[
+        "Underline the most important word or phrase in each major quotation.",
+        "Explain what that detail suggests, creates, or complicates.",
+        "Reconnect the explanation to the paragraph's claim."
+      ],
+      lab:"dont-drop-the-quote.html",
+      labText:"Open Don't Drop the Quote"
+    },
+    connections:{
+      title:"Develop the Connections and Complexity",
+      why:"Once the core claim, organization, evidence, and explanation are in place, the essay can become stronger by showing how the parts build together and by making room for tension or contradictory evidence.",
+      steps:[
+        "Ask what each paragraph contributes to the larger argument.",
+        "Look for evidence that does not fit your claim perfectly.",
+        "Revise the claim where needed so the essay becomes more precise rather than more absolute."
+      ],
+      lab:"complicate-it.html",
+      labText:"Open Complicate It"
+    },
+    polish:{
+      title:"Polish the Draft",
+      why:"The larger analytical work appears to be in place. Now sentence-level revision, citation mechanics, formatting, and proofreading are worth your attention.",
+      steps:[
+        "Read for sentence clarity and unnecessary repetition.",
+        "Check quotation integration and citation punctuation.",
+        "Review MLA formatting and proofread last."
+      ],
+      lab:"all-labs.html",
+      labText:"Return to All Labs"
+    }
+  };
+
+  let index = 0;
+  let firstNo = null;
+
+  const progress = document.getElementById("progress");
+  const qnum = document.getElementById("questionNumber");
+  const question = document.getElementById("question");
+  const choices = document.getElementById("choices");
+  const quiz = document.getElementById("quiz");
+  const result = document.getElementById("result");
+  const resultTitle = document.getElementById("resultTitle");
+  const resultWhy = document.getElementById("resultWhy");
+  const resultSteps = document.getElementById("resultSteps");
+  const recommendedLab = document.getElementById("recommendedLab");
+
+  function render(){
+    const q = questions[index];
+    progress.textContent = `Question ${index+1} of ${questions.length}`;
+    qnum.textContent = q.label;
+    question.textContent = q.text;
+    choices.innerHTML = "";
+
+    [["Yes — mostly", true],["Not yet / I'm not sure", false]].forEach(([label,yes]) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "choice";
+      btn.textContent = label;
+      btn.addEventListener("click", () => answer(yes));
+      choices.appendChild(btn);
+    });
+  }
+
+  function answer(yes){
+    if(!yes && !firstNo){
+      firstNo = questions[index].area;
+    }
+
+    if(index < questions.length - 1){
+      index++;
+      render();
+      document.getElementById("quiz").scrollIntoView({behavior:"auto",block:"start"});
+    }else{
+      showResult(firstNo || "polish");
+    }
+  }
+
+  function showResult(area){
+    const data = results[area];
+    quiz.classList.add("hidden");
+    result.classList.remove("hidden");
+    resultTitle.textContent = data.title;
+    resultWhy.textContent = data.why;
+    resultSteps.innerHTML = data.steps.map(s => `<li>${s}</li>`).join("");
+    recommendedLab.href = data.lab;
+    recommendedLab.textContent = data.labText;
+    result.focus();
+    result.scrollIntoView({behavior:"auto",block:"start"});
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    index = 0;
+    firstNo = null;
+    result.classList.add("hidden");
+    quiz.classList.remove("hidden");
+    render();
+    quiz.scrollIntoView({behavior:"auto",block:"start"});
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
