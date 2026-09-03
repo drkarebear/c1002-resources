@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Does My Professor Mean? | Literary Analysis Support</title>
+  <meta name="description" content="A literary analysis feedback decoder that helps students turn common instructor comments into specific revision moves.">
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;
+      --accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;
+      --green-soft:#f0f7f2;--gold-soft:#fff8e8;--gold:#946200;--focus:#111827;--max:900px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6
+    }
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+    a:focus-visible,button:focus-visible{
+      outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem
+    }
+    .skip-link{
+      position:absolute;top:-5rem;left:.75rem;z-index:1000;padding:.75rem 1rem;
+      background:#fff;color:var(--text);border:2px solid var(--focus);border-radius:.4rem
+    }
+    .skip-link:focus{top:.75rem}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding:1.5rem 0 .6rem}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text)}
+    .brand img{width:44px;height:44px;object-fit:contain}.brand span{font-weight:850}
+    .eyebrow{margin:1.35rem 0 .25rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.82rem}
+    h1{margin:0;font-size:clamp(2.35rem,7vw,4rem);line-height:1.03;letter-spacing:-.045em}
+    h2{margin:2rem 0 .5rem;font-size:1.5rem;line-height:1.2}
+    h3{margin:.1rem 0 .4rem;font-size:1.2rem;line-height:1.25}
+    .lede{max-width:74ch;color:var(--muted);font-size:1.07rem;margin:.8rem 0 0}
+    .note{
+      margin-top:1rem;padding:.95rem 1rem;background:var(--green-soft);
+      border-left:5px solid var(--green);border-radius:.45rem
+    }
+    .comments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+    .comment-btn{
+      min-height:58px;text-align:left;padding:.85rem 1rem;border-radius:.65rem;
+      border:2px solid var(--border);background:#fff;color:var(--text);font:inherit;
+      font-weight:800;cursor:pointer
+    }
+    .comment-btn:hover{border-color:var(--accent);background:var(--soft)}
+    .comment-btn[aria-pressed="true"]{border-color:var(--accent);background:var(--soft);color:var(--accent-dark)}
+    .decoder{
+      background:#fff;border:1px solid var(--border);border-radius:.85rem;padding:1.2rem;
+      margin-top:1rem;box-shadow:0 1px 2px rgba(0,0,0,.04)
+    }
+    .decoder[hidden]{display:none}
+    .label{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-dark);font-weight:850}
+    .meaning{font-size:1.08rem;margin:.55rem 0}
+    .move-box{
+      margin-top:1rem;background:var(--soft);border-radius:.7rem;padding:1rem
+    }
+    .move-box strong{color:var(--accent-dark)}
+    .steps{margin:.4rem 0 0;padding-left:1.2rem}
+    .steps li{margin:.35rem 0}
+    .example-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+    .example{
+      border:1px solid var(--border);border-radius:.7rem;padding:.9rem;background:#fff
+    }
+    .example.before{background:var(--gold-soft);border-color:#d7b765}
+    .example.after{background:var(--green-soft);border-color:#8fc59a}
+    .example strong{display:block;margin-bottom:.35rem}
+    .example p{margin:.25rem 0}
+    .try-next{
+      margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem
+    }
+    .try-next strong{color:var(--accent-dark)}
+    .actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1rem}
+    .btn{
+      min-height:48px;border-radius:.58rem;padding:.75rem 1rem;font-weight:800;
+      text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--accent)
+    }
+    .primary{background:var(--accent);color:#fff}.primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{background:#fff;color:var(--accent-dark)}.secondary:hover{background:var(--soft);color:var(--accent-dark)}
+    footer{padding:2.2rem 0 3rem;color:var(--muted);font-size:.92rem}
+    @media(max-width:700px){
+      header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}
+      .comments,.example-grid{grid-template-columns:1fr}
+      .actions{flex-direction:column}.actions .btn{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important
+      }
+    }
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to feedback decoder</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>Literary Analysis Labs</span>
+    </a>
+
+    <p class="eyebrow">Need Help Getting Unstuck?</p>
+    <h1>What Does My Professor Mean?</h1>
+    <p class="lede">
+      Instructor comments can be short because your professor may be pointing to a larger writing move.
+      Choose the comment that sounds closest to what you received and turn it into a concrete next step.
+    </p>
+
+    <div class="note">
+      <strong>This is a decoder, not a dictionary.</strong>
+      A comment can mean slightly different things in different assignments. Use the explanation below to inspect your draft, then follow your instructor's specific directions if they gave more detail.
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="choose-heading">
+      <h2 id="choose-heading">What comment did you get?</h2>
+      <div class="comments" id="comments"></div>
+    </section>
+
+    <section id="decoder" class="decoder" hidden tabindex="-1" aria-live="polite">
+      <div class="label">What it may mean</div>
+      <h2 id="commentTitle"></h2>
+      <p id="meaning" class="meaning"></p>
+
+      <div class="move-box">
+        <strong>Your next move</strong>
+        <ol id="steps" class="steps"></ol>
+      </div>
+
+      <div class="example-grid">
+        <div class="example before">
+          <strong>Before</strong>
+          <p id="before"></p>
+        </div>
+        <div class="example after">
+          <strong>After</strong>
+          <p id="after"></p>
+        </div>
+      </div>
+
+      <div class="try-next">
+        <strong>Ask yourself:</strong>
+        <p id="question"></p>
+      </div>
+    </section>
+
+    <section aria-labelledby="not-listed-heading">
+      <h2 id="not-listed-heading">If Your Comment Is Not Listed</h2>
+      <p class="lede" style="margin-top:0">
+        Look for the action hidden inside the comment. Is your professor asking you to
+        <strong>notice more, interpret more, support more, or develop more?</strong>
+      </p>
+      <div class="actions">
+        <a class="btn secondary" href="notice.html">1. Notice</a>
+        <a class="btn secondary" href="interpret.html">2. Interpret</a>
+        <a class="btn secondary" href="support.html">3. Support</a>
+        <a class="btn secondary" href="develop.html">4. Develop</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="index.html">← Back to Literary Analysis Labs</a>
+  </footer>
+
+<script>
+(() => {
+  const comments = [
+    {
+      label:"Analyze this",
+      meaning:"Your professor may be asking you to move beyond telling what happens or what a quotation says. Analysis explains how a specific textual detail creates, complicates, or supports an interpretation.",
+      steps:[
+        "Point to the exact word, image, action, contrast, pattern, or structural choice you are discussing.",
+        "Explain what that detail does in the passage.",
+        "Connect that effect to your larger interpretation."
+      ],
+      before:"The narrator says she feels trapped. This shows that she is unhappy.",
+      after:"The narrator repeatedly describes the room in terms of barriers and boundaries, so her unhappiness becomes connected to a larger sense of confinement.",
+      question:"What can I explain here that the quotation itself does not already say?"
+    },
+    {
+      label:"Go deeper",
+      meaning:"Your idea may be heading in a useful direction, but your reader needs another layer of reasoning. The problem is usually not sentence length. It is that an implication, pattern, or connection still needs to be explained.",
+      steps:[
+        "Underline the most important detail in your evidence.",
+        "Ask why that detail matters rather than repeating it.",
+        "Explain what larger idea becomes visible because of it."
+      ],
+      before:"The door keeps appearing throughout the story, which is important.",
+      after:"Because the door appears whenever the character must choose whether to stay or leave, it begins to connect physical movement with her fear of change.",
+      question:"What is the next idea my reader would need in order to understand why this detail matters?"
+    },
+    {
+      label:"Too much summary",
+      meaning:"Your paragraph may spend more time retelling events than making an interpretive point about them. Some context is useful, but summary should create a path to analysis rather than become the paragraph's main job.",
+      steps:[
+        "Find the sentence where the paragraph's real analytical idea begins.",
+        "Keep only the plot information a reader needs to understand that idea.",
+        "Use the saved space to explain language, patterns, or significance."
+      ],
+      before:"First Mara enters the room. Then she sees the letter. After that she puts it under the cup before Eli comes in.",
+      after:"Mara hides the letter before Eli enters, even though she has not opened it. Her decision suggests that the letter's meaning already feels dangerous before she knows what it says.",
+      question:"If I removed most of the plot retelling, what idea would I actually want the paragraph to prove?"
+    },
+    {
+      label:"Explain the quote",
+      meaning:"Your professor may be seeing a quotation that is relevant but underused. A quotation does not explain itself; your job is to show which part matters and how it supports your interpretation.",
+      steps:[
+        "Choose the word or phrase in the quotation that does the most work.",
+        "Explain what that language suggests or creates.",
+        "Reconnect the evidence to the claim you are making."
+      ],
+      before:'The narrator says the hallway “swallowed his footsteps.” This shows that the hallway is quiet.',
+      after:'The verb “swallowed” makes the hallway seem active rather than merely quiet, suggesting that the space absorbs or erases the character as he moves through it.',
+      question:"Which word or phrase in this quotation would I want a reader to look at twice?"
+    },
+    {
+      label:"Use more evidence",
+      meaning:"Your claim may be broader than the evidence you currently provide. Your professor may want another textual detail, but the goal is not simply to add quotations. The new evidence should extend, test, or complicate the pattern.",
+      steps:[
+        "Restate your claim in one sentence.",
+        "Ask what second piece of evidence would help a skeptical reader believe it.",
+        "Explain how the new evidence connects to the first rather than discussing it separately."
+      ],
+      before:"The story presents silence as a form of power. One character refuses to answer a question.",
+      after:"The story repeatedly links silence with control: Mara refuses to answer Eli directly, and later the narrator notes that everyone waits for her to speak before leaving the room.",
+      question:"What additional detail would strengthen the pattern I am claiming exists?"
+    },
+    {
+      label:"Develop this",
+      meaning:"Your professor may be asking for more intellectual work rather than more words. Development can mean adding explanation, another piece of evidence, a connection, a consequence, or a complication.",
+      steps:[
+        "Identify what the paragraph already does well.",
+        "Decide what the reader needs next: WHY, HOW, MORE EVIDENCE, CONNECTION, or COMPLICATION.",
+        "Add the missing kind of thinking rather than repeating the same point."
+      ],
+      before:"The repeated windows suggest freedom.",
+      after:"The repeated windows suggest freedom, but each window is closed when the character looks through it. The image therefore makes freedom visible while keeping it physically out of reach.",
+      question:"What kind of thinking is missing here: explanation, evidence, connection, or complexity?"
+    },
+    {
+      label:"Connect this to your thesis",
+      meaning:"Your paragraph may contain good analysis that feels isolated from the essay's larger argument. The connection does not have to repeat the thesis word for word; it should show what this paragraph contributes to the larger interpretation.",
+      steps:[
+        "State the paragraph's main insight.",
+        "State the essay's larger interpretation.",
+        "Explain how this paragraph changes, supports, or develops that larger idea."
+      ],
+      before:"The narrator's shift from “I” to “we” shows that other students share the experience.",
+      after:"The shift from “I” to “we” expands the narrator's secrecy into a shared practice, supporting the essay's larger claim that belonging in the story develops through acts the adults do not see.",
+      question:"What does this paragraph add to the larger argument that another paragraph does not?"
+    },
+    {
+      label:"Be more specific",
+      meaning:"Your idea may be too broad for the evidence you have, or your wording may hide the exact relationship you want to argue. Specificity usually comes from naming the actual detail, pattern, tension, or effect.",
+      steps:[
+        "Circle broad words such as important, shows, society, people, good, bad, or theme.",
+        "Replace them with the specific textual feature or relationship you mean.",
+        "Narrow the claim until you know what evidence would prove it."
+      ],
+      before:"The author uses imagery to show that society affects people.",
+      after:"The repeated images of locked rooms connect the character's family home with restriction, making domestic space feel less protective than controlling.",
+      question:"What exactly in the text am I talking about, and what exactly am I saying it does?"
+    },
+    {
+      label:"So what?",
+      meaning:"Your professor may understand your observation but still not know why it matters to the interpretation. The next move is significance: explain what changes when a reader notices this detail.",
+      steps:[
+        "State what you noticed.",
+        "Complete the sentence: “This matters because…”",
+        "Connect that significance to a larger tension, idea, or argument in the text."
+      ],
+      before:"The color red appears three times.",
+      after:"Because red appears only in scenes where the character is being watched, the repeated color begins to connect visibility with danger rather than passion.",
+      question:"What becomes more complicated, meaningful, or visible because of this detail?"
+    }
+  ];
+
+  const commentsWrap = document.getElementById("comments");
+  const decoder = document.getElementById("decoder");
+  const title = document.getElementById("commentTitle");
+  const meaning = document.getElementById("meaning");
+  const steps = document.getElementById("steps");
+  const before = document.getElementById("before");
+  const after = document.getElementById("after");
+  const question = document.getElementById("question");
+
+  comments.forEach((item, index) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "comment-btn";
+    btn.textContent = `“${item.label}”`;
+    btn.setAttribute("aria-pressed", "false");
+
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".comment-btn").forEach(b => b.setAttribute("aria-pressed","false"));
+      btn.setAttribute("aria-pressed","true");
+
+      title.textContent = `“${item.label}”`;
+      meaning.textContent = item.meaning;
+      steps.innerHTML = item.steps.map(s => `<li>${s}</li>`).join("");
+      before.textContent = item.before;
+      after.textContent = item.after;
+      question.textContent = item.question;
+
+      decoder.hidden = false;
+      decoder.focus({preventScroll:true});
+      requestAnimationFrame(() => decoder.scrollIntoView({behavior:"auto",block:"start"}));
+    });
+
+    commentsWrap.appendChild(btn);
+  });
+})();
+</script>
+</body>
+</html>
