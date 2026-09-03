@@ -3,117 +3,462 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Literary Analysis Labs | ENGL C1002 Resources</title>
-  <meta name="description" content="Short, accessible literary analysis practice activities organized around four moves: Notice, Interpret, Support, and Develop.">
+
+  <title>Make Literary Analysis Easier | Literary Analysis Labs</title>
+  <meta name="description" content="Make literary analysis easier by practicing four moves: Notice, Interpret, Support, and Develop.">
+
   <link rel="icon" type="image/png" href="favicon4.png">
+
   <style>
-    :root{--bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;--max:1040px;--focus:#111827}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-    a{color:var(--accent-dark);text-underline-offset:.18em} a:hover{color:var(--accent)}
-    a:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.3rem}
-    .skip-link{position:absolute;top:-5rem;left:.75rem;z-index:1000;padding:.75rem 1rem;background:#fff;color:var(--text);border:2px solid var(--focus);border-radius:.4rem}
+    :root{
+      --bg:#f7f8fb;
+      --surface:#ffffff;
+      --text:#1f2933;
+      --muted:#5d6978;
+      --border:#d4dbe5;
+      --accent:#1f5da8;
+      --accent-dark:#163f74;
+      --soft:#eef4fb;
+      --green:#2f7a43;
+      --green-soft:#f0f7f2;
+      --focus:#111827;
+      --max:1040px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+    }
+
+    a{
+      color:var(--accent-dark);
+      text-underline-offset:.18em;
+    }
+
+    a:hover{color:var(--accent)}
+
+    a:focus-visible{
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+      border-radius:.3rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      top:-5rem;
+      left:.75rem;
+      z-index:1000;
+      padding:.75rem 1rem;
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+
     .skip-link:focus{top:.75rem}
-    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
-    header{padding:2rem 0 1rem}.brand-row{display:flex;align-items:center;gap:1rem}.brand-icon{width:68px;height:68px;object-fit:contain;border-radius:.7rem;flex:0 0 auto}
-    .eyebrow{margin:0 0 .25rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.84rem}
-    h1{margin:0;font-size:clamp(2.35rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.045em}
-    h2{margin:2.6rem 0 .5rem;font-size:clamp(1.65rem,4vw,2.15rem);line-height:1.2} h3{margin:.05rem 0 .3rem;font-size:1.3rem;line-height:1.2}
-    .lede{max-width:72ch;color:var(--muted);font-size:1.1rem;margin:1rem 0 0}
-    .hero-card{margin-top:1.4rem;padding:clamp(1rem,3vw,1.5rem);background:var(--surface);border:1px solid var(--border);border-radius:.9rem;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-    .hero-card p{margin-top:0}.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.8rem 1rem;border-radius:.6rem;font-weight:800;text-decoration:none;border:2px solid var(--accent)}
-    .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-dark);color:#fff}
-    .btn-secondary{background:#fff;color:var(--accent-dark)}.btn-secondary:hover{background:var(--soft);color:var(--accent-dark)}
-    .small-note{color:var(--muted);font-size:.93rem;margin:.85rem 0 0}
-    .moves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
-    .move-card{background:var(--surface);border:1px solid var(--border);border-radius:.85rem;padding:1.25rem;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;min-height:245px}
-    .move-num{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:50%;background:var(--soft);color:var(--accent-dark);font-weight:900;margin-bottom:.6rem}
-    .move-card p{margin:.25rem 0 1rem;color:var(--muted)}.examples{margin:.15rem 0 1rem;padding-left:1.1rem;color:var(--text);font-size:.95rem}.examples li{margin:.25rem 0}.move-card .btn{margin-top:auto;width:100%}
-    .practice-note{margin-top:1rem;padding:1rem 1.15rem;background:#f0f7f2;border-left:5px solid var(--green);border-radius:.4rem}.practice-note strong{color:#1d5e31}
-    .help-section{display:grid;grid-template-columns:1.4fr .8fr;gap:1rem;align-items:start;margin-top:1rem}
-    .help-card,.teacher-card{background:#fff;border:1px solid var(--border);border-radius:.8rem;padding:1.15rem}.help-card p,.teacher-card p{margin:.3rem 0 .9rem;color:var(--muted)}
-    .simple-list{padding-left:1.15rem;margin:.5rem 0}.simple-list li{margin:.35rem 0}
-    footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.92rem}.footer-links{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;margin-bottom:.8rem}
-    @media(max-width:760px){header{padding-top:1.25rem}.brand-row{align-items:flex-start}.brand-icon{width:54px;height:54px}.moves,.help-section{grid-template-columns:1fr}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%}.move-card{min-height:0}}
-    @media(max-width:460px){header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}.brand-row{gap:.7rem}.brand-icon{width:46px;height:46px}h1{font-size:2.35rem}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header{
+      padding:1.6rem 0 .6rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+
+    .brand img{
+      width:52px;
+      height:52px;
+      object-fit:contain;
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      font-weight:850;
+      color:var(--accent-dark);
+      font-size:.95rem;
+    }
+
+    .hero{
+      padding:2rem 0 1rem;
+      max-width:800px;
+    }
+
+    .eyebrow{
+      margin:0 0 .4rem;
+      color:var(--accent-dark);
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.84rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.65rem,8vw,5rem);
+      line-height:.98;
+      letter-spacing:-.05em;
+      max-width:11ch;
+    }
+
+    h2{
+      margin:2.5rem 0 .5rem;
+      font-size:clamp(1.65rem,4vw,2.15rem);
+      line-height:1.2;
+    }
+
+    h3{
+      margin:.05rem 0 .3rem;
+      font-size:1.35rem;
+      line-height:1.2;
+    }
+
+    .lede{
+      margin:1rem 0 0;
+      max-width:64ch;
+      color:var(--muted);
+      font-size:1.12rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.35rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:.8rem 1rem;
+      border-radius:.6rem;
+      font-weight:800;
+      text-decoration:none;
+      border:2px solid var(--accent);
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      background:var(--accent-dark);
+      color:#fff;
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--accent-dark);
+    }
+
+    .btn-secondary:hover{
+      background:var(--soft);
+      color:var(--accent-dark);
+    }
+
+    .intro-note{
+      margin-top:1.5rem;
+      padding:1rem 1.1rem;
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+      border-radius:.45rem;
+      max-width:760px;
+    }
+
+    .moves-intro{
+      max-width:700px;
+      color:var(--muted);
+      margin:.25rem 0 0;
+    }
+
+    .moves{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .move-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      padding:1.25rem;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+      display:flex;
+      flex-direction:column;
+      min-height:225px;
+    }
+
+    .move-number{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:2.15rem;
+      height:2.15rem;
+      border-radius:50%;
+      background:var(--soft);
+      color:var(--accent-dark);
+      font-weight:900;
+      margin-bottom:.65rem;
+    }
+
+    .move-card p{
+      color:var(--muted);
+      margin:.25rem 0 .85rem;
+    }
+
+    .move-card ul{
+      padding-left:1.15rem;
+      margin:.15rem 0 1rem;
+      font-size:.95rem;
+    }
+
+    .move-card li{margin:.25rem 0}
+
+    .move-card .btn{
+      width:100%;
+      margin-top:auto;
+    }
+
+    .how-box{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1.1rem;
+    }
+
+    .how-box ul{
+      margin:.35rem 0 0;
+      padding-left:1.2rem;
+    }
+
+    .how-box li{margin:.35rem 0}
+
+    .teacher-box{
+      margin-top:3rem;
+      padding:1.2rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.85rem;
+      text-align:center;
+    }
+
+    .teacher-box h2{
+      margin:0 0 .35rem;
+      font-size:1.35rem;
+    }
+
+    .teacher-box p{
+      margin:.25rem auto .9rem;
+      max-width:54ch;
+      color:var(--muted);
+    }
+
+    footer{
+      padding:2.4rem 0 3rem;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem 1.2rem;
+      margin-bottom:.8rem;
+    }
+
+    @media(max-width:760px){
+      header,main,footer{
+        width:min(calc(100% - 1.25rem),var(--max));
+      }
+
+      header{padding-top:1rem}
+
+      .brand img{
+        width:44px;
+        height:44px;
+      }
+
+      .hero{
+        padding-top:1.4rem;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .moves{
+        grid-template-columns:1fr;
+      }
+
+      .move-card{
+        min-height:0;
+      }
+    }
+
+    @media(max-width:460px){
+      h1{font-size:2.75rem}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+      }
+    }
+
+    @media(prefers-contrast:more){
+      :root{
+        --border:#4b5563;
+        --muted:#374151;
+      }
+    }
   </style>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <header>
-    <div class="brand-row">
-      <img class="brand-icon" src="favicon4.png" alt="">
-      <div><p class="eyebrow">Interactive English Resources</p><h1>Literary Analysis Labs</h1></div>
-    </div>
-    <p class="lede">Practice literary analysis one move at a time. Start at the beginning, or choose the skill that would help you most right now.</p>
 
-    <nav aria-label="Audience navigation" style="margin-top:1rem;display:flex;gap:.7rem;flex-wrap:wrap">
-      <a class="btn btn-secondary" href="#main">For Students</a>
-      <a class="btn btn-secondary" href="teachers.html">For Instructors</a>
-    </nav>
+  <header>
+    <div class="brand">
+      <img src="favicon4.png" alt="">
+      <div class="brand-text">Literary Analysis Labs</div>
+    </div>
+
+    <div class="hero">
+      <p class="eyebrow">Interactive practice for literature courses</p>
+      <h1>Make Literary Analysis Easier</h1>
+
+      <p class="lede">
+        Literary analysis is not one giant skill. It is a set of smaller moves you can practice.
+        Work on one move at a time, or start at the beginning and build from there.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="what-kind-of-thinking-is-this.html">Start from the beginning</a>
+        <a class="btn btn-secondary" href="#choose-a-move">Choose what you want to practice</a>
+      </div>
+
+      <div class="intro-note">
+        <strong>These are practice spaces, not tests.</strong>
+        You can try again, read the feedback, and work at your own pace. Your answers are not recorded or submitted.
+      </div>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero-card" aria-labelledby="start-heading">
-      <h2 id="start-heading" style="margin-top:0">Start Here</h2>
-      <p>These short activities are designed for low-stakes practice. You can try again, read the feedback, and work at your own pace. Your responses are not recorded or submitted.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="what-kind-of-thinking-is-this.html">Start from the beginning</a>
-        <a class="btn btn-secondary" href="#choose-skill">Choose a skill</a>
-      </div>
-      <p class="small-note">If your instructor asks for proof of completion, each activity ends with a screenshot-ready completion screen.</p>
-    </section>
+    <section id="choose-a-move" aria-labelledby="moves-heading">
+      <h2 id="moves-heading">Choose a Move</h2>
+      <p class="moves-intro">
+        If you know where you are getting stuck, go directly to that move. If you are not sure, begin with <strong>Notice</strong>.
+      </p>
 
-    <section id="choose-skill" aria-labelledby="choose-heading">
-      <h2 id="choose-heading">Choose a Skill</h2>
-      <p class="lede" style="margin-top:0">Literary analysis gets easier when you break it into four moves.</p>
       <div class="moves">
         <article class="move-card">
-          <span class="move-num" aria-hidden="true">1</span><h3>Notice</h3><p>See what the text is doing.</p>
-          <ul class="examples"><li>Tell summary from analysis</li><li>Notice details and patterns</li><li>Ask useful questions</li><li>Zoom in on language</li></ul>
-          <a class="btn btn-secondary" href="notice.html">Choose a Notice activity</a>
+          <span class="move-number" aria-hidden="true">1</span>
+          <h3>Notice</h3>
+          <p><strong>See what the text is doing.</strong></p>
+          <ul>
+            <li>Tell summary from analysis</li>
+            <li>Notice details and patterns</li>
+            <li>Ask useful questions</li>
+            <li>Zoom in on language</li>
+          </ul>
+          <a class="btn btn-secondary" href="notice.html">Practice Notice</a>
         </article>
+
         <article class="move-card">
-          <span class="move-num" aria-hidden="true">2</span><h3>Interpret</h3><p>Ask what the pattern might mean.</p>
-          <ul class="examples"><li>Move from observation to interpretation</li><li>Test whether a reading fits the evidence</li><li>Build thematic ideas</li><li>Analyze perspective</li></ul>
-          <a class="btn btn-secondary" href="interpret.html">Choose an Interpret activity</a>
+          <span class="move-number" aria-hidden="true">2</span>
+          <h3>Interpret</h3>
+          <p><strong>Ask what the pattern might mean.</strong></p>
+          <ul>
+            <li>Move from observation to interpretation</li>
+            <li>Test whether a reading fits the evidence</li>
+            <li>Build thematic ideas</li>
+            <li>Analyze perspective</li>
+          </ul>
+          <a class="btn btn-secondary" href="interpret.html">Practice Interpret</a>
         </article>
+
         <article class="move-card">
-          <span class="move-num" aria-hidden="true">3</span><h3>Support</h3><p>Use evidence and explain it.</p>
-          <ul class="examples"><li>Tell claims, evidence, and explanation apart</li><li>Integrate quotations</li><li>Explain how evidence supports a claim</li></ul>
-          <a class="btn btn-secondary" href="support.html">Choose a Support activity</a>
+          <span class="move-number" aria-hidden="true">3</span>
+          <h3>Support</h3>
+          <p><strong>Use evidence and explain it.</strong></p>
+          <ul>
+            <li>Connect claims to evidence</li>
+            <li>Integrate quotations</li>
+            <li>Explain how evidence supports an idea</li>
+          </ul>
+          <a class="btn btn-secondary" href="support.html">Practice Support</a>
         </article>
+
         <article class="move-card">
-          <span class="move-num" aria-hidden="true">4</span><h3>Develop</h3><p>Build and complicate an argument.</p>
-          <ul class="examples"><li>Strengthen a thesis</li><li>Revise when evidence complicates a claim</li><li>Repair weak analysis</li></ul>
-          <a class="btn btn-secondary" href="develop.html">Choose a Develop activity</a>
+          <span class="move-number" aria-hidden="true">4</span>
+          <h3>Develop</h3>
+          <p><strong>Build and complicate an argument.</strong></p>
+          <ul>
+            <li>Strengthen a thesis</li>
+            <li>Revise when evidence complicates a claim</li>
+            <li>Repair weak analysis</li>
+          </ul>
+          <a class="btn btn-secondary" href="develop.html">Practice Develop</a>
         </article>
       </div>
-      <div class="practice-note"><strong>Not sure which one to choose?</strong> Start with <strong>Notice</strong>. The four moves build on one another, but you do not have to complete every activity.</div>
     </section>
 
-    <section aria-labelledby="using-heading">
-      <h2 id="using-heading">Using These Labs</h2>
-      <div class="help-section">
-        <div class="help-card">
-          <h3>For Students</h3>
-          <p>You can use these activities before, during, or after working on a literary analysis assignment.</p>
-          <ul class="simple-list"><li>Choose the move that matches where you feel stuck.</li><li>Read the feedback even when your first answer is correct.</li><li>Try again when an answer does not work.</li><li>Use the completion screen if your instructor asks for proof.</li></ul>
-        </div>
-        <aside class="teacher-card" aria-labelledby="teacher-heading">
-          <h3 id="teacher-heading">For Instructors</h3>
-          <p>Looking for assignment links, category pages, or Canvas embed codes?</p>
-          <a class="btn btn-secondary" href="teachers.html">Open instructor resources</a>
-        </aside>
+    <section aria-labelledby="use-heading">
+      <h2 id="use-heading">How to Use the Labs</h2>
+
+      <div class="how-box">
+        <ul>
+          <li><strong>Choose the move that matches where you feel stuck.</strong></li>
+          <li>Read the feedback, even when your first answer is correct.</li>
+          <li>Try again when something does not work.</li>
+          <li>You do not need to complete every activity unless your instructor asks you to.</li>
+          <li>If your instructor requires proof, use the completion screen at the end of the activity.</li>
+        </ul>
       </div>
+    </section>
+
+    <section class="teacher-box" aria-labelledby="teacher-heading">
+      <h2 id="teacher-heading">For Instructors</h2>
+      <p>
+        Find student links, “choose one” category pages, Canvas embed codes, and ideas for assigning the labs.
+      </p>
+      <a class="btn btn-secondary" href="teachers.html">Open Instructor Resources</a>
     </section>
   </main>
 
   <footer>
-    <div class="footer-links"><a href="notice.html">Notice</a><a href="interpret.html">Interpret</a><a href="support.html">Support</a><a href="develop.html">Develop</a><a href="teachers.html">For Instructors</a></div>
+    <div class="footer-links">
+      <a href="notice.html">1. Notice</a>
+      <a href="interpret.html">2. Interpret</a>
+      <a href="support.html">3. Support</a>
+      <a href="develop.html">4. Develop</a>
+    </div>
+
     <div>Literary Analysis Labs created by Karen Crozer for student learning and practice.</div>
   </footer>
 </body>
