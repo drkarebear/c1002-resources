@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Close Reading Made Visible | ENGL C1002 Literary Analysis Lab</title>
+  <meta name="description" content="A plain-language guide to close reading in stories, poems, and plays for ENGL C1002 students.">
+
+  <link rel="icon" type="image/png" href="favicon4.png">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --surface:#fff;
+      --text:#1f2933;
+      --muted:#5d6978;
+      --border:#d4dbe5;
+      --accent:#1f5da8;
+      --accent-dark:#163f74;
+      --soft:#eef4fb;
+      --green:#2f7a43;
+      --green-soft:#f0f7f2;
+      --gold-soft:#fff8e8;
+      --focus:#111827;
+      --max:980px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+
+    a:focus-visible,
+    button:focus-visible{
+      outline:4px solid var(--focus);
+      outline-offset:3px;
+      border-radius:.3rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      top:-5rem;
+      left:.75rem;
+      z-index:1000;
+      padding:.75rem 1rem;
+      background:#fff;
+      color:var(--text);
+      border:2px solid var(--focus);
+      border-radius:.4rem;
+    }
+    .skip-link:focus{top:.75rem}
+
+    header,main,footer{
+      width:min(calc(100% - 2rem),var(--max));
+      margin-inline:auto;
+    }
+
+    header{padding:1.5rem 0 .7rem}
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:850;
+    }
+
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+
+    .student-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem;
+      margin-top:.75rem;
+      font-size:.95rem;
+    }
+
+    .student-nav a{font-weight:750}
+
+    .eyebrow{
+      margin:1.35rem 0 .25rem;
+      color:var(--accent-dark);
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:.82rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.45rem,7vw,4.35rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    h2{
+      margin:2.35rem 0 .55rem;
+      font-size:1.75rem;
+      line-height:1.2;
+    }
+
+    h3{
+      margin:.1rem 0 .35rem;
+      font-size:1.25rem;
+      line-height:1.25;
+    }
+
+    .lede{
+      max-width:74ch;
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:.8rem 0 0;
+    }
+
+    .big-note{
+      margin-top:1.15rem;
+      padding:1rem 1.1rem;
+      background:var(--green-soft);
+      border-left:5px solid var(--green);
+      border-radius:.45rem;
+    }
+
+    .jump{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      padding:.6rem .8rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.55rem;
+      text-decoration:none;
+      font-weight:750;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .step{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1rem;
+    }
+
+    .step-num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:2rem;
+      height:2rem;
+      border-radius:50%;
+      background:var(--soft);
+      color:var(--accent-dark);
+      font-weight:900;
+      margin-bottom:.45rem;
+    }
+
+    .step strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.2rem;
+    }
+
+    .step p{margin:.1rem 0;color:var(--muted)}
+
+    .genre{
+      margin-top:1.1rem;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.9rem;
+      padding:1.15rem;
+    }
+
+    .genre-label{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      font-weight:850;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .passage{
+      margin:.9rem 0;
+      padding:1rem;
+      border-radius:.7rem;
+      background:var(--gold-soft);
+      border:1px solid #dfcf9f;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.04rem;
+    }
+
+    .close-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.8rem;
+      margin-top:1rem;
+    }
+
+    .move-box{
+      background:var(--soft);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+
+    .move-box strong{
+      display:block;
+      color:var(--accent-dark);
+      margin-bottom:.25rem;
+    }
+
+    .move-box p{margin:.15rem 0}
+
+    .notice-list{
+      margin:.5rem 0 0;
+      padding-left:1.15rem;
+    }
+
+    .notice-list li{margin:.3rem 0}
+
+    .not-this{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:.8rem;
+      padding:1rem;
+      margin-top:1rem;
+    }
+
+    .not-this strong{color:var(--accent-dark)}
+
+    .transfer{
+      background:var(--green-soft);
+      border-radius:.8rem;
+      padding:1rem;
+      margin-top:1rem;
+    }
+
+    .transfer strong{
+      display:block;
+      color:#1f5b31;
+      margin-bottom:.25rem;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1.2rem;
+    }
+
+    .btn{
+      min-height:48px;
+      border-radius:.58rem;
+      padding:.75rem 1rem;
+      font-weight:800;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:2px solid var(--accent);
+    }
+
+    .primary{background:var(--accent);color:#fff}
+    .primary:hover{background:var(--accent-dark);color:#fff}
+    .secondary{background:#fff;color:var(--accent-dark)}
+    .secondary:hover{background:var(--soft);color:var(--accent-dark)}
+
+    footer{
+      margin-top:2.6rem;
+      padding:1.25rem 0 2.7rem;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    footer p{margin:.2rem 0}
+
+    @media(max-width:800px){
+      .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media(max-width:700px){
+      header,main,footer{
+        width:min(calc(100% - 1.25rem),var(--max));
+      }
+
+      .steps,
+      .close-grid{
+        grid-template-columns:1fr;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .actions .btn{width:100%}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to close reading guide</a>
+
+  <header>
+    <a class="brand" href="index.html">
+      <img src="favicon4.png" alt="">
+      <span>ENGL C1002 Literary Analysis Lab</span>
+    </a>
+
+    <nav class="student-nav" aria-label="Student navigation">
+      <a href="index.html">Student Home</a>
+      <a href="all-labs.html">All Labs</a>
+    </nav>
+
+    <p class="eyebrow">Reading Help</p>
+    <h1>Close Reading Made Visible</h1>
+
+    <p class="lede">
+      Close reading means slowing down and looking carefully at a small part of a text so you can explain
+      <strong>how the language, structure, image, action, or other choice creates meaning.</strong>
+      You are not trying to analyze every word.
+    </p>
+
+    <div class="big-note">
+      <strong>A useful shortcut:</strong>
+      <br>
+      <strong>Notice something small → look again → ask what it does → connect it to a larger idea.</strong>
+    </div>
+
+    <nav class="jump" aria-label="Jump to close reading examples">
+      <a class="pill" href="#story">Story</a>
+      <a class="pill" href="#poem">Poem</a>
+      <a class="pill" href="#play">Play</a>
+      <a class="pill" href="#your-text">Try It With Your Text</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading">What Does Close Reading Actually Look Like?</h2>
+
+      <div class="steps">
+        <article class="step">
+          <span class="step-num">1</span>
+          <strong>Choose something small.</strong>
+          <p>A word, image, line, gesture, repetition, contrast, sentence, line break, or stage direction.</p>
+        </article>
+
+        <article class="step">
+          <span class="step-num">2</span>
+          <strong>Look again.</strong>
+          <p>Ask what is unusual, repeated, surprising, emphasized, changed, or left unsaid.</p>
+        </article>
+
+        <article class="step">
+          <span class="step-num">3</span>
+          <strong>Ask what it does.</strong>
+          <p>How does the choice shape tone, perspective, tension, characterization, pattern, or meaning?</p>
+        </article>
+
+        <article class="step">
+          <span class="step-num">4</span>
+          <strong>Connect it.</strong>
+          <p>What larger interpretation becomes possible because of this small detail?</p>
+        </article>
+      </div>
+
+      <div class="not-this">
+        <strong>Close reading is not:</strong>
+        summarizing the whole passage, naming a literary device and stopping, looking for a secret answer,
+        or explaining every single word.
+      </div>
+    </section>
+
+    <section id="story" aria-labelledby="story-heading">
+      <h2 id="story-heading">Close Reading a Story</h2>
+
+      <div class="genre">
+        <div class="genre-label">Story example</div>
+        <h3>Pay attention to wording, action, perspective, and patterns</h3>
+
+        <div class="passage">
+          Mara folded the unopened note twice and placed it beneath her cup before Eli entered.
+        </div>
+
+        <div class="close-grid">
+          <div class="move-box">
+            <strong>1. Notice</strong>
+            <p>The note is <em>unopened</em>, but Mara hides it anyway.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>2. Look again</strong>
+            <p>“Folded,” “twice,” and “placed it beneath” make the action careful and deliberate rather than accidental.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>3. Ask what it does</strong>
+            <p>The physical action creates tension before Eli even enters. Mara seems to react to what the note represents, not only what it says.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>4. Connect it</strong>
+            <p>The scene may suggest that fear or secrecy begins before a character knows the full truth.</p>
+          </div>
+        </div>
+
+        <p><strong>Things worth close reading in stories:</strong></p>
+        <ul class="notice-list">
+          <li>a surprising word or image</li>
+          <li>what a character does instead of what they say</li>
+          <li>repeated objects, places, or actions</li>
+          <li>a shift in point of view or narration</li>
+          <li>contrasts between two scenes or characters</li>
+          <li>details the narrator notices or avoids</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="poem" aria-labelledby="poem-heading">
+      <h2 id="poem-heading">Close Reading a Poem</h2>
+
+      <div class="genre">
+        <div class="genre-label">Poetry example</div>
+        <h3>Read the words and the way they are arranged</h3>
+
+        <div class="passage">
+          I closed the door<br>
+          but your name stayed<br>
+          bright on my tongue.
+        </div>
+
+        <div class="close-grid">
+          <div class="move-box">
+            <strong>1. Notice</strong>
+            <p>The speaker closes a door, but the remembered name “stayed.”</p>
+          </div>
+
+          <div class="move-box">
+            <strong>2. Look again</strong>
+            <p>The word “but” creates a turn. The line break leaves “stayed” at the end of a line, giving the word extra emphasis.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>3. Ask what it does</strong>
+            <p>“Bright on my tongue” turns memory into something vivid and physical. The speaker can close a door but cannot simply close off the remembered person.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>4. Connect it</strong>
+            <p>The poem may present memory as something that survives deliberate attempts to move on.</p>
+          </div>
+        </div>
+
+        <p><strong>Things worth close reading in poems:</strong></p>
+        <ul class="notice-list">
+          <li>repeated words, images, or sounds</li>
+          <li>metaphors, similes, and other figurative language</li>
+          <li>line breaks and stanza breaks</li>
+          <li>changes in tone or speaker</li>
+          <li>contrasts, contradictions, or surprising combinations</li>
+          <li>one unusually strong or unexpected word</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="play" aria-labelledby="play-heading">
+      <h2 id="play-heading">Close Reading a Play</h2>
+
+      <div class="genre">
+        <div class="genre-label">Drama example</div>
+        <h3>Read the dialogue and what happens around it</h3>
+
+        <div class="passage">
+          LENA: I was already leaving.<br>
+          <em>[She reaches for the door, then pulls her hand back when Marcus enters.]</em>
+        </div>
+
+        <div class="close-grid">
+          <div class="move-box">
+            <strong>1. Notice</strong>
+            <p>Lena says she was leaving, but the stage direction shows her stopping.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>2. Look again</strong>
+            <p>The movement changes specifically when Marcus enters. Her words and actions do not fully match.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>3. Ask what it does</strong>
+            <p>The stage direction makes hesitation visible. The audience sees uncertainty that Lena does not state directly.</p>
+          </div>
+
+          <div class="move-box">
+            <strong>4. Connect it</strong>
+            <p>The scene may suggest that Marcus has power over Lena's choices even when she verbally presents herself as independent.</p>
+          </div>
+        </div>
+
+        <p><strong>Things worth close reading in plays:</strong></p>
+        <ul class="notice-list">
+          <li>stage directions</li>
+          <li>pauses, silence, interruptions, and unfinished sentences</li>
+          <li>entrances and exits</li>
+          <li>objects a character touches, avoids, or gives away</li>
+          <li>differences between what a character says and does</li>
+          <li>what the audience knows that a character does not</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="device-heading">
+      <h2 id="device-heading">What If I Notice a Literary Device?</h2>
+
+      <div class="not-this">
+        <p>
+          Naming the device is useful only if it helps you explain the text more precisely.
+        </p>
+
+        <p><strong>Starting point:</strong> “This is a metaphor.”</p>
+        <p><strong>Close reading:</strong> “The metaphor turns memory into a physical object the speaker seems unable to put down, which makes the past feel present and burdensome.”</p>
+
+        <p>
+          The analytical move is not <strong>finding the label</strong>. It is explaining
+          <strong>what this particular choice does here.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="your-text" aria-labelledby="your-text-heading">
+      <h2 id="your-text-heading">Try It With Your Text</h2>
+
+      <div class="transfer">
+        <strong>Choose one small detail from what you are reading now.</strong>
+        <p>In your notes, answer these four questions:</p>
+        <ol>
+          <li>What exactly do I notice?</li>
+          <li>What becomes more interesting when I look again?</li>
+          <li>What might this choice be doing?</li>
+          <li>What larger idea could this detail help me explore?</li>
+        </ol>
+        <p>You do not need a perfect interpretation. You are testing a possibility against the text.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="zoom-in.html">Practice Close Reading: Zoom In</a>
+        <a class="btn secondary" href="pattern-finder.html">Practice Finding Patterns</a>
+        <a class="btn secondary" href="literary-terms.html">Literary Terms Made Simple</a>
+        <a class="btn secondary" href="how-to-read-literature.html">How to Read Literature</a>
+        <a class="btn secondary" href="all-labs.html">All Labs</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by Karen Crozer for ENGL C1002 classes.</p>
+    <p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p>
+  </footer>
+</body>
+</html>
