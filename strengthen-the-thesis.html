@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -60,6 +59,140 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   </style>
+
+  <style id="mobile-activity-upgrade">
+    /* Mobile activity mode: once practice begins, the page behaves more like a
+       sequence of screens than a long document. */
+    .start-activity-wrap{
+      display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem
+    }
+    .start-activity-btn,.review-instructions-btn{
+      min-height:48px;border-radius:.55rem;padding:.8rem 1rem;
+      border:2px solid var(--accent);font:inherit;font-weight:800;cursor:pointer
+    }
+    .start-activity-btn{background:var(--accent);color:#fff}
+    .start-activity-btn:hover{background:var(--accent-dark)}
+    .review-instructions-btn{background:#fff;color:var(--accent-dark)}
+    .review-instructions-btn:hover{background:var(--soft)}
+    .start-activity-btn:focus-visible,.review-instructions-btn:focus-visible{
+      outline:4px solid var(--focus);outline-offset:3px
+    }
+    .activity-toolbar{
+      display:flex;justify-content:flex-end;margin-bottom:.7rem
+    }
+
+    body.activity-mode header,
+    body.activity-mode main > section:first-of-type{
+      display:none
+    }
+    body.activity-mode #practice-heading{
+      position:absolute!important;
+      width:1px!important;height:1px!important;
+      padding:0!important;margin:-1px!important;
+      overflow:hidden!important;clip:rect(0,0,0,0)!important;
+      white-space:nowrap!important;border:0!important
+    }
+    body.activity-mode main{
+      width:min(calc(100% - 1rem),var(--max));
+    }
+    body.activity-mode main > section:last-of-type{
+      margin-top:.45rem
+    }
+    body.activity-mode #labCard{
+      margin-top:.35rem
+    }
+
+    /* Screenshot-ready completion card */
+    #completion.screenshot-completion{
+      width:100%;
+      max-width:520px;
+      margin:0 auto;
+    }
+    .completion-capture{
+      background:#fff;
+      border:2px solid var(--success-border,#287a3e);
+      border-radius:1rem;
+      padding:1.25rem;
+      text-align:center;
+      box-shadow:0 1px 3px rgba(0,0,0,.06);
+    }
+    .completion-check{
+      width:58px;height:58px;border-radius:50%;
+      display:grid;place-items:center;margin:0 auto .7rem;
+      background:var(--success-bg,#edf8f0);
+      border:2px solid var(--success-border,#287a3e);
+      color:#174d27;font-size:2rem;font-weight:900;line-height:1
+    }
+    .completion-kicker{
+      margin:0 0 .25rem;color:var(--accent-dark);
+      text-transform:uppercase;letter-spacing:.04em;
+      font-size:.78rem;font-weight:850
+    }
+    .completion-capture h2{
+      margin:.1rem 0 .35rem;font-size:clamp(2rem,9vw,3rem);line-height:1
+    }
+    .completion-activity{
+      margin:.45rem auto 1rem;max-width:32ch;
+      font-size:1.08rem;font-weight:800;line-height:1.35
+    }
+    .completion-meta{
+      display:grid;grid-template-columns:1fr 1fr;gap:.65rem;
+      margin:.75rem 0
+    }
+    .completion-meta > div{
+      border:1px solid var(--border);border-radius:.65rem;
+      padding:.65rem;background:var(--bg)
+    }
+    .completion-meta span{
+      display:block;color:var(--muted);font-size:.76rem;
+      text-transform:uppercase;letter-spacing:.03em;font-weight:800
+    }
+    .completion-meta strong{
+      display:block;margin-top:.12rem;font-size:.98rem
+    }
+    .completion-proof{
+      margin:.9rem 0 0;color:var(--muted);font-size:.88rem;line-height:1.35
+    }
+    .completion-actions{
+      display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.8rem
+    }
+    .completion-actions button{
+      flex:1 1 180px;min-height:48px
+    }
+
+    @media(max-width:600px){
+      body.activity-mode{background:#fff}
+      body.activity-mode main{width:100%}
+      body.activity-mode main > section:last-of-type{margin:0}
+      body.activity-mode #labCard{
+        border-left:0;border-right:0;border-radius:0;
+        box-shadow:none;margin:0;padding:1rem;
+        min-height:100svh;
+      }
+      .activity-toolbar{margin-bottom:.3rem}
+      .review-instructions-btn{
+        min-height:42px;padding:.55rem .75rem;font-size:.92rem
+      }
+      #questionArea{padding-bottom:1rem}
+      #completion.screenshot-completion{
+        display:flex;flex-direction:column;justify-content:center;
+        min-height:calc(100svh - 2rem);
+        padding:.35rem 0;
+      }
+      .completion-capture{
+        padding:1rem .9rem;border-radius:.85rem
+      }
+      .completion-check{width:50px;height:50px;font-size:1.7rem;margin-bottom:.55rem}
+      .completion-capture h2{font-size:2.25rem}
+      .completion-activity{font-size:1rem;margin:.4rem auto .75rem}
+      .completion-meta{gap:.45rem;margin:.6rem 0}
+      .completion-meta > div{padding:.55rem .35rem}
+      .completion-meta strong{font-size:.9rem}
+      .completion-proof{font-size:.82rem;margin-top:.65rem}
+      .completion-actions{margin-top:.6rem}
+    }
+  </style>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to activity</a>
@@ -345,5 +478,148 @@
     render();
   })();
   </script>
+
+  <script id="mobile-activity-upgrade-js">
+  (() => {
+    function localDateParts(){
+      const now = new Date();
+      return {
+        date: now.toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"}),
+        time: now.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})
+      };
+    }
+
+    function activityTitle(){
+      const visible = document.querySelector(".page-title");
+      if(visible && visible.textContent.trim()) return visible.textContent.trim();
+      return document.title.split("|")[0].trim();
+    }
+
+    function enterActivityMode(){
+      document.body.classList.add("activity-mode");
+      const card = document.getElementById("labCard");
+      requestAnimationFrame(() => {
+        card?.scrollIntoView({behavior:"auto",block:"start"});
+        const first = card?.querySelector("#questionArea .choice, #questionArea button, #questionArea [tabindex]");
+        if(first && typeof first.focus === "function") {
+          try { first.focus({preventScroll:true}); } catch(e) {}
+        }
+      });
+    }
+
+    function leaveActivityMode(){
+      document.body.classList.remove("activity-mode");
+      const firstSection = document.querySelector("main > section:first-of-type");
+      requestAnimationFrame(() => firstSection?.scrollIntoView({behavior:"auto",block:"start"}));
+    }
+
+    function addStartButton(){
+      const introSection = document.querySelector("main > section:first-of-type");
+      if(!introSection || document.getElementById("startActivityUpgrade")) return;
+      const target = introSection.querySelector(".card") || introSection;
+      const wrap = document.createElement("div");
+      wrap.className = "start-activity-wrap";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.id = "startActivityUpgrade";
+      btn.className = "start-activity-btn";
+      btn.textContent = "Start Activity";
+      btn.addEventListener("click", enterActivityMode);
+      wrap.appendChild(btn);
+      target.appendChild(wrap);
+    }
+
+    function addToolbar(){
+      const card = document.getElementById("labCard");
+      if(!card || card.querySelector(".activity-toolbar")) return;
+      const toolbar = document.createElement("div");
+      toolbar.className = "activity-toolbar";
+      const review = document.createElement("button");
+      review.type = "button";
+      review.className = "review-instructions-btn";
+      review.textContent = "Review Instructions";
+      review.addEventListener("click", leaveActivityMode);
+      toolbar.appendChild(review);
+      card.insertBefore(toolbar, card.firstChild);
+    }
+
+    function forceNextScreen(){
+      const card = document.getElementById("labCard");
+      if(!card) return;
+      // Existing lab scripts may also scroll. Running shortly afterward makes
+      // the new question reliably land at the top on mobile Safari.
+      setTimeout(() => card.scrollIntoView({behavior:"auto",block:"start"}), 35);
+    }
+
+    function buildCompletion(){
+      const completion = document.getElementById("completion");
+      if(!completion || completion.dataset.upgraded === "true") return;
+
+      completion.dataset.upgraded = "true";
+      completion.classList.add("screenshot-completion");
+      const parts = localDateParts();
+      const title = activityTitle();
+
+      completion.innerHTML = `
+        <div class="completion-capture" aria-label="Completion confirmation">
+          <div class="completion-check" aria-hidden="true">✓</div>
+          <p class="completion-kicker">Literary Analysis Lab</p>
+          <h2>You did it!</h2>
+          <p class="completion-activity">${title}</p>
+          <div class="completion-meta">
+            <div>
+              <span>Completed</span>
+              <strong>${parts.date}</strong>
+            </div>
+            <div>
+              <span>Time</span>
+              <strong>${parts.time}</strong>
+            </div>
+          </div>
+          <p class="completion-proof">
+            Screenshot this screen if your instructor asked for proof of completion.
+          </p>
+        </div>
+        <div class="completion-actions">
+          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
+          <button type="button" class="review-instructions-btn" id="upgradedReview">Review Instructions</button>
+        </div>
+      `;
+
+      completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
+        // Reloading is the most reliable cross-lab restart because each lab
+        // has its own internal state and original restart handler.
+        window.location.reload();
+      });
+      completion.querySelector("#upgradedReview")?.addEventListener("click", leaveActivityMode);
+
+      requestAnimationFrame(() => completion.scrollIntoView({behavior:"auto",block:"start"}));
+    }
+
+    function watchCompletion(){
+      const completion = document.getElementById("completion");
+      if(!completion) return;
+      const observer = new MutationObserver(() => {
+        if(!completion.classList.contains("hidden")) buildCompletion();
+      });
+      observer.observe(completion,{attributes:true,attributeFilter:["class"]});
+      if(!completion.classList.contains("hidden")) buildCompletion();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      addStartButton();
+      addToolbar();
+      watchCompletion();
+
+      const next = document.getElementById("next");
+      next?.addEventListener("click", forceNextScreen, true);
+
+      // Keep retrying in the same screen position too.
+      const retry = document.getElementById("tryAgain");
+      retry?.addEventListener("click", forceNextScreen, true);
+    });
+  })();
+  </script>
+
 </body>
 </html>

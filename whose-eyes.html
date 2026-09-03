@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Don't Drop the Quote | Literary Analysis Lab</title>
-  <meta name="description" content="An accessible interactive literary analysis activity that helps students introduce, integrate, and analyze textual evidence.">
+  <title>Whose Eyes Are We Seeing Through? | Literary Analysis Lab</title>
+  <meta name="description" content="An accessible interactive literary analysis activity that helps students analyze point of view, perspective, and how narration shapes meaning.">
   <style>
     :root{
       --bg:#f7f7fb;--surface:#fff;--text:#1f2933;--muted:#52606d;--border:#cbd5e1;
       --accent:#275dad;--accent-dark:#173f7a;--soft:#eef4fb;--success-bg:#edf8f0;
-      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:880px;
+      --success-border:#287a3e;--try-bg:#fff7e8;--try-border:#9a6400;--focus:#111827;--max:920px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -20,21 +20,23 @@
     .skip-link:focus{top:.75rem}
     .eyebrow{margin:0 0 .35rem;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.03em;font-size:.88rem}
     .page-title{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
-    .lede{max-width:70ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
+    .lede{max-width:72ch;color:var(--muted);font-size:1.08rem;margin-bottom:1.4rem}
     h2{margin-top:2rem;font-size:1.5rem;line-height:1.25}
     .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:clamp(1rem,3vw,1.5rem);box-shadow:0 1px 2px rgba(0,0,0,.04);margin:1rem 0}
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
     .step{border:1px solid var(--border);border-radius:.65rem;padding:1rem;background:#fff}
-    .step strong{display:block;color:var(--accent-dark);margin-bottom:.2rem}
+    .step strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
     .tip{background:#f3f6f8;border-left:4px solid #52606d;padding:.85rem 1rem;margin-top:1rem;border-radius:.35rem}
     .progress-wrap{margin-bottom:1rem}
     .progress-label{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
     progress{width:100%;height:.9rem;accent-color:var(--accent)}
     .round-label{font-weight:800;color:var(--accent-dark)}
-    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.1rem}
     .label{font-weight:800;color:var(--accent-dark);margin:1rem 0 .35rem}
     .box{border:2px solid var(--border);border-radius:.6rem;padding:.9rem 1rem;background:#fff}
-    blockquote{margin:1rem 0;padding:1rem 1.15rem;border-left:5px solid var(--accent);background:var(--soft);border-radius:.35rem;font-size:1.06rem}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.7rem}
+    .perspective{border:2px solid var(--border);border-radius:.6rem;padding:1rem;background:#fff}
+    .perspective strong{display:block;color:var(--accent-dark);margin-bottom:.25rem}
+    .prompt{font-size:1.16rem;font-weight:750;margin-top:1.15rem}
     .choices{display:grid;gap:.7rem;margin-top:1rem}
     button{font:inherit}
     .choice,.primary,.secondary{min-height:48px;border-radius:.55rem;padding:.8rem 1rem;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);font-weight:750;text-align:left}
@@ -55,7 +57,7 @@
     .hidden{display:none!important}
     .completion .big{font-size:1.4rem;font-weight:800;margin-bottom:.3rem}
     footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
-    @media(max-width:720px){.steps{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
+    @media(max-width:760px){.steps,.pair{grid-template-columns:1fr}.actions{flex-direction:column}.primary,.secondary{width:100%}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
   </style>
@@ -199,10 +201,10 @@
 
   <header>
     <p class="eyebrow">Literary Analysis Lab</p>
-    <div class="page-title">Don't Drop the Quote</div>
+    <div class="page-title">Whose Eyes Are We Seeing Through?</div>
     <p class="lede">
-      Textual evidence works best when your reader understands <strong>where it comes from</strong>,
-      <strong>why you chose it</strong>, and <strong>what you want them to notice about it</strong>.
+      Stories do not simply show us what happened. They shape what we notice by choosing
+      <strong>whose perspective we follow</strong>, what that perspective values, and what it may misunderstand or leave out.
     </p>
   </header>
 
@@ -210,13 +212,16 @@
     <section aria-labelledby="helps-heading">
       <h2 id="helps-heading">What This Helps You Do</h2>
       <div class="card">
-        <p>This lab helps you use quotations as part of your own reasoning instead of dropping them into a paragraph and moving on.</p>
+        <p>This lab helps you analyze how perspective changes the meaning of the same event.</p>
         <div class="steps">
-          <div class="step"><strong>1. Give Context</strong>Help the reader understand the moment without retelling the whole story.</div>
-          <div class="step"><strong>2. Integrate the Evidence</strong>Make the quotation fit naturally into your sentence.</div>
-          <div class="step"><strong>3. Analyze It</strong>Return to your own voice and explain what the evidence does.</div>
+          <div class="step"><strong>1. Notice the Lens</strong>Who is seeing, thinking, or describing?</div>
+          <div class="step"><strong>2. Notice the Values</strong>What does that perspective call important, strange, dangerous, or normal?</div>
+          <div class="step"><strong>3. Interpret the Effect</strong>How does that perspective shape what the reader understands?</div>
         </div>
-        <div class="tip"><strong>Think bridge, not dump.</strong> Your sentence should carry the reader into the quotation and then back into your analysis.</div>
+        <div class="tip">
+          <strong>Perspective is more than first person versus third person.</strong>
+          Even a third-person narrator may keep us very close to one character’s understanding of the world.
+        </div>
       </div>
     </section>
 
@@ -226,26 +231,27 @@
         <div class="progress-wrap">
           <div class="progress-label">
             <span id="roundText">Round 1 of 3</span>
-            <span id="itemText">Example 1 of 9</span>
+            <span id="itemText">Example 1 of 8</span>
           </div>
-          <progress id="progress" value="1" max="9">1 of 9</progress>
+          <progress id="progress" value="1" max="8">1 of 8</progress>
         </div>
 
         <div id="questionArea">
-          <div class="round-label" id="roundLabel">Round 1: Give Enough Context</div>
+          <div class="round-label" id="roundLabel">Round 1: Same Event, Different Lens</div>
 
-          <div id="claimWrap">
-            <p class="label">PARAGRAPH IDEA</p>
-            <div class="box" id="claim"></div>
-          </div>
-
-          <div id="quoteWrap">
-            <p class="label">EVIDENCE TO USE</p>
-            <blockquote id="quote"></blockquote>
+          <div id="pairWrap" class="pair">
+            <div class="perspective">
+              <strong id="leftLabel">Adult View</strong>
+              <div id="leftText"></div>
+            </div>
+            <div class="perspective">
+              <strong id="rightLabel">Child View</strong>
+              <div id="rightText"></div>
+            </div>
           </div>
 
           <p class="prompt" id="prompt"></p>
-          <div id="choices" class="choices" aria-label="Choose the strongest revision"></div>
+          <div id="choices" class="choices" aria-label="Choose the strongest perspective analysis"></div>
 
           <div id="feedback" class="feedback hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
@@ -256,15 +262,18 @@
         </div>
 
         <div id="completion" class="completion hidden" tabindex="-1">
-          <p class="big">You practiced using quotations as part of your own thinking.</p>
-          <p>Before you add a quotation, ask:</p>
+          <p class="big">You practiced analyzing perspective.</p>
+          <p>When you read, try asking:</p>
           <ul>
-            <li>Does my reader need a little context?</li>
-            <li>Can I integrate the evidence into my own sentence?</li>
-            <li>Have I returned to my own voice afterward?</li>
-            <li>Am I explaining the important language instead of repeating it?</li>
+            <li>Whose experience is closest to the reader?</li>
+            <li>What does this perspective notice that someone else might ignore?</li>
+            <li>What does the perspective value or fear?</li>
+            <li>What might this perspective misunderstand?</li>
+            <li>How would the scene change if someone else told it?</li>
           </ul>
-          <p>A quotation gives you evidence. Your analysis tells the reader why that evidence matters.</p>
+          <p>
+            Perspective shapes meaning because it shapes what counts as important in the first place.
+          </p>
           <div class="actions">
             <button id="restart" class="secondary" type="button">Practice Again</button>
           </div>
@@ -279,102 +288,115 @@
   (() => {
     const items = [
       {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The story presents the child as intimidated by the adult-controlled space.",
-        quote:"She crept quietly toward the enormous door.",
-        prompt:"Which setup gives the reader useful context without burying the quotation in plot summary?",
+        round:1,
+        roundLabel:"Round 1: Same Event, Different Lens",
+        leftLabel:"Adult View",
+        leftText:"The room was cluttered with toys that needed to be put away.",
+        rightLabel:"Child View",
+        rightText:"The floor had become a city, with blocks for towers and blankets for rivers.",
+        prompt:"What changes most between these two perspectives?",
         choices:[
-          {text:"As the child approaches the room where the adults are waiting, the narrator says that she “crept quietly toward the enormous door.”",correct:true,feedback:"This gives just enough context to locate the moment and then gets quickly to the evidence."},
-          {text:"Earlier in the story, the child wakes up, gets dressed, walks downstairs, eats breakfast, talks to her brother, goes outside, comes back in, and eventually approaches the room where the adults are waiting. She “crept quietly toward the enormous door.”",correct:false,feedback:"This is too much context for the evidence. Most of the plot summary does not help the reader understand the quotation."},
-          {text:"“She crept quietly toward the enormous door.”",correct:false,feedback:"The quotation is clear, but it appears without any signal about when or why this moment matters. A small amount of context helps the reader enter the evidence."}
+          {text:"The adult perspective sees disorder that needs correcting, while the child perspective sees imaginative possibility.",correct:true,feedback:"Yes. The physical room is similar, but the two perspectives assign completely different values to it."},
+          {text:"The child is simply wrong because the room is actually messy.",correct:false,feedback:"Literary analysis is not about deciding which perspective is factually superior. The important question is what each perspective notices and values."},
+          {text:"Nothing important changes because both descriptions refer to the same room.",correct:false,feedback:"The event is the same, but its meaning changes because the perspectives frame the room differently."}
         ]
       },
       {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The passage suggests that Mina sees possibility where the others see restriction.",
-        quote:"The others studied the locked window. Mina studied the thin line of light beneath it.",
-        prompt:"Which introduction gives the most useful context?",
+        round:1,
+        roundLabel:"Round 1: Same Event, Different Lens",
+        leftLabel:"Parent View",
+        leftText:"Lena was stalling again instead of getting ready for school.",
+        rightLabel:"Lena's View",
+        rightText:"If she tied the second shoe, the morning would begin for real.",
+        prompt:"Which interpretation best explains the difference?",
         choices:[
-          {text:"When the group reaches the blocked window, the narrator contrasts what the others notice with Mina’s attention: “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:true,feedback:"This identifies the situation and prepares the reader to notice the contrast without overexplaining it first."},
-          {text:"There are many characters in this story and they have been traveling for a long time. Eventually they reach a window. The window is important. “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:false,feedback:"This adds vague background but does not sharpen the reader’s understanding of the specific analytical moment."},
-          {text:"Here is a quote that shows Mina is hopeful: “The others studied the locked window. Mina studied the thin line of light beneath it.”",correct:false,feedback:"This announces the quotation mechanically and tells the reader what it 'shows' before analyzing how the language supports that idea."}
+          {text:"The parent sees delay as misbehavior, while Lena’s perspective suggests the delay may be connected to anxiety or reluctance.",correct:true,feedback:"Exactly. Perspective changes the meaning of the same behavior from defiance to a possible emotional response."},
+          {text:"Lena is definitely refusing school because she is lazy.",correct:false,feedback:"That imports a judgment the child's perspective does not support."},
+          {text:"The parent is definitely a bad parent.",correct:false,feedback:"The difference in perspective may reveal misunderstanding, but one line is not enough to make that sweeping judgment."}
         ]
       },
       {
-        round:1, roundLabel:"Round 1: Give Enough Context",
-        claim:"The narrator presents memory as both comforting and painful.",
-        quote:"She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.",
-        prompt:"Which setup is strongest?",
+        round:2,
+        roundLabel:"Round 2: Notice What the Lens Leaves Out",
+        leftLabel:"Narrator Close to the Child",
+        leftText:"The principal’s office smelled like dust and old paper. The chair was so tall that Maya’s feet did not touch the floor.",
+        rightLabel:"Possible Adult Description",
+        rightText:"Maya met with the principal to discuss the incident.",
+        prompt:"What does the child-centered perspective add?",
         choices:[
-          {text:"When she finds an object connected to the person she misses, she “pressed the old sweater to her face” before “folding it away again.”",correct:true,feedback:"This gives the emotional situation and preserves the two actions that will matter most for the analysis."},
-          {text:"The sweater appears in the middle of the story. It is old. It smells like cedar. She used to see it in the closet. Then one day she finds it again.",correct:false,feedback:"This summarizes surrounding details but delays the evidence the paragraph actually needs."},
-          {text:"According to the story, “She pressed the old sweater to her face, breathing in the faint cedar smell before folding it away again.”",correct:false,feedback:"“According to the story” does not give meaningful context. The reader needs the situation, not a generic signal phrase."}
+          {text:"It makes institutional authority feel physical and intimidating through sensory details and scale.",correct:true,feedback:"Yes. The high chair and sensory details make the experience feel different from the neutral adult summary."},
+          {text:"It proves the principal is cruel.",correct:false,feedback:"The details create intimidation, but they do not establish the principal's character."},
+          {text:"It mainly gives us extra decoration.",correct:false,feedback:"The details are not just decorative; they shape how the reader experiences the power difference."}
         ]
       },
       {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"The hallway is presented as oppressive.",
-        quote:"The hallway swallowed every sound she made.",
-        prompt:"Which sentence integrates the quotation most naturally?",
+        round:2,
+        roundLabel:"Round 2: Notice What the Lens Leaves Out",
+        leftLabel:"Older Sibling View",
+        leftText:"Ben kept asking the same question even after everyone had explained it.",
+        rightLabel:"Ben's View",
+        rightText:"Everyone kept answering a different question from the one he meant.",
+        prompt:"What analytical possibility appears when we compare the two views?",
         choices:[
-          {text:"The setting seems to erase the character’s presence as the hallway “swallowed every sound she made.”",correct:true,feedback:"The writer’s own sentence leads directly into the quoted language, so the evidence feels grammatically and conceptually connected."},
-          {text:"The hallway is oppressive. “The hallway swallowed every sound she made.”",correct:false,feedback:"This is a dropped quotation. The reader can understand it, but the evidence is disconnected from the writer’s sentence."},
-          {text:"The author says, quote, “The hallway swallowed every sound she made,” end quote.",correct:false,feedback:"This is not how written literary analysis normally integrates evidence. The quotation should become part of the writer’s own sentence."}
+          {text:"The scene may be less about Ben failing to understand and more about a communication gap between him and the people around him.",correct:true,feedback:"Exactly. The second perspective complicates the first judgment and opens a new interpretation of the conflict."},
+          {text:"Ben is obviously smarter than everyone else.",correct:false,feedback:"The comparison shows a gap in understanding, but it does not establish a hierarchy of intelligence."},
+          {text:"The older sibling is lying.",correct:false,feedback:"Different perspectives can both be sincere while understanding the same event differently."}
         ]
       },
       {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"The child’s perspective makes the adult space seem overwhelming.",
-        quote:"the enormous door",
-        prompt:"Which sentence uses the short quotation most efficiently?",
+        round:2,
+        roundLabel:"Round 2: Notice What the Lens Leaves Out",
+        leftLabel:"Third-Person Close to the Child",
+        leftText:"The adults spoke softly in the kitchen, using the careful voices they used when something was wrong.",
+        rightLabel:"What the Adults Know",
+        rightText:"They are discussing whether the family can afford to stay in the apartment.",
+        prompt:"What effect comes from keeping the reader close to the child instead of giving the adult information immediately?",
         choices:[
-          {text:"By describing the doorway from the child’s perspective as “the enormous door,” the narration makes ordinary architecture feel intimidating.",correct:true,feedback:"This embeds a short phrase directly inside the analysis, which is often more effective than quoting a whole sentence."},
-          {text:"The narrator says, “the enormous door.” This quote is important.",correct:false,feedback:"The quotation is technically present, but the sentence does not yet integrate or analyze it."},
-          {text:"The entire sentence should always be quoted instead of using only the words “the enormous door.”",correct:false,feedback:"You do not need to quote more than you plan to use. Short embedded quotations can make close reading more precise."}
+          {text:"The reader experiences uncertainty alongside the child, which can make adult decisions feel mysterious and powerful.",correct:true,feedback:"Yes. Restricting information shapes the emotional experience of the scene."},
+          {text:"The narrator is hiding information because the author forgot to explain it.",correct:false,feedback:"The limited information can be a deliberate narrative choice that keeps us inside the child's experience."},
+          {text:"The adults are automatically dishonest because they speak quietly.",correct:false,feedback:"Secrecy or protection may be possible, but the perspective alone does not prove dishonesty."}
         ]
       },
       {
-        round:2, roundLabel:"Round 2: Make the Quote Fit",
-        claim:"The story connects the garden with freedom from adult order.",
-        quote:"wild and tangled",
-        prompt:"Which version integrates the evidence most effectively?",
+        round:3,
+        roundLabel:"Round 3: Analyze the Effect",
+        leftLabel:"Passage A",
+        leftText:"Daniel watched his mother erase the calendar square and write the new date beneath it.",
+        rightLabel:"Passage B",
+        rightText:"His mother moved the appointment again.",
+        prompt:"Why might a writer choose Passage A if the scene is close to Daniel’s perspective?",
         choices:[
-          {text:"The description of the garden as “wild and tangled” turns disorder into part of what makes the space feel free.",correct:true,feedback:"The short quoted phrase is woven into the writer’s analytical sentence."},
-          {text:"The garden is free. “Wild and tangled.”",correct:false,feedback:"The fragment is dropped into the paragraph without a grammatical bridge."},
-          {text:"The quote “wild and tangled” is a quote that shows the garden is wild and tangled.",correct:false,feedback:"This repeats the quotation instead of using it as evidence for an interpretation."}
+          {text:"The physical act of erasing and rewriting lets Daniel notice the change visually before he may fully understand what it means.",correct:true,feedback:"Yes. The concrete detail suits a perspective that experiences the consequence before understanding the larger situation."},
+          {text:"Passage A is longer, so it is automatically better writing.",correct:false,feedback:"Length is not the key issue. The important difference is how the action is filtered through perception."},
+          {text:"Passage B is incorrect because appointments cannot move.",correct:false,feedback:"Both are possible descriptions. The analytical question is what each perspective emphasizes."}
         ]
       },
       {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"The classroom moment makes the student feel exposed.",
-        quote:"twenty faces lifted at once",
-        prompt:"What should come immediately after the quotation?",
+        round:3,
+        roundLabel:"Round 3: Analyze the Effect",
+        leftLabel:"Child-Focused Description",
+        leftText:"The adults stopped talking when Noah came into the room.",
+        rightLabel:"Adult-Focused Description",
+        rightText:"They paused the conversation until Noah went back upstairs.",
+        prompt:"Which interpretation best explains the difference?",
         choices:[
-          {text:"The number and simultaneous movement create a sudden wall of attention, making the student feel like the focus of the entire room.",correct:true,feedback:"This returns to the writer’s own voice and analyzes how the language creates the feeling of exposure."},
-          {text:"This means that twenty people looked up.",correct:false,feedback:"This paraphrases the quotation but does not explain its effect."},
-          {text:"Then the teacher continued talking and the lesson moved on.",correct:false,feedback:"This returns to plot summary instead of staying with the evidence long enough to analyze it."}
+          {text:"The child-focused version emphasizes exclusion and uncertainty, while the adult-focused version emphasizes intention and control.",correct:true,feedback:"Exactly. The two versions make different kinds of knowledge available to the reader."},
+          {text:"The child-focused version proves the adults dislike Noah.",correct:false,feedback:"The exclusion may feel significant, but dislike is more specific than the evidence allows."},
+          {text:"The adult-focused version is more objective.",correct:false,feedback:"It gives more information about intention, but that does not make it neutral or objective."}
         ]
       },
       {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"The wolf’s politeness makes the danger harder to recognize.",
-        quote:"Good evening, little one.",
-        prompt:"Which follow-up does the strongest analytical work?",
+        round:3,
+        roundLabel:"Round 3: Analyze the Effect",
+        leftLabel:"Close to the Youngest Character",
+        leftText:"Everyone else in the portrait looked straight ahead. June wondered what the girl at the edge could see beyond the frame.",
+        rightLabel:"More Distant Narration",
+        rightText:"One figure in the portrait looked away from the viewer.",
+        prompt:"What does June’s perspective add to the image?",
         choices:[
-          {text:"The courteous greeting sounds reassuring rather than threatening, which helps disguise the danger behind familiar social behavior.",correct:true,feedback:"This explains how the tone of the evidence supports the interpretation."},
-          {text:"The wolf says good evening to the girl.",correct:false,feedback:"This simply restates what the quotation already tells us."},
-          {text:"This is dialogue.",correct:false,feedback:"Naming the form is not enough. The analytical question is what this particular dialogue does in the scene."}
-        ]
-      },
-      {
-        round:3, roundLabel:"Round 3: Return to Analysis",
-        claim:"Mina notices possibility where the others see only a barrier.",
-        quote:"The others studied the locked window. Mina studied the thin line of light beneath it.",
-        prompt:"Which complete sequence works best?",
-        choices:[
-          {text:"When the group reaches the blocked window, the narrator contrasts their attention: “The others studied the locked window. Mina studied the thin line of light beneath it.” The contrast shifts focus from the barrier itself to what exists beyond it, showing how Mina’s perspective opens toward possibility.",correct:true,feedback:"This sequence gives context, integrates the evidence, and then explains the contrast. The quotation is part of the reasoning rather than an interruption."},
-          {text:"The group finds a window. “The others studied the locked window. Mina studied the thin line of light beneath it.” Then they keep going.",correct:false,feedback:"This provides plot before and after the quotation, but the interpretation never arrives."},
-          {text:"Mina is hopeful. “The others studied the locked window. Mina studied the thin line of light beneath it.” This shows Mina is hopeful.",correct:false,feedback:"The claim and quotation are present, but the final sentence only repeats the claim. It does not explain how the contrast supports it."}
+          {text:"It turns the visual difference into a question about possibility, because June’s curiosity guides the reader toward what might exist beyond the frame.",correct:true,feedback:"Yes. The perspective does not merely describe the portrait; it shapes how the reader interprets its difference."},
+          {text:"It tells us exactly what the painted girl is looking at.",correct:false,feedback:"June wonders, but she does not know. The uncertainty is part of the effect."},
+          {text:"It proves June and the painted girl are the same kind of person.",correct:false,feedback:"The parallel may be worth exploring, but the passage alone does not prove a direct equivalence."}
         ]
       }
     ];
@@ -384,8 +406,10 @@
       itemText:document.getElementById("itemText"),
       progress:document.getElementById("progress"),
       roundLabel:document.getElementById("roundLabel"),
-      claim:document.getElementById("claim"),
-      quote:document.getElementById("quote"),
+      leftLabel:document.getElementById("leftLabel"),
+      leftText:document.getElementById("leftText"),
+      rightLabel:document.getElementById("rightLabel"),
+      rightText:document.getElementById("rightText"),
       prompt:document.getElementById("prompt"),
       choices:document.getElementById("choices"),
       feedback:document.getElementById("feedback"),
@@ -408,9 +432,12 @@
       els.progress.max=items.length;
       els.progress.textContent=`${index+1} of ${items.length}`;
       els.roundLabel.textContent=item.roundLabel;
-      els.claim.textContent=item.claim;
-      els.quote.textContent=item.quote;
+      els.leftLabel.textContent=item.leftLabel;
+      els.leftText.textContent=item.leftText;
+      els.rightLabel.textContent=item.rightLabel;
+      els.rightText.textContent=item.rightText;
       els.prompt.textContent=item.prompt;
+
       els.choices.innerHTML="";
       item.choices.forEach((choice,i)=>{
         const btn=document.createElement("button");
@@ -420,6 +447,7 @@
         btn.addEventListener("click",()=>check(i,btn));
         els.choices.appendChild(btn);
       });
+
       els.feedback.className="feedback hidden";
       els.feedback.innerHTML="";
       els.actions.classList.add("hidden");
@@ -429,28 +457,31 @@
 
     function check(i,button){
       const choice=items[index].choices[i];
-      [...els.choices.querySelectorAll("button")].forEach(btn=>{
-        btn.disabled=true;btn.classList.remove("correct","incorrect");
+      [...els.choices.querySelectorAll(".choice")].forEach(btn=>{
+        btn.disabled=true;
+        btn.classList.remove("correct","incorrect");
       });
+
       if(choice.correct){
         solved=true;
         button.classList.add("correct");
         els.feedback.className="feedback correct";
-        els.feedback.innerHTML=`<div class="feedback-title">Yes — the quotation is doing real work here.</div><div>${choice.feedback}</div>`;
+        els.feedback.innerHTML=`<div class="feedback-title">Yes — this explains what the perspective changes.</div><div>${choice.feedback}</div>`;
         els.next.classList.remove("hidden");
       }else{
         button.classList.add("incorrect");
         els.feedback.className="feedback try";
-        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Look at how the quotation connects to the writer’s own thinking.</div><div>${choice.feedback}</div>`;
+        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Focus on what the perspective makes the reader notice or understand.</div><div>${choice.feedback}</div>`;
         els.tryAgain.classList.remove("hidden");
       }
+
       els.actions.classList.remove("hidden");
       els.feedback.scrollIntoView({block:"nearest"});
     }
 
     els.tryAgain.addEventListener("click",()=>{
       render();
-      const first=els.choices.querySelector("button");
+      const first=els.choices.querySelector(".choice");
       if(first) first.focus();
     });
 
