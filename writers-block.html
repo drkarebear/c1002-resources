@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Writer’s Block: Go Back to the Text | ENGL C1002 Learning Lab</title>
-<meta name="description" content="A low-stakes ENGL C1002 lab that helps students respond to literary-analysis writer’s block by returning to close reading, patterns, questions, and evidence rather than padding a draft.">
-<link rel="icon" type="image/png" href="favicon4.png">
+<meta content="A low-stakes ENGL C1002 lab that helps students respond to literary-analysis writer’s block by returning to close reading, patterns, questions, and evidence rather than padding a draft." name="description"/>
+<link href="favicon4.png" rel="icon" type="image/png"/>
 <style>
 :root{--bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;--green-soft:#f0f7f2;--gold-soft:#fff8e8;--focus:#111827;--max:820px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;color-scheme:light dark}
@@ -104,109 +105,214 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
   .strategy-grid{grid-template-columns:1fr}
 }
 
+
+    /* Accessible instructional infographic */
+    .instruction-graphic{
+      max-width:900px;
+      margin:1.15rem auto 1.5rem;
+    }
+    .instruction-graphic img{
+      display:block;
+      width:min(100%,820px);
+      height:auto;
+      margin:0 auto;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.85rem;
+      background:#fff;
+    }
+    .instruction-graphic figcaption{
+      max-width:70ch;
+      margin:.55rem auto 0;
+      color:var(--muted,#5d6978);
+      font-size:.94rem;
+      text-align:center;
+    }
+    .graphic-full-text{
+      max-width:820px;
+      margin:.75rem auto 0;
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.75rem;
+      background:var(--soft,#eef4fb);
+      padding:.15rem .9rem .75rem;
+    }
+    .graphic-full-text summary{
+      cursor:pointer;
+      font-weight:800;
+      padding:.7rem 0;
+    }
+    .graphic-full-text summary:focus-visible{
+      outline:3px solid var(--focus,#111827);
+      outline-offset:3px;
+    }
+    .graphic-transcript{
+      background:var(--surface,#fff);
+      border:1px solid var(--border,#d4dbe5);
+      border-radius:.7rem;
+      padding:.9rem;
+    }
+    .graphic-transcript p{margin:.45rem 0}
+    .graphic-stage{
+      margin:.55rem 0;
+      padding:.6rem .7rem;
+      border-left:4px solid var(--accent,#1f5da8);
+      background:var(--surface,#fff);
+      border-radius:.3rem;
+    }
+    .graphic-stage strong{
+      display:block;
+      margin-bottom:.1rem;
+      color:var(--accent-dark,#163f74);
+    }
+    .strategy-heading{
+      margin:1.6rem 0 .35rem;
+    }
+    .strategy-note{
+      max-width:72ch;
+      margin:.35rem 0 1rem;
+    }
+    .now-practice{
+      margin:1.8rem 0 1.05rem;
+      border:3px solid var(--accent,#1f5da8);
+      border-radius:.9rem;
+      background:var(--soft,#eef4fb);
+      padding:1.05rem;
+      text-align:center;
+    }
+    .now-practice .practice-kicker{
+      display:block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color:var(--accent-dark,#163f74);
+    }
+    .now-practice h2{
+      font-size:clamp(1.9rem,6vw,2.65rem);
+      margin:.15rem 0 .25rem;
+    }
+    .now-practice p{
+      max-width:64ch;
+      margin:.25rem auto;
+    }
+
 </style>
 </head>
 <body>
 <header>
-<a class="brand" href="index.html"><img src="favicon4.png" alt=""><span>ENGL C1002 Learning Lab</span></a>
-<nav class="student-nav" aria-label="Student navigation"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
+<a class="brand" href="index.html"><img alt="" src="favicon4.png"/><span>ENGL C1002 Learning Lab</span></a>
+<nav aria-label="Student navigation" class="student-nav"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
 <p class="eyebrow">Getting Unstuck</p>
 <h1>Writer’s Block: Go Back to the Text</h1>
 <p class="lede">When you get stuck in literary analysis, the problem is often not that you need to “write more.” You may need <strong>more to think about</strong>. This lab starts with practical ways to return to the text, gather new observations, and create something meaningful to say before you start adding sentences.</p>
 <div class="big-note"><strong>A useful rule:</strong> If you do not know what to write next, do not immediately add words. Stop drafting for a little while, return to the text with a specific purpose, and create more analytical material.</div>
-<div class="rescue" aria-label="Four rescue moves">
+<div aria-label="Four rescue moves" class="rescue">
 <div><strong>1. Look Again</strong>Zoom in on a word, image, action, contrast, or stage direction.</div>
 <div><strong>2. Find a Pattern</strong>Connect two or three details instead of treating each one separately.</div>
 <div><strong>3. Ask a Better Question</strong>Move from “what happened?” to “why might this matter?”</div>
 <div><strong>4. Revise the Idea</strong>If evidence does not fit, complicate the claim instead of ignoring it.</div>
-</header>
+</div></header>
 <main>
 
-<section class="practical-intro" aria-labelledby="really-stuck-heading">
-  <h2 id="really-stuck-heading">What Writers Actually Do When They’re Stuck</h2>
-
-  <p class="intro-copy">
-    Getting stuck does not always mean you need to force yourself to produce more sentences.
-    In literary analysis, it often means you have not yet done enough noticing, questioning,
-    connecting, or close reading to know what you want to say next.
-  </p>
-
-  <p class="intro-copy">
-    Experienced writers often stop drafting for a while and go back to the source.
-    The goal is not simply to reread the same material in the same way. Give yourself a
-    <strong>specific purpose</strong> so you come back with new observations.
-  </p>
-
-  <div class="strategy-grid">
-    <article class="strategy-card">
-      <strong>Set a 20–30 minute rereading timer.</strong>
-      <p>Put the draft aside. Read the text again and take notes only on details connected to your current question or thesis.</p>
-    </article>
-
-    <article class="strategy-card">
-      <strong>Annotate the text again.</strong>
-      <p>Use a new lens this time. Mark repetition, contrasts, unusual word choices, changes in tone, symbols, silences, or moments that do not fit your first interpretation.</p>
-    </article>
-
-    <article class="strategy-card">
-      <strong>Rewatch the scene or film with a notebook open.</strong>
-      <p>If you are analyzing a film, a third viewing can be productive when you watch for one thing: camera choices, dialogue, silence, setting, character movement, recurring images, or changes in sound.</p>
-    </article>
-
-    <article class="strategy-card">
-      <strong>Read only the part you are writing about.</strong>
-      <p>You may not need to reread the entire work. Slow down over the scene, stanza, paragraph, or exchange that your body paragraph is trying to explain.</p>
-    </article>
-
-    <article class="strategy-card">
-      <strong>Make a quick evidence list before writing sentences.</strong>
-      <p>Collect three to five interesting details. Do not worry about polished prose yet. Look for a relationship among them.</p>
-    </article>
-
-    <article class="strategy-card">
-      <strong>Look for the detail that does not quite fit.</strong>
-      <p>If one moment seems to challenge your thesis, do not avoid it. That complication may give you the most interesting thing to write about.</p>
-    </article>
-  </div>
-
-  <div class="hunt-box">
-    <h3>Give Yourself Something Specific to Hunt For</h3>
-    <p>Instead of telling yourself, “Read it again,” try one focused mission:</p>
-    <ul>
-      <li>Find three words or images that repeat.</li>
-      <li>Mark every place the character changes their mind or behavior.</li>
-      <li>Find a contrast: before/after, public/private, freedom/control, appearance/reality.</li>
-      <li>Notice who speaks, who stays silent, and who gets interrupted.</li>
-      <li>Find one moment that surprised you or does not fit your current interpretation.</li>
-      <li>Circle a word you could spend two or three sentences unpacking.</li>
-      <li>Ask what changes if you look at the scene from another character’s point of view.</li>
-    </ul>
-  </div>
-
-  <div class="transition-box">
-    <strong>Then return to the draft.</strong>
-    You should now have something new to think with: another detail, a pattern, a question,
-    a contradiction, or a better understanding of the evidence. That is what creates more
-    analysis. The questions below will help you practice choosing the most useful next move.
-  </div>
+<section aria-labelledby="really-stuck-heading" class="practical-intro">
+<h2 id="really-stuck-heading">What Writers Actually Do When They’re Stuck</h2>
+<p class="intro-copy">Getting stuck does not always mean you need to force yourself to produce more sentences. In literary analysis, it often means you have not yet done enough noticing, questioning, connecting, or close reading to know what you want to say next.</p>
+<p class="intro-copy">Experienced writers often stop drafting for a while and go back to the source. Two useful ways to make that return more manageable are to <strong>make the work smaller</strong> and to <strong>reread with one specific mission</strong>.</p>
+<h3 class="strategy-heading">Strategy 1: Make the Work Smaller</h3>
+<p class="strategy-note">If the task feels too large to begin, choose one small piece of reading or writing and work on only that piece for a limited block of time. A Pomodoro is one option, not a requirement. If timed work makes it harder for you to focus, use a small task boundary instead.</p>
+<figure class="instruction-graphic">
+<img alt="Infographic showing an optional Pomodoro cycle of 25 minutes of focused work followed by a 5-minute break, repeated four times before a longer break." height="1086" src="pomodoro-reading-writing.png" width="1448"/>
+<figcaption>A Pomodoro can make a large reading or writing task feel more manageable by turning it into one focused work block at a time.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Use a Pomodoro to Make Reading or Writing Feel Smaller</h3>
+<p>The infographic shows four cycles. Each cycle contains 25 minutes of focused work followed by a 5-minute break. After four work sessions, take a longer 15–30 minute break.</p>
+<div class="graphic-stage"><strong>1. Choose one small task</strong>Reading example: Read and annotate 6 pages. Writing example: Draft one body paragraph.</div>
+<div class="graphic-stage"><strong>2. Work for 25 minutes</strong>Focus on the chosen task for one work block.</div>
+<div class="graphic-stage"><strong>3. Take a 5-minute break</strong>Step away and give your mind a short reset.</div>
+<div class="graphic-stage"><strong>4. Repeat</strong>Repeat the cycle. After four work sessions, take a longer 15–30 minute break.</div>
+<p><strong>Takeaway:</strong> The goal is not to finish everything. The goal is to start one manageable block of focused work.</p>
+</div>
+</details>
+</figure>
+<h3 class="strategy-heading">Strategy 2: Give Yourself Something Specific to Hunt For</h3>
+<p class="strategy-note">Rereading works better when you know what you are looking for. Instead of telling yourself only “Read it again,” choose one feature to track and let that mission guide your attention.</p>
+<figure class="instruction-graphic">
+<img alt="Infographic showing seven focused rereading missions, including repeated details, changes in behavior, contrasts, silence, surprising moments, important words, and another character’s point of view." height="1087" src="reread-with-a-mission.png" width="1447"/>
+<figcaption>Choose one mission before rereading so that the second look has a clear analytical purpose.</figcaption>
+<details class="graphic-full-text">
+<summary>Read the full text version of this infographic</summary>
+<div class="graphic-transcript">
+<h3>Give Yourself Something Specific to Hunt For</h3>
+<p><strong>Rereading works better when you know what you’re looking for.</strong></p>
+<p>Sample passage:</p>
+<blockquote>
+<p>The rain had come and gone all morning, leaving the streets shining like they’d been washed clean. Maya pulled her jacket tighter and walked across the bridge.</p>
+<p>Yesterday, she avoided the call. Today, she dialed the number anyway.</p>
+<p>Her brother loved loud music and big plans. She loved quiet places and careful lists.</p>
+<p>“I’m not coming,” he said. On the other end, there was only a long breath.</p>
+<p>Then the power flickered, and the call went dark. When it came back, his voice was different.</p>
+<p>From his side of the room, he stared out the window at the same rain, and said nothing.</p>
+</blockquote>
+<p>The graphic marks seven possible rereading missions:</p>
+<ul>
+<li><strong>Repeated words or images:</strong> notice language such as “rain” and “washed clean.”</li>
+<li><strong>A change in behavior:</strong> compare “Yesterday, she avoided the call” with “Today, she dialed the number anyway.”</li>
+<li><strong>A contrast:</strong> compare “loud music and big plans” with “quiet places and careful lists.”</li>
+<li><strong>Who speaks or stays silent:</strong> notice the spoken line and the long breath that follows.</li>
+<li><strong>A surprising moment:</strong> notice when the power flickers and the call goes dark.</li>
+<li><strong>A word worth unpacking:</strong> slow down around a word such as “careful.”</li>
+<li><strong>Another character’s point of view:</strong> consider the final image of the brother looking at the same rain and saying nothing.</li>
+</ul>
+<p><strong>Instead of:</strong> Read it again.</p>
+<p><strong>Try:</strong> Choose one mission. Reread with purpose.</p>
+</div>
+</details>
+</figure>
+<div class="strategy-grid">
+<article class="strategy-card">
+<strong>Rewatch the scene or film with a notebook open.</strong>
+<p>If you are analyzing a film, watch for one thing: camera choices, dialogue, silence, setting, character movement, recurring images, or changes in sound.</p>
+</article>
+<article class="strategy-card">
+<strong>Read only the part you are writing about.</strong>
+<p>You may not need to reread the entire work. Slow down over the scene, stanza, paragraph, or exchange that your body paragraph is trying to explain.</p>
+</article>
+<article class="strategy-card">
+<strong>Make a quick evidence list before writing sentences.</strong>
+<p>Collect three to five interesting details. Do not worry about polished prose yet. Look for a relationship among them.</p>
+</article>
+<article class="strategy-card">
+<strong>Look for the detail that does not quite fit.</strong>
+<p>If one moment seems to challenge your thesis, do not avoid it. That complication may give you the most interesting thing to write about.</p>
+</article>
+</div>
+<div class="transition-box">
+<strong>Then return to the draft.</strong>
+You should now have something new to think with: another detail, a pattern, a question, a contradiction, or a better understanding of the evidence. That is what creates more analysis.
+</div>
+</section>
+<section aria-labelledby="now-practice-heading" class="now-practice">
+<span class="practice-kicker">Instruction Complete</span>
+<h2 id="now-practice-heading">Now Practice</h2>
+<p>Choose the next move that would create more analytical material before you simply add more sentences to the draft.</p>
 </section>
 
 <section id="activity">
 <div class="progress-label"><span id="progressText"></span><span>Low-stakes practice</span></div>
-<progress id="progress" value="1" max="9"></progress>
-<div id="questionCard" class="card">
-<div id="roundLabel" class="round-label"></div>
-<div id="passage" class="passage"></div>
-<div id="prompt" class="prompt"></div>
-<div id="choices" class="choices"></div>
-<div id="feedback" class="feedback" aria-live="polite"></div>
-<div class="actions"><button id="tryAgain" class="hidden" type="button">Try Again</button><button id="next" class="primary hidden" type="button">Continue</button></div>
+<progress id="progress" max="9" value="1"></progress>
+<div class="card" id="questionCard">
+<div class="round-label" id="roundLabel"></div>
+<div class="passage" id="passage"></div>
+<div class="prompt" id="prompt"></div>
+<div class="choices" id="choices"></div>
+<div aria-live="polite" class="feedback" id="feedback"></div>
+<div class="actions"><button class="hidden" id="tryAgain" type="button">Try Again</button><button class="primary hidden" id="next" type="button">Continue</button></div>
 </div>
 </section>
-
-<section id="completion" class="completion hidden" tabindex="-1">
+<section class="completion hidden" id="completion" tabindex="-1">
 <div class="completion-capture">
-<div class="completion-check" aria-hidden="true">✓</div>
+<div aria-hidden="true" class="completion-check">✓</div>
 <p class="completion-kicker">Literary Analysis Lab</p>
 <h2>You did it!</h2>
 <p class="completion-activity">Writer’s Block: Go Back to the Text</p>
@@ -215,7 +321,6 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 </div>
 <div class="completion-actions"><button id="restart" type="button">Practice Again</button><a class="reflect" href="reflection.html?lab=writers-block">Reflect</a><div class="completion-links"><a href="all-labs.html">All Labs</a><a href="index.html">Student Home</a></div></div>
 </section>
-
 <section class="transfer">
 <h2>When You Get Stuck in Your Own Draft</h2>
 <p>Before trying to make the paragraph longer, write down one of these:</p>
@@ -235,7 +340,6 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
 </section>
 </main>
 <footer><p>Created by Karen Crozer for ENGL C1002 classes.</p><p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p></footer>
-
 <script>
 (() => {
 const items=[{"round": "What Kind of Stuck Is This?", "passage": "Draft: “The mirror is important in Snow White because the queen keeps asking it who is most beautiful.”", "prompt": "The writer says, “I don’t know what else to write.” What is probably the best next move?", "choices": [{"text": "Add three more sentences explaining that mirrors are important in many stories.", "correct": false, "feedback": "That adds length without deepening this interpretation. The writer needs to return to the specific pattern in this tale."}, {"text": "Look again at when the queen consults the mirror, what changes in its answers, and how her behavior changes afterward.", "correct": true, "feedback": "Yes. The paragraph is not mainly short because it lacks sentences. It is short because the writer has not yet examined the pattern closely enough."}, {"text": "Find a longer quotation so the paragraph takes up more space.", "correct": false, "feedback": "A longer quotation can make the paragraph longer without giving the writer more analysis. The goal is more thinking, not more quoted words."}]}, {"round": "Return to the Evidence", "passage": "Draft: “The child in The Emperor’s New Clothes tells the truth. This shows honesty is important.”", "prompt": "What could the writer investigate before trying to add more prose?", "choices": [{"text": "Why the crowd stays silent before the child speaks, and what changes once someone breaks that silence.", "correct": true, "feedback": "Exactly. The contrast between group silence and one act of speech gives the writer something specific to analyze."}, {"text": "How many pages long the story is.", "correct": false, "feedback": "That fact will not deepen the paragraph’s interpretation."}, {"text": "A dictionary definition of honesty.", "correct": false, "feedback": "The literary question is not what honesty means in general. It is what this particular scene suggests about speaking, conformity, and truth."}]}, {"round": "Zoom In", "passage": "Evidence: “your name stayed / bright on my tongue.”", "prompt": "The writer has used the quotation but feels stuck after it. Which move creates the most analytical material?", "choices": [{"text": "Ask why the poem uses “stayed,” why the memory is “bright,” and why it is located “on my tongue.”", "correct": true, "feedback": "Yes. One short quotation can generate several layers of analysis when the writer slows down and examines the actual language."}, {"text": "Immediately add another quotation from later in the poem.", "correct": false, "feedback": "Another quotation may eventually help, but the writer has not yet unpacked the evidence already on the page."}, {"text": "Write, “This quote is very significant to the poem.”", "correct": false, "feedback": "That announces significance without explaining it."}]}, {"round": "Find the Missing Question", "passage": "Draft: “Rapunzel lives in a tower. The tower keeps her safe, but she cannot leave it.”", "prompt": "Which question is most likely to help the writer move forward?", "choices": [{"text": "How many windows does the tower have?", "correct": false, "feedback": "A detail can matter, but this question does not yet develop the tension already visible in the paragraph."}, {"text": "How can protection become a form of control when safety depends on restricting someone’s choices?", "correct": true, "feedback": "Exactly. The writer already has a useful contradiction. A deeper question turns that contradiction into analytical material."}, {"text": "What happens next in the plot?", "correct": false, "feedback": "Continuing the plot summary may give the paragraph more words without giving it more analysis."}]}, {"round": "Find a Pattern", "passage": "Notes: “The sister in The Six Swans stays silent while working. She cannot defend herself when accused. She keeps working anyway.”", "prompt": "The writer has several details but cannot figure out what to write next. What should they do?", "choices": [{"text": "Name the relationship among the details: the same silence functions as commitment and vulnerability.", "correct": true, "feedback": "Yes. When several details are present, writer’s block can come from not yet naming the pattern that connects them."}, {"text": "Turn each note into a separate sentence and stop there.", "correct": false, "feedback": "That would create more sentences, but the paragraph would still lack an interpretation connecting them."}, {"text": "Add unrelated background about the history of fairy tales.", "correct": false, "feedback": "Background is useful only when it helps the argument. Here the writer already has enough textual material to build a pattern."}]}, {"round": "Test the Interpretation", "passage": "Working claim: “The Red Shoes suggests that desire is dangerous.” New evidence: the shoes are initially attractive and freely chosen, but later become difficult to control.", "prompt": "The writer feels stuck because the evidence does not fit the claim perfectly. What should happen next?", "choices": [{"text": "Ignore the evidence that complicates the claim.", "correct": false, "feedback": "The difficult evidence is often where the most interesting analysis begins."}, {"text": "Revise the claim so desire can be both attractive and dangerous, especially when something initially chosen begins to control the chooser.", "correct": true, "feedback": "Exactly. Writer’s block can signal that the interpretation needs to become more accurate, not that the writer needs filler."}, {"text": "Repeat the original claim in several different ways.", "correct": false, "feedback": "Rephrasing the same idea does not solve the conflict between the claim and the evidence."}]}, {"round": "When the Paragraph Feels Too Short", "passage": "Paragraph so far: claim → one short quotation → one sentence explaining the quotation.", "prompt": "Before deciding the paragraph “needs more words,” what should the writer ask?", "choices": [{"text": "Have I looked closely at the evidence, explained how it supports the claim, and considered another detail, pattern, contrast, or complication?", "correct": true, "feedback": "Yes. Paragraph length should grow from analytical work. It is not the goal by itself."}, {"text": "How many sentences does a college paragraph have to contain?", "correct": false, "feedback": "There is no universally correct sentence count. The paragraph needs enough development to make its reasoning clear."}, {"text": "Can I add a sentence that says, “This is important because it is significant”?", "correct": false, "feedback": "That adds words without adding reasoning."}]}, {"round": "When the Introduction Is Blocking You", "passage": "The writer has a rough thesis and several useful observations but has spent twenty minutes trying to invent the perfect first sentence.", "prompt": "What is a productive next move?", "choices": [{"text": "Keep rewriting the first sentence until it sounds impressive enough.", "correct": false, "feedback": "The opening does not need to be perfect before the analytical work can begin."}, {"text": "Draft the body paragraph where the evidence is clearest, then return to the introduction once the argument is more developed.", "correct": true, "feedback": "Yes. Literary-analysis essays do not have to be drafted from first sentence to last. Writing the clearest analytical section can help the introduction become easier later."}, {"text": "Begin with “Since the beginning of time…” so the page is no longer blank.", "correct": false, "feedback": "A broad filler hook may solve the blank page without helping the essay’s actual argument."}]}, {"round": "Choose the Best Rescue Move", "passage": "A student says: “I have my thesis and my quote, but everything I write after the quote just repeats what it says.”", "prompt": "Which rescue move is most useful?", "choices": [{"text": "Return to one or two words in the quotation and ask why those words, images, actions, or contrasts were used.", "correct": true, "feedback": "Exactly. The writer needs more close reading, not more paraphrase."}, {"text": "Replace the quotation with a longer one.", "correct": false, "feedback": "A longer quotation does not automatically create more analysis."}, {"text": "Write the thesis again after the quotation.", "correct": false, "feedback": "Repeating the thesis does not show the reader how the evidence supports it."}]}];
