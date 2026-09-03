@@ -270,6 +270,104 @@
       }
     }
 
+
+    /* Automatic light / dark mode */
+    html{color-scheme:light dark}
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#10151b !important;
+        --surface:#18212a !important;
+        --text:#f3f6f9 !important;
+        --muted:#bdc7d2 !important;
+        --border:#3b4856 !important;
+        --accent:#8dbbff !important;
+        --accent-dark:#bdd7ff !important;
+        --soft:#202c38 !important;
+        --green:#72d287 !important;
+        --green-soft:#182a1d !important;
+        --gold:#e6bd63 !important;
+        --gold-soft:#302817 !important;
+        --focus:#ffffff !important;
+      }
+
+      body{background:var(--bg) !important;color:var(--text) !important}
+
+      .card,.mini,.term-card,.resource-card,.recipe,.workflow,.step,.move-box,
+      .idea-card,.how-card,.mini-card,.genre-card,.genre,.not-this,.warning,
+      .transfer,.transfer-box,.box,.step-box,.strategy-box,.repair,.rung,.level,
+      .summary-box,.principle-card,.path-card,.quick-help-card,.stuck-card,
+      .completion-capture,.setup,.before-box,.myth,.navbox,.assignment,
+      .student-problem,.build-item,.part,.evidence-list,.new-evidence,
+      .choice,.passage-wrap,.passage-box{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .soft,.look,.example,.tip,.intro-note,.choose-note,.move,.tag,.pill,
+      .path-icon,.completion-meta > div,.repair-step,.how-box,.big-note,
+      .first-gen-note{
+        background:var(--soft) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .plain,.green,.success,.feedback.correct,.feedback.success{
+        background:var(--green-soft) !important;
+        color:var(--text) !important;
+      }
+
+      .example,.gold,.warning-box{
+        background:var(--gold-soft) !important;
+        color:var(--text) !important;
+      }
+
+      input,select,textarea,button,
+      .btn,.btn-secondary,.secondary,.linkbtn{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .primary,.btn-primary{
+        background:#315f99 !important;
+        color:#fff !important;
+        border-color:#8dbbff !important;
+      }
+
+      a{color:var(--accent-dark)}
+      a:hover{color:#e0ecff}
+
+      .completion-links a{color:#d7b9ff !important}
+
+      .continuity-band{
+        background:#1b2a3d !important;
+        color:#fff !important;
+      }
+      .continuity-band p,.continuity-band h2{color:#f3f6f9 !important}
+
+      footer,.site-credit-footer,.collection-footer{
+        color:var(--muted) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback{
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback-title,.round-label,.eyebrow,.tag,.lab-number,.category,
+      .genre-label,.genre-kicker,.term-kind,.idea-tag,.path-label{
+        color:var(--accent-dark) !important;
+      }
+
+      pre,code{
+        background:#0c1117;
+        color:#eef3f8;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -532,8 +630,8 @@
         context:"Weak thesis: Mother Holle is about hard work.",
         prompt:"Which revision makes the claim more specific and interpretive?",
         choices:[
-          {text:"Mother Holle shows that work matters because the characters do work.",correct:false,feedback:"This is circular and generic. It does not explain how this particular garden creates meaning."},
-          {text:"By describing the garden as “different responses to the same tasks” during the children’s happiest moments, the story connects freedom with spaces that escape adult control.",correct:true,feedback:"Yes. This thesis identifies the textual pattern and explains what the pattern may suggest."},
+          {text:"Mother Holle shows that work matters because the characters do work.",correct:false,feedback:"This is circular and generic. It repeats the topic without explaining what the pattern suggests."},
+          {text:"By contrasting how the characters respond to the same kinds of tasks, Mother Holle makes effort and responsibility part of how character is revealed rather than treating reward as random.",correct:true,feedback:"Yes. This thesis identifies the textual pattern and explains what the pattern may suggest."},
           {text:"The author uses symbolism, imagery, and setting to show freedom.",correct:false,feedback:"This sounds thesis-like, but listing devices is not the same as making a meaningful interpretive claim."}
         ]
       },
@@ -545,7 +643,7 @@
         choices:[
           {text:"The queen is jealous because she wants to be the most beautiful.",correct:false,feedback:"This is obvious and relies on a character label rather than textual analysis."},
           {text:"The tale uses a magic mirror.",correct:false,feedback:"This identifies a technique but does not explain its significance."},
-          {text:"By making the queen sound courteous before he becomes threatening, the story presents danger as difficult to recognize when it first appears familiar or trustworthy.",correct:true,feedback:"Yes. This claim moves from a specific textual choice to a larger interpretive idea."}
+          {text:"By making the mirror repeatedly rank beauty, Snow White turns comparison into a force that intensifies the queen’s insecurity and hostility.",correct:true,feedback:"Yes. This claim moves from a specific textual choice to a larger interpretive idea."}
         ]
       },
       {
@@ -554,9 +652,9 @@
         context:"Weak thesis: Rumpelstiltskin is about secrets.",
         prompt:"Which revision is strongest?",
         choices:[
-          {text:"The secret name represents secrets because it is hidden.",correct:false,feedback:"This repeats the same idea without analyzing what makes the setting frightening."},
-          {text:"The tale uses a magical name.",correct:false,feedback:"This identifies a literary device but does not yet explain what the device contributes."},
-          {text:"When the hallway 'knowledge of the hidden name,' the setting becomes active and consuming, suggesting that the character experiences the house as a place that erases her presence.",correct:true,feedback:"Yes. This thesis grows from specific language and explains its interpretive significance."}
+          {text:"The secret name represents secrets because it is hidden.",correct:false,feedback:"This repeats the same idea without explaining why the hidden name matters in the conflict."},
+          {text:"The tale uses a magical name.",correct:false,feedback:"This identifies a story device but does not yet explain what the hidden name contributes to the conflict."},
+          {text:"By making knowledge of the hidden name the only way to challenge the final bargain, Rumpelstiltskin turns private knowledge into a form of leverage against unequal power.",correct:true,feedback:"Yes. This thesis grows from specific language and explains its interpretive significance."}
         ]
       },
       {

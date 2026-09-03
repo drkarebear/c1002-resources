@@ -274,6 +274,104 @@
       }
     }
 
+
+    /* Automatic light / dark mode */
+    html{color-scheme:light dark}
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#10151b !important;
+        --surface:#18212a !important;
+        --text:#f3f6f9 !important;
+        --muted:#bdc7d2 !important;
+        --border:#3b4856 !important;
+        --accent:#8dbbff !important;
+        --accent-dark:#bdd7ff !important;
+        --soft:#202c38 !important;
+        --green:#72d287 !important;
+        --green-soft:#182a1d !important;
+        --gold:#e6bd63 !important;
+        --gold-soft:#302817 !important;
+        --focus:#ffffff !important;
+      }
+
+      body{background:var(--bg) !important;color:var(--text) !important}
+
+      .card,.mini,.term-card,.resource-card,.recipe,.workflow,.step,.move-box,
+      .idea-card,.how-card,.mini-card,.genre-card,.genre,.not-this,.warning,
+      .transfer,.transfer-box,.box,.step-box,.strategy-box,.repair,.rung,.level,
+      .summary-box,.principle-card,.path-card,.quick-help-card,.stuck-card,
+      .completion-capture,.setup,.before-box,.myth,.navbox,.assignment,
+      .student-problem,.build-item,.part,.evidence-list,.new-evidence,
+      .choice,.passage-wrap,.passage-box{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .soft,.look,.example,.tip,.intro-note,.choose-note,.move,.tag,.pill,
+      .path-icon,.completion-meta > div,.repair-step,.how-box,.big-note,
+      .first-gen-note{
+        background:var(--soft) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .plain,.green,.success,.feedback.correct,.feedback.success{
+        background:var(--green-soft) !important;
+        color:var(--text) !important;
+      }
+
+      .example,.gold,.warning-box{
+        background:var(--gold-soft) !important;
+        color:var(--text) !important;
+      }
+
+      input,select,textarea,button,
+      .btn,.btn-secondary,.secondary,.linkbtn{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .primary,.btn-primary{
+        background:#315f99 !important;
+        color:#fff !important;
+        border-color:#8dbbff !important;
+      }
+
+      a{color:var(--accent-dark)}
+      a:hover{color:#e0ecff}
+
+      .completion-links a{color:#d7b9ff !important}
+
+      .continuity-band{
+        background:#1b2a3d !important;
+        color:#fff !important;
+      }
+      .continuity-band p,.continuity-band h2{color:#f3f6f9 !important}
+
+      footer,.site-credit-footer,.collection-footer{
+        color:var(--muted) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback{
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback-title,.round-label,.eyebrow,.tag,.lab-number,.category,
+      .genre-label,.genre-kicker,.term-kind,.idea-tag,.path-label{
+        color:var(--accent-dark) !important;
+      }
+
+      pre,code{
+        background:#0c1117;
+        color:#eef3f8;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -554,7 +652,7 @@
         choices:[
           {text:"The repeated silence may reflect a family pattern of avoiding direct communication.",correct:true,feedback:"This interpretation connects setting, dialogue, and behavior into one coherent pattern."},
           {text:"The family lives in a quiet neighborhood.",correct:false,feedback:"That may explain one detail, but it does not account for unfinished conversations and nonverbal conflict."},
-          {text:"The family members secretly hate one another.",correct:false,feedback:"The text may support conflict or avoidance, but 'secretly hate' adds a specific emotional claim the evidence does not establish."}
+          {text:"The family members secretly hate one another.",correct:false,feedback:"The text may support conflict or avoidance, but “secretly hate” adds a specific emotional claim the evidence does not establish."}
         ]
       },
       {
@@ -580,7 +678,7 @@
         prompt:"Two interpretations could be defensible. Which answer recognizes that possibility?",
         choices:[
           {text:"The ticket could represent a private connection to home, or it could represent a memory Nico is not ready to share. Both readings fit the evidence and would need further support.",correct:true,feedback:"Exactly. Literary evidence can support more than one plausible interpretation. The next step would be to test each reading against more of the text."},
-          {text:"The ticket definitely proves Nico is homesick.",correct:false,feedback:"Homesickness is possible, but 'definitely proves' closes down other readings the evidence could also support."},
+          {text:"The ticket definitely proves Nico is homesick.",correct:false,feedback:"Homesickness is possible, but “definitely proves” closes down other readings the evidence could also support."},
           {text:"Because the text does not tell us exactly what the ticket means, we cannot interpret it at all.",correct:false,feedback:"Literary analysis often works precisely with this kind of uncertainty. We can make a cautious reading as long as we support it."}
         ]
       },

@@ -62,6 +62,104 @@
   .site-credit-footer{width:min(calc(100% - 1.25rem), 1020px)}
 }
 
+
+    /* Automatic light / dark mode */
+    html{color-scheme:light dark}
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#10151b !important;
+        --surface:#18212a !important;
+        --text:#f3f6f9 !important;
+        --muted:#bdc7d2 !important;
+        --border:#3b4856 !important;
+        --accent:#8dbbff !important;
+        --accent-dark:#bdd7ff !important;
+        --soft:#202c38 !important;
+        --green:#72d287 !important;
+        --green-soft:#182a1d !important;
+        --gold:#e6bd63 !important;
+        --gold-soft:#302817 !important;
+        --focus:#ffffff !important;
+      }
+
+      body{background:var(--bg) !important;color:var(--text) !important}
+
+      .card,.mini,.term-card,.resource-card,.recipe,.workflow,.step,.move-box,
+      .idea-card,.how-card,.mini-card,.genre-card,.genre,.not-this,.warning,
+      .transfer,.transfer-box,.box,.step-box,.strategy-box,.repair,.rung,.level,
+      .summary-box,.principle-card,.path-card,.quick-help-card,.stuck-card,
+      .completion-capture,.setup,.before-box,.myth,.navbox,.assignment,
+      .student-problem,.build-item,.part,.evidence-list,.new-evidence,
+      .choice,.passage-wrap,.passage-box{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .soft,.look,.example,.tip,.intro-note,.choose-note,.move,.tag,.pill,
+      .path-icon,.completion-meta > div,.repair-step,.how-box,.big-note,
+      .first-gen-note{
+        background:var(--soft) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .plain,.green,.success,.feedback.correct,.feedback.success{
+        background:var(--green-soft) !important;
+        color:var(--text) !important;
+      }
+
+      .example,.gold,.warning-box{
+        background:var(--gold-soft) !important;
+        color:var(--text) !important;
+      }
+
+      input,select,textarea,button,
+      .btn,.btn-secondary,.secondary,.linkbtn{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .primary,.btn-primary{
+        background:#315f99 !important;
+        color:#fff !important;
+        border-color:#8dbbff !important;
+      }
+
+      a{color:var(--accent-dark)}
+      a:hover{color:#e0ecff}
+
+      .completion-links a{color:#d7b9ff !important}
+
+      .continuity-band{
+        background:#1b2a3d !important;
+        color:#fff !important;
+      }
+      .continuity-band p,.continuity-band h2{color:#f3f6f9 !important}
+
+      footer,.site-credit-footer,.collection-footer{
+        color:var(--muted) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback{
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback-title,.round-label,.eyebrow,.tag,.lab-number,.category,
+      .genre-label,.genre-kicker,.term-kind,.idea-tag,.path-label{
+        color:var(--accent-dark) !important;
+      }
+
+      pre,code{
+        background:#0c1117;
+        color:#eef3f8;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -167,6 +265,7 @@
     <div class="grid">
       <article class="card"><div class="tag">Support</div><h3>Claim, Evidence, or Explanation?</h3><p>Learn the different jobs sentences perform inside an analytical paragraph.</p><a class="btn" href="claim-evidence-explanation.html">Open Lab</a></article>
       <article class="card"><div class="tag">Support</div><h3>Don't Drop the Quote</h3><p>Give context, integrate a quotation, and return to your own analysis.</p><a class="btn" href="dont-drop-the-quote.html">Open Lab</a></article>
+      <article class="card"><div class="tag">Support</div><h3>Using Textual Evidence</h3><p>Practice choosing short quotations, giving context, using signal phrases, punctuating them, and unpacking the language.</p><a class="btn" href="using-textual-evidence.html">Open Lab</a></article>
     </div>
   </section>
 
@@ -177,6 +276,7 @@
       <article class="card"><div class="tag">Develop</div><h3>Strengthen the Thesis</h3><p>Move from a broad idea toward a stronger interpretive argument.</p><a class="btn" href="strengthen-the-thesis.html">Open Lab</a></article>
       <article class="card"><div class="tag">Develop</div><h3>Complicate It</h3><p>Revise an interpretation when new evidence adds tension or contradiction.</p><a class="btn" href="complicate-it.html">Open Lab</a></article>
       <article class="card"><div class="tag">Develop</div><h3>The Analysis Repair Shop</h3><p>Diagnose and repair common problems in literary-analysis paragraphs.</p><a class="btn" href="analysis-repair-shop.html">Open Lab</a></article>
+      <article class="card"><div class="tag">Develop</div><h3>Titles, Introductions & Conclusions</h3><p>Practice framing an interpretive essay with a focused title, efficient introduction, and meaningful conclusion.</p><a class="btn" href="literary-analysis-essay-parts.html">Open Lab</a></article>
     </div>
   </section>
 

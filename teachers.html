@@ -39,6 +39,104 @@ pre{white-space:pre-wrap;word-break:break-word;background:#111827;color:#f9fafb;
 footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.92rem}
 @media(max-width:760px){header,main,footer{width:min(calc(100% - 1.25rem),var(--max))} .grid{grid-template-columns:1fr} .row{flex-direction:column} .row .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* Automatic light / dark mode */
+    html{color-scheme:light dark}
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#10151b !important;
+        --surface:#18212a !important;
+        --text:#f3f6f9 !important;
+        --muted:#bdc7d2 !important;
+        --border:#3b4856 !important;
+        --accent:#8dbbff !important;
+        --accent-dark:#bdd7ff !important;
+        --soft:#202c38 !important;
+        --green:#72d287 !important;
+        --green-soft:#182a1d !important;
+        --gold:#e6bd63 !important;
+        --gold-soft:#302817 !important;
+        --focus:#ffffff !important;
+      }
+
+      body{background:var(--bg) !important;color:var(--text) !important}
+
+      .card,.mini,.term-card,.resource-card,.recipe,.workflow,.step,.move-box,
+      .idea-card,.how-card,.mini-card,.genre-card,.genre,.not-this,.warning,
+      .transfer,.transfer-box,.box,.step-box,.strategy-box,.repair,.rung,.level,
+      .summary-box,.principle-card,.path-card,.quick-help-card,.stuck-card,
+      .completion-capture,.setup,.before-box,.myth,.navbox,.assignment,
+      .student-problem,.build-item,.part,.evidence-list,.new-evidence,
+      .choice,.passage-wrap,.passage-box{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .soft,.look,.example,.tip,.intro-note,.choose-note,.move,.tag,.pill,
+      .path-icon,.completion-meta > div,.repair-step,.how-box,.big-note,
+      .first-gen-note{
+        background:var(--soft) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .plain,.green,.success,.feedback.correct,.feedback.success{
+        background:var(--green-soft) !important;
+        color:var(--text) !important;
+      }
+
+      .example,.gold,.warning-box{
+        background:var(--gold-soft) !important;
+        color:var(--text) !important;
+      }
+
+      input,select,textarea,button,
+      .btn,.btn-secondary,.secondary,.linkbtn{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .primary,.btn-primary{
+        background:#315f99 !important;
+        color:#fff !important;
+        border-color:#8dbbff !important;
+      }
+
+      a{color:var(--accent-dark)}
+      a:hover{color:#e0ecff}
+
+      .completion-links a{color:#d7b9ff !important}
+
+      .continuity-band{
+        background:#1b2a3d !important;
+        color:#fff !important;
+      }
+      .continuity-band p,.continuity-band h2{color:#f3f6f9 !important}
+
+      footer,.site-credit-footer,.collection-footer{
+        color:var(--muted) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback{
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback-title,.round-label,.eyebrow,.tag,.lab-number,.category,
+      .genre-label,.genre-kicker,.term-kind,.idea-tag,.path-label{
+        color:var(--accent-dark) !important;
+      }
+
+      pre,code{
+        background:#0c1117;
+        color:#eef3f8;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -66,7 +164,7 @@ footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--bor
     <a href="#by-stage">By Assignment Stage</a>
     <a href="#assignment-ideas">Assignment Ideas</a>
     <a href="#moves">Assign a Move</a>
-    <a href="#labs">15 Individual Labs</a>
+    <a href="#labs">17 Individual Labs</a>
     <a href="#reflection">Reflection & Completion</a>
     <a href="#canvas">Canvas</a>
   </nav>
@@ -88,7 +186,13 @@ footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--bor
     
     <article class="resource-card"><div class="tag">Interpretation</div><h3>Big Ideas & Questions</h3><p>Helps students move from a broad topic to deeper questions about power, identity, belonging, justice, voice, memory, change, and other recurring literary concerns without treating those ideas as canned themes.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/big-ideas.html" target="_blank" rel="noopener">Open Guide</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/big-ideas.html">Copy Link</button></div></article>
 
+    
+    <article class="resource-card"><div class="tag">Evidence & quotation</div><h3>Using Textual Evidence</h3><p>Practice selecting short quotations, giving context, embedding phrases, using signal phrases and colons, and unpacking specific language.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/using-textual-evidence.html" target="_blank" rel="noopener">Open Lab</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/using-textual-evidence.html">Copy Link</button></div></article>
+
     <article class="resource-card"><div class="tag">Feedback</div><h3>What Does My Professor Mean?</h3><p>Decodes common comments such as “go deeper,” “too much summary,” and “explain the quote” into revision moves.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/what-does-my-professor-mean.html" target="_blank" rel="noopener">Open Tool</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/what-does-my-professor-mean.html">Copy Link</button></div></article>
+    
+    <article class="resource-card"><div class="tag">Essay framing</div><h3>Titles, Introductions & Conclusions</h3><p>Helps students frame an interpretive essay without generic hooks, excessive plot summary, or conclusions that simply repeat the thesis.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html" target="_blank" rel="noopener">Open Lab</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html">Copy Link</button></div></article>
+
     <article class="resource-card"><div class="tag">Whole-draft revision</div><h3>Literary Analysis Triage</h3><p>Helps students decide what to revise first rather than starting with sentence-level editing.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/literary-analysis-triage.html" target="_blank" rel="noopener">Open Tool</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/literary-analysis-triage.html">Copy Link</button></div></article>
     <article class="resource-card"><div class="tag">Browse</div><h3>All Labs</h3><p>Useful when you want students or faculty to see the complete collection, including orientation and reading help.</p><div class="row"><a class="btn primary" href="https://drkarebear.github.io/c1002-resources/all-labs.html" target="_blank" rel="noopener">Open All Labs</a><button class="btn" data-copy="https://drkarebear.github.io/c1002-resources/all-labs.html">Copy Link</button></div></article>
   </div>
@@ -114,13 +218,13 @@ footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--bor
     <article class="recipe">
       <div class="tag">While Drafting</div>
       <h3>Build analytical paragraphs</h3>
-      <p><strong>Try:</strong> Claim, Evidence, or Explanation?, Don't Drop the Quote, Zoom In, and Strengthen the Thesis.</p>
+      <p><strong>Try:</strong> Claim, Evidence, or Explanation?, Don’t Drop the Quote, Using Textual Evidence, Zoom In, and Strengthen the Thesis.</p>
       <p><strong>Best when:</strong> students have ideas and evidence but need help turning them into analytical writing.</p>
     </article>
     <article class="recipe">
       <div class="tag">During Revision</div>
       <h3>Decide what to improve first</h3>
-      <p><strong>Try:</strong> Literary Analysis Triage, The Analysis Repair Shop, Complicate It, and Don't Drop the Quote.</p>
+      <p><strong>Try:</strong> Literary Analysis Triage, The Analysis Repair Shop, Complicate It, Titles, Introductions & Conclusions, and Don’t Drop the Quote.</p>
       <p><strong>Best when:</strong> students have a substantial draft and need a high-impact revision plan.</p>
     </article>
     <article class="recipe">
@@ -187,7 +291,7 @@ footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--bor
 </section>
 
 <section id="labs">
-  <h2>15 Individual Labs</h2>
+  <h2>17 Individual Labs</h2>
   <p>Each lab below has a direct public link and optional Canvas embed code.</p>
   <div class="grid">
     
@@ -429,7 +533,37 @@ footer{margin-top:2.5rem;padding:1.25rem 0 2.5rem;border-top:1px solid var(--bor
             <button class="btn small" type="button" data-copy="&lt;iframe src=&quot;https://drkarebear.github.io/c1002-resources/analysis-repair-shop.html&quot; width=&quot;100%&quot; height=&quot;900&quot; title=&quot;The Analysis Repair Shop Literary Analysis Lab&quot;&gt;&lt;/iframe&gt;">Copy Embed</button>
           </details>
         </article>
-        
+
+        <article class="resource-card">
+          <div class="tag">Support</div>
+          <h3>Using Textual Evidence</h3>
+          <p><strong>Best for:</strong> Choosing focused quotations, giving context, using signal phrases and punctuation, and unpacking specific language.</p>
+          <div class="row">
+            <a class="btn primary" href="https://drkarebear.github.io/c1002-resources/using-textual-evidence.html" target="_blank" rel="noopener">Open Activity</a>
+            <button class="btn" type="button" data-copy="https://drkarebear.github.io/c1002-resources/using-textual-evidence.html">Copy Student Link</button>
+          </div>
+          <details>
+            <summary>Canvas embed code</summary>
+            <pre><code>&lt;iframe src=&quot;https://drkarebear.github.io/c1002-resources/using-textual-evidence.html&quot; width=&quot;100%&quot; height=&quot;900&quot; title=&quot;Using Textual Evidence Literary Analysis Lab&quot;&gt;&lt;/iframe&gt;</code></pre>
+            <button class="btn small" type="button" data-copy="&lt;iframe src=&quot;https://drkarebear.github.io/c1002-resources/using-textual-evidence.html&quot; width=&quot;100%&quot; height=&quot;900&quot; title=&quot;Using Textual Evidence Literary Analysis Lab&quot;&gt;&lt;/iframe&gt;">Copy Embed</button>
+          </details>
+        </article>
+
+        <article class="resource-card">
+          <div class="tag">Develop</div>
+          <h3>Titles, Introductions &amp; Conclusions</h3>
+          <p><strong>Best for:</strong> Helping students frame literary-analysis essays without generic hooks, excessive summary, or repetitive conclusions.</p>
+          <div class="row">
+            <a class="btn primary" href="https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html" target="_blank" rel="noopener">Open Activity</a>
+            <button class="btn" type="button" data-copy="https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html">Copy Student Link</button>
+          </div>
+          <details>
+            <summary>Canvas embed code</summary>
+            <pre><code>&lt;iframe src=&quot;https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html&quot; width=&quot;100%&quot; height=&quot;900&quot; title=&quot;Titles, Introductions &amp; Conclusions Literary Analysis Lab&quot;&gt;&lt;/iframe&gt;</code></pre>
+            <button class="btn small" type="button" data-copy="&lt;iframe src=&quot;https://drkarebear.github.io/c1002-resources/literary-analysis-essay-parts.html&quot; width=&quot;100%&quot; height=&quot;900&quot; title=&quot;Titles, Introductions &amp; Conclusions Literary Analysis Lab&quot;&gt;&lt;/iframe&gt;">Copy Embed</button>
+          </details>
+        </article>
+
   </div>
 </section>
 

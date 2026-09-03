@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Using Textual Evidence | ENGL C1002 Literary Analysis Lab</title>
+<meta name="description" content="Practice the most common ways literary analysis introduces, embeds, punctuates, and explains quotations from a text.">
+<link rel="icon" type="image/png" href="favicon4.png">
+<style>
+:root{--bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;--border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;--soft:#eef4fb;--green:#2f7a43;--green-soft:#f0f7f2;--gold-soft:#fff8e8;--focus:#111827;--max:820px}
+*{box-sizing:border-box} html{scroll-behavior:smooth;color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:var(--accent-dark);text-underline-offset:.18em} a:focus-visible,button:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+header,main,footer{width:min(calc(100% - 1.4rem),var(--max));margin-inline:auto}
+header{padding:1.35rem 0 .7rem} .brand{display:flex;gap:.65rem;align-items:center;text-decoration:none;color:var(--text);font-weight:850} .brand img{width:42px;height:42px;object-fit:contain}
+.student-nav{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.7rem} .student-nav a{font-weight:750}
+.eyebrow{margin:1.2rem 0 .25rem;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;font-weight:850;color:var(--accent-dark)}
+h1{margin:0;font-size:clamp(2.25rem,7vw,4rem);line-height:1.04;letter-spacing:-.04em} h2{line-height:1.2}
+.lede{color:var(--muted);font-size:1.06rem;max-width:70ch}
+.tip{background:var(--soft);border-left:5px solid var(--accent);padding:.9rem 1rem;border-radius:.5rem;margin:1rem 0}
+#activity{margin-top:1.2rem} .progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;gap:1rem} progress{width:100%;height:.8rem;accent-color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.1rem;margin-top:1rem}
+.round-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;font-weight:850;color:var(--accent-dark)}
+.passage{background:var(--gold-soft);border:1px solid var(--border);border-radius:.65rem;padding:.85rem;margin:.75rem 0;font-family:Georgia,"Times New Roman",serif}
+.prompt{font-weight:800;margin:.75rem 0}
+.choices{display:grid;gap:.65rem} .choice{width:100%;text-align:left;background:#fff;color:var(--text);border:2px solid var(--border);border-radius:.65rem;padding:.8rem;min-height:50px;font:inherit;cursor:pointer}
+.choice:hover{border-color:var(--accent)} .feedback{display:none;margin-top:.8rem;padding:.8rem;border-radius:.6rem;background:var(--soft)} .feedback.show{display:block} .feedback.correct{background:var(--green-soft);border-left:5px solid var(--green)}
+.actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.8rem} .actions button,.actions a{min-height:48px;padding:.7rem .9rem;border-radius:.55rem;font:inherit;font-weight:800;text-decoration:none;border:2px solid var(--accent);display:inline-flex;align-items:center;justify-content:center}
+.actions button{background:var(--surface);color:var(--text)} .actions .primary{background:var(--accent);color:white}
+.hidden{display:none!important}
+.completion{max-width:540px;margin:1.2rem auto 0} .completion-capture{background:var(--surface);border:2px solid var(--green);border-radius:1rem;padding:1.1rem;text-align:center} .completion-check{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:0 auto .55rem;background:var(--green-soft);border:2px solid var(--green);font-size:1.8rem;font-weight:900}
+.completion-kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;font-weight:850;color:var(--accent-dark);margin:.1rem 0} .completion h2{font-size:2.2rem;margin:.1rem 0} .completion-activity{font-weight:800}
+.completion-meta{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:.7rem 0} .completion-meta>div{background:var(--soft);border:1px solid var(--border);border-radius:.6rem;padding:.55rem} .completion-meta span{display:block;font-size:.68rem;text-transform:uppercase;color:var(--muted);font-weight:800}
+.completion-actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.65rem} .completion-actions a,.completion-actions button{min-height:48px;border-radius:.55rem;padding:.65rem;font:inherit;font-weight:800;border:2px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none} .completion-actions .reflect{border-color:var(--accent);background:var(--soft);color:var(--accent-dark)} .completion-links{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:.5rem} .completion-links a{border:0;background:transparent;text-decoration:underline;justify-content:flex-start}
+.summary{background:var(--soft);padding:1rem;border-radius:.7rem;margin:1rem 0} footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
+@media(max-width:600px){.actions{flex-direction:column}.actions button,.actions a{width:100%}}
+@media(prefers-color-scheme:dark){
+:root{--bg:#10151b;--surface:#18212a;--text:#f3f6f9;--muted:#bdc7d2;--border:#3b4856;--accent:#8dbbff;--accent-dark:#bdd7ff;--soft:#202c38;--green:#72d287;--green-soft:#182a1d;--gold-soft:#302817;--focus:#fff}
+.choice{background:var(--surface)} .actions .primary{background:#315f99} a{color:var(--accent-dark)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html"><img src="favicon4.png" alt=""><span>ENGL C1002 Literary Analysis Lab</span></a>
+<nav class="student-nav" aria-label="Student navigation"><a href="index.html">Student Home</a><a href="all-labs.html">All Labs</a></nav>
+<p class="eyebrow">3. Support Practice</p>
+<h1>Using Textual Evidence</h1>
+<p class="lede">Practice the most common ways literary analysis introduces, embeds, punctuates, and explains quotations from a text.</p>
+<div class="tip"><strong>Keep in mind:</strong> Give the reader enough context to understand the moment, quote only the language you actually need, and then return to your own voice to unpack what that language does.</div>
+</header>
+<main>
+<section id="activity">
+<div class="progress-label"><span id="progressText"></span><span id="roundText"></span></div>
+<progress id="progress" value="1" max="9"></progress>
+<div id="questionCard" class="card">
+<div id="roundLabel" class="round-label"></div>
+<div id="passage" class="passage hidden"></div>
+<div id="prompt" class="prompt"></div>
+<div id="choices" class="choices"></div>
+<div id="feedback" class="feedback" aria-live="polite"></div>
+<div class="actions">
+<button id="tryAgain" class="hidden" type="button">Try Again</button>
+<button id="next" class="primary hidden" type="button">Continue</button>
+</div>
+</div>
+</section>
+
+<section id="completion" class="completion hidden" tabindex="-1">
+<div class="completion-capture">
+<div class="completion-check" aria-hidden="true">✓</div>
+<p class="completion-kicker">Literary Analysis Lab</p>
+<h2>You did it!</h2>
+<p class="completion-activity">Using Textual Evidence</p>
+<div class="completion-meta"><div><span>Completed</span><strong id="date"></strong></div><div><span>Time</span><strong id="time"></strong></div></div>
+<p>Screenshot this screen if your instructor asked for proof of completion.</p>
+</div>
+<div class="completion-actions">
+<button id="restart" type="button">Practice Again</button>
+<a class="reflect" href="reflection.html?lab=using-textual-evidence">Reflect</a>
+<div class="completion-links"><a href="all-labs.html">All Labs</a><a href="index.html">Student Home</a></div>
+</div>
+</section>
+
+<section class="summary">
+<h2>A Useful Evidence Pattern</h2>
+<p><strong>Context → focused quotation → unpack the language → connect it to the claim.</strong> Signal-phrase punctuation depends on the grammar of your sentence: a short phrase can be embedded with no comma, a speaking signal phrase often takes a comma before a full quoted sentence, and a colon can introduce a quotation after a complete sentence. If your class uses MLA, place the parenthetical citation where your instructor requires it and keep the analytical explanation in your own voice.</p>
+</section>
+</main>
+<footer><p>Created by Karen Crozer for ENGL C1002 classes.</p><p><a href="privacy.html">Privacy Policy</a> · <a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a></p></footer>
+<script>
+(() => {
+const sourceItems=[{"round": "Choose the Evidence", "passage": "In The Snow Queen, Gerda remembers the roses and home when she needs to recover the purpose of her journey.", "prompt": "Which quotation choice is most useful if the paragraph is analyzing how memory restores Gerda’s purpose?", "choices": [{"text": "Quote the entire scene so the reader can see everything that happens.", "correct": false, "feedback": "A long quotation makes the reader do too much work. Use only the part you plan to analyze."}, {"text": "Quote the brief phrase connected to the returning memory, then explain why that image matters.", "correct": true, "feedback": "Yes. Literary analysis usually benefits from the smallest amount of quoted language that gives you something specific to analyze."}, {"text": "Do not quote anything because plot summary is enough.", "correct": false, "feedback": "Summary can give context, but close analysis needs specific textual evidence when the wording or image matters."}]}, {"round": "Choose the Evidence", "passage": "The narrator describes the room as “too bright to hide anything.”", "prompt": "Which version keeps the evidence focused?", "choices": [{"text": "The narrator describes the room as “too bright to hide anything,” emphasizing how exposure shapes the scene.", "correct": true, "feedback": "Yes. The quoted phrase is short, grammatically integrated, and immediately connected to analysis."}, {"text": "The narrator says, “The room was too bright to hide anything. She crossed to the table. The clock ticked. Someone coughed outside. She looked at the door.”", "correct": false, "feedback": "Most of this quotation is not needed for the point. Quote the language you will actually unpack."}, {"text": "The room is bright and this quote proves the room is bright.", "correct": false, "feedback": "That repeats the evidence instead of using it to support an interpretation."}]}, {"round": "Give Context", "passage": "In The Emperor’s New Clothes, the child speaks after the crowd has repeatedly praised clothes they cannot see.", "prompt": "Which introduction gives enough context without retelling the whole story?", "choices": [{"text": "After the crowd has joined in the false praise, a child breaks the pattern and says, “But he has nothing on.”", "correct": true, "feedback": "Yes. The sentence tells us who is speaking and what is happening at the moment the quotation matters."}, {"text": "There once was an emperor who cared about clothes, and many things happened before a child finally spoke.", "correct": false, "feedback": "This gives too much broad plot context and still does not place the quotation precisely."}, {"text": "The quote says, “But he has nothing on.”", "correct": false, "feedback": "The reader needs to know who speaks and why the moment matters. “The quote says” does not provide useful context."}]}, {"round": "Embed a Short Phrase", "passage": "The narrator calls the doorway “enormous.”", "prompt": "Which sentence embeds the short quotation most smoothly?", "choices": [{"text": "The narrator’s description of the doorway as “enormous” makes the adult-controlled space feel overwhelming from the child’s perspective.", "correct": true, "feedback": "Yes. The quoted word completes the writer’s own sentence, so no comma is needed before it."}, {"text": "The narrator’s description of the doorway as, “enormous,” makes the space feel overwhelming.", "correct": false, "feedback": "Do not insert a comma simply because a quotation begins. Here the quoted word is grammatically part of your own sentence."}, {"text": "The narrator describes the doorway. “Enormous.” This shows it is big.", "correct": false, "feedback": "The fragment is dropped into the paragraph and the explanation only paraphrases it."}]}, {"round": "Use a Signal Phrase", "passage": "Mara says a complete sentence: “I never opened it.”", "prompt": "Which punctuation works when a signal phrase introduces a full spoken sentence?", "choices": [{"text": "Mara admits, “I never opened it.”", "correct": true, "feedback": "Yes. A signal phrase such as “Mara admits” commonly takes a comma before a full quoted sentence."}, {"text": "Mara admits “I never opened it.”", "correct": false, "feedback": "When the signal phrase directly introduces this full spoken sentence, the comma makes the boundary clear."}, {"text": "Mara admits: “I never opened it.”", "correct": false, "feedback": "A colon is usually better after a complete independent sentence, not after a short verb-of-speaking signal phrase such as “Mara admits.”"}]}, {"round": "Use a Colon", "passage": "The writer wants to introduce a full line after a complete sentence.", "prompt": "Which version uses a colon appropriately?", "choices": [{"text": "The poem turns at the moment the speaker recognizes what cannot be recovered: “The house remembers what I do not.”", "correct": true, "feedback": "Yes. The words before the colon form a complete sentence that prepares the reader for the quotation."}, {"text": "The poem suggests: “The house remembers what I do not.”", "correct": false, "feedback": "“The poem suggests” is not a complete sentence on its own here. A comma or different sentence structure would work better."}, {"text": "The poem: “The house remembers what I do not.”", "correct": false, "feedback": "The words before the colon do not form a complete sentence."}]}, {"round": "Unpack the Language", "passage": "The poem says, “your name stayed / bright on my tongue.”", "prompt": "What should the writer do immediately after this evidence?", "choices": [{"text": "Explain how “stayed” resists the speaker’s attempt to move on and how “bright on my tongue” makes memory feel vivid and physically present.", "correct": true, "feedback": "Exactly. Unpacking means returning to the specific words that make the quotation useful."}, {"text": "Write, “This quote shows the speaker remembers someone.”", "correct": false, "feedback": "That translates the quotation into simpler language but does not analyze the words that create its effect."}, {"text": "Add another long quotation before discussing the first one.", "correct": false, "feedback": "More evidence does not replace explanation. Stay with the quotation long enough to show what it does."}]}, {"round": "Unpack the Language", "passage": "A stage direction reads: “[She reaches for the door, then pulls her hand back when Marcus enters.]”", "prompt": "Which follow-up best analyzes the stage direction?", "choices": [{"text": "The interrupted movement makes hesitation visible: Lena’s body changes direction at the exact moment Marcus enters, suggesting that his presence affects a choice she had begun to make.", "correct": true, "feedback": "Yes. The explanation identifies the precise action and connects it to the interpretation."}, {"text": "This stage direction shows that Lena reaches for the door and pulls her hand back.", "correct": false, "feedback": "That repeats the evidence instead of explaining why the change in movement matters."}, {"text": "Stage directions are important in plays.", "correct": false, "feedback": "True, but too general. Literary analysis explains what this stage direction does in this scene."}]}, {"round": "Build the Whole Move", "passage": "Rapunzel’s tower is described as a place meant to keep her safe, but it also prevents her from leaving.", "prompt": "Which sequence best models context → evidence → analysis?", "choices": [{"text": "Because the tower is presented as protection, its restrictive function creates a contradiction. The tale describes it as a place that “keeps her safe,” yet that safety depends on confinement. The phrase makes protection and control difficult to separate.", "correct": true, "feedback": "Yes. The writer places the quotation, keeps it short, and then explains the tension in the quoted language."}, {"text": "Rapunzel is in a tower. “Keeps her safe.” The quote proves the tower is safe.", "correct": false, "feedback": "The quotation is dropped in and the explanation simply repeats its surface meaning."}, {"text": "Quote the entire tower scene and end the paragraph there.", "correct": false, "feedback": "The reader still needs your interpretation. A quotation should support your thinking, not replace it."}]}];
+
+function stableShuffle(item){
+  if(item.__order) return item.__order;
+  const order=item.choices.map((_,i)=>i);
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  if(order.length===3 && order.every((v,i)=>v===i)) [order[0],order[1]]=[order[1],order[0]];
+  item.__order=order; return order;
+}
+
+function shuffleItems(source){
+  const a=[...source];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+const items=sourceItems;
+let index=0, locked=false;
+
+const el={progressText:document.getElementById("progressText"),roundText:document.getElementById("roundText"),progress:document.getElementById("progress"),roundLabel:document.getElementById("roundLabel"),passage:document.getElementById("passage"),prompt:document.getElementById("prompt"),choices:document.getElementById("choices"),feedback:document.getElementById("feedback"),tryAgain:document.getElementById("tryAgain"),next:document.getElementById("next"),card:document.getElementById("questionCard"),activity:document.getElementById("activity"),completion:document.getElementById("completion"),restart:document.getElementById("restart")};
+
+function render(){
+ locked=false;
+ const item=items[index];
+ el.progressText.textContent=`Question ${index+1} of ${items.length}`;
+ el.roundText.textContent=item.round;
+ el.progress.max=items.length; el.progress.value=index+1;
+ el.roundLabel.textContent=item.round;
+ el.prompt.textContent=item.prompt;
+ if(item.passage){el.passage.textContent=item.passage;el.passage.classList.remove("hidden");}else{el.passage.classList.add("hidden");}
+ el.choices.innerHTML="";
+ stableShuffle(item).forEach(i=>{
+   const choice=item.choices[i];
+   const b=document.createElement("button"); b.type="button"; b.className="choice"; b.textContent=choice.text;
+   b.addEventListener("click",()=>answer(choice,b)); el.choices.appendChild(b);
+ });
+ el.feedback.className="feedback";el.feedback.textContent="";
+ el.tryAgain.classList.add("hidden");el.next.classList.add("hidden");
+}
+
+function answer(choice,button){
+ if(locked)return; locked=true;
+ [...el.choices.children].forEach(b=>b.disabled=true);
+ el.feedback.textContent=choice.feedback;
+ el.feedback.className="feedback show"+(choice.correct?" correct":"");
+ if(choice.correct){el.next.classList.remove("hidden");}
+ else{el.tryAgain.classList.remove("hidden");}
+}
+
+el.tryAgain.addEventListener("click",()=>{
+ locked=false; [...el.choices.children].forEach(b=>b.disabled=false);
+ el.feedback.className="feedback";el.feedback.textContent="";el.tryAgain.classList.add("hidden");
+});
+el.next.addEventListener("click",()=>{
+ if(index<items.length-1){index++;render();el.card.scrollIntoView({block:"start"});}
+ else finish();
+});
+function finish(){
+ el.activity.classList.add("hidden");el.completion.classList.remove("hidden");
+ const now=new Date();
+ document.getElementById("date").textContent=new Intl.DateTimeFormat(undefined,{year:"numeric",month:"long",day:"numeric"}).format(now);
+ document.getElementById("time").textContent=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit"}).format(now);
+ el.completion.focus();el.completion.scrollIntoView({block:"start"});
+}
+el.restart.addEventListener("click",()=>{index=0;el.completion.classList.add("hidden");el.activity.classList.remove("hidden");render();el.activity.scrollIntoView({block:"start"});});
+render();
+})();
+</script>
+</body>
+</html>

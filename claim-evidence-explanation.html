@@ -500,6 +500,104 @@
       }
     }
 
+
+    /* Automatic light / dark mode */
+    html{color-scheme:light dark}
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#10151b !important;
+        --surface:#18212a !important;
+        --text:#f3f6f9 !important;
+        --muted:#bdc7d2 !important;
+        --border:#3b4856 !important;
+        --accent:#8dbbff !important;
+        --accent-dark:#bdd7ff !important;
+        --soft:#202c38 !important;
+        --green:#72d287 !important;
+        --green-soft:#182a1d !important;
+        --gold:#e6bd63 !important;
+        --gold-soft:#302817 !important;
+        --focus:#ffffff !important;
+      }
+
+      body{background:var(--bg) !important;color:var(--text) !important}
+
+      .card,.mini,.term-card,.resource-card,.recipe,.workflow,.step,.move-box,
+      .idea-card,.how-card,.mini-card,.genre-card,.genre,.not-this,.warning,
+      .transfer,.transfer-box,.box,.step-box,.strategy-box,.repair,.rung,.level,
+      .summary-box,.principle-card,.path-card,.quick-help-card,.stuck-card,
+      .completion-capture,.setup,.before-box,.myth,.navbox,.assignment,
+      .student-problem,.build-item,.part,.evidence-list,.new-evidence,
+      .choice,.passage-wrap,.passage-box{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .soft,.look,.example,.tip,.intro-note,.choose-note,.move,.tag,.pill,
+      .path-icon,.completion-meta > div,.repair-step,.how-box,.big-note,
+      .first-gen-note{
+        background:var(--soft) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .plain,.green,.success,.feedback.correct,.feedback.success{
+        background:var(--green-soft) !important;
+        color:var(--text) !important;
+      }
+
+      .example,.gold,.warning-box{
+        background:var(--gold-soft) !important;
+        color:var(--text) !important;
+      }
+
+      input,select,textarea,button,
+      .btn,.btn-secondary,.secondary,.linkbtn{
+        background:var(--surface) !important;
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .primary,.btn-primary{
+        background:#315f99 !important;
+        color:#fff !important;
+        border-color:#8dbbff !important;
+      }
+
+      a{color:var(--accent-dark)}
+      a:hover{color:#e0ecff}
+
+      .completion-links a{color:#d7b9ff !important}
+
+      .continuity-band{
+        background:#1b2a3d !important;
+        color:#fff !important;
+      }
+      .continuity-band p,.continuity-band h2{color:#f3f6f9 !important}
+
+      footer,.site-credit-footer,.collection-footer{
+        color:var(--muted) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback{
+        color:var(--text) !important;
+        border-color:var(--border) !important;
+      }
+
+      .feedback-title,.round-label,.eyebrow,.tag,.lab-number,.category,
+      .genre-label,.genre-kicker,.term-kind,.idea-tag,.path-label{
+        color:var(--accent-dark) !important;
+      }
+
+      pre,code{
+        background:#0c1117;
+        color:#eef3f8;
+      }
+    }
+
 </style>
 
   <style id="mobile-activity-upgrade">
@@ -756,7 +854,7 @@
         explanation: "Explanation"
       };
 
-      const items = [
+      const sourceItems = [
         {
           round:1,
           roundLabel:"Round 1: Identify the Job",
@@ -794,10 +892,10 @@
           round:2,
           roundLabel:"Round 2: Follow the Paragraph",
           passage:"In The Goose-Girl, the princess serves quietly while another woman is treated as the royal bride.",
-          sentence:"Mina’s attention to the light suggests that she sees possibility where the others see only restriction.",
+          sentence:"The role reversal in The Goose-Girl suggests that identity depends partly on whether other people recognize a person’s status and story.",
           answer:"claim",
           feedback:{
-            correct:"This is the paragraph’s interpretive point. It makes a claim about what Mina’s different attention may suggest.",
+            correct:"This is the paragraph’s interpretive point. It makes a claim about what the role reversal may suggest about identity and recognition.",
             evidence:"The sentence refers to the passage, but it does not simply present a quotation or textual detail. It interprets that detail.",
             explanation:"This could serve as a claim that later explanation develops. Its main job is to state the interpretation."
           }
@@ -821,7 +919,7 @@
           sentence:"Because the princess knows who she is while the court responds only to appearances and status, the role reversal makes recognition itself part of the story’s conflict.",
           answer:"explanation",
           feedback:{
-            correct:"This sentence explains how the contrast works and connects it directly to the interpretation of Mina’s perspective.",
+            correct:"This sentence explains how the contrast works and connects it directly to the interpretation of identity and recognition.",
             claim:"The sentence supports a larger claim rather than introducing the paragraph’s main point.",
             evidence:"It uses textual details, but its main purpose is to explain what those details do."
           }
@@ -830,7 +928,7 @@
           round:3,
           roundLabel:"Round 3: Repair the Missing Move",
           passage:"[Lena reaches for the door, then pulls her hand back when Marcus enters.]",
-          sentence:"The scene shows Lena becoming uncertain about leaving. The stage direction says that she 'reaches for the door, then pulls her hand back when Marcus enters.'",
+          sentence:"The scene shows Lena becoming uncertain about leaving. The stage direction says that she “reaches for the door, then pulls her hand back when Marcus enters.”",
           prompt:"What is this paragraph fragment missing most?",
           customChoices:[
             {
@@ -864,19 +962,19 @@
               key:"analysis",
               text:"Explain how the repeated unanswered bell turns an ordinary sound into a pattern of expectation and absence.",
               correct:true,
-              feedback:"Yes. This moves beyond repeating the quotation and explains how the word supports the claim."
+              feedback:"Yes. This moves beyond repeating the evidence and explains how the repeated unanswered bell supports the claim."
             },
             {
               key:"repeat",
-              text:"Add: 'In other words, the bell rings and nobody responds.'",
+              text:"Add: “In other words, the bell rings and nobody responds.”",
               correct:false,
-              feedback:"This is another paraphrase. It changes the wording but still does not explain why “swallowed” matters."
+              feedback:"This is another paraphrase. It changes the wording but still does not explain why the repeated unanswered bell matters."
             },
             {
               key:"device",
-              text:"Add only: “This is personification.”",
+              text:"Add only: “This is repetition.”",
               correct:false,
-              feedback:"Naming the device is useful, but the paragraph still needs to explain what the personification does and how it supports the interpretation."
+              feedback:"Naming the pattern is useful, but the paragraph still needs to explain what the repetition does and how it supports the interpretation."
             }
           ]
         },
@@ -908,6 +1006,48 @@
           ]
         }
       ];
+
+
+      /*
+       * Sequence safeguard:
+       * Claim, Evidence, and Explanation examples are mixed within each round
+       * so students cannot learn a fixed Claim → Evidence → Explanation pattern.
+       */
+      function buildShuffledCEEItems(source){
+        const grouped = new Map();
+        source.forEach(item=>{
+          if(!grouped.has(item.round)) grouped.set(item.round,[]);
+          grouped.get(item.round).push(item);
+        });
+
+        const result = [];
+        let previousSequence = "";
+
+        [...grouped.keys()].sort((a,b)=>a-b).forEach(round=>{
+          let group = [...grouped.get(round)];
+
+          // Fisher-Yates shuffle.
+          for(let i=group.length-1;i>0;i--){
+            const j=Math.floor(Math.random()*(i+1));
+            [group[i],group[j]]=[group[j],group[i]];
+          }
+
+          // For the identify/follow rounds, explicitly avoid C → E → E.
+          if(round < 3 && group.length===3){
+            const seq=group.map(item=>item.answer).join("|");
+            if(seq==="claim|evidence|explanation" || seq===previousSequence){
+              [group[0],group[1]]=[group[1],group[0]];
+            }
+            previousSequence=group.map(item=>item.answer).join("|");
+          }
+
+          result.push(...group);
+        });
+
+        return result;
+      }
+
+      const items = buildShuffledCEEItems(sourceItems);
 
       const els = {
         roundText:document.getElementById("roundText"),
