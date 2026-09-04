@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What Does My Professor Mean? | Literary Analysis Support</title>
   <meta name="description" content="A literary analysis feedback decoder that helps students turn common instructor comments into specific revision moves.">
@@ -385,6 +387,14 @@
   </footer>
 
 <script>
+function setSafeListItems_(el, items) {
+  el.replaceChildren(...items.map(item => {
+    const li = document.createElement("li");
+    li.textContent = String(item ?? "");
+    return li;
+  }));
+}
+
 (() => {
   const comments = [
     {
@@ -519,7 +529,7 @@
 
       title.textContent = `“${item.label}”`;
       meaning.textContent = item.meaning;
-      steps.innerHTML = item.steps.map(s => `<li>${s}</li>`).join("");
+      setSafeListItems_(steps, item.steps);
       before.textContent = item.before;
       after.textContent = item.after;
       question.textContent = item.question;

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Practice Literary Terms | ENGL C1002 Learning Lab</title>
@@ -1215,7 +1217,7 @@
     summary.hidden = false;
     completeCount.textContent = `${deck.length} card${deck.length === 1 ? "" : "s"} practiced`;
 
-    reviewList.innerHTML = "";
+    reviewList.replaceChildren();
 
     if(reviewCards.length){
       reviewSummaryTitle.textContent = `${reviewCards.length} to review again`;

@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>What Should This Paragraph Prove? | ENGL C1002 Learning Lab</title>
 <meta content="Learn how thesis statements, topic sentences, paragraph claims, evidence, and analysis work together in a literary-analysis essay." name="description"/>
@@ -304,7 +306,7 @@ function orderFor(item){
 const el={progressText:document.getElementById("progressText"),roundText:document.getElementById("roundText"),progress:document.getElementById("progress"),roundLabel:document.getElementById("roundLabel"),passage:document.getElementById("passage"),prompt:document.getElementById("prompt"),choices:document.getElementById("choices"),feedback:document.getElementById("feedback"),tryAgain:document.getElementById("tryAgain"),next:document.getElementById("next"),card:document.getElementById("questionCard"),activity:document.getElementById("activity"),completion:document.getElementById("completion")};
 function render(){
  locked=false;const item=items[index];
- el.progressText.textContent=`Question ${index+1} of ${items.length}`;el.roundText.textContent=item.round;el.progress.value=index+1;el.roundLabel.textContent=item.round;el.passage.textContent=item.passage;el.prompt.textContent=item.prompt;el.choices.innerHTML="";
+ el.progressText.textContent=`Question ${index+1} of ${items.length}`;el.roundText.textContent=item.round;el.progress.value=index+1;el.roundLabel.textContent=item.round;el.passage.textContent=item.passage;el.prompt.textContent=item.prompt;el.choices.replaceChildren();
  orderFor(item).forEach(i=>{const c=item.choices[i];const b=document.createElement("button");b.type="button";b.className="choice";b.textContent=c.text;b.addEventListener("click",()=>answer(c));el.choices.appendChild(b);});
  el.feedback.className="feedback";el.feedback.textContent="";el.tryAgain.classList.add("hidden");el.next.classList.add("hidden");
 }

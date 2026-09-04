@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Don't Drop the Quote | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -823,6 +825,80 @@ The problem is what comes next. If the sentence only repeats the quotation, anal
   <footer>This low-stakes practice activity does not record or submit student responses.</footer>
 
   <script>
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
   (() => {
     const items = [{"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "The poem presents memory as something the speaker cannot completely remove.", "quote": "I swept the room clean / but your name stayed in the dust.", "prompt": "Which sentence does the strongest analytical work immediately after the quotation?", "choices": [{"text": "The word “but” turns the second line against the speaker's attempt to clean the room, while the name remaining “in the dust” makes memory feel like a physical trace that resists removal.", "correct": true, "feedback": "Yes. This points to a specific contrast and image, then explains how they support the interpretation of memory as resistant to deliberate removal."}, {"text": "This means the speaker cleaned the room but there was still dust.", "correct": false, "feedback": "That restates the literal action but does not explain what the contrast or image contributes to the interpretation."}, {"text": "This quote is important because it is about memory.", "correct": false, "feedback": "That labels the topic but leaves the actual language unexplained."}]}, {"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "Mara's calm words hide how seriously she is taking the warning.", "quote": "“It's fine,” Mara said, folding the letter into smaller and smaller squares.", "prompt": "Which follow-up best analyzes the evidence?", "choices": [{"text": "The repetition of “smaller” makes Mara's nervous movement feel like an attempt to contain the problem physically, so her behavior undermines the calmness of “It's fine.”", "correct": true, "feedback": "Exactly. The analysis notices repetition and the contradiction between speech and action, then explains what that contrast suggests."}, {"text": "Mara says that it is fine and then folds the letter.", "correct": false, "feedback": "That paraphrases the evidence without explaining why the two actions matter together."}, {"text": "This is an example of dialogue and characterization.", "correct": false, "feedback": "Naming techniques does not explain what this particular dialogue and action reveal."}]}, {"round": 1, "roundLabel": "Round 1: What Comes After the Evidence?", "claim": "The child's perspective makes the adult-controlled space feel intimidating.", "quote": "the enormous door", "prompt": "Which sentence moves from the quoted phrase into analysis?", "choices": [{"text": "The adjective “enormous” enlarges an ordinary doorway through the child's perspective, making the adult space feel overwhelming before she even enters it.", "correct": true, "feedback": "Yes. One carefully analyzed word is enough to show how the description supports the paragraph's claim."}, {"text": "The door is enormous, which means it is very big.", "correct": false, "feedback": "That defines the word rather than interpreting why the description matters from this perspective."}, {"text": "The author uses diction here.", "correct": false, "feedback": "The literary term is accurate, but the paragraph still needs to explain what this diction does."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The scene presents Elena's silence as a deliberate form of resistance rather than simple passivity.", "quote": "[Elena looks at the judge, folds her hands, and says nothing.]", "prompt": "What is the most useful feature to zoom in on?", "choices": [{"text": "The sequence of looking directly at the judge, deliberately folding her hands, and then remaining silent.", "correct": true, "feedback": "Yes. Those coordinated actions make the silence look chosen and controlled rather than merely empty."}, {"text": "The fact that the sentence is inside brackets.", "correct": false, "feedback": "The brackets identify a stage direction, but the more important analytical work comes from what the physical actions suggest."}, {"text": "The fact that there is a judge in the scene.", "correct": false, "feedback": "The judge matters to the context, but this claim specifically depends on how Elena's behavior gives silence an active quality."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The speaker's grief remains unresolved even while she tries to move forward.", "quote": "Still I packed the boxes. / Still I left your cup beside the sink.", "prompt": "Which feature gives the writer the strongest material for close analysis?", "choices": [{"text": "The repeated word “Still,” especially because it introduces both an act of leaving and an act of preserving.", "correct": true, "feedback": "Exactly. The repetition links two contradictory behaviors and gives the writer a way to analyze grief as movement and attachment at the same time."}, {"text": "The fact that boxes can be made from cardboard.", "correct": false, "feedback": "That is unrelated to the interpretive problem in the paragraph."}, {"text": "The number of words in each line.", "correct": false, "feedback": "Line length could matter in some poems, but nothing in this evidence makes it the most productive feature for this particular claim."}]}, {"round": 2, "roundLabel": "Round 2: Find the Detail Worth Analyzing", "claim": "The narrator treats the character's attempt to leave as uncertain rather than decisive.", "quote": "She reached for the handle, stopped, and left her hand there.", "prompt": "Which detail most directly complicates the idea that she has already decided to leave?", "choices": [{"text": "The interruption between “reached” and “stopped,” followed by her hand remaining on the handle.", "correct": true, "feedback": "Yes. The movement begins with apparent intention but freezes before completion, turning the physical action into hesitation."}, {"text": "The word “hand” because hands are used to open doors.", "correct": false, "feedback": "That observation is literal but does not yet explain the hesitation built into the sequence of actions."}, {"text": "The sentence is written in the past tense.", "correct": false, "feedback": "Tense is not the feature doing the most interpretive work for this claim."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The locked gate makes protection dependent on someone else's control.", "quote": "“It keeps you safe,” he says, pocketing the only key.", "prompt": "Which sequence best turns the evidence into analysis?", "choices": [{"text": "He describes the gate as something that “keeps you safe,” but he also pockets “the only key.” The contrast makes protection inseparable from control: safety depends on his ability to decide when the gate can open.", "correct": true, "feedback": "Yes. The writer quotes only the useful language, notices the contradiction, and explains how it supports the paragraph's claim."}, {"text": "“It keeps you safe,” he says, pocketing the only key. This quote shows the gate.", "correct": false, "feedback": "The evidence is present, but the final sentence does not explain the contradiction between safety and control."}, {"text": "He has the key. The gate is locked. Later there is another scene with the gate.", "correct": false, "feedback": "This adds more plot information instead of analyzing the significance of the evidence already available."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The character's public confidence depends on careful performance.", "quote": "Before entering the meeting, she whispers each answer twice to the empty hallway.", "prompt": "Which paragraph move should follow?", "choices": [{"text": "Rehearsing “each answer twice” before anyone can hear her reveals the preparation hidden beneath her later confidence, making authority look practiced rather than effortless.", "correct": true, "feedback": "Exactly. The analysis focuses on repetition and privacy, then connects those details to the paragraph's claim about performed confidence."}, {"text": "This shows that she practices her answers before the meeting.", "correct": false, "feedback": "That repeats the action but does not explain what the private rehearsal changes about how we understand her public confidence."}, {"text": "Then she goes into the meeting and talks.", "correct": false, "feedback": "Moving forward in the plot abandons the evidence before the paragraph has interpreted it."}]}, {"round": 3, "roundLabel": "Round 3: Repair the Quote Dump", "claim": "The poem presents departure as emotionally incomplete.", "quote": "At the station, the speaker says, “I left the ticket on the seat beside me.”", "prompt": "Which follow-up gives the quotation an analytical purpose?", "choices": [{"text": "Leaving the ticket beside her rather than discarding it keeps the possibility of departure physically close but unused, turning the object into evidence of hesitation rather than a completed decision.", "correct": true, "feedback": "Yes. The writer stays with the physical detail and explains how it complicates the idea of departure."}, {"text": "The ticket is on the seat beside her.", "correct": false, "feedback": "That simply repeats where the object is located."}, {"text": "This is symbolism because the ticket symbolizes something.", "correct": false, "feedback": "Calling the object a symbol does not explain what its placement suggests or how it supports the paragraph's claim."}]}];
 
@@ -891,7 +967,7 @@ The problem is what comes next. If the sentence only repeats the quotation, anal
       els.claim.textContent=item.claim;
       els.quote.textContent=item.quote;
       els.prompt.textContent=item.prompt;
-      els.choices.innerHTML="";
+      els.choices.replaceChildren();
       item.choices.forEach((choice,i)=>{
         const btn=document.createElement("button");
         btn.type="button";
@@ -903,7 +979,7 @@ The problem is what comes next. If the sentence only repeats the quotation, anal
       applyStableChoiceShuffle(els.choices, item, "main");
 
       els.feedback.className="feedback hidden";
-      els.feedback.innerHTML="";
+      els.feedback.replaceChildren();
       els.actions.classList.add("hidden");
       els.tryAgain.classList.add("hidden");
       els.next.classList.add("hidden");
@@ -918,12 +994,12 @@ The problem is what comes next. If the sentence only repeats the quotation, anal
         solved=true;
         button.classList.add("correct");
         els.feedback.className="feedback correct";
-        els.feedback.innerHTML=`<div class="feedback-title">Yes — the quotation is doing real work here.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Yes — the quotation is doing real work here.', choice.feedback);
         els.next.classList.remove("hidden");
       }else{
         button.classList.add("incorrect");
         els.feedback.className="feedback try";
-        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Look at how the quotation connects to the writer’s own thinking.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Not quite. Look at how the quotation connects to the writer’s own thinking.', choice.feedback);
         els.tryAgain.classList.remove("hidden");
       }
       els.actions.classList.remove("hidden");
@@ -1043,34 +1119,7 @@ The problem is what comes next. If the sentence only repeats the quotation, anal
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=dont-drop-the-quote">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'dont-drop-the-quote');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

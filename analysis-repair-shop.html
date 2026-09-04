@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Analysis Repair Shop | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -851,6 +853,80 @@ A paragraph may have several imperfections, but one analytical problem usually m
   <footer>This low-stakes practice activity does not record or submit student responses.</footer>
 
   <script>
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
   (() => {
     const items = [{"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "Jonah misses the train, walks home, returns to the station the next day, and misses the train again.", "prompt": "What is the biggest problem if this paragraph is supposed to be literary analysis?", "choices": [{"text": "It summarizes events but never makes an interpretive claim about the repeated missed departures.", "correct": true, "feedback": "Exactly. The repeated events may become useful evidence, but the paragraph first needs to explain what the pattern may suggest."}, {"text": "It needs a longer quotation from the story.", "correct": false, "feedback": "More evidence would not solve the main problem because the paragraph has not yet said what it wants that evidence to help prove."}, {"text": "It needs transition words between every event.", "correct": false, "feedback": "Transitions may improve flow, but they cannot turn plot sequence into interpretation."}], "after": "Possible repair: “Jonah's repeated missed departures turn leaving into a pattern of hesitation, suggesting that his inability to go is emotional as well as practical.”"}, {"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "The poem presents memory as difficult to erase. The speaker says, “I swept the room clean / but your name stayed in the dust.” This means the room was cleaned but some dust remained.", "prompt": "What is the central analytical problem?", "choices": [{"text": "The paragraph has relevant evidence, but the explanation merely paraphrases the literal action instead of analyzing the contrast and image.", "correct": true, "feedback": "Yes. The paragraph needs to explain how “but” and the name remaining “in the dust” make memory feel resistant to deliberate removal."}, {"text": "The paragraph needs a second quotation immediately.", "correct": false, "feedback": "The existing quotation already gives the writer enough material to analyze. Another quotation would not replace the missing explanation."}, {"text": "The claim should be removed because poems can have more than one meaning.", "correct": false, "feedback": "Interpretive claims are appropriate as long as they remain grounded in the text. The problem here is the weak explanation, not the presence of a claim."}], "after": "Possible repair: The word “but” turns the second line against the speaker's attempt to clean the room, while the name remaining “in the dust” makes memory feel like a physical trace that resists removal."}, {"round": 1, "roundLabel": "Round 1: Diagnose the Biggest Gap", "paragraph": "The cracked-glass imagery suggests that the narrator's confidence in her own perspective is becoming unstable. Later, she describes the window as “split by a thin white line.”", "prompt": "What is missing most?", "choices": [{"text": "The paragraph needs explanation of what the “thin white line” makes the reader notice and how that detail supports the claim about unstable perception.", "correct": true, "feedback": "Exactly. The claim and evidence are present, but the paragraph stops before showing how the evidence does analytical work."}, {"text": "The paragraph needs to define imagery for the reader.", "correct": false, "feedback": "A definition of imagery would not explain this particular image or its relationship to the paragraph's claim."}, {"text": "The paragraph needs a more complicated transition phrase.", "correct": false, "feedback": "The analytical gap is between evidence and interpretation, not between sentences."}], "after": "Possible repair: The “thin white line” makes the break look small but impossible to ignore, turning an ordinary window into a visual sign that the narrator's once-unified view has begun to divide."}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The workers become silent whenever the supervisor enters. The story shows that the supervisor is powerful.", "prompt": "Which revision would improve the paragraph the most?", "choices": [{"text": "Add evidence showing the repeated shift into silence, then explain how the workers' self-censorship allows the supervisor's authority to operate even without a direct command.", "correct": true, "feedback": "Yes. This gives the claim textual support and explains the mechanism of power rather than simply labeling the supervisor as powerful."}, {"text": "Replace “powerful” with “formidable.”", "correct": false, "feedback": "A stronger vocabulary word does not repair the missing evidence and explanation."}, {"text": "Add “Furthermore” before the second sentence.", "correct": false, "feedback": "A transition can connect sentences, but it cannot create the analytical reasoning the paragraph lacks."}], "after": "Possible repair: “Each time the supervisor enters, conversation stops before he gives an order. The repeated silence suggests that his authority has been internalized by the workers, who begin regulating themselves in anticipation of his judgment.”"}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The youngest figure in the portrait is the only person looking outside the frame. This proves that she is planning to escape her family.", "prompt": "Which repair best fixes the overreach without eliminating interpretation?", "choices": [{"text": "Qualify the claim so the different gaze may suggest curiosity, independence, or attention to possibilities beyond what the others see.", "correct": true, "feedback": "Yes. This keeps the interpretation while removing a specific future action the image cannot prove."}, {"text": "Make the sentence more confident: “She definitely plans to escape.”", "correct": false, "feedback": "Greater certainty makes the unsupported leap larger."}, {"text": "Remove all interpretation and write only, “She looks outside the frame.”", "correct": false, "feedback": "That avoids overreach but also gives up the analytical work. The stronger move is a proportionate interpretation."}], "after": "Possible repair: “Because the youngest figure alone looks beyond the frame, her gaze may associate her with curiosity or possibilities that the other figures do not appear to notice.”"}, {"round": 2, "roundLabel": "Round 2: Choose the Highest-Impact Repair", "paragraph": "The parent repeatedly calls the rules “protection.” The locked bedroom door also keeps the child from leaving. The paragraph concludes: “The parent is simply cruel.”", "prompt": "What repair would create a more useful interpretation?", "choices": [{"text": "Revise the conclusion to examine how care and control become difficult to separate when one person decides what safety requires for another.", "correct": true, "feedback": "Exactly. The evidence supports a tension between protection and restriction more strongly than a one-word moral judgment."}, {"text": "Add several synonyms for “cruel.”", "correct": false, "feedback": "Stronger labeling would not make the interpretation more precise or better grounded."}, {"text": "Delete the detail about protection because it complicates the conclusion.", "correct": false, "feedback": "The complicating detail is valuable. It is the reason the argument can become more nuanced."}], "after": "Possible repair: By describing restrictive rules as “protection,” the parent makes care difficult to separate from control, suggesting that concern can become coercive when only one person has the authority to define safety."}, {"round": 3, "roundLabel": "Round 3: Repair the Whole Paragraph", "paragraph": "The story is about belonging. Lena changes the way she speaks after joining the group. “You sound better now,” one member tells her. This quote shows they like how she talks. The group accepts her.", "prompt": "Which revision strategy would improve this paragraph the most?", "choices": [{"text": "Turn “belonging” into a more specific claim, then analyze how “better” makes acceptance depend on changing the way Lena sounds.", "correct": true, "feedback": "Yes. This repair improves both the paragraph claim and the explanation of the evidence, giving the details a clear analytical relationship."}, {"text": "Add two more quotations showing that the group accepts Lena.", "correct": false, "feedback": "The paragraph already establishes acceptance. Its biggest need is interpretation of the condition attached to that acceptance."}, {"text": "Replace “shows” with a more sophisticated verb but keep the rest of the paragraph unchanged.", "correct": false, "feedback": "Vocabulary polish would not fix the paragraph's vague claim or repeated explanation."}], "after": "Repaired version: The story presents belonging as conditional because Lena receives approval only after changing how she speaks. When a group member tells her, “You sound better now,” the comparative word “better” turns one way of speaking into the standard Lena must approach in order to be accepted."}, {"round": 3, "roundLabel": "Round 3: Repair the Whole Paragraph", "paragraph": "The child is powerless because adults make all the decisions. However, she is also the first person to recognize the danger. This contradicts my claim, so I would probably leave that part out.", "prompt": "What is the strongest repair?", "choices": [{"text": "Revise the claim so it distinguishes decision-making authority from perceptiveness or knowledge.", "correct": true, "feedback": "Exactly. The new evidence does not ruin the interpretation; it reveals that power can take more than one form."}, {"text": "Delete the contradictory evidence and keep the original claim.", "correct": false, "feedback": "Ignoring relevant evidence makes the argument less credible and less interesting."}, {"text": "Reverse the claim and say the child is powerful in every way.", "correct": false, "feedback": "That simply swings to the opposite extreme. The stronger repair makes room for both kinds of evidence."}], "after": "Possible repair: “Although adults control the decisions around her, the child's ability to recognize danger gives her a form of knowledge that complicates her apparent powerlessness.”"}];
 
@@ -919,7 +995,7 @@ A paragraph may have several imperfections, but one analytical problem usually m
       els.paragraph.textContent=item.paragraph;
       els.prompt.textContent=item.prompt;
 
-      els.choices.innerHTML="";
+      els.choices.replaceChildren();
       item.choices.forEach((choice,i)=>{
         const btn=document.createElement("button");
         btn.type="button";
@@ -932,9 +1008,9 @@ A paragraph may have several imperfections, but one analytical problem usually m
       applyStableChoiceShuffle(els.choices, item, "main");
 
       els.feedback.className="feedback hidden";
-      els.feedback.innerHTML="";
+      els.feedback.replaceChildren();
       els.after.className="after hidden";
-      els.after.innerHTML="";
+      els.after.replaceChildren();
       els.actions.classList.add("hidden");
       els.tryAgain.classList.add("hidden");
       els.next.classList.add("hidden");
@@ -953,14 +1029,16 @@ A paragraph may have several imperfections, but one analytical problem usually m
         solved=true;
         button.classList.add("correct");
         els.feedback.className="feedback correct";
-        els.feedback.innerHTML=`<div class="feedback-title">Yes — that diagnoses the main problem.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Yes — that diagnoses the main problem.', choice.feedback);
         els.after.className="after";
-        els.after.innerHTML=`<strong>After the repair:</strong>${item.after}`;
+        const afterLabel = document.createElement("strong");
+        afterLabel.textContent = "After the repair:";
+        els.after.replaceChildren(afterLabel, document.createTextNode(String(item.after ?? "")));
         els.next.classList.remove("hidden");
       }else{
         button.classList.add("incorrect");
         els.feedback.className="feedback try";
-        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Look for the biggest analytical gap.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Not quite. Look for the biggest analytical gap.', choice.feedback);
         els.tryAgain.classList.remove("hidden");
       }
 
@@ -1081,34 +1159,7 @@ A paragraph may have several imperfections, but one analytical problem usually m
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=analysis-repair-shop">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'analysis-repair-shop');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

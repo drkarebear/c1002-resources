@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lost in the Text? | Literary Analysis Lab</title>
   <meta name="description" content="A short literary analysis practice activity that helps students find the exact place a difficult passage becomes confusing, repair understanding, and return to close reading.">
@@ -794,7 +796,7 @@
       el.context.classList.add("hidden");
     }
 
-    el.choices.innerHTML="";
+    el.choices.replaceChildren();
     item.choices.forEach(([text,status])=>{
       const b=document.createElement("button");
       b.type="button";

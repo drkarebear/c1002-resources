@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Build an Interpretation | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -800,6 +802,80 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
   <footer>This low-stakes practice activity does not record or submit student responses.</footer>
 
   <script>
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
   (() => {
     const items = [{"round": 1, "roundLabel": "Round 1: Connect the Pattern", "evidence": ["Adults repeatedly tell the child where she may go.", "Adults make important decisions without asking for her opinion.", "The narrator describes the child as physically small during these moments."], "choices": [{"text": "The story may connect childhood with limited power inside an adult-controlled world.", "correct": true, "feedback": "This interpretation explains all three details: rules, decision-making, and the repeated emphasis on smallness."}, {"text": "The child is short.", "correct": false, "feedback": "This fits only one detail and stays on the surface. It does not explain the repeated pattern of adult authority."}, {"text": "All adults are cruel to children.", "correct": false, "feedback": "This is too broad. The evidence supports a pattern of limited child power, but it does not prove that every adult is cruel."}]}, {"round": 1, "roundLabel": "Round 1: Connect the Pattern", "evidence": ["In The Six Swans, the sister must remain silent while she works to free her brothers.", "Her silence makes it difficult to defend herself when other people accuse her.", "She continues the task even when speaking could protect her immediately."], "choices": [{"text": "The story may present silence as both devotion and vulnerability: the sister's silence helps her continue the work of freeing her brothers, but it also limits her ability to defend herself.", "correct": true, "feedback": "Yes. This interpretation accounts for the purpose of the silence, the cost it creates, and the sister's decision to continue despite that cost."}, {"text": "The sister does not speak while she works.", "correct": false, "feedback": "That is an accurate observation, but it does not yet explain what the repeated silence may mean across the evidence set."}, {"text": "The story proves that silence is always noble.", "correct": false, "feedback": "That is too absolute. The evidence shows that silence has both value and consequences in this situation."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["A character keeps repairing a broken toy even when the repair fails.", "She saves every loose piece rather than throwing it away.", "After the final failed attempt, she places the toy carefully on a shelf."], "choices": [{"text": "The character may connect caring with persistence, even when something cannot be fully restored.", "correct": true, "feedback": "This interpretation explains the repeated repair attempts, the saved pieces, and the final act of care."}, {"text": "The character likes toys.", "correct": false, "feedback": "This is possible but too narrow. It does not explain the repeated effort or the careful treatment after failure."}, {"text": "The toy represents the inevitable collapse of civilization.", "correct": false, "feedback": "Nothing in the evidence supports such a sweeping symbolic claim. The interpretation should stay closer to the character’s actions."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["The narrator repeatedly describes the house as quiet.", "Family members leave conversations unfinished.", "Important conflicts are handled through gestures rather than direct speech."], "choices": [{"text": "The repeated silence may reflect a family pattern of avoiding direct communication.", "correct": true, "feedback": "This interpretation connects setting, dialogue, and behavior into one coherent pattern."}, {"text": "The family lives in a quiet neighborhood.", "correct": false, "feedback": "That may explain one detail, but it does not account for unfinished conversations and nonverbal conflict."}, {"text": "The family members secretly hate one another.", "correct": false, "feedback": "The text may support conflict or avoidance, but “secretly hate” adds a specific emotional claim the evidence does not establish."}]}, {"round": 2, "roundLabel": "Round 2: Test the Whole Claim", "evidence": ["The youngest character asks questions the adults refuse to answer.", "She notices contradictions in the family’s stories.", "She is repeatedly told that she is “too young to understand.”"], "choices": [{"text": "The story may question the assumption that age automatically determines who understands the truth.", "correct": true, "feedback": "This interpretation connects the child’s questions, her observations, and the adults’ repeated dismissal of her understanding."}, {"text": "The child asks a lot of questions.", "correct": false, "feedback": "This describes one pattern but does not explain why her questioning matters in relation to adult authority."}, {"text": "Children are always wiser than adults.", "correct": false, "feedback": "That is too absolute. The evidence supports a challenge to adult assumptions, not a universal claim about all children and adults."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["Nico touches a hidden ticket stub whenever he is asked to write about home.", "He never takes the ticket stub out in front of the class.", "The ticket is described as worn from being handled."], "prompt": "Two interpretations could be defensible. Which answer recognizes that possibility?", "choices": [{"text": "The ticket could represent a private connection to home, or it could represent a memory Nico is not ready to share. Both readings fit the evidence and would need further support.", "correct": true, "feedback": "Exactly. Literary evidence can support more than one plausible interpretation. The next step would be to test each reading against more of the text."}, {"text": "The ticket definitely proves Nico is homesick.", "correct": false, "feedback": "Homesickness is possible, but “definitely proves” closes down other readings the evidence could also support."}, {"text": "Because the text does not tell us exactly what the ticket means, we cannot interpret it at all.", "correct": false, "feedback": "Literary analysis often works precisely with this kind of uncertainty. We can make a cautious reading as long as we support it."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["Every portrait faces forward except the youngest girl.", "The girl looks toward something outside the frame.", "The narrator never tells us what she sees."], "prompt": "Which interpretation handles the evidence most responsibly?", "choices": [{"text": "Her different gaze could suggest curiosity, independence, or attention to possibilities beyond what the others see; the ambiguity is part of what makes the image open to interpretation.", "correct": true, "feedback": "This acknowledges several plausible readings while staying grounded in the contrast the text actually gives us."}, {"text": "She is definitely planning to run away.", "correct": false, "feedback": "That is one imaginable story, but the text does not provide enough evidence for such a specific plot claim."}, {"text": "The detail has no meaning because we are not told what she is looking at.", "correct": false, "feedback": "Ambiguity does not prevent interpretation. It means the reader must be careful about what the evidence can and cannot support."}]}, {"round": 3, "roundLabel": "Round 3: More Than One Reading Can Work", "evidence": ["In The Talkative Tortoise, the tortoise is warned that speaking during the journey will make him fall.", "He agrees to remain silent while being carried through the air.", "When people below mock him, he opens his mouth to answer them and falls."], "prompt": "Which interpretation best connects the pattern without turning it into a universal rule?", "choices": [{"text": "The tale may present self-control as especially difficult when pride is provoked by other people's judgment.", "correct": true, "feedback": "Yes. This interpretation connects the warning, the agreement to stay silent, and the moment when mockery becomes strong enough to break that self-control."}, {"text": "The tortoise speaks after being told not to.", "correct": false, "feedback": "That restates the event but does not explain the larger pattern connecting pride, provocation, and self-control."}, {"text": "The tale proves that people should never respond when others insult them.", "correct": false, "feedback": "That turns one literary situation into a universal rule. A stronger interpretation stays with what the story makes visible about this character's conflict."}]}];
 
@@ -866,7 +942,7 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
       els.roundLabel.textContent=item.roundLabel;
       els.prompt.textContent=item.prompt || "Which interpretation best connects all of these details?";
 
-      els.evidenceList.innerHTML="";
+      els.evidenceList.replaceChildren();
       item.evidence.forEach((text,i)=>{
         const div=document.createElement("div");
         div.className="evidence-item";
@@ -875,7 +951,7 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
         els.evidenceList.appendChild(div);
       });
 
-      els.choices.innerHTML="";
+      els.choices.replaceChildren();
       item.choices.forEach((choice,i)=>{
         const btn=document.createElement("button");
         btn.type="button";
@@ -888,7 +964,7 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
       applyStableChoiceShuffle(els.choices, item, "main");
 
       els.feedback.className="feedback hidden";
-      els.feedback.innerHTML="";
+      els.feedback.replaceChildren();
       els.actions.classList.add("hidden");
       els.tryAgain.classList.add("hidden");
       els.next.classList.add("hidden");
@@ -906,12 +982,12 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
         solved=true;
         button.classList.add("correct");
         els.feedback.className="feedback correct";
-        els.feedback.innerHTML=`<div class="feedback-title">Yes — this interpretation connects the evidence as a pattern.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Yes — this interpretation connects the evidence as a pattern.', choice.feedback);
         els.next.classList.remove("hidden");
       }else{
         button.classList.add("incorrect");
         els.feedback.className="feedback try";
-        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Test the claim against all of the evidence.</div><div>${choice.feedback}</div>`;
+        setSafeFeedback_(els.feedback, 'Not quite. Test the claim against all of the evidence.', choice.feedback);
         els.tryAgain.classList.remove("hidden");
       }
 
@@ -1032,34 +1108,7 @@ A claim that explains only one detail may be too narrow. A claim that adds ideas
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=build-an-interpretation">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'build-an-interpretation');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

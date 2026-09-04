@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Using Textual Evidence | ENGL C1002 Learning Lab</title>
 <meta content="Learn how to choose evidence that fits a literary-analysis claim, decide when to summarize, paraphrase, use a specific detail, or quote directly, integrate quotations, and explain why the evidence matters." name="description"/>
@@ -380,7 +382,7 @@ function render(){
   }else{
     el.passage.classList.add("hidden");
   }
-  el.choices.innerHTML="";
+  el.choices.replaceChildren();
   stableShuffle(item).forEach(i=>{
     const choice=item.choices[i];
     const b=document.createElement("button");

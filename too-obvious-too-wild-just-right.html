@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Too Obvious, Too Wild, or Just Right? | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -716,6 +718,80 @@
   <footer>This low-stakes practice activity does not record or submit student responses.</footer>
 
   <script>
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
   (() => {
     const sourceItems = [
       {
@@ -935,7 +1011,7 @@
       });
 
       els.feedback.className="feedback hidden";
-      els.feedback.innerHTML="";
+      els.feedback.replaceChildren();
       els.actions.classList.add("hidden");
       els.tryAgain.classList.add("hidden");
       els.next.classList.add("hidden");
@@ -954,12 +1030,12 @@
         button.classList.add("correct");
         els.feedback.className="feedback correct";
         const label = item.answer==="obvious" ? "Too Obvious" : item.answer==="wild" ? "Too Wild" : "Just Right";
-        els.feedback.innerHTML=`<div class="feedback-title">Yes — ${label}.</div><div>${item.feedback[choice]}</div>`;
+        setSafeFeedback_(els.feedback, `Yes — ${label}.`, item.feedback[choice]);
         els.next.classList.remove("hidden");
       }else{
         button.classList.add("incorrect");
         els.feedback.className="feedback try";
-        els.feedback.innerHTML=`<div class="feedback-title">Not quite. Compare the claim with the evidence.</div><div>${item.feedback[choice]}</div>`;
+        setSafeFeedback_(els.feedback, 'Not quite. Compare the claim with the evidence.', item.feedback[choice]);
         els.tryAgain.classList.remove("hidden");
       }
 
@@ -1081,34 +1157,7 @@
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=too-obvious-too-wild-just-right">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'too-obvious-too-wild-just-right');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

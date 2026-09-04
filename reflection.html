@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reflection Prompt | ENGL C1002 Learning Lab</title>
   <meta name="description" content="Activity-specific reflection prompts for the ENGL C1002 Learning Lab. Students respond in Canvas or wherever their instructor assigns the reflection.">
@@ -369,6 +371,14 @@
   </footer>
 
 <script>
+function setSafeListItems_(el, items) {
+  el.replaceChildren(...items.map(item => {
+    const li = document.createElement("li");
+    li.textContent = String(item ?? "");
+    return li;
+  }));
+}
+
 (() => {
   const prompts = {
     "lost-in-the-text": {
@@ -629,17 +639,16 @@
     ]
   };
 
-  const data = prompts[key] || fallback;
+  const data = Object.hasOwn(prompts, key) ? prompts[key] : fallback;
 
   document.getElementById("move").textContent = data.move;
   document.getElementById("activity-name").textContent = data.name;
   document.getElementById("purpose").textContent = data.purpose;
   document.getElementById("prompt").textContent = data.prompt;
-  document.getElementById("checks").innerHTML =
-    data.checks.map(item => `<li>${item}</li>`).join("");
+  setSafeListItems_(document.getElementById("checks"), data.checks);
 
   const back = document.getElementById("backToLab");
-  if (prompts[key]) {
+  if (Object.hasOwn(prompts, key)) {
     back.href = `${key}.html`;
   } else {
     document.getElementById("fallback").hidden = false;

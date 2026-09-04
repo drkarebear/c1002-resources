@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What Kind of Thinking Is This? | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -945,6 +947,80 @@
   </footer>
 
   <script>
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
     (() => {
       const TYPES = {
         summary: {
@@ -1206,7 +1282,7 @@
         elements.roundLabel.textContent = item.roundLabel;
 
         if (item.passage) {
-          elements.prompt.innerHTML = "";
+          elements.prompt.replaceChildren();
           const intro = document.createElement("span");
           intro.textContent = item.intro || "Read this short passage:";
           elements.prompt.appendChild(intro);
@@ -1228,13 +1304,18 @@
 
         elements.statement.textContent = item.text;
 
-        elements.choices.innerHTML = "";
+        elements.choices.replaceChildren();
         Object.entries(TYPES).forEach(([key, value]) => {
           const button = document.createElement("button");
           button.type = "button";
           button.className = "choice";
           button.dataset.type = key;
-          button.innerHTML = `<span>${value.label}</span><br><small>${value.term}</small>`;
+          const labelSpan = document.createElement("span");
+          labelSpan.textContent = value.label;
+          const br = document.createElement("br");
+          const termSmall = document.createElement("small");
+          termSmall.textContent = value.term;
+          button.replaceChildren(labelSpan, br, termSmall);
           button.addEventListener("click", () => checkAnswer(key, button));
           elements.choices.appendChild(button);
         });
@@ -1242,7 +1323,7 @@
         applyStableChoiceShuffle(elements.choices, item, "main");
 
         elements.feedback.className = "feedback hidden";
-        elements.feedback.innerHTML = "";
+        elements.feedback.replaceChildren();
         elements.actions.classList.add("hidden");
         elements.tryAgain.classList.add("hidden");
         elements.next.classList.add("hidden");
@@ -1261,17 +1342,13 @@
           hasAnsweredCorrectly = true;
           button.classList.add("correct");
           elements.feedback.className = "feedback correct";
-          elements.feedback.innerHTML =
-            `<div class="feedback-title">Yes — ${TYPES[item.answer].term}.</div>
-             <div>${item.feedback.correct}</div>`;
+          setSafeFeedback_(elements.feedback, `Yes — ${TYPES[item.answer].term}.`, item.feedback.correct);
           elements.tryAgain.classList.add("hidden");
           elements.next.classList.remove("hidden");
         } else {
           button.classList.add("incorrect");
           elements.feedback.className = "feedback try";
-          elements.feedback.innerHTML =
-            `<div class="feedback-title">Almost. Look at the thinking move.</div>
-             <div>${item.feedback[choice]}</div>`;
+          setSafeFeedback_(elements.feedback, 'Almost. Look at the thinking move.', item.feedback[choice]);
           elements.tryAgain.classList.remove("hidden");
           elements.next.classList.add("hidden");
         }
@@ -1395,34 +1472,7 @@
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=what-kind-of-thinking-is-this">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'what-kind-of-thinking-is-this');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

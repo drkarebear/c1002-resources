@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>So What? | Literary Analysis Lab</title>
   <link rel="icon" type="image/png" href="favicon4.png">
@@ -1056,6 +1058,80 @@ A precise explanation of what the pattern changes, reveals, complicates, costs, 
   </footer>
 
   <script>
+function setSafeFeedback_(el, heading, body) {
+  const title = document.createElement("div");
+  title.className = "feedback-title";
+  title.textContent = String(heading ?? "");
+  const detail = document.createElement("div");
+  detail.textContent = String(body ?? "");
+  el.replaceChildren(title, detail);
+}
+
+function renderSafeCompletion_(completion, title, parts, labKey) {
+  const capture = document.createElement("div");
+  capture.className = "completion-capture";
+  capture.setAttribute("aria-label", "Completion confirmation");
+
+  const check = document.createElement("div");
+  check.className = "completion-check";
+  check.setAttribute("aria-hidden", "true");
+  check.textContent = "✓";
+
+  const kicker = document.createElement("p");
+  kicker.className = "completion-kicker";
+  kicker.textContent = "Literary Analysis Lab";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "You did it!";
+
+  const activity = document.createElement("p");
+  activity.className = "completion-activity";
+  activity.textContent = String(title ?? "");
+
+  const meta = document.createElement("div");
+  meta.className = "completion-meta";
+  [["Completed", parts.date], ["Time", parts.time]].forEach(([label, value]) => {
+    const box = document.createElement("div");
+    const span = document.createElement("span");
+    span.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = String(value ?? "");
+    box.append(span, strong);
+    meta.appendChild(box);
+  });
+
+  const proof = document.createElement("p");
+  proof.className = "completion-proof";
+  proof.textContent = "Screenshot this screen if your instructor asked for proof of completion.";
+  capture.append(check, kicker, heading, activity, meta, proof);
+
+  const actions = document.createElement("div");
+  actions.className = "completion-actions";
+  const restart = document.createElement("button");
+  restart.type = "button";
+  restart.className = "secondary";
+  restart.id = "upgradedRestart";
+  restart.textContent = "Practice Again";
+
+  const reflect = document.createElement("a");
+  reflect.className = "review-instructions-btn";
+  reflect.id = "upgradedReflect";
+  reflect.href = "reflection.html?lab=" + encodeURIComponent(labKey);
+  reflect.textContent = "Reflect";
+
+  const links = document.createElement("div");
+  links.className = "completion-links";
+  const allLabs = document.createElement("a");
+  allLabs.href = "all-labs.html";
+  allLabs.textContent = "All Labs";
+  const home = document.createElement("a");
+  home.href = "index.html";
+  home.textContent = "Student Home";
+  links.append(allLabs, home);
+  actions.append(restart, reflect, links);
+  completion.replaceChildren(capture, actions);
+}
+
     (() => {
       const items = [{"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "The narrator keeps turning a family photograph face down but never removes it from the room.", "notice": "Avoidance repeats, but the object remains physically close.", "wonder": "The photograph suggests that the narrator is trying to control when she confronts the memory rather than erase it completely.", "choices": [{"text": "The memory matters because avoidance becomes part of the narrator's relationship to the past: she cannot fully let go, but she also cannot face it continuously.", "correct": true, "feedback": "Yes. This explains why the interpretation matters inside the text without turning it into a universal claim about memory."}, {"text": "Everyone eventually has to confront the past.", "correct": false, "feedback": "That makes the claim much larger than the evidence. “So what?” does not require a statement about everyone."}, {"text": "The photograph is important because it appears more than once.", "correct": false, "feedback": "That identifies the pattern but does not yet explain the significance of the narrator's repeated behavior."}]}, {"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "Lena receives praise from the group only after changing how she speaks.", "notice": "Acceptance repeatedly follows moments when Lena sounds more like the group.", "wonder": "The story presents belonging as conditional rather than automatic.", "choices": [{"text": "The pattern makes belonging emotionally complicated because acceptance gives Lena connection while also asking her to suppress part of how she normally expresses herself.", "correct": true, "feedback": "Exactly. The significance clarifies the cost built into the interpretation instead of merely repeating that belonging is conditional."}, {"text": "The group is bad.", "correct": false, "feedback": "That is a broad judgment. The stronger significance explains what the condition of belonging does to Lena."}, {"text": "This proves that people should never change how they speak.", "correct": false, "feedback": "That turns the text into a rule for real life. Stay with the tension the story creates between connection and self-suppression."}]}, {"round": 1, "roundLabel": "Round 1: Move From Interpretation to Significance", "passage": "A child notices contradictions in the adults' explanations but is repeatedly told she is “too young to understand.”", "notice": "Her observations become sharper at the same moments that adults dismiss her understanding.", "wonder": "The text separates social authority from perceptive knowledge.", "choices": [{"text": "This matters because the child can understand something important without having the authority to make others listen, creating a gap between knowing and being believed.", "correct": true, "feedback": "Yes. The significance explains the tension created by the interpretation rather than simply saying that the adults are wrong."}, {"text": "Children are wiser than adults.", "correct": false, "feedback": "That is too absolute. The passage supports a specific tension between knowledge and authority in this text."}, {"text": "The child asks many questions.", "correct": false, "feedback": "That returns to observation instead of explaining why the pattern matters."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "Workers stop talking whenever the supervisor enters, even before he gives an order.", "notice": "The silence happens automatically and repeatedly.", "wonder": "The supervisor's authority has become internalized; the workers begin regulating themselves in anticipation of his judgment.", "choices": [{"text": "The scene makes power feel strongest when it no longer requires a direct command, because the workers have learned to enforce its expectations on themselves.", "correct": true, "feedback": "Yes. This significance stays focused on how power operates in the scene and why the pattern is important."}, {"text": "All workplaces are oppressive.", "correct": false, "feedback": "That leaps far beyond the text. A significant claim can still remain local and precise."}, {"text": "The supervisor has power.", "correct": false, "feedback": "That repeats the interpretation at a simpler level instead of clarifying what is significant about the form that power takes."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "A character repeatedly repairs a broken toy, saves every loose piece, and finally places the unrepaired toy carefully on a shelf.", "notice": "Care continues even after successful repair becomes impossible.", "wonder": "The story may define caring as persistence rather than restoration.", "choices": [{"text": "The failed repair matters because the character's care is no longer measured by whether she can fix the object; valuing it becomes possible even without restoring it.", "correct": true, "feedback": "Exactly. The significance clarifies what changes in the meaning of care within this pattern."}, {"text": "Nothing can ever be fixed.", "correct": false, "feedback": "That turns a specific pattern into an absolute statement the evidence does not support."}, {"text": "The character likes the toy a lot.", "correct": false, "feedback": "That is plausible but too shallow. It does not explain why continued care after failed repair is significant."}]}, {"round": 2, "roundLabel": "Round 2: Keep the “So What?” Proportionate", "passage": "The parent repeatedly calls restrictive rules “protection,” while the child has no say in when the locked door opens.", "notice": "Language of care appears alongside unequal control over movement.", "wonder": "The story makes protection difficult to separate from control.", "choices": [{"text": "The tension matters because care can remain genuine while still limiting another person's autonomy, making the relationship harder to divide into simple categories of loving or controlling.", "correct": true, "feedback": "Yes. This significance preserves the complexity already present in the evidence."}, {"text": "Parents should never make rules.", "correct": false, "feedback": "That converts the interpretation into a sweeping real-world rule rather than explaining the tension inside the story."}, {"text": "The door is locked.", "correct": false, "feedback": "That returns to the evidence without explaining why the relationship between protection and control matters."}]}, {"round": 3, "roundLabel": "Round 3: Make the Significance Clearer, Not Bigger", "passage": "The poem repeats “still” at the end of three lines, then replaces it with “moving” in the final stanza.", "notice": "A repeated pattern of stasis is interrupted by movement.", "wonder": "The structural change suggests that possibility begins not by erasing stillness but by breaking its repetition.", "choices": [{"text": "The final shift matters because a single change carries more weight after the poem has trained the reader to expect stillness; movement feels tentative but newly possible.", "correct": true, "feedback": "Exactly. The significance explains why the formal pattern makes the final change meaningful."}, {"text": "Change is the most important thing in life.", "correct": false, "feedback": "That makes the claim enormous without making it more useful. The poem's own pattern gives you a more precise significance."}, {"text": "The word “moving” is different from “still.”", "correct": false, "feedback": "That notices the contrast but does not explain why the contrast matters after the repetition."}]}, {"round": 3, "roundLabel": "Round 3: Make the Significance Clearer, Not Bigger", "passage": "Mara says, “It's fine,” while folding the warning letter into smaller and smaller squares.", "notice": "Her calm statement conflicts with an increasingly tense physical action.", "wonder": "The scene presents composure as something Mara performs while anxiety continues underneath it.", "choices": [{"text": "The contradiction matters because the scene makes emotional control look like a performance rather than the absence of fear; what Mara does reveals pressure that her words try to conceal.", "correct": true, "feedback": "Yes. This makes the significance of the contradiction clearer without claiming that all calm behavior is false."}, {"text": "People always hide their true feelings.", "correct": false, "feedback": "That is too universal. The evidence supports a specific reading of Mara in this moment."}, {"text": "Mara folds the letter because she is nervous.", "correct": false, "feedback": "That gives a plausible inference but stops before explaining why the conflict between speech and action matters to the scene."}]}];
 
@@ -1135,7 +1211,7 @@ A precise explanation of what the pattern changes, reveals, complicates, costs, 
           els.passageWrap.classList.add("hidden");
         }
 
-        els.choices.innerHTML = "";
+        els.choices.replaceChildren();
         item.choices.forEach((choice, i) => {
           const btn = document.createElement("button");
           btn.type = "button";
@@ -1148,7 +1224,7 @@ A precise explanation of what the pattern changes, reveals, complicates, costs, 
         applyStableChoiceShuffle(els.choices, item, "main");
 
         els.feedback.className = "feedback hidden";
-        els.feedback.innerHTML = "";
+        els.feedback.replaceChildren();
         els.actions.classList.add("hidden");
         els.tryAgain.classList.add("hidden");
         els.next.classList.add("hidden");
@@ -1168,17 +1244,13 @@ A precise explanation of what the pattern changes, reveals, complicates, costs, 
           solved = true;
           button.classList.add("correct");
           els.feedback.className = "feedback correct";
-          els.feedback.innerHTML =
-            `<div class="feedback-title">Yes — this significance grows from the interpretation without overreaching.</div>
-             <div>${choice.feedback}</div>`;
+          setSafeFeedback_(els.feedback, 'Yes — this significance grows from the interpretation without overreaching.', choice.feedback);
           els.next.classList.remove("hidden");
           els.tryAgain.classList.add("hidden");
         } else {
           button.classList.add("incorrect");
           els.feedback.className = "feedback try";
-          els.feedback.innerHTML =
-            `<div class="feedback-title">Not quite. Ask whether this clarifies why the interpretation matters or simply makes the claim bigger.</div>
-             <div>${choice.feedback}</div>`;
+          setSafeFeedback_(els.feedback, 'Not quite. Ask whether this clarifies why the interpretation matters or simply makes the claim bigger.', choice.feedback);
           els.tryAgain.classList.remove("hidden");
           els.next.classList.add("hidden");
         }
@@ -1301,34 +1373,7 @@ A precise explanation of what the pattern changes, reveals, complicates, costs, 
       completion.classList.add("screenshot-completion");
       const parts = localDateParts();
       const title = activityTitle();
-
-      completion.innerHTML = `
-        <div class="completion-capture" aria-label="Completion confirmation">
-          <div class="completion-check" aria-hidden="true">✓</div>
-          <p class="completion-kicker">Literary Analysis Lab</p>
-          <h2>You did it!</h2>
-          <p class="completion-activity">${title}</p>
-          <div class="completion-meta">
-            <div>
-              <span>Completed</span>
-              <strong>${parts.date}</strong>
-            </div>
-            <div>
-              <span>Time</span>
-              <strong>${parts.time}</strong>
-            </div>
-          </div>
-          <p class="completion-proof">Screenshot this screen if your instructor asked for proof of completion.</p>
-        </div>
-        <div class="completion-actions">
-          <button type="button" class="secondary" id="upgradedRestart">Practice Again</button>
-          <a class="review-instructions-btn" id="upgradedReflect" href="reflection.html?lab=so-what">Reflect</a>
-          <div class="completion-links">
-            <a href="all-labs.html">All Labs</a>
-            <a href="index.html">Student Home</a>
-          </div>
-        </div>
-      `;
+      renderSafeCompletion_(completion, title, parts, 'so-what');
 
       completion.querySelector("#upgradedRestart")?.addEventListener("click", () => {
         // Reloading is the most reliable cross-lab restart because each lab

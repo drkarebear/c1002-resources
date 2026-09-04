@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Literary Analysis Triage | ENGL C1002 Learning Lab</title>
   <meta name="description" content="A short whole-draft revision tool that helps students decide what to revise first in a literary analysis essay.">
@@ -344,6 +346,14 @@
   </footer>
 
 <script>
+function setSafeListItems_(el, items) {
+  el.replaceChildren(...items.map(item => {
+    const li = document.createElement("li");
+    li.textContent = String(item ?? "");
+    return li;
+  }));
+}
+
 (() => {
   const questions = [
     {
@@ -472,7 +482,7 @@
     progress.textContent = `Question ${index+1} of ${questions.length}`;
     qnum.textContent = q.label;
     question.textContent = q.text;
-    choices.innerHTML = "";
+    choices.replaceChildren();
 
     [["Yes — mostly", true],["Not yet / I'm not sure", false]].forEach(([label,yes]) => {
       const btn = document.createElement("button");
@@ -504,7 +514,7 @@
     result.classList.remove("hidden");
     resultTitle.textContent = data.title;
     resultWhy.textContent = data.why;
-    resultSteps.innerHTML = data.steps.map(s => `<li>${s}</li>`).join("");
+    setSafeListItems_(resultSteps, data.steps);
     recommendedLab.href = data.lab;
     recommendedLab.textContent = data.labText;
     result.focus();

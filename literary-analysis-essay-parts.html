@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Titles, Introductions &amp; Conclusions | ENGL C1002 Learning Lab</title>
 <meta content="Practice writing the parts that frame a literary-analysis essay: a useful title, an introduction that gets to the interpretive problem, and a conclusion that shows why the argument matters." name="description"/>
@@ -427,7 +429,7 @@ function render(){
  el.roundLabel.textContent=item.round;
  el.prompt.textContent=item.prompt;
  if(item.passage){el.passage.textContent=item.passage;el.passage.classList.remove("hidden");}else{el.passage.classList.add("hidden");}
- el.choices.innerHTML="";
+ el.choices.replaceChildren();
  stableShuffle(item).forEach(i=>{
    const choice=item.choices[i];
    const b=document.createElement("button"); b.type="button"; b.className="choice"; b.textContent=choice.text;

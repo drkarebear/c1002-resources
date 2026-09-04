@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Claim, Evidence, Explain &amp; Connect | ENGL C1002 Learning Lab</title>
 <meta content="Learn the four main jobs inside an analytical body paragraph: claim, evidence, explanation, and connection to the larger argument." name="description"/>
@@ -291,7 +293,7 @@ function render(){
  if(item.passage){el.passage.textContent=item.passage;el.passage.classList.remove("hidden");}else el.passage.classList.add("hidden");
  if(item.sentence){el.sentence.textContent=item.sentence;el.sentence.classList.remove("hidden");}else el.sentence.classList.add("hidden");
  el.prompt.textContent=item.prompt || "What job is this sentence doing?";
- el.choices.innerHTML="";
+ el.choices.replaceChildren();
  shuffledIndices(choices.length,item).forEach(i=>{
    const c=choices[i],b=document.createElement("button");
    b.type="button";b.className="choice";b.textContent=c.text;
