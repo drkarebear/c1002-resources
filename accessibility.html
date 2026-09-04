@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Accessibility | ENGL C1002 Learning Lab</title>
+<meta content="Accessibility practices and WCAG 2.2 Level AA target for the ENGL C1002 Learning Lab." name="description"/>
+<link href="favicon4.png" rel="icon" type="image/png"/>
+<style>
+    :root{
+      --bg:#f7f8fb;--surface:#fff;--text:#1f2933;--muted:#5d6978;
+      --border:#d4dbe5;--accent:#1f5da8;--accent-dark:#163f74;
+      --soft:#eef4fb;--green:#2f7a43;--green-soft:#f0f7f2;--focus:#111827;
+      --max:840px;
+    }
+    *{box-sizing:border-box}
+    html{color-scheme:light dark}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+    a{color:var(--accent-dark);text-underline-offset:.18em}
+    a:hover{color:var(--accent)}
+    a:focus-visible{outline:4px solid var(--focus);outline-offset:3px;border-radius:.25rem}
+    header,main,footer{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    header{padding:1.5rem 0 .7rem}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text);font-weight:850}
+    .brand img{width:44px;height:44px;object-fit:contain}
+    nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.75rem}
+    nav a{font-weight:750}
+    .eyebrow{margin:1.35rem 0 .25rem;color:var(--accent-dark);font-weight:850;text-transform:uppercase;letter-spacing:.04em;font-size:.82rem}
+    h1{margin:0;font-size:clamp(2.35rem,7vw,4rem);line-height:1.03;letter-spacing:-.04em}
+    h2{margin-top:2rem;line-height:1.2}
+    .lede{color:var(--muted);font-size:1.08rem;max-width:68ch}
+    .plain{background:var(--green-soft);border-left:5px solid var(--green);padding:1rem 1.1rem;border-radius:.45rem;margin:1.2rem 0}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:.8rem;padding:1rem 1.1rem;margin:1rem 0}
+    .card p{margin:.45rem 0}
+    footer{padding:2rem 0 3rem;border-top:1px solid var(--border);margin-top:2.4rem;color:var(--muted);font-size:.92rem}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;overflow:visible;z-index:9999;background:var(--surface);color:var(--text);border:2px solid var(--focus);border-radius:.45rem;padding:.65rem .8rem;font-weight:800}
+    @media(max-width:700px){header,main,footer{width:min(calc(100% - 1.25rem),var(--max))}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    @media(prefers-contrast:more){:root{--border:#4b5563;--muted:#374151}}
+    @media(prefers-color-scheme:dark){
+      :root{--bg:#10151b;--surface:#18212a;--text:#f3f6f9;--muted:#bdc7d2;--border:#3b4856;--accent:#8dbbff;--accent-dark:#bdd7ff;--soft:#202c38;--green:#72d287;--green-soft:#182a1d;--focus:#fff}
+      a:hover{color:#e0ecff}
+    }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+<a class="brand" href="index.html"><img alt="" src="favicon4.png"/><span>ENGL C1002 Learning Lab</span></a>
+<nav aria-label="Site navigation">
+<a href="index.html">Student Home</a>
+<a href="all-labs.html">All Labs</a>
+<a href="teachers.html">Instructor Resources</a>
+</nav>
+<p class="eyebrow">About This Site</p>
+<h1>Accessibility</h1>
+<p class="lede">Accessibility is part of the design of the learning lab, not an add-on after the activities are built.</p>
+</header>
+<main id="main" tabindex="-1">
+
+<div class="plain"><strong>Accessibility target:</strong> I aim to make the ENGL C1002 Learning Lab usable by as many people as possible and to meet or exceed WCAG 2.2 Level AA where the project itself controls the experience.</div>
+<section aria-labelledby="accessibility-practices-heading">
+<h2 id="accessibility-practices-heading">Accessibility Practices</h2>
+<div class="card">
+<p>The site is designed with semantic headings and landmarks, keyboard-accessible navigation and activity controls, visible focus indicators, high-contrast text and controls, responsive reflow, large interaction targets, and reduced-motion support.</p>
+<p>I use WCAG 2.2 Level AA as the project target and check for common WAVE errors, contrast errors, keyboard barriers, reflow problems, missing or unclear accessible names, and other barriers that can make interactive learning materials harder to use.</p>
+</div>
+</section>
+<section aria-labelledby="testing-heading">
+<h2 id="testing-heading">Testing and Ongoing Review</h2>
+<div class="card">
+<p>Automated accessibility tools are useful for finding many problems, but they cannot certify legal compliance or replace human review. Keyboard testing, screen-reader and assistive-technology testing, and feedback from actual users remain important parts of the accessibility process.</p>
+<p>Accessibility is treated as ongoing maintenance. As activities are added or revised, I may also revise structure, instructions, controls, contrast, or interaction patterns when testing reveals a barrier.</p>
+</div>
+</section>
+<section aria-labelledby="third-party-heading">
+<h2 id="third-party-heading">Canvas and Third-Party Platforms</h2>
+<div class="card">
+<p>Some instructors may link to or embed these pages in Canvas or another learning-management system. Those platforms are maintained by their own providers and may have accessibility features or barriers outside the control of the ENGL C1002 Learning Lab.</p>
+</div>
+</section>
+<section aria-labelledby="report-heading">
+<h2 id="report-heading">Report an Accessibility Barrier</h2>
+<div class="card">
+<p>If you encounter an accessibility barrier in the ENGL C1002 Learning Lab itself, please <a href="mailto:karencrozer@gmail.com?subject=ENGL%20C1002%20Learning%20Lab%20Accessibility">email me about the C1002 accessibility issue</a> and, if possible, include the page and a short description of what was difficult to use.</p>
+</div>
+</section>
+
+</main>
+<footer>
+<p>Created by Karen Crozer for ENGL C1002 classes.</p>
+<p><a href="index.html">Student Home</a> · <a href="all-labs.html">All Labs</a> · <a href="accessibility.html">Accessibility</a> · <a href="license.html">License &amp; Reuse</a> · <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>
