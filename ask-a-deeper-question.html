@@ -75,6 +75,96 @@ footer{margin-top:2.4rem;padding:1.2rem 0 2.5rem;border-top:1px solid var(--bord
     }
 
 </style>
+
+<style id="dark-mode-contrast-fixes">
+/* Repository-wide dark-mode contrast fixes. Keep this block last in <head>. */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#10151b !important;
+    --surface:#18212a !important;
+    --text:#f3f6f9 !important;
+    --muted:#bdc7d2 !important;
+    --border:#3b4856 !important;
+    --accent:#8dbbff !important;
+    --accent-dark:#bdd7ff !important;
+    --soft:#202c38 !important;
+    --green:#72d287 !important;
+    --green-soft:#182a1d !important;
+    --gold:#e6bd63 !important;
+    --gold-soft:#302817 !important;
+    --focus:#ffffff !important;
+  }
+  html{color-scheme:dark}
+  body{background:var(--bg) !important;color:var(--text) !important}
+
+  /* Light-mode surfaces that were not covered by the original shared rule. */
+  .teacher-box,.support-note,.paragraph,.evidence-item,.detail,.perspective,.kind,.notice,
+  .activity-card,.prompt-card,.fallback,.order,.result,.search-wrap,.not-found,
+  .decoder,.path-step,.use-note,.intro,.lab-card,.back,.summary,
+  .front,.type,.question-box,.answer-box,.definition-box,.example-box{
+    background:var(--surface) !important;
+    color:var(--text) !important;
+    border-color:var(--border) !important;
+  }
+
+  /* Keyboard skip links and instructor jump navigation. */
+  .skip-link,.skip,.jump a{
+    background:var(--surface) !important;
+    color:var(--accent-dark) !important;
+    border-color:var(--border) !important;
+  }
+  .skip-link:focus,.skip:focus,.jump a:focus-visible{
+    outline-color:var(--focus) !important;
+  }
+
+  /* Colored callouts: retain meaning without low-contrast legacy text colors. */
+  .big-note strong,.example strong,.transfer strong,.transfer-box strong,
+  .note strong,.canvas-note strong,.green strong,.plain strong,
+  .support-note strong,.warning-box strong,.gold strong,.stuck strong{
+    color:var(--text) !important;
+  }
+
+  /* Number/letter badges need a dark field behind light accent text. */
+  .move-num{
+    background:#24364a !important;
+    color:#d7e7ff !important;
+    border-color:#526273 !important;
+  }
+  .hatmat-letter{
+    background:#315f99 !important;
+    color:#ffffff !important;
+    border-color:#8dbbff !important;
+  }
+
+  /* Triage status badge. */
+  .priority{
+    background:var(--gold-soft) !important;
+    color:#f7d98a !important;
+    border-color:#8d733a !important;
+  }
+
+  /* Keep text inside repaired surfaces readable. */
+  .teacher-box p,.teacher-box h2,.teacher-box h3,
+  .activity-card .purpose,.prompt-card .prompt,.fallback,
+  .kind span,.kind em,.perspective,.detail,.paragraph,
+  .search-wrap label,.search-wrap .search-hint,.order li,.order strong,
+  .result,.decoder{color:var(--text) !important}
+  .activity-card .purpose,.fallback,.search-wrap .search-hint{color:var(--muted) !important}
+
+  /* Inputs/controls that may have browser-supplied light backgrounds. */
+  input,select,textarea,button,.btn,.btn-secondary,.secondary,.linkbtn,
+  .review-instructions-btn{
+    background:var(--surface) !important;
+    color:var(--text) !important;
+    border-color:var(--border) !important;
+  }
+  .primary,.btn-primary,.start-activity-btn,.lab-link{
+    background:#315f99 !important;
+    color:#fff !important;
+    border-color:#8dbbff !important;
+  }
+}
+</style>
 </head>
 <body><a class="skip-link" href="#main">Skip to main content</a>
 <header>
